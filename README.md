@@ -368,7 +368,7 @@ npm run build
 
 First build the package then run ```npm publish```
 
-### Consuming
+### Installation
 
 navigate to the folder of your consuming project and run one of the following commands.
 
