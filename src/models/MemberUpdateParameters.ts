@@ -38,10 +38,10 @@ export interface MemberUpdateParameters {
     localeIds?: string;
     /**
      * Additional permissions depending on member role. Available permissions are <code>create_upload</code> and <code>review_translations</code>
-     * @type {object}
+     * @type {{ [key: string]: string; }}
      * @memberof MemberUpdateParameters
      */
-    permissions?: object;
+    permissions?: { [key: string]: string; };
 }
 
 export function MemberUpdateParametersFromJSON(json: any): MemberUpdateParameters {

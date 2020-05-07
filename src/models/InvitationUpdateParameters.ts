@@ -38,10 +38,10 @@ export interface InvitationUpdateParameters {
     localeIds?: string;
     /**
      * Additional permissions depending on invitation role.
-     * @type {object}
+     * @type {{ [key: string]: string; }}
      * @memberof InvitationUpdateParameters
      */
-    permissions?: object;
+    permissions?: { [key: string]: string; };
 }
 
 export function InvitationUpdateParametersFromJSON(json: any): InvitationUpdateParameters {

@@ -44,10 +44,10 @@ export interface InvitationCreateParameters {
     localeIds?: string;
     /**
      * Additional permissions depending on invitation role. Available permissions are <code>create_upload</code> and <code>review_translations</code>
-     * @type {object}
+     * @type {{ [key: string]: string; }}
      * @memberof InvitationCreateParameters
      */
-    permissions?: object;
+    permissions?: { [key: string]: string; };
 }
 
 export function InvitationCreateParametersFromJSON(json: any): InvitationCreateParameters {

@@ -38,10 +38,10 @@ export interface DistributionCreateParameters {
     platforms?: Array<string>;
     /**
      * Additional formatting and render options. Only <code>enclose_in_cdata</code> is available for platform <code>android</code>.
-     * @type {object}
+     * @type {{ [key: string]: string; }}
      * @memberof DistributionCreateParameters
      */
-    formatOptions?: object;
+    formatOptions?: { [key: string]: string; };
     /**
      * Indicates whether to fallback to non regional locale when locale can not be found
      * @type {boolean}
