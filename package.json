@@ -1,5 +1,5 @@
 {
-  "name": "Phrase",
+  "name": "@phrase/phrase",
   "version": "1.0.0",
   "description": "OpenAPI client for Phrase",
   "author": "OpenAPI-Generator",
@@ -10,6 +10,6 @@
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "typescript": "^2.4"
+    "typescript": "^3.6"
   }
 }
