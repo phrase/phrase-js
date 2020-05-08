@@ -378,6 +378,14 @@ _published:_
 npm install Phrase@1.0.0 --save
 ```
 
+if you are using yarn set `.yarnrc` first
+
+`@phrase:registry" "https://npm.pkg.github.com`
+
+```
+yarn install Phrase@1.0.0
+```
+
 _unPublished (not recommended):_
 
 ```
