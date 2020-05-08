@@ -1,5 +1,5 @@
 {
-  "name": "@phrase/phrase",
+  "name": "phrase",
   "version": "1.0.0",
   "description": "OpenAPI client for Phrase",
   "author": "OpenAPI-Generator",
