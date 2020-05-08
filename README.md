@@ -1,4 +1,4 @@
-## Phrase@1.0.0
+## phrase/phrase-typescript@1.0.0
 
 Phrase is a translation management platform for software projects. You can collaborate on language file translation with your team or order translations through our platform. The API allows you to import locale files, download locale files, tag keys or interact in other ways with the localization data stored in Phrase for your account.
 
@@ -335,7 +335,7 @@ To authenticate a JSONP request, you can send a valid [access token](#authentica
 
 - API version: 2.0.0
 - Package version: 1.0.0
-- Build package: Phrase
+- Build package: phrase/phrase-typescript
 For more information, please visit [https://developers.phrase.com/api/](https://developers.phrase.com/api/)
 
 
@@ -375,7 +375,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install Phrase@1.0.0 --save
+npm install phrase/phrase-typescript@1.0.0 --save
 ```
 
 if you are using yarn set `.yarnrc` first
@@ -383,7 +383,7 @@ if you are using yarn set `.yarnrc` first
 `@phrase:registry" "https://npm.pkg.github.com`
 
 ```
-yarn install Phrase@1.0.0
+yarn install phrase/phrase-typescript@1.0.0
 ```
 
 _unPublished (not recommended):_

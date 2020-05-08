@@ -1,5 +1,5 @@
 {
-  "name": "@phrase/phrase-typescript",
+  "name": "phrase/phrase-typescript",
   "version": "1.0.0",
   "description": "OpenAPI client for Phrase",
   "author": "OpenAPI-Generator",
