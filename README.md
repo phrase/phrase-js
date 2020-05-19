@@ -412,6 +412,10 @@ navigate to the folder of your consuming project and run one of the following co
 
 _published:_
 
+set `.npmrc` first
+
+`@phrase:registry=https://npm.pkg.github.com`
+
 ```
 npm install phrase/phrase-js@1.0.0 --save
 ```
