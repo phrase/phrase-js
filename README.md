@@ -440,7 +440,7 @@ npm install PATH_TO_GENERATED_PACKAGE --save
 Please follow the [installation](#installation) procedure and then run the following code:
 
 ```typescript
-import {Configuration, SpacesApi} from "Phrase"
+import {Configuration, SpacesApi} from "@phrase/phrase-js"
 
 const configuration = new Configuration({apiKey: 'token API_TOKEN'})
 
