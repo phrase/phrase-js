@@ -81,7 +81,7 @@ export class ReleasesApi extends runtime.BaseAPI {
      * Create a new release.
      * Create a release
      */
-    async releaseCreateRaw(requestParameters: ReleaseCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async releaseCreateRaw(requestParameters: ReleaseCreateRequest): Promise<runtime.ApiResponse<Release>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling releaseCreate.');
         }
@@ -119,15 +119,16 @@ export class ReleasesApi extends runtime.BaseAPI {
             body: ReleaseCreateParametersToJSON(requestParameters.releaseCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ReleaseFromJSON(jsonValue));
     }
 
     /**
      * Create a new release.
      * Create a release
      */
-    async releaseCreate(requestParameters: ReleaseCreateRequest): Promise<void> {
-        await this.releaseCreateRaw(requestParameters);
+    async releaseCreate(requestParameters: ReleaseCreateRequest): Promise<Release> {
+        const response = await this.releaseCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

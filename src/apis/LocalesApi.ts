@@ -92,7 +92,7 @@ export class LocalesApi extends runtime.BaseAPI {
      * Create a new locale.
      * Create a locale
      */
-    async localeCreateRaw(requestParameters: LocaleCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async localeCreateRaw(requestParameters: LocaleCreateRequest): Promise<runtime.ApiResponse<LocaleDetails>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling localeCreate.');
         }
@@ -126,15 +126,16 @@ export class LocalesApi extends runtime.BaseAPI {
             body: LocaleCreateParametersToJSON(requestParameters.localeCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LocaleDetailsFromJSON(jsonValue));
     }
 
     /**
      * Create a new locale.
      * Create a locale
      */
-    async localeCreate(requestParameters: LocaleCreateRequest): Promise<void> {
-        await this.localeCreateRaw(requestParameters);
+    async localeCreate(requestParameters: LocaleCreateRequest): Promise<LocaleDetails> {
+        const response = await this.localeCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

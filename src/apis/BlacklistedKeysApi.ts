@@ -66,7 +66,7 @@ export class BlacklistedKeysApi extends runtime.BaseAPI {
      * Create a new rule for blacklisting keys.
      * Create a blacklisted key
      */
-    async blacklistedKeyCreateRaw(requestParameters: BlacklistedKeyCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async blacklistedKeyCreateRaw(requestParameters: BlacklistedKeyCreateRequest): Promise<runtime.ApiResponse<BlacklistedKey>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling blacklistedKeyCreate.');
         }
@@ -100,15 +100,16 @@ export class BlacklistedKeysApi extends runtime.BaseAPI {
             body: BlacklistedKeyCreateParametersToJSON(requestParameters.blacklistedKeyCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => BlacklistedKeyFromJSON(jsonValue));
     }
 
     /**
      * Create a new rule for blacklisting keys.
      * Create a blacklisted key
      */
-    async blacklistedKeyCreate(requestParameters: BlacklistedKeyCreateRequest): Promise<void> {
-        await this.blacklistedKeyCreateRaw(requestParameters);
+    async blacklistedKeyCreate(requestParameters: BlacklistedKeyCreateRequest): Promise<BlacklistedKey> {
+        const response = await this.blacklistedKeyCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

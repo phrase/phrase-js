@@ -69,7 +69,7 @@ export class DistributionsApi extends runtime.BaseAPI {
      * Create a new distribution.
      * Create a distribution
      */
-    async distributionCreateRaw(requestParameters: DistributionCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async distributionCreateRaw(requestParameters: DistributionCreateRequest): Promise<runtime.ApiResponse<Distribution>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling distributionCreate.');
         }
@@ -103,15 +103,16 @@ export class DistributionsApi extends runtime.BaseAPI {
             body: DistributionCreateParametersToJSON(requestParameters.distributionCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => DistributionFromJSON(jsonValue));
     }
 
     /**
      * Create a new distribution.
      * Create a distribution
      */
-    async distributionCreate(requestParameters: DistributionCreateRequest): Promise<void> {
-        await this.distributionCreateRaw(requestParameters);
+    async distributionCreate(requestParameters: DistributionCreateRequest): Promise<Distribution> {
+        const response = await this.distributionCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

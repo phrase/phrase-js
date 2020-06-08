@@ -177,7 +177,7 @@ export class JobsApi extends runtime.BaseAPI {
      * Create a new job.
      * Create a job
      */
-    async jobCreateRaw(requestParameters: JobCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async jobCreateRaw(requestParameters: JobCreateRequest): Promise<runtime.ApiResponse<JobDetails>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobCreate.');
         }
@@ -211,15 +211,16 @@ export class JobsApi extends runtime.BaseAPI {
             body: JobCreateParametersToJSON(requestParameters.jobCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => JobDetailsFromJSON(jsonValue));
     }
 
     /**
      * Create a new job.
      * Create a job
      */
-    async jobCreate(requestParameters: JobCreateRequest): Promise<void> {
-        await this.jobCreateRaw(requestParameters);
+    async jobCreate(requestParameters: JobCreateRequest): Promise<JobDetails> {
+        const response = await this.jobCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

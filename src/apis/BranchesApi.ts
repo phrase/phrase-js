@@ -128,7 +128,7 @@ export class BranchesApi extends runtime.BaseAPI {
      * Create a new branch.
      * Create a branch
      */
-    async branchCreateRaw(requestParameters: BranchCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async branchCreateRaw(requestParameters: BranchCreateRequest): Promise<runtime.ApiResponse<Branch>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling branchCreate.');
         }
@@ -162,15 +162,16 @@ export class BranchesApi extends runtime.BaseAPI {
             body: BranchCreateParametersToJSON(requestParameters.branchCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => BranchFromJSON(jsonValue));
     }
 
     /**
      * Create a new branch.
      * Create a branch
      */
-    async branchCreate(requestParameters: BranchCreateRequest): Promise<void> {
-        await this.branchCreateRaw(requestParameters);
+    async branchCreate(requestParameters: BranchCreateRequest): Promise<Branch> {
+        const response = await this.branchCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

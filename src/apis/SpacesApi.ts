@@ -94,7 +94,7 @@ export class SpacesApi extends runtime.BaseAPI {
      * Create a new Space.
      * Create a Space
      */
-    async spaceCreateRaw(requestParameters: SpaceCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async spaceCreateRaw(requestParameters: SpaceCreateRequest): Promise<runtime.ApiResponse<Space>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling spaceCreate.');
         }
@@ -128,15 +128,16 @@ export class SpacesApi extends runtime.BaseAPI {
             body: SpaceCreateParametersToJSON(requestParameters.spaceCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SpaceFromJSON(jsonValue));
     }
 
     /**
      * Create a new Space.
      * Create a Space
      */
-    async spaceCreate(requestParameters: SpaceCreateRequest): Promise<void> {
-        await this.spaceCreateRaw(requestParameters);
+    async spaceCreate(requestParameters: SpaceCreateRequest): Promise<Space> {
+        const response = await this.spaceCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

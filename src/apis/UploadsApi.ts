@@ -61,7 +61,7 @@ export class UploadsApi extends runtime.BaseAPI {
      * Upload a new language file. Creates necessary resources in your project.
      * Upload a new file
      */
-    async uploadCreateRaw(requestParameters: UploadCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async uploadCreateRaw(requestParameters: UploadCreateRequest): Promise<runtime.ApiResponse<Upload>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling uploadCreate.');
         }
@@ -157,15 +157,16 @@ export class UploadsApi extends runtime.BaseAPI {
             body: formParams,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => UploadFromJSON(jsonValue));
     }
 
     /**
      * Upload a new language file. Creates necessary resources in your project.
      * Upload a new file
      */
-    async uploadCreate(requestParameters: UploadCreateRequest): Promise<void> {
-        await this.uploadCreateRaw(requestParameters);
+    async uploadCreate(requestParameters: UploadCreateRequest): Promise<Upload> {
+        const response = await this.uploadCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

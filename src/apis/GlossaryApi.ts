@@ -117,7 +117,7 @@ export class GlossaryApi extends runtime.BaseAPI {
      * Create a new glossary.
      * Create a glossary
      */
-    async glossaryCreateRaw(requestParameters: GlossaryCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async glossaryCreateRaw(requestParameters: GlossaryCreateRequest): Promise<runtime.ApiResponse<Glossary>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling glossaryCreate.');
         }
@@ -151,15 +151,16 @@ export class GlossaryApi extends runtime.BaseAPI {
             body: GlossaryCreateParametersToJSON(requestParameters.glossaryCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GlossaryFromJSON(jsonValue));
     }
 
     /**
      * Create a new glossary.
      * Create a glossary
      */
-    async glossaryCreate(requestParameters: GlossaryCreateRequest): Promise<void> {
-        await this.glossaryCreateRaw(requestParameters);
+    async glossaryCreate(requestParameters: GlossaryCreateRequest): Promise<Glossary> {
+        const response = await this.glossaryCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

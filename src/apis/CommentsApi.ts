@@ -101,7 +101,7 @@ export class CommentsApi extends runtime.BaseAPI {
      * Create a new comment for a key.
      * Create a comment
      */
-    async commentCreateRaw(requestParameters: CommentCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async commentCreateRaw(requestParameters: CommentCreateRequest): Promise<runtime.ApiResponse<Comment>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling commentCreate.');
         }
@@ -139,15 +139,16 @@ export class CommentsApi extends runtime.BaseAPI {
             body: CommentCreateParametersToJSON(requestParameters.commentCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => CommentFromJSON(jsonValue));
     }
 
     /**
      * Create a new comment for a key.
      * Create a comment
      */
-    async commentCreate(requestParameters: CommentCreateRequest): Promise<void> {
-        await this.commentCreateRaw(requestParameters);
+    async commentCreate(requestParameters: CommentCreateRequest): Promise<Comment> {
+        const response = await this.commentCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

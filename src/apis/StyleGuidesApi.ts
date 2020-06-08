@@ -69,7 +69,7 @@ export class StyleGuidesApi extends runtime.BaseAPI {
      * Create a new style guide.
      * Create a style guide
      */
-    async styleguideCreateRaw(requestParameters: StyleguideCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async styleguideCreateRaw(requestParameters: StyleguideCreateRequest): Promise<runtime.ApiResponse<StyleguideDetails>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling styleguideCreate.');
         }
@@ -103,15 +103,16 @@ export class StyleGuidesApi extends runtime.BaseAPI {
             body: StyleguideCreateParametersToJSON(requestParameters.styleguideCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => StyleguideDetailsFromJSON(jsonValue));
     }
 
     /**
      * Create a new style guide.
      * Create a style guide
      */
-    async styleguideCreate(requestParameters: StyleguideCreateRequest): Promise<void> {
-        await this.styleguideCreateRaw(requestParameters);
+    async styleguideCreate(requestParameters: StyleguideCreateRequest): Promise<StyleguideDetails> {
+        const response = await this.styleguideCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

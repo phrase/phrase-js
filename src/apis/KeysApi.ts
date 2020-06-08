@@ -116,7 +116,7 @@ export class KeysApi extends runtime.BaseAPI {
      * Create a new key.
      * Create a key
      */
-    async keyCreateRaw(requestParameters: KeyCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async keyCreateRaw(requestParameters: KeyCreateRequest): Promise<runtime.ApiResponse<TranslationKeyDetails>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling keyCreate.');
         }
@@ -150,15 +150,16 @@ export class KeysApi extends runtime.BaseAPI {
             body: KeyCreateParametersToJSON(requestParameters.keyCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => TranslationKeyDetailsFromJSON(jsonValue));
     }
 
     /**
      * Create a new key.
      * Create a key
      */
-    async keyCreate(requestParameters: KeyCreateRequest): Promise<void> {
-        await this.keyCreateRaw(requestParameters);
+    async keyCreate(requestParameters: KeyCreateRequest): Promise<TranslationKeyDetails> {
+        const response = await this.keyCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

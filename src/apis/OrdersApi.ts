@@ -123,7 +123,7 @@ export class OrdersApi extends runtime.BaseAPI {
      * Create a new order. Access token scope must include <code>orders.create</code>.
      * Create a new order
      */
-    async orderCreateRaw(requestParameters: OrderCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async orderCreateRaw(requestParameters: OrderCreateRequest): Promise<runtime.ApiResponse<TranslationOrder>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling orderCreate.');
         }
@@ -157,15 +157,16 @@ export class OrdersApi extends runtime.BaseAPI {
             body: OrderCreateParametersToJSON(requestParameters.orderCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => TranslationOrderFromJSON(jsonValue));
     }
 
     /**
      * Create a new order. Access token scope must include <code>orders.create</code>.
      * Create a new order
      */
-    async orderCreate(requestParameters: OrderCreateRequest): Promise<void> {
-        await this.orderCreateRaw(requestParameters);
+    async orderCreate(requestParameters: OrderCreateRequest): Promise<TranslationOrder> {
+        const response = await this.orderCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

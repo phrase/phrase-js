@@ -64,7 +64,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      * Create a new project.
      * Create a project
      */
-    async projectCreateRaw(requestParameters: ProjectCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async projectCreateRaw(requestParameters: ProjectCreateRequest): Promise<runtime.ApiResponse<ProjectDetails>> {
         if (requestParameters.projectCreateParameters === null || requestParameters.projectCreateParameters === undefined) {
             throw new runtime.RequiredError('projectCreateParameters','Required parameter requestParameters.projectCreateParameters was null or undefined when calling projectCreate.');
         }
@@ -94,15 +94,16 @@ export class ProjectsApi extends runtime.BaseAPI {
             body: ProjectCreateParametersToJSON(requestParameters.projectCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectDetailsFromJSON(jsonValue));
     }
 
     /**
      * Create a new project.
      * Create a project
      */
-    async projectCreate(requestParameters: ProjectCreateRequest): Promise<void> {
-        await this.projectCreateRaw(requestParameters);
+    async projectCreate(requestParameters: ProjectCreateRequest): Promise<ProjectDetails> {
+        const response = await this.projectCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

@@ -62,7 +62,7 @@ export class TagsApi extends runtime.BaseAPI {
      * Create a new tag.
      * Create a tag
      */
-    async tagCreateRaw(requestParameters: TagCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async tagCreateRaw(requestParameters: TagCreateRequest): Promise<runtime.ApiResponse<TagWithStats>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling tagCreate.');
         }
@@ -96,15 +96,16 @@ export class TagsApi extends runtime.BaseAPI {
             body: TagCreateParametersToJSON(requestParameters.tagCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => TagWithStatsFromJSON(jsonValue));
     }
 
     /**
      * Create a new tag.
      * Create a tag
      */
-    async tagCreate(requestParameters: TagCreateRequest): Promise<void> {
-        await this.tagCreateRaw(requestParameters);
+    async tagCreate(requestParameters: TagCreateRequest): Promise<TagWithStats> {
+        const response = await this.tagCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

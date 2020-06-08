@@ -23,6 +23,9 @@ import {
     AuthorizationUpdateParameters,
     AuthorizationUpdateParametersFromJSON,
     AuthorizationUpdateParametersToJSON,
+    AuthorizationWithToken,
+    AuthorizationWithTokenFromJSON,
+    AuthorizationWithTokenToJSON,
 } from '../models';
 
 export interface AuthorizationCreateRequest {
@@ -61,7 +64,7 @@ export class AuthorizationsApi extends runtime.BaseAPI {
      * Create a new authorization.
      * Create an authorization
      */
-    async authorizationCreateRaw(requestParameters: AuthorizationCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async authorizationCreateRaw(requestParameters: AuthorizationCreateRequest): Promise<runtime.ApiResponse<AuthorizationWithToken>> {
         if (requestParameters.authorizationCreateParameters === null || requestParameters.authorizationCreateParameters === undefined) {
             throw new runtime.RequiredError('authorizationCreateParameters','Required parameter requestParameters.authorizationCreateParameters was null or undefined when calling authorizationCreate.');
         }
@@ -91,15 +94,16 @@ export class AuthorizationsApi extends runtime.BaseAPI {
             body: AuthorizationCreateParametersToJSON(requestParameters.authorizationCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => AuthorizationWithTokenFromJSON(jsonValue));
     }
 
     /**
      * Create a new authorization.
      * Create an authorization
      */
-    async authorizationCreate(requestParameters: AuthorizationCreateRequest): Promise<void> {
-        await this.authorizationCreateRaw(requestParameters);
+    async authorizationCreate(requestParameters: AuthorizationCreateRequest): Promise<AuthorizationWithToken> {
+        const response = await this.authorizationCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

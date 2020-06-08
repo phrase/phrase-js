@@ -69,7 +69,7 @@ export class ScreenshotMarkersApi extends runtime.BaseAPI {
      * Create a new screenshot marker.
      * Create a screenshot marker
      */
-    async screenshotMarkerCreateRaw(requestParameters: ScreenshotMarkerCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async screenshotMarkerCreateRaw(requestParameters: ScreenshotMarkerCreateRequest): Promise<runtime.ApiResponse<ScreenshotMarker>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling screenshotMarkerCreate.');
         }
@@ -107,15 +107,16 @@ export class ScreenshotMarkersApi extends runtime.BaseAPI {
             body: ScreenshotMarkerCreateParametersToJSON(requestParameters.screenshotMarkerCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ScreenshotMarkerFromJSON(jsonValue));
     }
 
     /**
      * Create a new screenshot marker.
      * Create a screenshot marker
      */
-    async screenshotMarkerCreate(requestParameters: ScreenshotMarkerCreateRequest): Promise<void> {
-        await this.screenshotMarkerCreateRaw(requestParameters);
+    async screenshotMarkerCreate(requestParameters: ScreenshotMarkerCreateRequest): Promise<ScreenshotMarker> {
+        const response = await this.screenshotMarkerCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

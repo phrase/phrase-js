@@ -201,7 +201,7 @@ export class TranslationsApi extends runtime.BaseAPI {
      * Create a translation.
      * Create a translation
      */
-    async translationCreateRaw(requestParameters: TranslationCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async translationCreateRaw(requestParameters: TranslationCreateRequest): Promise<runtime.ApiResponse<TranslationDetails>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling translationCreate.');
         }
@@ -235,15 +235,16 @@ export class TranslationsApi extends runtime.BaseAPI {
             body: TranslationCreateParametersToJSON(requestParameters.translationCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => TranslationDetailsFromJSON(jsonValue));
     }
 
     /**
      * Create a translation.
      * Create a translation
      */
-    async translationCreate(requestParameters: TranslationCreateRequest): Promise<void> {
-        await this.translationCreateRaw(requestParameters);
+    async translationCreate(requestParameters: TranslationCreateRequest): Promise<TranslationDetails> {
+        const response = await this.translationCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

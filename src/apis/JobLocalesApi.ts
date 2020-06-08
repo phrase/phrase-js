@@ -379,7 +379,7 @@ export class JobLocalesApi extends runtime.BaseAPI {
      * Create a new job locale.
      * Create a job locale
      */
-    async jobLocalesCreateRaw(requestParameters: JobLocalesCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async jobLocalesCreateRaw(requestParameters: JobLocalesCreateRequest): Promise<runtime.ApiResponse<JobLocale>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobLocalesCreate.');
         }
@@ -417,15 +417,16 @@ export class JobLocalesApi extends runtime.BaseAPI {
             body: JobLocalesCreateParametersToJSON(requestParameters.jobLocalesCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => JobLocaleFromJSON(jsonValue));
     }
 
     /**
      * Create a new job locale.
      * Create a job locale
      */
-    async jobLocalesCreate(requestParameters: JobLocalesCreateRequest): Promise<void> {
-        await this.jobLocalesCreateRaw(requestParameters);
+    async jobLocalesCreate(requestParameters: JobLocalesCreateRequest): Promise<JobLocale> {
+        const response = await this.jobLocalesCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

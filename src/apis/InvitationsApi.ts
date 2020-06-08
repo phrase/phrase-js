@@ -72,7 +72,7 @@ export class InvitationsApi extends runtime.BaseAPI {
      * Invite a person to an account. Developers and translators need <code>project_ids</code> and <code>locale_ids</code> assigned to access them. Access token scope must include <code>team.manage</code>.
      * Create a new invitation
      */
-    async invitationCreateRaw(requestParameters: InvitationCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async invitationCreateRaw(requestParameters: InvitationCreateRequest): Promise<runtime.ApiResponse<Invitation>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling invitationCreate.');
         }
@@ -106,15 +106,16 @@ export class InvitationsApi extends runtime.BaseAPI {
             body: InvitationCreateParametersToJSON(requestParameters.invitationCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => InvitationFromJSON(jsonValue));
     }
 
     /**
      * Invite a person to an account. Developers and translators need <code>project_ids</code> and <code>locale_ids</code> assigned to access them. Access token scope must include <code>team.manage</code>.
      * Create a new invitation
      */
-    async invitationCreate(requestParameters: InvitationCreateRequest): Promise<void> {
-        await this.invitationCreateRaw(requestParameters);
+    async invitationCreate(requestParameters: InvitationCreateRequest): Promise<Invitation> {
+        const response = await this.invitationCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

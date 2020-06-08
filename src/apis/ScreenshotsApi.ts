@@ -66,7 +66,7 @@ export class ScreenshotsApi extends runtime.BaseAPI {
      * Create a new screenshot.
      * Create a screenshot
      */
-    async screenshotCreateRaw(requestParameters: ScreenshotCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async screenshotCreateRaw(requestParameters: ScreenshotCreateRequest): Promise<runtime.ApiResponse<Screenshot>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling screenshotCreate.');
         }
@@ -100,15 +100,16 @@ export class ScreenshotsApi extends runtime.BaseAPI {
             body: ScreenshotCreateParametersToJSON(requestParameters.screenshotCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ScreenshotFromJSON(jsonValue));
     }
 
     /**
      * Create a new screenshot.
      * Create a screenshot
      */
-    async screenshotCreate(requestParameters: ScreenshotCreateRequest): Promise<void> {
-        await this.screenshotCreateRaw(requestParameters);
+    async screenshotCreate(requestParameters: ScreenshotCreateRequest): Promise<Screenshot> {
+        const response = await this.screenshotCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**

@@ -72,7 +72,7 @@ export class WebhooksApi extends runtime.BaseAPI {
      * Create a new webhook.
      * Create a webhook
      */
-    async webhookCreateRaw(requestParameters: WebhookCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async webhookCreateRaw(requestParameters: WebhookCreateRequest): Promise<runtime.ApiResponse<Webhook>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling webhookCreate.');
         }
@@ -106,15 +106,16 @@ export class WebhooksApi extends runtime.BaseAPI {
             body: WebhookCreateParametersToJSON(requestParameters.webhookCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => WebhookFromJSON(jsonValue));
     }
 
     /**
      * Create a new webhook.
      * Create a webhook
      */
-    async webhookCreate(requestParameters: WebhookCreateRequest): Promise<void> {
-        await this.webhookCreateRaw(requestParameters);
+    async webhookCreate(requestParameters: WebhookCreateRequest): Promise<Webhook> {
+        const response = await this.webhookCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**
