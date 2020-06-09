@@ -502,11 +502,11 @@ Class | Method | HTTP request | Description
 *GitLabSyncApi* | **gitlabSyncList** | **GET** /gitlab_syncs | List GitLab syncs
 *GitLabSyncApi* | **gitlabSyncShow** | **GET** /gitlab_syncs/{id} | Get single Sync Setting
 *GitLabSyncApi* | **gitlabSyncUpdate** | **PUT** /gitlab_syncs/{id} | Update single Sync Setting
-*GlossaryApi* | **glossariesList** | **GET** /accounts/{account_id}/glossaries | List glossaries
-*GlossaryApi* | **glossaryCreate** | **POST** /accounts/{account_id}/glossaries | Create a glossary
-*GlossaryApi* | **glossaryDelete** | **DELETE** /accounts/{account_id}/glossaries/{id} | Delete a glossary
-*GlossaryApi* | **glossaryShow** | **GET** /accounts/{account_id}/glossaries/{id} | Get a single glossary
-*GlossaryApi* | **glossaryUpdate** | **PATCH** /accounts/{account_id}/glossaries/{id} | Update a glossary
+*GlossariesApi* | **glossariesList** | **GET** /accounts/{account_id}/glossaries | List glossaries
+*GlossariesApi* | **glossaryCreate** | **POST** /accounts/{account_id}/glossaries | Create a glossary
+*GlossariesApi* | **glossaryDelete** | **DELETE** /accounts/{account_id}/glossaries/{id} | Delete a glossary
+*GlossariesApi* | **glossaryShow** | **GET** /accounts/{account_id}/glossaries/{id} | Get a single glossary
+*GlossariesApi* | **glossaryUpdate** | **PATCH** /accounts/{account_id}/glossaries/{id} | Update a glossary
 *GlossaryTermTranslationsApi* | **glossaryTermTranslationCreate** | **POST** /accounts/{account_id}/glossaries/{glossary_id}/terms/{term_id}/translations | Create a glossary term translation
 *GlossaryTermTranslationsApi* | **glossaryTermTranslationDelete** | **DELETE** /accounts/{account_id}/glossaries/{glossary_id}/terms/{term_id}/translations/{id} | Delete a glossary term translation
 *GlossaryTermTranslationsApi* | **glossaryTermTranslationUpdate** | **PATCH** /accounts/{account_id}/glossaries/{glossary_id}/terms/{term_id}/translations/{id} | Update a glossary term translation
