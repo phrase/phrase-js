@@ -31,7 +31,7 @@ export interface UploadCreateParameters {
      */
     file?: Blob;
     /**
-     * File format. Auto-detected when possible and not specified.
+     * File format. Auto-detected when possible and not specified. See the [format guide](https://help.phrase.com/help/supported-platforms-and-formats) for all supported file formats.
      * @type {string}
      * @memberof UploadCreateParameters
      */
