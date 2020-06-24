@@ -86,16 +86,16 @@ export interface UploadCreateParameters {
     fileEncoding?: string;
     /**
      * Optional, format specific mapping between locale names and the columns the translations to those locales are contained in.
-     * @type {{ [key: string]: string; }}
+     * @type {object}
      * @memberof UploadCreateParameters
      */
-    localeMapping?: { [key: string]: string; };
+    localeMapping?: object;
     /**
      * Additional options available for specific formats. See our format guide for complete list.
-     * @type {{ [key: string]: string; }}
+     * @type {object}
      * @memberof UploadCreateParameters
      */
-    formatOptions?: { [key: string]: string; };
+    formatOptions?: object;
     /**
      * If set, translations for the uploaded language will be fetched automatically.
      * @type {boolean}

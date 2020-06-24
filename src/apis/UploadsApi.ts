@@ -33,6 +33,8 @@ export interface UploadCreateRequest {
     skipUploadTags?: boolean;
     skipUnverification?: boolean;
     fileEncoding?: string;
+    localeMapping?: object;
+    formatOptions?: object;
     autotranslate?: boolean;
     markReviewed?: boolean;
 }
@@ -139,6 +141,14 @@ export class UploadsApi extends runtime.BaseAPI {
 
         if (requestParameters.fileEncoding !== undefined) {
             formParams.append('file_encoding', requestParameters.fileEncoding as any);
+        }
+
+        if (requestParameters.localeMapping !== undefined) {
+            formParams.append('locale_mapping', requestParameters.localeMapping as any);
+        }
+
+        if (requestParameters.formatOptions !== undefined) {
+            formParams.append('format_options', requestParameters.formatOptions as any);
         }
 
         if (requestParameters.autotranslate !== undefined) {
