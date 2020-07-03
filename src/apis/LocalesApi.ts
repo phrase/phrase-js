@@ -53,7 +53,7 @@ export interface LocaleDownloadRequest {
     includeTranslatedKeys?: boolean;
     keepNotranslateTags?: boolean;
     convertEmoji?: boolean;
-    formatOptions?: { [key: string]: string; };
+    formatOptions?: object;
     encoding?: string;
     skipUnverifiedTranslations?: boolean;
     includeUnverifiedTranslations?: boolean;
