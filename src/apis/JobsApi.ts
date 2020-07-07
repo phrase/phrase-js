@@ -115,7 +115,7 @@ export interface JobsListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class JobsApi extends runtime.BaseAPI {
 
@@ -136,7 +136,7 @@ export class JobsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('jobCompleteParameters','Required parameter requestParameters.jobCompleteParameters was null or undefined when calling jobComplete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -186,7 +186,7 @@ export class JobsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('jobCreateParameters','Required parameter requestParameters.jobCreateParameters was null or undefined when calling jobCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -236,7 +236,7 @@ export class JobsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling jobDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -290,7 +290,7 @@ export class JobsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('jobKeysCreateParameters','Required parameter requestParameters.jobKeysCreateParameters was null or undefined when calling jobKeysCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -340,7 +340,7 @@ export class JobsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling jobKeysDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -398,7 +398,7 @@ export class JobsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('jobReopenParameters','Required parameter requestParameters.jobReopenParameters was null or undefined when calling jobReopen.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -448,7 +448,7 @@ export class JobsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling jobShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -503,7 +503,7 @@ export class JobsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('jobStartParameters','Required parameter requestParameters.jobStartParameters was null or undefined when calling jobStart.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -557,7 +557,7 @@ export class JobsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('jobUpdateParameters','Required parameter requestParameters.jobUpdateParameters was null or undefined when calling jobUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -603,7 +603,7 @@ export class JobsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobsList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

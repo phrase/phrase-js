@@ -56,7 +56,7 @@ export interface ProjectsListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class ProjectsApi extends runtime.BaseAPI {
 
@@ -69,7 +69,7 @@ export class ProjectsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectCreateParameters','Required parameter requestParameters.projectCreateParameters was null or undefined when calling projectCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -115,7 +115,7 @@ export class ProjectsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling projectDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -157,7 +157,7 @@ export class ProjectsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling projectShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -204,7 +204,7 @@ export class ProjectsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectUpdateParameters','Required parameter requestParameters.projectUpdateParameters was null or undefined when calling projectUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -246,7 +246,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      * List projects
      */
     async projectsListRaw(requestParameters: ProjectsListRequest): Promise<runtime.ApiResponse<Array<Project>>> {
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

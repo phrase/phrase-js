@@ -40,7 +40,7 @@ export interface VersionsListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class VersionsHistoryApi extends runtime.BaseAPI {
 
@@ -61,7 +61,7 @@ export class VersionsHistoryApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling versionShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -112,7 +112,7 @@ export class VersionsHistoryApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('translationId','Required parameter requestParameters.translationId was null or undefined when calling versionsList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

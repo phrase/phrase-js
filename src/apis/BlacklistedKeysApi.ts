@@ -58,7 +58,7 @@ export interface BlacklistedKeysListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class BlacklistedKeysApi extends runtime.BaseAPI {
 
@@ -75,7 +75,7 @@ export class BlacklistedKeysApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('blacklistedKeyCreateParameters','Required parameter requestParameters.blacklistedKeyCreateParameters was null or undefined when calling blacklistedKeyCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -125,7 +125,7 @@ export class BlacklistedKeysApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling blacklistedKeyDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -171,7 +171,7 @@ export class BlacklistedKeysApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling blacklistedKeyShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -222,7 +222,7 @@ export class BlacklistedKeysApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('blacklistedKeyUpdateParameters','Required parameter requestParameters.blacklistedKeyUpdateParameters was null or undefined when calling blacklistedKeyUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -268,7 +268,7 @@ export class BlacklistedKeysApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling blacklistedKeysList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

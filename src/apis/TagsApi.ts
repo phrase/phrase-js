@@ -54,7 +54,7 @@ export interface TagsListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class TagsApi extends runtime.BaseAPI {
 
@@ -71,7 +71,7 @@ export class TagsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('tagCreateParameters','Required parameter requestParameters.tagCreateParameters was null or undefined when calling tagCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -121,7 +121,7 @@ export class TagsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling tagDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -171,7 +171,7 @@ export class TagsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling tagShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -218,7 +218,7 @@ export class TagsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling tagsList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

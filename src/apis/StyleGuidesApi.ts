@@ -61,7 +61,7 @@ export interface StyleguidesListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class StyleGuidesApi extends runtime.BaseAPI {
 
@@ -78,7 +78,7 @@ export class StyleGuidesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('styleguideCreateParameters','Required parameter requestParameters.styleguideCreateParameters was null or undefined when calling styleguideCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -128,7 +128,7 @@ export class StyleGuidesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling styleguideDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -174,7 +174,7 @@ export class StyleGuidesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling styleguideShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -225,7 +225,7 @@ export class StyleGuidesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('styleguideUpdateParameters','Required parameter requestParameters.styleguideUpdateParameters was null or undefined when calling styleguideUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -271,7 +271,7 @@ export class StyleGuidesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling styleguidesList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

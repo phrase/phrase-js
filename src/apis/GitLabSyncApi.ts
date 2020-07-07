@@ -81,7 +81,7 @@ export interface GitlabSyncUpdateRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class GitLabSyncApi extends runtime.BaseAPI {
 
@@ -94,7 +94,7 @@ export class GitLabSyncApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling gitlabSyncDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.accountId !== undefined) {
             queryParameters['account_id'] = requestParameters.accountId;
@@ -144,7 +144,7 @@ export class GitLabSyncApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('gitlabSyncExportParameters','Required parameter requestParameters.gitlabSyncExportParameters was null or undefined when calling gitlabSyncExport.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -190,7 +190,7 @@ export class GitLabSyncApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('gitlabSyncId','Required parameter requestParameters.gitlabSyncId was null or undefined when calling gitlabSyncHistory.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;
@@ -249,7 +249,7 @@ export class GitLabSyncApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('gitlabSyncImportParameters','Required parameter requestParameters.gitlabSyncImportParameters was null or undefined when calling gitlabSyncImport.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -291,7 +291,7 @@ export class GitLabSyncApi extends runtime.BaseAPI {
      * List GitLab syncs
      */
     async gitlabSyncListRaw(requestParameters: GitlabSyncListRequest): Promise<runtime.ApiResponse<Array<GitlabSync>>> {
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.accountId !== undefined) {
             queryParameters['account_id'] = requestParameters.accountId;
@@ -338,7 +338,7 @@ export class GitLabSyncApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling gitlabSyncShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.accountId !== undefined) {
             queryParameters['account_id'] = requestParameters.accountId;
@@ -385,7 +385,7 @@ export class GitLabSyncApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling gitlabSyncUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.accountId !== undefined) {
             queryParameters['account_id'] = requestParameters.accountId;

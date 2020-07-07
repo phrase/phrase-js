@@ -93,7 +93,7 @@ export interface CommentsListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class CommentsApi extends runtime.BaseAPI {
 
@@ -114,7 +114,7 @@ export class CommentsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('commentCreateParameters','Required parameter requestParameters.commentCreateParameters was null or undefined when calling commentCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -168,7 +168,7 @@ export class CommentsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling commentDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -222,7 +222,7 @@ export class CommentsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling commentMarkCheck.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -280,7 +280,7 @@ export class CommentsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('commentMarkReadParameters','Required parameter requestParameters.commentMarkReadParameters was null or undefined when calling commentMarkRead.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -333,7 +333,7 @@ export class CommentsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling commentMarkUnread.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -387,7 +387,7 @@ export class CommentsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling commentShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -446,7 +446,7 @@ export class CommentsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('commentUpdateParameters','Required parameter requestParameters.commentUpdateParameters was null or undefined when calling commentUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -496,7 +496,7 @@ export class CommentsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('keyId','Required parameter requestParameters.keyId was null or undefined when calling commentsList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

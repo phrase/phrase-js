@@ -24,7 +24,7 @@ export interface FormatsListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class FormatsApi extends runtime.BaseAPI {
 
@@ -33,7 +33,7 @@ export class FormatsApi extends runtime.BaseAPI {
      * List formats
      */
     async formatsListRaw(requestParameters: FormatsListRequest): Promise<runtime.ApiResponse<Array<Format>>> {
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 

@@ -74,7 +74,7 @@ export interface BranchesListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class BranchesApi extends runtime.BaseAPI {
 
@@ -91,7 +91,7 @@ export class BranchesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling branchCompare.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -137,7 +137,7 @@ export class BranchesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('branchCreateParameters','Required parameter requestParameters.branchCreateParameters was null or undefined when calling branchCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -187,7 +187,7 @@ export class BranchesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling branchDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -237,7 +237,7 @@ export class BranchesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('branchMergeParameters','Required parameter requestParameters.branchMergeParameters was null or undefined when calling branchMerge.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -286,7 +286,7 @@ export class BranchesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling branchShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -337,7 +337,7 @@ export class BranchesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('branchUpdateParameters','Required parameter requestParameters.branchUpdateParameters was null or undefined when calling branchUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -383,7 +383,7 @@ export class BranchesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling branchesList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

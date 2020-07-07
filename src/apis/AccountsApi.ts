@@ -34,7 +34,7 @@ export interface AccountsListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class AccountsApi extends runtime.BaseAPI {
 
@@ -47,7 +47,7 @@ export class AccountsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling accountShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -86,7 +86,7 @@ export class AccountsApi extends runtime.BaseAPI {
      * List accounts
      */
     async accountsListRaw(requestParameters: AccountsListRequest): Promise<runtime.ApiResponse<Array<Account>>> {
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

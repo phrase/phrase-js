@@ -61,7 +61,7 @@ export interface DistributionsListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class DistributionsApi extends runtime.BaseAPI {
 
@@ -78,7 +78,7 @@ export class DistributionsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('distributionCreateParameters','Required parameter requestParameters.distributionCreateParameters was null or undefined when calling distributionCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -128,7 +128,7 @@ export class DistributionsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling distributionDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -174,7 +174,7 @@ export class DistributionsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling distributionShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -225,7 +225,7 @@ export class DistributionsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('distributionUpdateParameters','Required parameter requestParameters.distributionUpdateParameters was null or undefined when calling distributionUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -271,7 +271,7 @@ export class DistributionsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling distributionsList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

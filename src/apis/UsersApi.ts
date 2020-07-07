@@ -24,7 +24,7 @@ export interface ShowUserRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class UsersApi extends runtime.BaseAPI {
 
@@ -33,7 +33,7 @@ export class UsersApi extends runtime.BaseAPI {
      * Show current User
      */
     async showUserRaw(requestParameters: ShowUserRequest): Promise<runtime.ApiResponse<User>> {
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 

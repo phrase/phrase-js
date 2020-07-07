@@ -51,7 +51,7 @@ export interface GlossaryTermTranslationUpdateRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
 
@@ -76,7 +76,7 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('glossaryTermTranslationCreateParameters','Required parameter requestParameters.glossaryTermTranslationCreateParameters was null or undefined when calling glossaryTermTranslationCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -134,7 +134,7 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling glossaryTermTranslationDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -192,7 +192,7 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('glossaryTermTranslationUpdateParameters','Required parameter requestParameters.glossaryTermTranslationUpdateParameters was null or undefined when calling glossaryTermTranslationUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 

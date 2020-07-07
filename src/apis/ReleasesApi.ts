@@ -73,7 +73,7 @@ export interface ReleasesListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class ReleasesApi extends runtime.BaseAPI {
 
@@ -94,7 +94,7 @@ export class ReleasesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('releaseCreateParameters','Required parameter requestParameters.releaseCreateParameters was null or undefined when calling releaseCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -148,7 +148,7 @@ export class ReleasesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling releaseDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -198,7 +198,7 @@ export class ReleasesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling releasePublish.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -249,7 +249,7 @@ export class ReleasesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling releaseShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -304,7 +304,7 @@ export class ReleasesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('releaseUpdateParameters','Required parameter requestParameters.releaseUpdateParameters was null or undefined when calling releaseUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -354,7 +354,7 @@ export class ReleasesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('distributionId','Required parameter requestParameters.distributionId was null or undefined when calling releasesList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

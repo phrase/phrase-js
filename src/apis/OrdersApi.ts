@@ -61,7 +61,7 @@ export interface OrdersListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class OrdersApi extends runtime.BaseAPI {
 
@@ -82,7 +82,7 @@ export class OrdersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('orderConfirmParameters','Required parameter requestParameters.orderConfirmParameters was null or undefined when calling orderConfirm.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -132,7 +132,7 @@ export class OrdersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('orderCreateParameters','Required parameter requestParameters.orderCreateParameters was null or undefined when calling orderCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -182,7 +182,7 @@ export class OrdersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling orderDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -232,7 +232,7 @@ export class OrdersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling orderShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -279,7 +279,7 @@ export class OrdersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling ordersList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

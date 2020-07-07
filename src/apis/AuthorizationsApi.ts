@@ -56,7 +56,7 @@ export interface AuthorizationsListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class AuthorizationsApi extends runtime.BaseAPI {
 
@@ -69,7 +69,7 @@ export class AuthorizationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('authorizationCreateParameters','Required parameter requestParameters.authorizationCreateParameters was null or undefined when calling authorizationCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -115,7 +115,7 @@ export class AuthorizationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling authorizationDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -157,7 +157,7 @@ export class AuthorizationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling authorizationShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -204,7 +204,7 @@ export class AuthorizationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('authorizationUpdateParameters','Required parameter requestParameters.authorizationUpdateParameters was null or undefined when calling authorizationUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -246,7 +246,7 @@ export class AuthorizationsApi extends runtime.BaseAPI {
      * List authorizations
      */
     async authorizationsListRaw(requestParameters: AuthorizationsListRequest): Promise<runtime.ApiResponse<Array<Authorization>>> {
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

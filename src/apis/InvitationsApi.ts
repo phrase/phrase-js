@@ -64,7 +64,7 @@ export interface InvitationsListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class InvitationsApi extends runtime.BaseAPI {
 
@@ -81,7 +81,7 @@ export class InvitationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('invitationCreateParameters','Required parameter requestParameters.invitationCreateParameters was null or undefined when calling invitationCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -131,7 +131,7 @@ export class InvitationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling invitationDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -177,7 +177,7 @@ export class InvitationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling invitationResend.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -224,7 +224,7 @@ export class InvitationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling invitationShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -275,7 +275,7 @@ export class InvitationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('invitationUpdateParameters','Required parameter requestParameters.invitationUpdateParameters was null or undefined when calling invitationUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -321,7 +321,7 @@ export class InvitationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling invitationsList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

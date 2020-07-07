@@ -86,7 +86,7 @@ export interface SpacesProjectsListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class SpacesApi extends runtime.BaseAPI {
 
@@ -103,7 +103,7 @@ export class SpacesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('spaceCreateParameters','Required parameter requestParameters.spaceCreateParameters was null or undefined when calling spaceCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -153,7 +153,7 @@ export class SpacesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling spaceDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -199,7 +199,7 @@ export class SpacesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling spaceShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -250,7 +250,7 @@ export class SpacesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('spaceUpdateParameters','Required parameter requestParameters.spaceUpdateParameters was null or undefined when calling spaceUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -296,7 +296,7 @@ export class SpacesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling spacesList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;
@@ -355,7 +355,7 @@ export class SpacesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('spacesProjectsCreateParameters','Required parameter requestParameters.spacesProjectsCreateParameters was null or undefined when calling spacesProjectsCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -408,7 +408,7 @@ export class SpacesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling spacesProjectsDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -454,7 +454,7 @@ export class SpacesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('spaceId','Required parameter requestParameters.spaceId was null or undefined when calling spacesProjectsList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

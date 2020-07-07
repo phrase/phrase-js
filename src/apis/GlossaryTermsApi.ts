@@ -63,7 +63,7 @@ export interface GlossaryTermsListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class GlossaryTermsApi extends runtime.BaseAPI {
 
@@ -84,7 +84,7 @@ export class GlossaryTermsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('glossaryTermCreateParameters','Required parameter requestParameters.glossaryTermCreateParameters was null or undefined when calling glossaryTermCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -138,7 +138,7 @@ export class GlossaryTermsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling glossaryTermDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -188,7 +188,7 @@ export class GlossaryTermsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling glossaryTermShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -243,7 +243,7 @@ export class GlossaryTermsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('glossaryTermUpdateParameters','Required parameter requestParameters.glossaryTermUpdateParameters was null or undefined when calling glossaryTermUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -293,7 +293,7 @@ export class GlossaryTermsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('glossaryId','Required parameter requestParameters.glossaryId was null or undefined when calling glossaryTermsList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

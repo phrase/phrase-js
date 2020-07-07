@@ -1,6 +1,6 @@
 {
-  "name": "@phrasepp/phrase-js",
-  "version": "1.0.1",
+  "name": "phrase-js",
+  "version": "1.0.2",
   "description": "OpenAPI client for Phrase",
   "author": "OpenAPI-Generator",
   "main": "./dist/index.js",

@@ -49,7 +49,7 @@ export interface MembersListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class MembersApi extends runtime.BaseAPI {
 
@@ -66,7 +66,7 @@ export class MembersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling memberDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -112,7 +112,7 @@ export class MembersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling memberShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -163,7 +163,7 @@ export class MembersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('memberUpdateParameters','Required parameter requestParameters.memberUpdateParameters was null or undefined when calling memberUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -209,7 +209,7 @@ export class MembersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling membersList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

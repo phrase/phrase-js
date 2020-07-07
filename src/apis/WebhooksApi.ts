@@ -64,7 +64,7 @@ export interface WebhooksListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class WebhooksApi extends runtime.BaseAPI {
 
@@ -81,7 +81,7 @@ export class WebhooksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('webhookCreateParameters','Required parameter requestParameters.webhookCreateParameters was null or undefined when calling webhookCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -131,7 +131,7 @@ export class WebhooksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling webhookDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -177,7 +177,7 @@ export class WebhooksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling webhookShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -224,7 +224,7 @@ export class WebhooksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling webhookTest.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -274,7 +274,7 @@ export class WebhooksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('webhookUpdateParameters','Required parameter requestParameters.webhookUpdateParameters was null or undefined when calling webhookUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -320,7 +320,7 @@ export class WebhooksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling webhooksList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

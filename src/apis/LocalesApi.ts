@@ -53,7 +53,7 @@ export interface LocaleDownloadRequest {
     includeTranslatedKeys?: boolean;
     keepNotranslateTags?: boolean;
     convertEmoji?: boolean;
-    formatOptions?: { [key: string]: string; };
+    formatOptions?: object;
     encoding?: string;
     skipUnverifiedTranslations?: boolean;
     includeUnverifiedTranslations?: boolean;
@@ -84,7 +84,7 @@ export interface LocalesListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class LocalesApi extends runtime.BaseAPI {
 
@@ -101,7 +101,7 @@ export class LocalesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('localeCreateParameters','Required parameter requestParameters.localeCreateParameters was null or undefined when calling localeCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -151,7 +151,7 @@ export class LocalesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling localeDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -201,7 +201,7 @@ export class LocalesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling localeDownload.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -303,7 +303,7 @@ export class LocalesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling localeShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -358,7 +358,7 @@ export class LocalesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('localeUpdateParameters','Required parameter requestParameters.localeUpdateParameters was null or undefined when calling localeUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -404,7 +404,7 @@ export class LocalesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling localesList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

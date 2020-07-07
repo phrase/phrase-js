@@ -193,7 +193,7 @@ export interface TranslationsVerifyRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class TranslationsApi extends runtime.BaseAPI {
 
@@ -210,7 +210,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('translationCreateParameters','Required parameter requestParameters.translationCreateParameters was null or undefined when calling translationCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -264,7 +264,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('translationExcludeParameters','Required parameter requestParameters.translationExcludeParameters was null or undefined when calling translationExclude.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -318,7 +318,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('translationIncludeParameters','Required parameter requestParameters.translationIncludeParameters was null or undefined when calling translationInclude.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -372,7 +372,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('translationReviewParameters','Required parameter requestParameters.translationReviewParameters was null or undefined when calling translationReview.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -422,7 +422,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling translationShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -477,7 +477,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('translationUnverifyParameters','Required parameter requestParameters.translationUnverifyParameters was null or undefined when calling translationUnverify.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -531,7 +531,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('translationUpdateParameters','Required parameter requestParameters.translationUpdateParameters was null or undefined when calling translationUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -585,7 +585,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('translationVerifyParameters','Required parameter requestParameters.translationVerifyParameters was null or undefined when calling translationVerify.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -635,7 +635,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('keyId','Required parameter requestParameters.keyId was null or undefined when calling translationsByKey.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;
@@ -706,7 +706,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('localeId','Required parameter requestParameters.localeId was null or undefined when calling translationsByLocale.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;
@@ -777,7 +777,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('translationsExcludeParameters','Required parameter requestParameters.translationsExcludeParameters was null or undefined when calling translationsExclude.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -827,7 +827,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('translationsIncludeParameters','Required parameter requestParameters.translationsIncludeParameters was null or undefined when calling translationsInclude.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -873,7 +873,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling translationsList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;
@@ -944,7 +944,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('translationsReviewParameters','Required parameter requestParameters.translationsReviewParameters was null or undefined when calling translationsReview.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -994,7 +994,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('translationsSearchParameters','Required parameter requestParameters.translationsSearchParameters was null or undefined when calling translationsSearch.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;
@@ -1052,7 +1052,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('translationsUnverifyParameters','Required parameter requestParameters.translationsUnverifyParameters was null or undefined when calling translationsUnverify.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1102,7 +1102,7 @@ export class TranslationsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('translationsVerifyParameters','Required parameter requestParameters.translationsVerifyParameters was null or undefined when calling translationsVerify.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 

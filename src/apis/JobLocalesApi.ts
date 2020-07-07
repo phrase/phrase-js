@@ -88,7 +88,7 @@ export interface JobLocalesListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class JobLocalesApi extends runtime.BaseAPI {
 
@@ -113,7 +113,7 @@ export class JobLocalesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('jobLocaleCompleteParameters','Required parameter requestParameters.jobLocaleCompleteParameters was null or undefined when calling jobLocaleComplete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -167,7 +167,7 @@ export class JobLocalesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling jobLocaleDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -225,7 +225,7 @@ export class JobLocalesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('jobLocaleReopenParameters','Required parameter requestParameters.jobLocaleReopenParameters was null or undefined when calling jobLocaleReopen.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -279,7 +279,7 @@ export class JobLocalesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling jobLocaleShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -338,7 +338,7 @@ export class JobLocalesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('jobLocaleUpdateParameters','Required parameter requestParameters.jobLocaleUpdateParameters was null or undefined when calling jobLocaleUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -392,7 +392,7 @@ export class JobLocalesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('jobLocalesCreateParameters','Required parameter requestParameters.jobLocalesCreateParameters was null or undefined when calling jobLocalesCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -442,7 +442,7 @@ export class JobLocalesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('jobId','Required parameter requestParameters.jobId was null or undefined when calling jobLocalesList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

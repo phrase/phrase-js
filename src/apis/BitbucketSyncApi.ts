@@ -46,7 +46,7 @@ export interface BitbucketSyncsListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class BitbucketSyncApi extends runtime.BaseAPI {
 
@@ -63,7 +63,7 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('bitbucketSyncExportParameters','Required parameter requestParameters.bitbucketSyncExportParameters was null or undefined when calling bitbucketSyncExport.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -113,7 +113,7 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('bitbucketSyncImportParameters','Required parameter requestParameters.bitbucketSyncImportParameters was null or undefined when calling bitbucketSyncImport.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -154,7 +154,7 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
      * List Bitbucket syncs
      */
     async bitbucketSyncsListRaw(requestParameters: BitbucketSyncsListRequest): Promise<runtime.ApiResponse<Array<BitbucketSync>>> {
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.accountId !== undefined) {
             queryParameters['account_id'] = requestParameters.accountId;

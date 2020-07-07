@@ -58,7 +58,7 @@ export interface ScreenshotsListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class ScreenshotsApi extends runtime.BaseAPI {
 
@@ -75,7 +75,7 @@ export class ScreenshotsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('screenshotCreateParameters','Required parameter requestParameters.screenshotCreateParameters was null or undefined when calling screenshotCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -125,7 +125,7 @@ export class ScreenshotsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling screenshotDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -171,7 +171,7 @@ export class ScreenshotsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling screenshotShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -222,7 +222,7 @@ export class ScreenshotsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('screenshotUpdateParameters','Required parameter requestParameters.screenshotUpdateParameters was null or undefined when calling screenshotUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -268,7 +268,7 @@ export class ScreenshotsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling screenshotsList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

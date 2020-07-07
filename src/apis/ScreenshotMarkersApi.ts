@@ -61,7 +61,7 @@ export interface ScreenshotMarkersListRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class ScreenshotMarkersApi extends runtime.BaseAPI {
 
@@ -82,7 +82,7 @@ export class ScreenshotMarkersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('screenshotMarkerCreateParameters','Required parameter requestParameters.screenshotMarkerCreateParameters was null or undefined when calling screenshotMarkerCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -132,7 +132,7 @@ export class ScreenshotMarkersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('screenshotId','Required parameter requestParameters.screenshotId was null or undefined when calling screenshotMarkerDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -182,7 +182,7 @@ export class ScreenshotMarkersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling screenshotMarkerShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -233,7 +233,7 @@ export class ScreenshotMarkersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('screenshotMarkerUpdateParameters','Required parameter requestParameters.screenshotMarkerUpdateParameters was null or undefined when calling screenshotMarkerUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -283,7 +283,7 @@ export class ScreenshotMarkersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling screenshotMarkersList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;

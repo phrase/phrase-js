@@ -108,7 +108,7 @@ export interface KeysUntagRequest {
 }
 
 /**
- * no description
+ * 
  */
 export class KeysApi extends runtime.BaseAPI {
 
@@ -125,7 +125,7 @@ export class KeysApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('keyCreateParameters','Required parameter requestParameters.keyCreateParameters was null or undefined when calling keyCreate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -175,7 +175,7 @@ export class KeysApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling keyDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -225,7 +225,7 @@ export class KeysApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling keyShow.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -280,7 +280,7 @@ export class KeysApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('keyUpdateParameters','Required parameter requestParameters.keyUpdateParameters was null or undefined when calling keyUpdate.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -326,7 +326,7 @@ export class KeysApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling keysDelete.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
@@ -381,7 +381,7 @@ export class KeysApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling keysList.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;
@@ -456,7 +456,7 @@ export class KeysApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('keysSearchParameters','Required parameter requestParameters.keysSearchParameters was null or undefined when calling keysSearch.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;
@@ -514,7 +514,7 @@ export class KeysApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('keysTagParameters','Required parameter requestParameters.keysTagParameters was null or undefined when calling keysTag.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -564,7 +564,7 @@ export class KeysApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('keysUntagParameters','Required parameter requestParameters.keysUntagParameters was null or undefined when calling keysUntag.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
