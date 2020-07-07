@@ -45,19 +45,13 @@ navigate to the folder of your consuming project and run one of the following co
 
 _published:_
 
-[authenticate to Github Packages](https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#authenticating-to-github-packages)
-
-set `.npmrc` first
-
-`@phrase:registry=https://npm.pkg.github.com`
 
 ```
 npm install phrase-js@1.0.2 --save
 ```
 
-if you are using yarn set `.yarnrc` first
+if you are using yarn
 
-`@phrase:registry" "https://npm.pkg.github.com`
 
 ```
 yarn install phrase-js@1.0.2
