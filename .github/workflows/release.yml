@@ -8,7 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    # Setup .npmrc file to publish to GitHub Packages
+
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org/'
+        scope: '@phraseapp'
+    - run: npm install
+    - run: npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
