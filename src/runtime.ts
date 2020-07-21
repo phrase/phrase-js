@@ -140,7 +140,13 @@ export interface ConfigurationParameters {
 }
 
 export class Configuration {
-    constructor(private configuration: ConfigurationParameters = {}) {}
+    constructor(private configuration: ConfigurationParameters = {}) {
+        if (configuration.headers === undefined) {
+          configuration.headers = {}
+        }
+
+        configuration.headers["User-Agent"] = "OpenAPI-Generator/1.0.4/js"
+    }
 
     get basePath(): string {
         return this.configuration.basePath != null ? this.configuration.basePath : BASE_PATH;
