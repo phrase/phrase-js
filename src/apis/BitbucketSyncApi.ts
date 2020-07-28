@@ -138,7 +138,7 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
             body: BitbucketSyncImportParametersToJSON(requestParameters.bitbucketSyncImportParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -146,7 +146,8 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
      * Import to Phrase from Bitbucket
      */
     async bitbucketSyncImport(requestParameters: BitbucketSyncImportRequest): Promise<void> {
-        await this.bitbucketSyncImportRaw(requestParameters);
+        const response = await this.bitbucketSyncImportRaw(requestParameters);
+        return await response.value();
     }
 
     /**

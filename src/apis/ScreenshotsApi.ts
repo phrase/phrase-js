@@ -147,7 +147,7 @@ export class ScreenshotsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -155,7 +155,8 @@ export class ScreenshotsApi extends runtime.BaseAPI {
      * Delete a screenshot
      */
     async screenshotDelete(requestParameters: ScreenshotDeleteRequest): Promise<void> {
-        await this.screenshotDeleteRaw(requestParameters);
+        const response = await this.screenshotDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

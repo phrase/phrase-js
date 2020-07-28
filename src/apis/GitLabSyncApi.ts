@@ -120,7 +120,7 @@ export class GitLabSyncApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -128,7 +128,8 @@ export class GitLabSyncApi extends runtime.BaseAPI {
      * Delete single Sync Setting
      */
     async gitlabSyncDelete(requestParameters: GitlabSyncDeleteRequest): Promise<void> {
-        await this.gitlabSyncDeleteRaw(requestParameters);
+        const response = await this.gitlabSyncDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

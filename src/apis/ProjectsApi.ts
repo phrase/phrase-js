@@ -137,7 +137,7 @@ export class ProjectsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -145,7 +145,8 @@ export class ProjectsApi extends runtime.BaseAPI {
      * Delete a project
      */
     async projectDelete(requestParameters: ProjectDeleteRequest): Promise<void> {
-        await this.projectDeleteRaw(requestParameters);
+        const response = await this.projectDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

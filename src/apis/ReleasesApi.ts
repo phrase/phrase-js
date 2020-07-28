@@ -170,7 +170,7 @@ export class ReleasesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -178,7 +178,8 @@ export class ReleasesApi extends runtime.BaseAPI {
      * Delete a release
      */
     async releaseDelete(requestParameters: ReleaseDeleteRequest): Promise<void> {
-        await this.releaseDeleteRaw(requestParameters);
+        const response = await this.releaseDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

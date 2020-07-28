@@ -88,7 +88,7 @@ export class MembersApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -96,7 +96,8 @@ export class MembersApi extends runtime.BaseAPI {
      * Remove a user from the account
      */
     async memberDelete(requestParameters: MemberDeleteRequest): Promise<void> {
-        await this.memberDeleteRaw(requestParameters);
+        const response = await this.memberDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

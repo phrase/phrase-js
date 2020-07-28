@@ -175,7 +175,7 @@ export class SpacesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -183,7 +183,8 @@ export class SpacesApi extends runtime.BaseAPI {
      * Delete Space
      */
     async spaceDelete(requestParameters: SpaceDeleteRequest): Promise<void> {
-        await this.spaceDeleteRaw(requestParameters);
+        const response = await this.spaceDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**
@@ -380,7 +381,7 @@ export class SpacesApi extends runtime.BaseAPI {
             body: SpacesProjectsCreateParametersToJSON(requestParameters.spacesProjectsCreateParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -388,7 +389,8 @@ export class SpacesApi extends runtime.BaseAPI {
      * Add Project
      */
     async spacesProjectsCreate(requestParameters: SpacesProjectsCreateRequest): Promise<void> {
-        await this.spacesProjectsCreateRaw(requestParameters);
+        const response = await this.spacesProjectsCreateRaw(requestParameters);
+        return await response.value();
     }
 
     /**
@@ -430,7 +432,7 @@ export class SpacesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -438,7 +440,8 @@ export class SpacesApi extends runtime.BaseAPI {
      * Remove Project
      */
     async spacesProjectsDelete(requestParameters: SpacesProjectsDeleteRequest): Promise<void> {
-        await this.spacesProjectsDeleteRaw(requestParameters);
+        const response = await this.spacesProjectsDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

@@ -147,7 +147,7 @@ export class BlacklistedKeysApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -155,7 +155,8 @@ export class BlacklistedKeysApi extends runtime.BaseAPI {
      * Delete a blacklisted key
      */
     async blacklistedKeyDelete(requestParameters: BlacklistedKeyDeleteRequest): Promise<void> {
-        await this.blacklistedKeyDeleteRaw(requestParameters);
+        const response = await this.blacklistedKeyDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

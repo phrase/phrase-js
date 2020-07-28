@@ -198,7 +198,7 @@ export class GlossariesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -206,7 +206,8 @@ export class GlossariesApi extends runtime.BaseAPI {
      * Delete a glossary
      */
     async glossaryDelete(requestParameters: GlossaryDeleteRequest): Promise<void> {
-        await this.glossaryDeleteRaw(requestParameters);
+        const response = await this.glossaryDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

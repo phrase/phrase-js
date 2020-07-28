@@ -147,7 +147,7 @@ export class TagsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -155,7 +155,8 @@ export class TagsApi extends runtime.BaseAPI {
      * Delete a tag
      */
     async tagDelete(requestParameters: TagDeleteRequest): Promise<void> {
-        await this.tagDeleteRaw(requestParameters);
+        const response = await this.tagDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

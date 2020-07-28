@@ -208,7 +208,7 @@ export class OrdersApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -216,7 +216,8 @@ export class OrdersApi extends runtime.BaseAPI {
      * Cancel an order
      */
     async orderDelete(requestParameters: OrderDeleteRequest): Promise<void> {
-        await this.orderDeleteRaw(requestParameters);
+        const response = await this.orderDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

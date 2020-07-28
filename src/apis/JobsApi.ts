@@ -262,7 +262,7 @@ export class JobsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -270,7 +270,8 @@ export class JobsApi extends runtime.BaseAPI {
      * Delete a job
      */
     async jobDelete(requestParameters: JobDeleteRequest): Promise<void> {
-        await this.jobDeleteRaw(requestParameters);
+        const response = await this.jobDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**
@@ -370,7 +371,7 @@ export class JobsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -378,7 +379,8 @@ export class JobsApi extends runtime.BaseAPI {
      * Remove keys from job
      */
     async jobKeysDelete(requestParameters: JobKeysDeleteRequest): Promise<void> {
-        await this.jobKeysDeleteRaw(requestParameters);
+        const response = await this.jobKeysDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

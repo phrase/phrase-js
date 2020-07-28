@@ -194,7 +194,7 @@ export class CommentsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -202,7 +202,8 @@ export class CommentsApi extends runtime.BaseAPI {
      * Delete a comment
      */
     async commentDelete(requestParameters: CommentDeleteRequest): Promise<void> {
-        await this.commentDeleteRaw(requestParameters);
+        const response = await this.commentDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**
@@ -248,7 +249,7 @@ export class CommentsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -256,7 +257,8 @@ export class CommentsApi extends runtime.BaseAPI {
      * Check if comment is read
      */
     async commentMarkCheck(requestParameters: CommentMarkCheckRequest): Promise<void> {
-        await this.commentMarkCheckRaw(requestParameters);
+        const response = await this.commentMarkCheckRaw(requestParameters);
+        return await response.value();
     }
 
     /**
@@ -305,7 +307,7 @@ export class CommentsApi extends runtime.BaseAPI {
             body: CommentMarkReadParametersToJSON(requestParameters.commentMarkReadParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -313,7 +315,8 @@ export class CommentsApi extends runtime.BaseAPI {
      * Mark a comment as read
      */
     async commentMarkRead(requestParameters: CommentMarkReadRequest): Promise<void> {
-        await this.commentMarkReadRaw(requestParameters);
+        const response = await this.commentMarkReadRaw(requestParameters);
+        return await response.value();
     }
 
     /**
@@ -359,7 +362,7 @@ export class CommentsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -367,7 +370,8 @@ export class CommentsApi extends runtime.BaseAPI {
      * Mark a comment as unread
      */
     async commentMarkUnread(requestParameters: CommentMarkUnreadRequest): Promise<void> {
-        await this.commentMarkUnreadRaw(requestParameters);
+        const response = await this.commentMarkUnreadRaw(requestParameters);
+        return await response.value();
     }
 
     /**

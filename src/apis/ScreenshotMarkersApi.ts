@@ -154,7 +154,7 @@ export class ScreenshotMarkersApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -162,7 +162,8 @@ export class ScreenshotMarkersApi extends runtime.BaseAPI {
      * Delete a screenshot marker
      */
     async screenshotMarkerDelete(requestParameters: ScreenshotMarkerDeleteRequest): Promise<void> {
-        await this.screenshotMarkerDeleteRaw(requestParameters);
+        const response = await this.screenshotMarkerDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

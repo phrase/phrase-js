@@ -156,7 +156,7 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -164,7 +164,8 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
      * Delete a glossary term translation
      */
     async glossaryTermTranslationDelete(requestParameters: GlossaryTermTranslationDeleteRequest): Promise<void> {
-        await this.glossaryTermTranslationDeleteRaw(requestParameters);
+        const response = await this.glossaryTermTranslationDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

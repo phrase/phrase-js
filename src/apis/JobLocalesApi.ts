@@ -193,7 +193,7 @@ export class JobLocalesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -201,7 +201,8 @@ export class JobLocalesApi extends runtime.BaseAPI {
      * Delete a job locale
      */
     async jobLocaleDelete(requestParameters: JobLocaleDeleteRequest): Promise<void> {
-        await this.jobLocaleDeleteRaw(requestParameters);
+        const response = await this.jobLocaleDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

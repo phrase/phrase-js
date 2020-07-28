@@ -153,7 +153,7 @@ export class WebhooksApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -161,7 +161,8 @@ export class WebhooksApi extends runtime.BaseAPI {
      * Delete a webhook
      */
     async webhookDelete(requestParameters: WebhookDeleteRequest): Promise<void> {
-        await this.webhookDeleteRaw(requestParameters);
+        const response = await this.webhookDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**
@@ -246,7 +247,7 @@ export class WebhooksApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -254,7 +255,8 @@ export class WebhooksApi extends runtime.BaseAPI {
      * Test a webhook
      */
     async webhookTest(requestParameters: WebhookTestRequest): Promise<void> {
-        await this.webhookTestRaw(requestParameters);
+        const response = await this.webhookTestRaw(requestParameters);
+        return await response.value();
     }
 
     /**

@@ -153,7 +153,7 @@ export class InvitationsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -161,7 +161,8 @@ export class InvitationsApi extends runtime.BaseAPI {
      * Delete an invitation
      */
     async invitationDelete(requestParameters: InvitationDeleteRequest): Promise<void> {
-        await this.invitationDeleteRaw(requestParameters);
+        const response = await this.invitationDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

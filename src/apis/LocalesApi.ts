@@ -177,7 +177,7 @@ export class LocalesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -185,7 +185,8 @@ export class LocalesApi extends runtime.BaseAPI {
      * Delete a locale
      */
     async localeDelete(requestParameters: LocaleDeleteRequest): Promise<void> {
-        await this.localeDeleteRaw(requestParameters);
+        const response = await this.localeDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**
@@ -279,7 +280,7 @@ export class LocalesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -287,7 +288,8 @@ export class LocalesApi extends runtime.BaseAPI {
      * Download a locale
      */
     async localeDownload(requestParameters: LocaleDownloadRequest): Promise<void> {
-        await this.localeDownloadRaw(requestParameters);
+        const response = await this.localeDownloadRaw(requestParameters);
+        return await response.value();
     }
 
     /**

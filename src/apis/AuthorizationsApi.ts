@@ -137,7 +137,7 @@ export class AuthorizationsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -145,7 +145,8 @@ export class AuthorizationsApi extends runtime.BaseAPI {
      * Delete an authorization
      */
     async authorizationDelete(requestParameters: AuthorizationDeleteRequest): Promise<void> {
-        await this.authorizationDeleteRaw(requestParameters);
+        const response = await this.authorizationDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

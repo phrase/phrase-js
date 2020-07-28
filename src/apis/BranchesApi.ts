@@ -113,7 +113,7 @@ export class BranchesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -121,7 +121,8 @@ export class BranchesApi extends runtime.BaseAPI {
      * Compare branches
      */
     async branchCompare(requestParameters: BranchCompareRequest): Promise<void> {
-        await this.branchCompareRaw(requestParameters);
+        const response = await this.branchCompareRaw(requestParameters);
+        return await response.value();
     }
 
     /**
@@ -209,7 +210,7 @@ export class BranchesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -217,7 +218,8 @@ export class BranchesApi extends runtime.BaseAPI {
      * Delete a branch
      */
     async branchDelete(requestParameters: BranchDeleteRequest): Promise<void> {
-        await this.branchDeleteRaw(requestParameters);
+        const response = await this.branchDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**
@@ -262,7 +264,7 @@ export class BranchesApi extends runtime.BaseAPI {
             body: BranchMergeParametersToJSON(requestParameters.branchMergeParameters),
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -270,7 +272,8 @@ export class BranchesApi extends runtime.BaseAPI {
      * Merge a branch
      */
     async branchMerge(requestParameters: BranchMergeRequest): Promise<void> {
-        await this.branchMergeRaw(requestParameters);
+        const response = await this.branchMergeRaw(requestParameters);
+        return await response.value();
     }
 
     /**

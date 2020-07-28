@@ -150,7 +150,7 @@ export class StyleGuidesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -158,7 +158,8 @@ export class StyleGuidesApi extends runtime.BaseAPI {
      * Delete a style guide
      */
     async styleguideDelete(requestParameters: StyleguideDeleteRequest): Promise<void> {
-        await this.styleguideDeleteRaw(requestParameters);
+        const response = await this.styleguideDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

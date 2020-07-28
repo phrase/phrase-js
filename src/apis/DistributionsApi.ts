@@ -150,7 +150,7 @@ export class DistributionsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -158,7 +158,8 @@ export class DistributionsApi extends runtime.BaseAPI {
      * Delete a distribution
      */
     async distributionDelete(requestParameters: DistributionDeleteRequest): Promise<void> {
-        await this.distributionDeleteRaw(requestParameters);
+        const response = await this.distributionDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**

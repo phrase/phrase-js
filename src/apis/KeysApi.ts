@@ -201,7 +201,7 @@ export class KeysApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
@@ -209,7 +209,8 @@ export class KeysApi extends runtime.BaseAPI {
      * Delete a key
      */
     async keyDelete(requestParameters: KeyDeleteRequest): Promise<void> {
-        await this.keyDeleteRaw(requestParameters);
+        const response = await this.keyDeleteRaw(requestParameters);
+        return await response.value();
     }
 
     /**
