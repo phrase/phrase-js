@@ -54,6 +54,12 @@ export interface ProjectCreateParameters {
      * @memberof ProjectCreateParameters
      */
     accountId?: string;
+    /**
+     * When a source project ID is given, a clone of that project will be created, including all locales, keys and translations as well as the main project settings if they are not defined otherwise through the params.
+     * @type {string}
+     * @memberof ProjectCreateParameters
+     */
+    sourceProjectId?: string;
 }
 
 export function ProjectCreateParametersFromJSON(json: any): ProjectCreateParameters {
@@ -72,6 +78,7 @@ export function ProjectCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'projectImage': !exists(json, 'project_image') ? undefined : json['project_image'],
         'removeProjectImage': !exists(json, 'remove_project_image') ? undefined : json['remove_project_image'],
         'accountId': !exists(json, 'account_id') ? undefined : json['account_id'],
+        'sourceProjectId': !exists(json, 'source_project_id') ? undefined : json['source_project_id'],
     };
 }
 
@@ -90,6 +97,7 @@ export function ProjectCreateParametersToJSON(value?: ProjectCreateParameters | 
         'project_image': value.projectImage,
         'remove_project_image': value.removeProjectImage,
         'account_id': value.accountId,
+        'source_project_id': value.sourceProjectId,
     };
 }
 
