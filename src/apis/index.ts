@@ -24,6 +24,7 @@ export * from './ScreenshotsApi';
 export * from './SpacesApi';
 export * from './StyleGuidesApi';
 export * from './TagsApi';
+export * from './TeamsApi';
 export * from './TranslationsApi';
 export * from './UploadsApi';
 export * from './UsersApi';
