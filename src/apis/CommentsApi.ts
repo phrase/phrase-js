@@ -155,7 +155,7 @@ export class CommentsApi extends runtime.BaseAPI {
      * Delete an existing comment.
      * Delete a comment
      */
-    async commentDeleteRaw(requestParameters: CommentDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async commentDeleteRaw(requestParameters: CommentDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling commentDelete.');
         }
@@ -201,7 +201,7 @@ export class CommentsApi extends runtime.BaseAPI {
      * Delete an existing comment.
      * Delete a comment
      */
-    async commentDelete(requestParameters: CommentDeleteRequest): Promise<void> {
+    async commentDelete(requestParameters: CommentDeleteRequest): Promise<any> {
         const response = await this.commentDeleteRaw(requestParameters);
         return await response.value();
     }
@@ -210,7 +210,7 @@ export class CommentsApi extends runtime.BaseAPI {
      * Check if comment was marked as read. Returns 204 if read, 404 if unread.
      * Check if comment is read
      */
-    async commentMarkCheckRaw(requestParameters: CommentMarkCheckRequest): Promise<runtime.ApiResponse<void>> {
+    async commentMarkCheckRaw(requestParameters: CommentMarkCheckRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling commentMarkCheck.');
         }
@@ -256,7 +256,7 @@ export class CommentsApi extends runtime.BaseAPI {
      * Check if comment was marked as read. Returns 204 if read, 404 if unread.
      * Check if comment is read
      */
-    async commentMarkCheck(requestParameters: CommentMarkCheckRequest): Promise<void> {
+    async commentMarkCheck(requestParameters: CommentMarkCheckRequest): Promise<any> {
         const response = await this.commentMarkCheckRaw(requestParameters);
         return await response.value();
     }
@@ -265,7 +265,7 @@ export class CommentsApi extends runtime.BaseAPI {
      * Mark a comment as read.
      * Mark a comment as read
      */
-    async commentMarkReadRaw(requestParameters: CommentMarkReadRequest): Promise<runtime.ApiResponse<void>> {
+    async commentMarkReadRaw(requestParameters: CommentMarkReadRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling commentMarkRead.');
         }
@@ -314,7 +314,7 @@ export class CommentsApi extends runtime.BaseAPI {
      * Mark a comment as read.
      * Mark a comment as read
      */
-    async commentMarkRead(requestParameters: CommentMarkReadRequest): Promise<void> {
+    async commentMarkRead(requestParameters: CommentMarkReadRequest): Promise<any> {
         const response = await this.commentMarkReadRaw(requestParameters);
         return await response.value();
     }
@@ -323,7 +323,7 @@ export class CommentsApi extends runtime.BaseAPI {
      * Mark a comment as unread.
      * Mark a comment as unread
      */
-    async commentMarkUnreadRaw(requestParameters: CommentMarkUnreadRequest): Promise<runtime.ApiResponse<void>> {
+    async commentMarkUnreadRaw(requestParameters: CommentMarkUnreadRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling commentMarkUnread.');
         }
@@ -369,7 +369,7 @@ export class CommentsApi extends runtime.BaseAPI {
      * Mark a comment as unread.
      * Mark a comment as unread
      */
-    async commentMarkUnread(requestParameters: CommentMarkUnreadRequest): Promise<void> {
+    async commentMarkUnread(requestParameters: CommentMarkUnreadRequest): Promise<any> {
         const response = await this.commentMarkUnreadRaw(requestParameters);
         return await response.value();
     }

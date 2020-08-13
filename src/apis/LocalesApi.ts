@@ -142,7 +142,7 @@ export class LocalesApi extends runtime.BaseAPI {
      * Delete an existing locale.
      * Delete a locale
      */
-    async localeDeleteRaw(requestParameters: LocaleDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async localeDeleteRaw(requestParameters: LocaleDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling localeDelete.');
         }
@@ -184,7 +184,7 @@ export class LocalesApi extends runtime.BaseAPI {
      * Delete an existing locale.
      * Delete a locale
      */
-    async localeDelete(requestParameters: LocaleDeleteRequest): Promise<void> {
+    async localeDelete(requestParameters: LocaleDeleteRequest): Promise<any> {
         const response = await this.localeDeleteRaw(requestParameters);
         return await response.value();
     }
@@ -193,7 +193,7 @@ export class LocalesApi extends runtime.BaseAPI {
      * Download a locale in a specific file format.
      * Download a locale
      */
-    async localeDownloadRaw(requestParameters: LocaleDownloadRequest): Promise<runtime.ApiResponse<void>> {
+    async localeDownloadRaw(requestParameters: LocaleDownloadRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling localeDownload.');
         }
@@ -287,7 +287,7 @@ export class LocalesApi extends runtime.BaseAPI {
      * Download a locale in a specific file format.
      * Download a locale
      */
-    async localeDownload(requestParameters: LocaleDownloadRequest): Promise<void> {
+    async localeDownload(requestParameters: LocaleDownloadRequest): Promise<any> {
         const response = await this.localeDownloadRaw(requestParameters);
         return await response.value();
     }

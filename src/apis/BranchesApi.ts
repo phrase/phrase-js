@@ -82,7 +82,7 @@ export class BranchesApi extends runtime.BaseAPI {
      * Compare branch with main branch.
      * Compare branches
      */
-    async branchCompareRaw(requestParameters: BranchCompareRequest): Promise<runtime.ApiResponse<void>> {
+    async branchCompareRaw(requestParameters: BranchCompareRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling branchCompare.');
         }
@@ -120,7 +120,7 @@ export class BranchesApi extends runtime.BaseAPI {
      * Compare branch with main branch.
      * Compare branches
      */
-    async branchCompare(requestParameters: BranchCompareRequest): Promise<void> {
+    async branchCompare(requestParameters: BranchCompareRequest): Promise<any> {
         const response = await this.branchCompareRaw(requestParameters);
         return await response.value();
     }
@@ -179,7 +179,7 @@ export class BranchesApi extends runtime.BaseAPI {
      * Delete an existing branch.
      * Delete a branch
      */
-    async branchDeleteRaw(requestParameters: BranchDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async branchDeleteRaw(requestParameters: BranchDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling branchDelete.');
         }
@@ -217,7 +217,7 @@ export class BranchesApi extends runtime.BaseAPI {
      * Delete an existing branch.
      * Delete a branch
      */
-    async branchDelete(requestParameters: BranchDeleteRequest): Promise<void> {
+    async branchDelete(requestParameters: BranchDeleteRequest): Promise<any> {
         const response = await this.branchDeleteRaw(requestParameters);
         return await response.value();
     }
@@ -226,7 +226,7 @@ export class BranchesApi extends runtime.BaseAPI {
      * Merge an existing branch.
      * Merge a branch
      */
-    async branchMergeRaw(requestParameters: BranchMergeRequest): Promise<runtime.ApiResponse<void>> {
+    async branchMergeRaw(requestParameters: BranchMergeRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling branchMerge.');
         }
@@ -271,7 +271,7 @@ export class BranchesApi extends runtime.BaseAPI {
      * Merge an existing branch.
      * Merge a branch
      */
-    async branchMerge(requestParameters: BranchMergeRequest): Promise<void> {
+    async branchMerge(requestParameters: BranchMergeRequest): Promise<any> {
         const response = await this.branchMergeRaw(requestParameters);
         return await response.value();
     }

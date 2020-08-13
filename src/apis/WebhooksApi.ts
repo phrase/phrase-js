@@ -122,7 +122,7 @@ export class WebhooksApi extends runtime.BaseAPI {
      * Delete an existing webhook.
      * Delete a webhook
      */
-    async webhookDeleteRaw(requestParameters: WebhookDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async webhookDeleteRaw(requestParameters: WebhookDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling webhookDelete.');
         }
@@ -160,7 +160,7 @@ export class WebhooksApi extends runtime.BaseAPI {
      * Delete an existing webhook.
      * Delete a webhook
      */
-    async webhookDelete(requestParameters: WebhookDeleteRequest): Promise<void> {
+    async webhookDelete(requestParameters: WebhookDeleteRequest): Promise<any> {
         const response = await this.webhookDeleteRaw(requestParameters);
         return await response.value();
     }
@@ -216,7 +216,7 @@ export class WebhooksApi extends runtime.BaseAPI {
      * Perform a test request for a webhook.
      * Test a webhook
      */
-    async webhookTestRaw(requestParameters: WebhookTestRequest): Promise<runtime.ApiResponse<void>> {
+    async webhookTestRaw(requestParameters: WebhookTestRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling webhookTest.');
         }
@@ -254,7 +254,7 @@ export class WebhooksApi extends runtime.BaseAPI {
      * Perform a test request for a webhook.
      * Test a webhook
      */
-    async webhookTest(requestParameters: WebhookTestRequest): Promise<void> {
+    async webhookTest(requestParameters: WebhookTestRequest): Promise<any> {
         const response = await this.webhookTestRaw(requestParameters);
         return await response.value();
     }

@@ -112,7 +112,7 @@ export class TagsApi extends runtime.BaseAPI {
      * Delete an existing tag.
      * Delete a tag
      */
-    async tagDeleteRaw(requestParameters: TagDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async tagDeleteRaw(requestParameters: TagDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling tagDelete.');
         }
@@ -154,7 +154,7 @@ export class TagsApi extends runtime.BaseAPI {
      * Delete an existing tag.
      * Delete a tag
      */
-    async tagDelete(requestParameters: TagDeleteRequest): Promise<void> {
+    async tagDelete(requestParameters: TagDeleteRequest): Promise<any> {
         const response = await this.tagDeleteRaw(requestParameters);
         return await response.value();
     }

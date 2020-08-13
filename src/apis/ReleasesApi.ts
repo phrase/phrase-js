@@ -135,7 +135,7 @@ export class ReleasesApi extends runtime.BaseAPI {
      * Delete an existing release.
      * Delete a release
      */
-    async releaseDeleteRaw(requestParameters: ReleaseDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async releaseDeleteRaw(requestParameters: ReleaseDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling releaseDelete.');
         }
@@ -177,7 +177,7 @@ export class ReleasesApi extends runtime.BaseAPI {
      * Delete an existing release.
      * Delete a release
      */
-    async releaseDelete(requestParameters: ReleaseDeleteRequest): Promise<void> {
+    async releaseDelete(requestParameters: ReleaseDeleteRequest): Promise<any> {
         const response = await this.releaseDeleteRaw(requestParameters);
         return await response.value();
     }

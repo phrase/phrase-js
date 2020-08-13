@@ -123,7 +123,7 @@ export class ScreenshotMarkersApi extends runtime.BaseAPI {
      * Delete an existing screenshot marker.
      * Delete a screenshot marker
      */
-    async screenshotMarkerDeleteRaw(requestParameters: ScreenshotMarkerDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async screenshotMarkerDeleteRaw(requestParameters: ScreenshotMarkerDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling screenshotMarkerDelete.');
         }
@@ -161,7 +161,7 @@ export class ScreenshotMarkersApi extends runtime.BaseAPI {
      * Delete an existing screenshot marker.
      * Delete a screenshot marker
      */
-    async screenshotMarkerDelete(requestParameters: ScreenshotMarkerDeleteRequest): Promise<void> {
+    async screenshotMarkerDelete(requestParameters: ScreenshotMarkerDeleteRequest): Promise<any> {
         const response = await this.screenshotMarkerDeleteRaw(requestParameters);
         return await response.value();
     }

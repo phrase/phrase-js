@@ -116,7 +116,7 @@ export class ScreenshotsApi extends runtime.BaseAPI {
      * Delete an existing screenshot.
      * Delete a screenshot
      */
-    async screenshotDeleteRaw(requestParameters: ScreenshotDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async screenshotDeleteRaw(requestParameters: ScreenshotDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling screenshotDelete.');
         }
@@ -154,7 +154,7 @@ export class ScreenshotsApi extends runtime.BaseAPI {
      * Delete an existing screenshot.
      * Delete a screenshot
      */
-    async screenshotDelete(requestParameters: ScreenshotDeleteRequest): Promise<void> {
+    async screenshotDelete(requestParameters: ScreenshotDeleteRequest): Promise<any> {
         const response = await this.screenshotDeleteRaw(requestParameters);
         return await response.value();
     }

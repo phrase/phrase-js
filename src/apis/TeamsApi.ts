@@ -170,7 +170,7 @@ export class TeamsApi extends runtime.BaseAPI {
      * Delete the specified Team.
      * Delete Team
      */
-    async teamDeleteRaw(requestParameters: TeamDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async teamDeleteRaw(requestParameters: TeamDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling teamDelete.');
         }
@@ -208,7 +208,7 @@ export class TeamsApi extends runtime.BaseAPI {
      * Delete the specified Team.
      * Delete Team
      */
-    async teamDelete(requestParameters: TeamDeleteRequest): Promise<void> {
+    async teamDelete(requestParameters: TeamDeleteRequest): Promise<any> {
         const response = await this.teamDeleteRaw(requestParameters);
         return await response.value();
     }
@@ -369,7 +369,7 @@ export class TeamsApi extends runtime.BaseAPI {
      * Adds an existing project to the team.
      * Add Project
      */
-    async teamsProjectsCreateRaw(requestParameters: TeamsProjectsCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async teamsProjectsCreateRaw(requestParameters: TeamsProjectsCreateRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling teamsProjectsCreate.');
         }
@@ -414,7 +414,7 @@ export class TeamsApi extends runtime.BaseAPI {
      * Adds an existing project to the team.
      * Add Project
      */
-    async teamsProjectsCreate(requestParameters: TeamsProjectsCreateRequest): Promise<void> {
+    async teamsProjectsCreate(requestParameters: TeamsProjectsCreateRequest): Promise<any> {
         const response = await this.teamsProjectsCreateRaw(requestParameters);
         return await response.value();
     }
@@ -423,7 +423,7 @@ export class TeamsApi extends runtime.BaseAPI {
      * Removes a specified project from the specified team.
      * Remove Project
      */
-    async teamsProjectsDeleteRaw(requestParameters: TeamsProjectsDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async teamsProjectsDeleteRaw(requestParameters: TeamsProjectsDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling teamsProjectsDelete.');
         }
@@ -465,7 +465,7 @@ export class TeamsApi extends runtime.BaseAPI {
      * Removes a specified project from the specified team.
      * Remove Project
      */
-    async teamsProjectsDelete(requestParameters: TeamsProjectsDeleteRequest): Promise<void> {
+    async teamsProjectsDelete(requestParameters: TeamsProjectsDeleteRequest): Promise<any> {
         const response = await this.teamsProjectsDeleteRaw(requestParameters);
         return await response.value();
     }
@@ -474,7 +474,7 @@ export class TeamsApi extends runtime.BaseAPI {
      * Adds an existing space to the team.
      * Add Space
      */
-    async teamsSpacesCreateRaw(requestParameters: TeamsSpacesCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async teamsSpacesCreateRaw(requestParameters: TeamsSpacesCreateRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling teamsSpacesCreate.');
         }
@@ -519,7 +519,7 @@ export class TeamsApi extends runtime.BaseAPI {
      * Adds an existing space to the team.
      * Add Space
      */
-    async teamsSpacesCreate(requestParameters: TeamsSpacesCreateRequest): Promise<void> {
+    async teamsSpacesCreate(requestParameters: TeamsSpacesCreateRequest): Promise<any> {
         const response = await this.teamsSpacesCreateRaw(requestParameters);
         return await response.value();
     }
@@ -528,7 +528,7 @@ export class TeamsApi extends runtime.BaseAPI {
      * Removes a specified space from the specified team.
      * Remove Space
      */
-    async teamsSpacesDeleteRaw(requestParameters: TeamsSpacesDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async teamsSpacesDeleteRaw(requestParameters: TeamsSpacesDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling teamsSpacesDelete.');
         }
@@ -570,7 +570,7 @@ export class TeamsApi extends runtime.BaseAPI {
      * Removes a specified space from the specified team.
      * Remove Space
      */
-    async teamsSpacesDelete(requestParameters: TeamsSpacesDeleteRequest): Promise<void> {
+    async teamsSpacesDelete(requestParameters: TeamsSpacesDeleteRequest): Promise<any> {
         const response = await this.teamsSpacesDeleteRaw(requestParameters);
         return await response.value();
     }
@@ -579,7 +579,7 @@ export class TeamsApi extends runtime.BaseAPI {
      * Adds an existing user to the team.
      * Add User
      */
-    async teamsUsersCreateRaw(requestParameters: TeamsUsersCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async teamsUsersCreateRaw(requestParameters: TeamsUsersCreateRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling teamsUsersCreate.');
         }
@@ -624,7 +624,7 @@ export class TeamsApi extends runtime.BaseAPI {
      * Adds an existing user to the team.
      * Add User
      */
-    async teamsUsersCreate(requestParameters: TeamsUsersCreateRequest): Promise<void> {
+    async teamsUsersCreate(requestParameters: TeamsUsersCreateRequest): Promise<any> {
         const response = await this.teamsUsersCreateRaw(requestParameters);
         return await response.value();
     }
@@ -633,7 +633,7 @@ export class TeamsApi extends runtime.BaseAPI {
      * Removes a specified user from the specified team.
      * Remove User
      */
-    async teamsUsersDeleteRaw(requestParameters: TeamsUsersDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async teamsUsersDeleteRaw(requestParameters: TeamsUsersDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling teamsUsersDelete.');
         }
@@ -675,7 +675,7 @@ export class TeamsApi extends runtime.BaseAPI {
      * Removes a specified user from the specified team.
      * Remove User
      */
-    async teamsUsersDelete(requestParameters: TeamsUsersDeleteRequest): Promise<void> {
+    async teamsUsersDelete(requestParameters: TeamsUsersDeleteRequest): Promise<any> {
         const response = await this.teamsUsersDeleteRaw(requestParameters);
         return await response.value();
     }

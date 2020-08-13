@@ -104,7 +104,7 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
      * Import translations from Bitbucket to Phrase according to the .phraseapp.yml file within the Bitbucket repository.
      * Import to Phrase from Bitbucket
      */
-    async bitbucketSyncImportRaw(requestParameters: BitbucketSyncImportRequest): Promise<runtime.ApiResponse<void>> {
+    async bitbucketSyncImportRaw(requestParameters: BitbucketSyncImportRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling bitbucketSyncImport.');
         }
@@ -145,7 +145,7 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
      * Import translations from Bitbucket to Phrase according to the .phraseapp.yml file within the Bitbucket repository.
      * Import to Phrase from Bitbucket
      */
-    async bitbucketSyncImport(requestParameters: BitbucketSyncImportRequest): Promise<void> {
+    async bitbucketSyncImport(requestParameters: BitbucketSyncImportRequest): Promise<any> {
         const response = await this.bitbucketSyncImportRaw(requestParameters);
         return await response.value();
     }

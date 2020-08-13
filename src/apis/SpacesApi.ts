@@ -144,7 +144,7 @@ export class SpacesApi extends runtime.BaseAPI {
      * Delete the specified Space.
      * Delete Space
      */
-    async spaceDeleteRaw(requestParameters: SpaceDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async spaceDeleteRaw(requestParameters: SpaceDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling spaceDelete.');
         }
@@ -182,7 +182,7 @@ export class SpacesApi extends runtime.BaseAPI {
      * Delete the specified Space.
      * Delete Space
      */
-    async spaceDelete(requestParameters: SpaceDeleteRequest): Promise<void> {
+    async spaceDelete(requestParameters: SpaceDeleteRequest): Promise<any> {
         const response = await this.spaceDeleteRaw(requestParameters);
         return await response.value();
     }
@@ -343,7 +343,7 @@ export class SpacesApi extends runtime.BaseAPI {
      * Adds an existing project to the space.
      * Add Project
      */
-    async spacesProjectsCreateRaw(requestParameters: SpacesProjectsCreateRequest): Promise<runtime.ApiResponse<void>> {
+    async spacesProjectsCreateRaw(requestParameters: SpacesProjectsCreateRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling spacesProjectsCreate.');
         }
@@ -388,7 +388,7 @@ export class SpacesApi extends runtime.BaseAPI {
      * Adds an existing project to the space.
      * Add Project
      */
-    async spacesProjectsCreate(requestParameters: SpacesProjectsCreateRequest): Promise<void> {
+    async spacesProjectsCreate(requestParameters: SpacesProjectsCreateRequest): Promise<any> {
         const response = await this.spacesProjectsCreateRaw(requestParameters);
         return await response.value();
     }
@@ -397,7 +397,7 @@ export class SpacesApi extends runtime.BaseAPI {
      * Removes a specified project from the specified space.
      * Remove Project
      */
-    async spacesProjectsDeleteRaw(requestParameters: SpacesProjectsDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async spacesProjectsDeleteRaw(requestParameters: SpacesProjectsDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling spacesProjectsDelete.');
         }
@@ -439,7 +439,7 @@ export class SpacesApi extends runtime.BaseAPI {
      * Removes a specified project from the specified space.
      * Remove Project
      */
-    async spacesProjectsDelete(requestParameters: SpacesProjectsDeleteRequest): Promise<void> {
+    async spacesProjectsDelete(requestParameters: SpacesProjectsDeleteRequest): Promise<any> {
         const response = await this.spacesProjectsDeleteRaw(requestParameters);
         return await response.value();
     }

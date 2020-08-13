@@ -173,7 +173,7 @@ export class OrdersApi extends runtime.BaseAPI {
      * Cancel an existing order. Must not yet be confirmed.
      * Cancel an order
      */
-    async orderDeleteRaw(requestParameters: OrderDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async orderDeleteRaw(requestParameters: OrderDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling orderDelete.');
         }
@@ -215,7 +215,7 @@ export class OrdersApi extends runtime.BaseAPI {
      * Cancel an existing order. Must not yet be confirmed.
      * Cancel an order
      */
-    async orderDelete(requestParameters: OrderDeleteRequest): Promise<void> {
+    async orderDelete(requestParameters: OrderDeleteRequest): Promise<any> {
         const response = await this.orderDeleteRaw(requestParameters);
         return await response.value();
     }

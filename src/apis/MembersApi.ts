@@ -57,7 +57,7 @@ export class MembersApi extends runtime.BaseAPI {
      * Remove a user from the account. The user will be removed from the account but not deleted from Phrase. Access token scope must include <code>team.manage</code>.
      * Remove a user from the account
      */
-    async memberDeleteRaw(requestParameters: MemberDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async memberDeleteRaw(requestParameters: MemberDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling memberDelete.');
         }
@@ -95,7 +95,7 @@ export class MembersApi extends runtime.BaseAPI {
      * Remove a user from the account. The user will be removed from the account but not deleted from Phrase. Access token scope must include <code>team.manage</code>.
      * Remove a user from the account
      */
-    async memberDelete(requestParameters: MemberDeleteRequest): Promise<void> {
+    async memberDelete(requestParameters: MemberDeleteRequest): Promise<any> {
         const response = await this.memberDeleteRaw(requestParameters);
         return await response.value();
     }

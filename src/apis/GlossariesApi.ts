@@ -167,7 +167,7 @@ export class GlossariesApi extends runtime.BaseAPI {
      * Delete an existing glossary.
      * Delete a glossary
      */
-    async glossaryDeleteRaw(requestParameters: GlossaryDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async glossaryDeleteRaw(requestParameters: GlossaryDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling glossaryDelete.');
         }
@@ -205,7 +205,7 @@ export class GlossariesApi extends runtime.BaseAPI {
      * Delete an existing glossary.
      * Delete a glossary
      */
-    async glossaryDelete(requestParameters: GlossaryDeleteRequest): Promise<void> {
+    async glossaryDelete(requestParameters: GlossaryDeleteRequest): Promise<any> {
         const response = await this.glossaryDeleteRaw(requestParameters);
         return await response.value();
     }

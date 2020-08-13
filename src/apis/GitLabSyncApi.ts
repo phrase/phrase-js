@@ -89,7 +89,7 @@ export class GitLabSyncApi extends runtime.BaseAPI {
      * Deletes a single GitLab Sync Setting.
      * Delete single Sync Setting
      */
-    async gitlabSyncDeleteRaw(requestParameters: GitlabSyncDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async gitlabSyncDeleteRaw(requestParameters: GitlabSyncDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling gitlabSyncDelete.');
         }
@@ -127,7 +127,7 @@ export class GitLabSyncApi extends runtime.BaseAPI {
      * Deletes a single GitLab Sync Setting.
      * Delete single Sync Setting
      */
-    async gitlabSyncDelete(requestParameters: GitlabSyncDeleteRequest): Promise<void> {
+    async gitlabSyncDelete(requestParameters: GitlabSyncDeleteRequest): Promise<any> {
         const response = await this.gitlabSyncDeleteRaw(requestParameters);
         return await response.value();
     }

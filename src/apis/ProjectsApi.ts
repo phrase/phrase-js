@@ -110,7 +110,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      * Delete an existing project.
      * Delete a project
      */
-    async projectDeleteRaw(requestParameters: ProjectDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async projectDeleteRaw(requestParameters: ProjectDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling projectDelete.');
         }
@@ -144,7 +144,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      * Delete an existing project.
      * Delete a project
      */
-    async projectDelete(requestParameters: ProjectDeleteRequest): Promise<void> {
+    async projectDelete(requestParameters: ProjectDeleteRequest): Promise<any> {
         const response = await this.projectDeleteRaw(requestParameters);
         return await response.value();
     }

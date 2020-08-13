@@ -227,7 +227,7 @@ export class JobsApi extends runtime.BaseAPI {
      * Delete an existing job.
      * Delete a job
      */
-    async jobDeleteRaw(requestParameters: JobDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async jobDeleteRaw(requestParameters: JobDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobDelete.');
         }
@@ -269,7 +269,7 @@ export class JobsApi extends runtime.BaseAPI {
      * Delete an existing job.
      * Delete a job
      */
-    async jobDelete(requestParameters: JobDeleteRequest): Promise<void> {
+    async jobDelete(requestParameters: JobDeleteRequest): Promise<any> {
         const response = await this.jobDeleteRaw(requestParameters);
         return await response.value();
     }
@@ -332,7 +332,7 @@ export class JobsApi extends runtime.BaseAPI {
      * Remove multiple keys from existing job.
      * Remove keys from job
      */
-    async jobKeysDeleteRaw(requestParameters: JobKeysDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async jobKeysDeleteRaw(requestParameters: JobKeysDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobKeysDelete.');
         }
@@ -378,7 +378,7 @@ export class JobsApi extends runtime.BaseAPI {
      * Remove multiple keys from existing job.
      * Remove keys from job
      */
-    async jobKeysDelete(requestParameters: JobKeysDeleteRequest): Promise<void> {
+    async jobKeysDelete(requestParameters: JobKeysDeleteRequest): Promise<any> {
         const response = await this.jobKeysDeleteRaw(requestParameters);
         return await response.value();
     }

@@ -116,7 +116,7 @@ export class BlacklistedKeysApi extends runtime.BaseAPI {
      * Delete an existing rule for blacklisting keys.
      * Delete a blacklisted key
      */
-    async blacklistedKeyDeleteRaw(requestParameters: BlacklistedKeyDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async blacklistedKeyDeleteRaw(requestParameters: BlacklistedKeyDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling blacklistedKeyDelete.');
         }
@@ -154,7 +154,7 @@ export class BlacklistedKeysApi extends runtime.BaseAPI {
      * Delete an existing rule for blacklisting keys.
      * Delete a blacklisted key
      */
-    async blacklistedKeyDelete(requestParameters: BlacklistedKeyDeleteRequest): Promise<void> {
+    async blacklistedKeyDelete(requestParameters: BlacklistedKeyDeleteRequest): Promise<any> {
         const response = await this.blacklistedKeyDeleteRaw(requestParameters);
         return await response.value();
     }

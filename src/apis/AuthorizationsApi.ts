@@ -110,7 +110,7 @@ export class AuthorizationsApi extends runtime.BaseAPI {
      * Delete an existing authorization. API calls using that token will stop working.
      * Delete an authorization
      */
-    async authorizationDeleteRaw(requestParameters: AuthorizationDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async authorizationDeleteRaw(requestParameters: AuthorizationDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling authorizationDelete.');
         }
@@ -144,7 +144,7 @@ export class AuthorizationsApi extends runtime.BaseAPI {
      * Delete an existing authorization. API calls using that token will stop working.
      * Delete an authorization
      */
-    async authorizationDelete(requestParameters: AuthorizationDeleteRequest): Promise<void> {
+    async authorizationDelete(requestParameters: AuthorizationDeleteRequest): Promise<any> {
         const response = await this.authorizationDeleteRaw(requestParameters);
         return await response.value();
     }

@@ -119,7 +119,7 @@ export class StyleGuidesApi extends runtime.BaseAPI {
      * Delete an existing style guide.
      * Delete a style guide
      */
-    async styleguideDeleteRaw(requestParameters: StyleguideDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async styleguideDeleteRaw(requestParameters: StyleguideDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling styleguideDelete.');
         }
@@ -157,7 +157,7 @@ export class StyleGuidesApi extends runtime.BaseAPI {
      * Delete an existing style guide.
      * Delete a style guide
      */
-    async styleguideDelete(requestParameters: StyleguideDeleteRequest): Promise<void> {
+    async styleguideDelete(requestParameters: StyleguideDeleteRequest): Promise<any> {
         const response = await this.styleguideDeleteRaw(requestParameters);
         return await response.value();
     }

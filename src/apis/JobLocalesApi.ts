@@ -154,7 +154,7 @@ export class JobLocalesApi extends runtime.BaseAPI {
      * Delete an existing job locale.
      * Delete a job locale
      */
-    async jobLocaleDeleteRaw(requestParameters: JobLocaleDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async jobLocaleDeleteRaw(requestParameters: JobLocaleDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobLocaleDelete.');
         }
@@ -200,7 +200,7 @@ export class JobLocalesApi extends runtime.BaseAPI {
      * Delete an existing job locale.
      * Delete a job locale
      */
-    async jobLocaleDelete(requestParameters: JobLocaleDeleteRequest): Promise<void> {
+    async jobLocaleDelete(requestParameters: JobLocaleDeleteRequest): Promise<any> {
         const response = await this.jobLocaleDeleteRaw(requestParameters);
         return await response.value();
     }

@@ -122,7 +122,7 @@ export class InvitationsApi extends runtime.BaseAPI {
      * Delete an existing invitation (must not be accepted yet). Access token scope must include <code>team.manage</code>.
      * Delete an invitation
      */
-    async invitationDeleteRaw(requestParameters: InvitationDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async invitationDeleteRaw(requestParameters: InvitationDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling invitationDelete.');
         }
@@ -160,7 +160,7 @@ export class InvitationsApi extends runtime.BaseAPI {
      * Delete an existing invitation (must not be accepted yet). Access token scope must include <code>team.manage</code>.
      * Delete an invitation
      */
-    async invitationDelete(requestParameters: InvitationDeleteRequest): Promise<void> {
+    async invitationDelete(requestParameters: InvitationDeleteRequest): Promise<any> {
         const response = await this.invitationDeleteRaw(requestParameters);
         return await response.value();
     }

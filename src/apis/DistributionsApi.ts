@@ -119,7 +119,7 @@ export class DistributionsApi extends runtime.BaseAPI {
      * Delete an existing distribution.
      * Delete a distribution
      */
-    async distributionDeleteRaw(requestParameters: DistributionDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async distributionDeleteRaw(requestParameters: DistributionDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling distributionDelete.');
         }
@@ -157,7 +157,7 @@ export class DistributionsApi extends runtime.BaseAPI {
      * Delete an existing distribution.
      * Delete a distribution
      */
-    async distributionDelete(requestParameters: DistributionDeleteRequest): Promise<void> {
+    async distributionDelete(requestParameters: DistributionDeleteRequest): Promise<any> {
         const response = await this.distributionDeleteRaw(requestParameters);
         return await response.value();
     }

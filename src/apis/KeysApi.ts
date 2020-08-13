@@ -166,7 +166,7 @@ export class KeysApi extends runtime.BaseAPI {
      * Delete an existing key.
      * Delete a key
      */
-    async keyDeleteRaw(requestParameters: KeyDeleteRequest): Promise<runtime.ApiResponse<void>> {
+    async keyDeleteRaw(requestParameters: KeyDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling keyDelete.');
         }
@@ -208,7 +208,7 @@ export class KeysApi extends runtime.BaseAPI {
      * Delete an existing key.
      * Delete a key
      */
-    async keyDelete(requestParameters: KeyDeleteRequest): Promise<void> {
+    async keyDelete(requestParameters: KeyDeleteRequest): Promise<any> {
         const response = await this.keyDeleteRaw(requestParameters);
         return await response.value();
     }
