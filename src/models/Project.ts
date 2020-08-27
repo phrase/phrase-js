@@ -42,6 +42,12 @@ export interface Project {
      * @type {string}
      * @memberof Project
      */
+    slug?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Project
+     */
     mainFormat?: string;
     /**
      * 
@@ -81,6 +87,7 @@ export function ProjectFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
         
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
+        'slug': !exists(json, 'slug') ? undefined : json['slug'],
         'mainFormat': !exists(json, 'main_format') ? undefined : json['main_format'],
         'projectImageUrl': !exists(json, 'project_image_url') ? undefined : json['project_image_url'],
         'account': !exists(json, 'account') ? undefined : AccountFromJSON(json['account']),
@@ -100,6 +107,7 @@ export function ProjectToJSON(value?: Project | null): any {
         
         'id': value.id,
         'name': value.name,
+        'slug': value.slug,
         'main_format': value.mainFormat,
         'project_image_url': value.projectImageUrl,
         'account': AccountToJSON(value.account),

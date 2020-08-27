@@ -50,6 +50,12 @@ export interface ProjectDetails {
      * @type {string}
      * @memberof ProjectDetails
      */
+    slug?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProjectDetails
+     */
     mainFormat?: string;
     /**
      * 
@@ -77,12 +83,6 @@ export interface ProjectDetails {
     updatedAt?: Date;
     /**
      * 
-     * @type {string}
-     * @memberof ProjectDetails
-     */
-    slug?: string;
-    /**
-     * 
      * @type {boolean}
      * @memberof ProjectDetails
      */
@@ -101,12 +101,12 @@ export function ProjectDetailsFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
+        'slug': !exists(json, 'slug') ? undefined : json['slug'],
         'mainFormat': !exists(json, 'main_format') ? undefined : json['main_format'],
         'projectImageUrl': !exists(json, 'project_image_url') ? undefined : json['project_image_url'],
         'account': !exists(json, 'account') ? undefined : AccountFromJSON(json['account']),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
-        'slug': !exists(json, 'slug') ? undefined : json['slug'],
         'sharesTranslationMemory': !exists(json, 'shares_translation_memory') ? undefined : json['shares_translation_memory'],
     };
 }
@@ -122,12 +122,12 @@ export function ProjectDetailsToJSON(value?: ProjectDetails | null): any {
         
         'id': value.id,
         'name': value.name,
+        'slug': value.slug,
         'main_format': value.mainFormat,
         'project_image_url': value.projectImageUrl,
         'account': AccountToJSON(value.account),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
-        'slug': value.slug,
         'shares_translation_memory': value.sharesTranslationMemory,
     };
 }

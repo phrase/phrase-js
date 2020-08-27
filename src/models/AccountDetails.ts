@@ -46,6 +46,12 @@ export interface AccountDetails {
      * @type {string}
      * @memberof AccountDetails
      */
+    slug?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AccountDetails
+     */
     company?: string;
     /**
      * 
@@ -59,12 +65,6 @@ export interface AccountDetails {
      * @memberof AccountDetails
      */
     updatedAt?: Date;
-    /**
-     * 
-     * @type {string}
-     * @memberof AccountDetails
-     */
-    slug?: string;
 }
 
 export function AccountDetailsFromJSON(json: any): AccountDetails {
@@ -79,10 +79,10 @@ export function AccountDetailsFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
+        'slug': !exists(json, 'slug') ? undefined : json['slug'],
         'company': !exists(json, 'company') ? undefined : json['company'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
-        'slug': !exists(json, 'slug') ? undefined : json['slug'],
     };
 }
 
@@ -97,10 +97,10 @@ export function AccountDetailsToJSON(value?: AccountDetails | null): any {
         
         'id': value.id,
         'name': value.name,
+        'slug': value.slug,
         'company': value.company,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
-        'slug': value.slug,
     };
 }
 
