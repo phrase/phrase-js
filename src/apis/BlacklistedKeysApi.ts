@@ -55,6 +55,7 @@ export interface BlacklistedKeysListRequest {
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
+    branch?: string;
 }
 
 /**
@@ -277,6 +278,10 @@ export class BlacklistedKeysApi extends runtime.BaseAPI {
 
         if (requestParameters.perPage !== undefined) {
             queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        if (requestParameters.branch !== undefined) {
+            queryParameters['branch'] = requestParameters.branch;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
