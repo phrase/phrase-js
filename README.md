@@ -179,6 +179,7 @@ Class | Method | HTTP request | Description
 *DistributionsApi* | **distributionShow** | **GET** /accounts/{account_id}/distributions/{id} | Get a single distribution
 *DistributionsApi* | **distributionUpdate** | **PATCH** /accounts/{account_id}/distributions/{id} | Update a distribution
 *DistributionsApi* | **distributionsList** | **GET** /accounts/{account_id}/distributions | List distributions
+*DocumentsApi* | **documentsList** | **GET** /projects/{project_id}/documents | List documents
 *FormatsApi* | **formatsList** | **GET** /formats | List formats
 *GitLabSyncApi* | **gitlabSyncDelete** | **DELETE** /gitlab_syncs/{id} | Delete single Sync Setting
 *GitLabSyncApi* | **gitlabSyncExport** | **POST** /gitlab_syncs/{gitlab_sync_id}/export | Export from Phrase to GitLab

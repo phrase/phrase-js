@@ -5,6 +5,7 @@ export * from './BlacklistedKeysApi';
 export * from './BranchesApi';
 export * from './CommentsApi';
 export * from './DistributionsApi';
+export * from './DocumentsApi';
 export * from './FormatsApi';
 export * from './GitLabSyncApi';
 export * from './GlossariesApi';

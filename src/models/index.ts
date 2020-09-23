@@ -27,6 +27,7 @@ export * from './Distribution';
 export * from './DistributionCreateParameters';
 export * from './DistributionPreview';
 export * from './DistributionUpdateParameters';
+export * from './Document';
 export * from './Format';
 export * from './GitlabSync';
 export * from './GitlabSyncExport';
