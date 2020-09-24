@@ -181,6 +181,7 @@ Class | Method | HTTP request | Description
 *DistributionsApi* | **distributionsList** | **GET** /accounts/{account_id}/distributions | List distributions
 *DocumentsApi* | **documentsList** | **GET** /projects/{project_id}/documents | List documents
 *FormatsApi* | **formatsList** | **GET** /formats | List formats
+*GitHubSyncApi* | **githubSyncExport** | **POST** /github_syncs/export | Export from Phrase to GitHub
 *GitLabSyncApi* | **gitlabSyncDelete** | **DELETE** /gitlab_syncs/{id} | Delete single Sync Setting
 *GitLabSyncApi* | **gitlabSyncExport** | **POST** /gitlab_syncs/{gitlab_sync_id}/export | Export from Phrase to GitLab
 *GitLabSyncApi* | **gitlabSyncHistory** | **GET** /gitlab_syncs/{gitlab_sync_id}/history | History of single Sync Setting

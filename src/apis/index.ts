@@ -7,6 +7,7 @@ export * from './CommentsApi';
 export * from './DistributionsApi';
 export * from './DocumentsApi';
 export * from './FormatsApi';
+export * from './GitHubSyncApi';
 export * from './GitLabSyncApi';
 export * from './GlossariesApi';
 export * from './GlossaryTermTranslationsApi';
