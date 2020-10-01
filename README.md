@@ -179,6 +179,7 @@ Class | Method | HTTP request | Description
 *DistributionsApi* | **distributionShow** | **GET** /accounts/{account_id}/distributions/{id} | Get a single distribution
 *DistributionsApi* | **distributionUpdate** | **PATCH** /accounts/{account_id}/distributions/{id} | Update a distribution
 *DistributionsApi* | **distributionsList** | **GET** /accounts/{account_id}/distributions | List distributions
+*DocumentsApi* | **documentDelete** | **DELETE** /projects/{project_id}/documents/{id} | Delete document
 *DocumentsApi* | **documentsList** | **GET** /projects/{project_id}/documents | List documents
 *FormatsApi* | **formatsList** | **GET** /formats | List formats
 *GitHubSyncApi* | **githubSyncExport** | **POST** /github_syncs/export | Export from Phrase to GitHub
