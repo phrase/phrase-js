@@ -17,6 +17,9 @@ import {
     GithubSyncExportParameters,
     GithubSyncExportParametersFromJSON,
     GithubSyncExportParametersToJSON,
+    GithubSyncImportParameters,
+    GithubSyncImportParametersFromJSON,
+    GithubSyncImportParametersToJSON,
     InlineResponse422,
     InlineResponse422FromJSON,
     InlineResponse422ToJSON,
@@ -24,6 +27,11 @@ import {
 
 export interface GithubSyncExportRequest {
     githubSyncExportParameters: GithubSyncExportParameters;
+    xPhraseAppOTP?: string;
+}
+
+export interface GithubSyncImportRequest {
+    githubSyncImportParameters: GithubSyncImportParameters;
     xPhraseAppOTP?: string;
 }
 
@@ -75,6 +83,52 @@ export class GitHubSyncApi extends runtime.BaseAPI {
      */
     async githubSyncExport(requestParameters: GithubSyncExportRequest): Promise<any> {
         const response = await this.githubSyncExportRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Import files to Phrase from your connected GitHub repository.
+     * Import to Phrase from GitHub
+     */
+    async githubSyncImportRaw(requestParameters: GithubSyncImportRequest): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters.githubSyncImportParameters === null || requestParameters.githubSyncImportParameters === undefined) {
+            throw new runtime.RequiredError('githubSyncImportParameters','Required parameter requestParameters.githubSyncImportParameters was null or undefined when calling githubSyncImport.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/github_syncs/import`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: GithubSyncImportParametersToJSON(requestParameters.githubSyncImportParameters),
+        });
+
+        return new runtime.TextApiResponse(response) as any;
+    }
+
+    /**
+     * Import files to Phrase from your connected GitHub repository.
+     * Import to Phrase from GitHub
+     */
+    async githubSyncImport(requestParameters: GithubSyncImportRequest): Promise<any> {
+        const response = await this.githubSyncImportRaw(requestParameters);
         return await response.value();
     }
 

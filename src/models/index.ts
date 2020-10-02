@@ -30,6 +30,7 @@ export * from './DistributionUpdateParameters';
 export * from './Document';
 export * from './Format';
 export * from './GithubSyncExportParameters';
+export * from './GithubSyncImportParameters';
 export * from './GitlabSync';
 export * from './GitlabSyncExport';
 export * from './GitlabSyncExportParameters';

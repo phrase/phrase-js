@@ -183,6 +183,7 @@ Class | Method | HTTP request | Description
 *DocumentsApi* | **documentsList** | **GET** /projects/{project_id}/documents | List documents
 *FormatsApi* | **formatsList** | **GET** /formats | List formats
 *GitHubSyncApi* | **githubSyncExport** | **POST** /github_syncs/export | Export from Phrase to GitHub
+*GitHubSyncApi* | **githubSyncImport** | **POST** /github_syncs/import | Import to Phrase from GitHub
 *GitLabSyncApi* | **gitlabSyncDelete** | **DELETE** /gitlab_syncs/{id} | Delete single Sync Setting
 *GitLabSyncApi* | **gitlabSyncExport** | **POST** /gitlab_syncs/{gitlab_sync_id}/export | Export from Phrase to GitLab
 *GitLabSyncApi* | **gitlabSyncHistory** | **GET** /gitlab_syncs/{gitlab_sync_id}/history | History of single Sync Setting
