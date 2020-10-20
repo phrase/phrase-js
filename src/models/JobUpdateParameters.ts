@@ -42,6 +42,12 @@ export interface JobUpdateParameters {
      * @memberof JobUpdateParameters
      */
     dueDate?: Date;
+    /**
+     * URL to a ticket for this job (e.g. Jira, Trello)
+     * @type {string}
+     * @memberof JobUpdateParameters
+     */
+    ticketUrl?: string;
 }
 
 export function JobUpdateParametersFromJSON(json: any): JobUpdateParameters {
@@ -58,6 +64,7 @@ export function JobUpdateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'name': !exists(json, 'name') ? undefined : json['name'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'dueDate': !exists(json, 'due_date') ? undefined : (new Date(json['due_date'])),
+        'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
     };
 }
 
@@ -74,6 +81,7 @@ export function JobUpdateParametersToJSON(value?: JobUpdateParameters | null): a
         'name': value.name,
         'briefing': value.briefing,
         'due_date': value.dueDate === undefined ? undefined : (value.dueDate.toISOString()),
+        'ticket_url': value.ticketUrl,
     };
 }
 

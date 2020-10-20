@@ -43,6 +43,12 @@ export interface JobCreateParameters {
      */
     dueDate?: Date;
     /**
+     * URL to a ticket for this job (e.g. Jira, Trello)
+     * @type {string}
+     * @memberof JobCreateParameters
+     */
+    ticketUrl?: string;
+    /**
      * tags of keys that should be included within the job
      * @type {Array<string>}
      * @memberof JobCreateParameters
@@ -70,6 +76,7 @@ export function JobCreateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'name': !exists(json, 'name') ? undefined : json['name'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'dueDate': !exists(json, 'due_date') ? undefined : (new Date(json['due_date'])),
+        'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'translationKeyIds': !exists(json, 'translation_key_ids') ? undefined : json['translation_key_ids'],
     };
@@ -88,6 +95,7 @@ export function JobCreateParametersToJSON(value?: JobCreateParameters | null): a
         'name': value.name,
         'briefing': value.briefing,
         'due_date': value.dueDate === undefined ? undefined : (value.dueDate.toISOString()),
+        'ticket_url': value.ticketUrl,
         'tags': value.tags,
         'translation_key_ids': value.translationKeyIds,
     };

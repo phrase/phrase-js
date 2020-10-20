@@ -50,6 +50,12 @@ export interface Job {
     state?: string;
     /**
      * 
+     * @type {string}
+     * @memberof Job
+     */
+    ticketUrl?: string;
+    /**
+     * 
      * @type {Date}
      * @memberof Job
      */
@@ -77,6 +83,7 @@ export function JobFromJSONTyped(json: any, ignoreDiscriminator: boolean): Job {
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'dueDate': !exists(json, 'due_date') ? undefined : (new Date(json['due_date'])),
         'state': !exists(json, 'state') ? undefined : json['state'],
+        'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
     };
@@ -96,6 +103,7 @@ export function JobToJSON(value?: Job | null): any {
         'briefing': value.briefing,
         'due_date': value.dueDate === undefined ? undefined : (value.dueDate.toISOString()),
         'state': value.state,
+        'ticket_url': value.ticketUrl,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
     };

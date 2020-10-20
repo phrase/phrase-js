@@ -73,6 +73,12 @@ export interface JobDetails {
     state?: string;
     /**
      * 
+     * @type {string}
+     * @memberof JobDetails
+     */
+    ticketUrl?: string;
+    /**
+     * 
      * @type {Date}
      * @memberof JobDetails
      */
@@ -124,6 +130,7 @@ export function JobDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'dueDate': !exists(json, 'due_date') ? undefined : (new Date(json['due_date'])),
         'state': !exists(json, 'state') ? undefined : json['state'],
+        'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'owner': !exists(json, 'owner') ? undefined : UserPreviewFromJSON(json['owner']),
@@ -147,6 +154,7 @@ export function JobDetailsToJSON(value?: JobDetails | null): any {
         'briefing': value.briefing,
         'due_date': value.dueDate === undefined ? undefined : (value.dueDate.toISOString()),
         'state': value.state,
+        'ticket_url': value.ticketUrl,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'owner': UserPreviewToJSON(value.owner),
