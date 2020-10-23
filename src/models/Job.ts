@@ -12,6 +12,13 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    ProjectShort,
+    ProjectShortFromJSON,
+    ProjectShortFromJSONTyped,
+    ProjectShortToJSON,
+} from './';
+
 /**
  * 
  * @export
@@ -66,6 +73,12 @@ export interface Job {
      * @memberof Job
      */
     updatedAt?: Date;
+    /**
+     * 
+     * @type {ProjectShort}
+     * @memberof Job
+     */
+    project?: ProjectShort;
 }
 
 export function JobFromJSON(json: any): Job {
@@ -86,6 +99,7 @@ export function JobFromJSONTyped(json: any, ignoreDiscriminator: boolean): Job {
         'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
+        'project': !exists(json, 'project') ? undefined : ProjectShortFromJSON(json['project']),
     };
 }
 
@@ -106,6 +120,7 @@ export function JobToJSON(value?: Job | null): any {
         'ticket_url': value.ticketUrl,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
+        'project': ProjectShortToJSON(value.project),
     };
 }
 

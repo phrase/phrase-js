@@ -29,6 +29,10 @@ import {
     LocalePreviewFromJSON,
     LocalePreviewFromJSONTyped,
     LocalePreviewToJSON,
+    ProjectShort,
+    ProjectShortFromJSON,
+    ProjectShortFromJSONTyped,
+    ProjectShortToJSON,
     UserPreview,
     UserPreviewFromJSON,
     UserPreviewFromJSONTyped,
@@ -91,6 +95,12 @@ export interface JobDetails {
     updatedAt?: Date;
     /**
      * 
+     * @type {ProjectShort}
+     * @memberof JobDetails
+     */
+    project?: ProjectShort;
+    /**
+     * 
      * @type {UserPreview}
      * @memberof JobDetails
      */
@@ -133,6 +143,7 @@ export function JobDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
+        'project': !exists(json, 'project') ? undefined : ProjectShortFromJSON(json['project']),
         'owner': !exists(json, 'owner') ? undefined : UserPreviewFromJSON(json['owner']),
         'jobTagName': !exists(json, 'job_tag_name') ? undefined : json['job_tag_name'],
         'locales': !exists(json, 'locales') ? undefined : ((json['locales'] as Array<any>).map(LocalePreviewFromJSON)),
@@ -157,6 +168,7 @@ export function JobDetailsToJSON(value?: JobDetails | null): any {
         'ticket_url': value.ticketUrl,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
+        'project': ProjectShortToJSON(value.project),
         'owner': UserPreviewToJSON(value.owner),
         'job_tag_name': value.jobTagName,
         'locales': value.locales === undefined ? undefined : ((value.locales as Array<any>).map(LocalePreviewToJSON)),
