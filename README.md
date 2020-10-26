@@ -226,6 +226,7 @@ Class | Method | HTTP request | Description
 *JobsApi* | **jobShow** | **GET** /projects/{project_id}/jobs/{id} | Get a single job
 *JobsApi* | **jobStart** | **POST** /projects/{project_id}/jobs/{id}/start | Start a job
 *JobsApi* | **jobUpdate** | **PATCH** /projects/{project_id}/jobs/{id} | Update a job
+*JobsApi* | **jobsByAccount** | **GET** /accounts/{account_id}/jobs | List account jobs
 *JobsApi* | **jobsList** | **GET** /projects/{project_id}/jobs | List jobs
 *KeysApi* | **keyCreate** | **POST** /projects/{project_id}/keys | Create a key
 *KeysApi* | **keyDelete** | **DELETE** /projects/{project_id}/keys/{id} | Delete a key

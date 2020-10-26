@@ -103,6 +103,16 @@ export interface JobUpdateRequest {
     xPhraseAppOTP?: string;
 }
 
+export interface JobsByAccountRequest {
+    accountId: string;
+    xPhraseAppOTP?: string;
+    page?: number;
+    perPage?: number;
+    ownedBy?: string;
+    assignedTo?: string;
+    state?: string;
+}
+
 export interface JobsListRequest {
     projectId: string;
     xPhraseAppOTP?: string;
@@ -593,6 +603,69 @@ export class JobsApi extends runtime.BaseAPI {
      */
     async jobUpdate(requestParameters: JobUpdateRequest): Promise<JobDetails> {
         const response = await this.jobUpdateRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * List all jobs for the given account.
+     * List account jobs
+     */
+    async jobsByAccountRaw(requestParameters: JobsByAccountRequest): Promise<runtime.ApiResponse<Array<Job>>> {
+        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
+            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling jobsByAccount.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.perPage !== undefined) {
+            queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        if (requestParameters.ownedBy !== undefined) {
+            queryParameters['owned_by'] = requestParameters.ownedBy;
+        }
+
+        if (requestParameters.assignedTo !== undefined) {
+            queryParameters['assigned_to'] = requestParameters.assignedTo;
+        }
+
+        if (requestParameters.state !== undefined) {
+            queryParameters['state'] = requestParameters.state;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/accounts/{account_id}/jobs`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(JobFromJSON));
+    }
+
+    /**
+     * List all jobs for the given account.
+     * List account jobs
+     */
+    async jobsByAccount(requestParameters: JobsByAccountRequest): Promise<Array<Job>> {
+        const response = await this.jobsByAccountRaw(requestParameters);
         return await response.value();
     }
 
