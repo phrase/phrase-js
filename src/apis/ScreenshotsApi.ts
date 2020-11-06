@@ -55,6 +55,7 @@ export interface ScreenshotsListRequest {
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
+    keyId?: string;
 }
 
 /**
@@ -277,6 +278,10 @@ export class ScreenshotsApi extends runtime.BaseAPI {
 
         if (requestParameters.perPage !== undefined) {
             queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        if (requestParameters.keyId !== undefined) {
+            queryParameters['key_id'] = requestParameters.keyId;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
