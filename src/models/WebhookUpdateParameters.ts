@@ -25,6 +25,12 @@ export interface WebhookUpdateParameters {
      */
     callbackUrl?: string;
     /**
+     * Webhook secret used to calculate signature. If empty, the default project secret will be used.
+     * @type {string}
+     * @memberof WebhookUpdateParameters
+     */
+    secret?: string;
+    /**
      * Webhook description
      * @type {string}
      * @memberof WebhookUpdateParameters
@@ -55,6 +61,7 @@ export function WebhookUpdateParametersFromJSONTyped(json: any, ignoreDiscrimina
     return {
         
         'callbackUrl': !exists(json, 'callback_url') ? undefined : json['callback_url'],
+        'secret': !exists(json, 'secret') ? undefined : json['secret'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'events': !exists(json, 'events') ? undefined : json['events'],
         'active': !exists(json, 'active') ? undefined : json['active'],
@@ -71,6 +78,7 @@ export function WebhookUpdateParametersToJSON(value?: WebhookUpdateParameters | 
     return {
         
         'callback_url': value.callbackUrl,
+        'secret': value.secret,
         'description': value.description,
         'events': value.events,
         'active': value.active,
