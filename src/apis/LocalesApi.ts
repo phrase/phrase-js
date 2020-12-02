@@ -50,6 +50,7 @@ export interface LocaleDownloadRequest {
     tags?: string;
     tag?: string;
     includeEmptyTranslations?: boolean;
+    excludeEmptyZeroForms?: boolean;
     includeTranslatedKeys?: boolean;
     keepNotranslateTags?: boolean;
     convertEmoji?: boolean;
@@ -222,6 +223,10 @@ export class LocalesApi extends runtime.BaseAPI {
 
         if (requestParameters.includeEmptyTranslations !== undefined) {
             queryParameters['include_empty_translations'] = requestParameters.includeEmptyTranslations;
+        }
+
+        if (requestParameters.excludeEmptyZeroForms !== undefined) {
+            queryParameters['exclude_empty_zero_forms'] = requestParameters.excludeEmptyZeroForms;
         }
 
         if (requestParameters.includeTranslatedKeys !== undefined) {
