@@ -13,6 +13,10 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    BranchName,
+    BranchNameFromJSON,
+    BranchNameFromJSONTyped,
+    BranchNameToJSON,
     ProjectShort,
     ProjectShortFromJSON,
     ProjectShortFromJSONTyped,
@@ -63,6 +67,18 @@ export interface Job {
     ticketUrl?: string;
     /**
      * 
+     * @type {ProjectShort}
+     * @memberof Job
+     */
+    project?: ProjectShort;
+    /**
+     * 
+     * @type {BranchName}
+     * @memberof Job
+     */
+    branch?: BranchName;
+    /**
+     * 
      * @type {Date}
      * @memberof Job
      */
@@ -73,12 +89,6 @@ export interface Job {
      * @memberof Job
      */
     updatedAt?: Date;
-    /**
-     * 
-     * @type {ProjectShort}
-     * @memberof Job
-     */
-    project?: ProjectShort;
 }
 
 export function JobFromJSON(json: any): Job {
@@ -97,9 +107,10 @@ export function JobFromJSONTyped(json: any, ignoreDiscriminator: boolean): Job {
         'dueDate': !exists(json, 'due_date') ? undefined : (new Date(json['due_date'])),
         'state': !exists(json, 'state') ? undefined : json['state'],
         'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
+        'project': !exists(json, 'project') ? undefined : ProjectShortFromJSON(json['project']),
+        'branch': !exists(json, 'branch') ? undefined : BranchNameFromJSON(json['branch']),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
-        'project': !exists(json, 'project') ? undefined : ProjectShortFromJSON(json['project']),
     };
 }
 
@@ -118,9 +129,10 @@ export function JobToJSON(value?: Job | null): any {
         'due_date': value.dueDate === undefined ? undefined : (value.dueDate.toISOString()),
         'state': value.state,
         'ticket_url': value.ticketUrl,
+        'project': ProjectShortToJSON(value.project),
+        'branch': BranchNameToJSON(value.branch),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
-        'project': ProjectShortToJSON(value.project),
     };
 }
 

@@ -18,6 +18,7 @@ export * from './BlacklistedKeyUpdateParameters';
 export * from './Branch';
 export * from './BranchCreateParameters';
 export * from './BranchMergeParameters';
+export * from './BranchName';
 export * from './BranchUpdateParameters';
 export * from './Comment';
 export * from './CommentCreateParameters';

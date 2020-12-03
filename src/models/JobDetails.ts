@@ -13,6 +13,10 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    BranchName,
+    BranchNameFromJSON,
+    BranchNameFromJSONTyped,
+    BranchNameToJSON,
     Job,
     JobFromJSON,
     JobFromJSONTyped,
@@ -83,6 +87,18 @@ export interface JobDetails {
     ticketUrl?: string;
     /**
      * 
+     * @type {ProjectShort}
+     * @memberof JobDetails
+     */
+    project?: ProjectShort;
+    /**
+     * 
+     * @type {BranchName}
+     * @memberof JobDetails
+     */
+    branch?: BranchName;
+    /**
+     * 
      * @type {Date}
      * @memberof JobDetails
      */
@@ -93,12 +109,6 @@ export interface JobDetails {
      * @memberof JobDetails
      */
     updatedAt?: Date;
-    /**
-     * 
-     * @type {ProjectShort}
-     * @memberof JobDetails
-     */
-    project?: ProjectShort;
     /**
      * 
      * @type {UserPreview}
@@ -141,9 +151,10 @@ export function JobDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'dueDate': !exists(json, 'due_date') ? undefined : (new Date(json['due_date'])),
         'state': !exists(json, 'state') ? undefined : json['state'],
         'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
+        'project': !exists(json, 'project') ? undefined : ProjectShortFromJSON(json['project']),
+        'branch': !exists(json, 'branch') ? undefined : BranchNameFromJSON(json['branch']),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
-        'project': !exists(json, 'project') ? undefined : ProjectShortFromJSON(json['project']),
         'owner': !exists(json, 'owner') ? undefined : UserPreviewFromJSON(json['owner']),
         'jobTagName': !exists(json, 'job_tag_name') ? undefined : json['job_tag_name'],
         'locales': !exists(json, 'locales') ? undefined : ((json['locales'] as Array<any>).map(LocalePreviewFromJSON)),
@@ -166,9 +177,10 @@ export function JobDetailsToJSON(value?: JobDetails | null): any {
         'due_date': value.dueDate === undefined ? undefined : (value.dueDate.toISOString()),
         'state': value.state,
         'ticket_url': value.ticketUrl,
+        'project': ProjectShortToJSON(value.project),
+        'branch': BranchNameToJSON(value.branch),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
-        'project': ProjectShortToJSON(value.project),
         'owner': UserPreviewToJSON(value.owner),
         'job_tag_name': value.jobTagName,
         'locales': value.locales === undefined ? undefined : ((value.locales as Array<any>).map(LocalePreviewToJSON)),
