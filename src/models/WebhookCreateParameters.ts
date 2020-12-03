@@ -48,6 +48,12 @@ export interface WebhookCreateParameters {
      * @memberof WebhookCreateParameters
      */
     active?: boolean;
+    /**
+     * If enabled, webhook will also be triggered for events from branches of the project specified.
+     * @type {boolean}
+     * @memberof WebhookCreateParameters
+     */
+    includeBranches?: boolean;
 }
 
 export function WebhookCreateParametersFromJSON(json: any): WebhookCreateParameters {
@@ -65,6 +71,7 @@ export function WebhookCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'description': !exists(json, 'description') ? undefined : json['description'],
         'events': !exists(json, 'events') ? undefined : json['events'],
         'active': !exists(json, 'active') ? undefined : json['active'],
+        'includeBranches': !exists(json, 'include_branches') ? undefined : json['include_branches'],
     };
 }
 
@@ -82,6 +89,7 @@ export function WebhookCreateParametersToJSON(value?: WebhookCreateParameters | 
         'description': value.description,
         'events': value.events,
         'active': value.active,
+        'include_branches': value.includeBranches,
     };
 }
 

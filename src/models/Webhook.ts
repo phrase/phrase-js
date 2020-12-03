@@ -50,6 +50,12 @@ export interface Webhook {
     active?: boolean;
     /**
      * 
+     * @type {boolean}
+     * @memberof Webhook
+     */
+    includeBranches?: boolean;
+    /**
+     * 
      * @type {Date}
      * @memberof Webhook
      */
@@ -77,6 +83,7 @@ export function WebhookFromJSONTyped(json: any, ignoreDiscriminator: boolean): W
         'description': !exists(json, 'description') ? undefined : json['description'],
         'events': !exists(json, 'events') ? undefined : json['events'],
         'active': !exists(json, 'active') ? undefined : json['active'],
+        'includeBranches': !exists(json, 'include_branches') ? undefined : json['include_branches'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
     };
@@ -96,6 +103,7 @@ export function WebhookToJSON(value?: Webhook | null): any {
         'description': value.description,
         'events': value.events,
         'active': value.active,
+        'include_branches': value.includeBranches,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
     };
