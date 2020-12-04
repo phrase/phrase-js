@@ -57,6 +57,12 @@ export interface JobLocale {
      * @memberof JobLocale
      */
     users?: Array<UserPreview>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof JobLocale
+     */
+    completed?: boolean;
 }
 
 export function JobLocaleFromJSON(json: any): JobLocale {
@@ -73,6 +79,7 @@ export function JobLocaleFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'job': !exists(json, 'job') ? undefined : JobPreviewFromJSON(json['job']),
         'locale': !exists(json, 'locale') ? undefined : LocalePreviewFromJSON(json['locale']),
         'users': !exists(json, 'users') ? undefined : ((json['users'] as Array<any>).map(UserPreviewFromJSON)),
+        'completed': !exists(json, 'completed') ? undefined : json['completed'],
     };
 }
 
@@ -89,6 +96,7 @@ export function JobLocaleToJSON(value?: JobLocale | null): any {
         'job': JobPreviewToJSON(value.job),
         'locale': LocalePreviewToJSON(value.locale),
         'users': value.users === undefined ? undefined : ((value.users as Array<any>).map(UserPreviewToJSON)),
+        'completed': value.completed,
     };
 }
 
