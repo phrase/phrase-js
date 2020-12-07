@@ -51,6 +51,12 @@ export interface Member {
     role?: string;
     /**
      * 
+     * @type {Array<string>}
+     * @memberof Member
+     */
+    defaultLocaleCodes?: Array<string>;
+    /**
+     * 
      * @type {Array<ProjectLocales>}
      * @memberof Member
      */
@@ -71,6 +77,7 @@ export function MemberFromJSONTyped(json: any, ignoreDiscriminator: boolean): Me
         'email': !exists(json, 'email') ? undefined : json['email'],
         'username': !exists(json, 'username') ? undefined : json['username'],
         'role': !exists(json, 'role') ? undefined : json['role'],
+        'defaultLocaleCodes': !exists(json, 'default_locale_codes') ? undefined : json['default_locale_codes'],
         'projects': !exists(json, 'projects') ? undefined : ((json['projects'] as Array<any>).map(ProjectLocalesFromJSON)),
     };
 }
@@ -88,6 +95,7 @@ export function MemberToJSON(value?: Member | null): any {
         'email': value.email,
         'username': value.username,
         'role': value.role,
+        'default_locale_codes': value.defaultLocaleCodes,
         'projects': value.projects === undefined ? undefined : ((value.projects as Array<any>).map(ProjectLocalesToJSON)),
     };
 }
