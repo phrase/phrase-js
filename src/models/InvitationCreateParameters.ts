@@ -43,6 +43,12 @@ export interface InvitationCreateParameters {
      */
     localeIds?: string;
     /**
+     * List of default locales for the user.
+     * @type {Array<string>}
+     * @memberof InvitationCreateParameters
+     */
+    defaultLocaleCodes?: Array<string>;
+    /**
      * Additional permissions depending on invitation role. Available permissions are <code>create_upload</code> and <code>review_translations</code>
      * @type {{ [key: string]: string; }}
      * @memberof InvitationCreateParameters
@@ -64,6 +70,7 @@ export function InvitationCreateParametersFromJSONTyped(json: any, ignoreDiscrim
         'role': !exists(json, 'role') ? undefined : json['role'],
         'projectIds': !exists(json, 'project_ids') ? undefined : json['project_ids'],
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
+        'defaultLocaleCodes': !exists(json, 'default_locale_codes') ? undefined : json['default_locale_codes'],
         'permissions': !exists(json, 'permissions') ? undefined : json['permissions'],
     };
 }
@@ -81,6 +88,7 @@ export function InvitationCreateParametersToJSON(value?: InvitationCreateParamet
         'role': value.role,
         'project_ids': value.projectIds,
         'locale_ids': value.localeIds,
+        'default_locale_codes': value.defaultLocaleCodes,
         'permissions': value.permissions,
     };
 }

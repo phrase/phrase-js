@@ -67,6 +67,12 @@ export interface Invitation {
     locales?: Array<LocalePreview>;
     /**
      * 
+     * @type {Array<string>}
+     * @memberof Invitation
+     */
+    defaultLocaleCodes?: Array<string>;
+    /**
+     * 
      * @type {object}
      * @memberof Invitation
      */
@@ -107,6 +113,7 @@ export function InvitationFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'state': !exists(json, 'state') ? undefined : json['state'],
         'projects': !exists(json, 'projects') ? undefined : ((json['projects'] as Array<any>).map(ProjectShortFromJSON)),
         'locales': !exists(json, 'locales') ? undefined : ((json['locales'] as Array<any>).map(LocalePreviewFromJSON)),
+        'defaultLocaleCodes': !exists(json, 'default_locale_codes') ? undefined : json['default_locale_codes'],
         'permissions': !exists(json, 'permissions') ? undefined : json['permissions'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
@@ -129,6 +136,7 @@ export function InvitationToJSON(value?: Invitation | null): any {
         'state': value.state,
         'projects': value.projects === undefined ? undefined : ((value.projects as Array<any>).map(ProjectShortToJSON)),
         'locales': value.locales === undefined ? undefined : ((value.locales as Array<any>).map(LocalePreviewToJSON)),
+        'default_locale_codes': value.defaultLocaleCodes,
         'permissions': value.permissions,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),

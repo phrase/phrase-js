@@ -37,6 +37,12 @@ export interface InvitationUpdateParameters {
      */
     localeIds?: string;
     /**
+     * List of default locales for the user.
+     * @type {Array<string>}
+     * @memberof InvitationUpdateParameters
+     */
+    defaultLocaleCodes?: Array<string>;
+    /**
      * Additional permissions depending on invitation role.
      * @type {{ [key: string]: string; }}
      * @memberof InvitationUpdateParameters
@@ -57,6 +63,7 @@ export function InvitationUpdateParametersFromJSONTyped(json: any, ignoreDiscrim
         'role': !exists(json, 'role') ? undefined : json['role'],
         'projectIds': !exists(json, 'project_ids') ? undefined : json['project_ids'],
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
+        'defaultLocaleCodes': !exists(json, 'default_locale_codes') ? undefined : json['default_locale_codes'],
         'permissions': !exists(json, 'permissions') ? undefined : json['permissions'],
     };
 }
@@ -73,6 +80,7 @@ export function InvitationUpdateParametersToJSON(value?: InvitationUpdateParamet
         'role': value.role,
         'project_ids': value.projectIds,
         'locale_ids': value.localeIds,
+        'default_locale_codes': value.defaultLocaleCodes,
         'permissions': value.permissions,
     };
 }
