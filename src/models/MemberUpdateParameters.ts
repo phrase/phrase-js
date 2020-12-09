@@ -43,6 +43,12 @@ export interface MemberUpdateParameters {
      */
     defaultLocaleCodes?: Array<string>;
     /**
+     * List of spaces the user is assigned to.
+     * @type {Array<string>}
+     * @memberof MemberUpdateParameters
+     */
+    spaceIds?: Array<string>;
+    /**
      * Additional permissions depending on member role. Available permissions are <code>create_upload</code> and <code>review_translations</code>
      * @type {{ [key: string]: string; }}
      * @memberof MemberUpdateParameters
@@ -64,6 +70,7 @@ export function MemberUpdateParametersFromJSONTyped(json: any, ignoreDiscriminat
         'projectIds': !exists(json, 'project_ids') ? undefined : json['project_ids'],
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'defaultLocaleCodes': !exists(json, 'default_locale_codes') ? undefined : json['default_locale_codes'],
+        'spaceIds': !exists(json, 'space_ids') ? undefined : json['space_ids'],
         'permissions': !exists(json, 'permissions') ? undefined : json['permissions'],
     };
 }
@@ -81,6 +88,7 @@ export function MemberUpdateParametersToJSON(value?: MemberUpdateParameters | nu
         'project_ids': value.projectIds,
         'locale_ids': value.localeIds,
         'default_locale_codes': value.defaultLocaleCodes,
+        'space_ids': value.spaceIds,
         'permissions': value.permissions,
     };
 }

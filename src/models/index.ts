@@ -80,6 +80,7 @@ export * from './LocalePreview';
 export * from './LocaleStatistics';
 export * from './LocaleUpdateParameters';
 export * from './Member';
+export * from './MemberSpaces';
 export * from './MemberUpdateParameters';
 export * from './OrderConfirmParameters';
 export * from './OrderCreateParameters';

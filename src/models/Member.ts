@@ -13,6 +13,10 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    MemberSpaces,
+    MemberSpacesFromJSON,
+    MemberSpacesFromJSONTyped,
+    MemberSpacesToJSON,
     ProjectLocales,
     ProjectLocalesFromJSON,
     ProjectLocalesFromJSONTyped,
@@ -51,16 +55,28 @@ export interface Member {
     role?: string;
     /**
      * 
+     * @type {Array<ProjectLocales>}
+     * @memberof Member
+     */
+    projects?: Array<ProjectLocales>;
+    /**
+     * 
+     * @type {object}
+     * @memberof Member
+     */
+    permissions?: object;
+    /**
+     * 
      * @type {Array<string>}
      * @memberof Member
      */
     defaultLocaleCodes?: Array<string>;
     /**
      * 
-     * @type {Array<ProjectLocales>}
+     * @type {Array<MemberSpaces>}
      * @memberof Member
      */
-    projects?: Array<ProjectLocales>;
+    spaces?: Array<MemberSpaces>;
 }
 
 export function MemberFromJSON(json: any): Member {
@@ -77,8 +93,10 @@ export function MemberFromJSONTyped(json: any, ignoreDiscriminator: boolean): Me
         'email': !exists(json, 'email') ? undefined : json['email'],
         'username': !exists(json, 'username') ? undefined : json['username'],
         'role': !exists(json, 'role') ? undefined : json['role'],
-        'defaultLocaleCodes': !exists(json, 'default_locale_codes') ? undefined : json['default_locale_codes'],
         'projects': !exists(json, 'projects') ? undefined : ((json['projects'] as Array<any>).map(ProjectLocalesFromJSON)),
+        'permissions': !exists(json, 'permissions') ? undefined : json['permissions'],
+        'defaultLocaleCodes': !exists(json, 'default_locale_codes') ? undefined : json['default_locale_codes'],
+        'spaces': !exists(json, 'spaces') ? undefined : ((json['spaces'] as Array<any>).map(MemberSpacesFromJSON)),
     };
 }
 
@@ -95,8 +113,10 @@ export function MemberToJSON(value?: Member | null): any {
         'email': value.email,
         'username': value.username,
         'role': value.role,
-        'default_locale_codes': value.defaultLocaleCodes,
         'projects': value.projects === undefined ? undefined : ((value.projects as Array<any>).map(ProjectLocalesToJSON)),
+        'permissions': value.permissions,
+        'default_locale_codes': value.defaultLocaleCodes,
+        'spaces': value.spaces === undefined ? undefined : ((value.spaces as Array<any>).map(MemberSpacesToJSON)),
     };
 }
 
