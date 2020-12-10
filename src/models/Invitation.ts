@@ -17,6 +17,10 @@ import {
     LocalePreviewFromJSON,
     LocalePreviewFromJSONTyped,
     LocalePreviewToJSON,
+    MemberSpaces,
+    MemberSpacesFromJSON,
+    MemberSpacesFromJSONTyped,
+    MemberSpacesToJSON,
     ProjectShort,
     ProjectShortFromJSON,
     ProjectShortFromJSONTyped,
@@ -95,6 +99,12 @@ export interface Invitation {
      * @memberof Invitation
      */
     acceptedAt?: Date;
+    /**
+     * 
+     * @type {Array<MemberSpaces>}
+     * @memberof Invitation
+     */
+    spaces?: Array<MemberSpaces>;
 }
 
 export function InvitationFromJSON(json: any): Invitation {
@@ -118,6 +128,7 @@ export function InvitationFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'acceptedAt': !exists(json, 'accepted_at') ? undefined : (new Date(json['accepted_at'])),
+        'spaces': !exists(json, 'spaces') ? undefined : ((json['spaces'] as Array<any>).map(MemberSpacesFromJSON)),
     };
 }
 
@@ -141,6 +152,7 @@ export function InvitationToJSON(value?: Invitation | null): any {
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'accepted_at': value.acceptedAt === undefined ? undefined : (value.acceptedAt.toISOString()),
+        'spaces': value.spaces === undefined ? undefined : ((value.spaces as Array<any>).map(MemberSpacesToJSON)),
     };
 }
 
