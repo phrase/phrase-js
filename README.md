@@ -246,6 +246,7 @@ Class | Method | HTTP request | Description
 *MembersApi* | **memberDelete** | **DELETE** /accounts/{account_id}/members/{id} | Remove a user from the account
 *MembersApi* | **memberShow** | **GET** /accounts/{account_id}/members/{id} | Get single member
 *MembersApi* | **memberUpdate** | **PATCH** /accounts/{account_id}/members/{id} | Update a member
+*MembersApi* | **memberUpdateSettings** | **PATCH** /projects/{project_id}/members/{id} | Update a member\&#39;s project settings
 *MembersApi* | **membersList** | **GET** /accounts/{account_id}/members | List members
 *OrdersApi* | **orderConfirm** | **PATCH** /projects/{project_id}/orders/{id}/confirm | Confirm an order
 *OrdersApi* | **orderCreate** | **POST** /projects/{project_id}/orders | Create a new order

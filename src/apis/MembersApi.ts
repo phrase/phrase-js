@@ -17,9 +17,15 @@ import {
     Member,
     MemberFromJSON,
     MemberToJSON,
+    MemberProjectDetail,
+    MemberProjectDetailFromJSON,
+    MemberProjectDetailToJSON,
     MemberUpdateParameters,
     MemberUpdateParametersFromJSON,
     MemberUpdateParametersToJSON,
+    MemberUpdateSettingsParameters,
+    MemberUpdateSettingsParametersFromJSON,
+    MemberUpdateSettingsParametersToJSON,
 } from '../models';
 
 export interface MemberDeleteRequest {
@@ -38,6 +44,13 @@ export interface MemberUpdateRequest {
     accountId: string;
     id: string;
     memberUpdateParameters: MemberUpdateParameters;
+    xPhraseAppOTP?: string;
+}
+
+export interface MemberUpdateSettingsRequest {
+    projectId: string;
+    id: string;
+    memberUpdateSettingsParameters: MemberUpdateSettingsParameters;
     xPhraseAppOTP?: string;
 }
 
@@ -198,6 +211,60 @@ export class MembersApi extends runtime.BaseAPI {
      */
     async memberUpdate(requestParameters: MemberUpdateRequest): Promise<Member> {
         const response = await this.memberUpdateRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Update user settings in the project. Access token scope must include <code>team.manage</code>.
+     * Update a member\'s project settings
+     */
+    async memberUpdateSettingsRaw(requestParameters: MemberUpdateSettingsRequest): Promise<runtime.ApiResponse<MemberProjectDetail>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling memberUpdateSettings.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling memberUpdateSettings.');
+        }
+
+        if (requestParameters.memberUpdateSettingsParameters === null || requestParameters.memberUpdateSettingsParameters === undefined) {
+            throw new runtime.RequiredError('memberUpdateSettingsParameters','Required parameter requestParameters.memberUpdateSettingsParameters was null or undefined when calling memberUpdateSettings.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/projects/{project_id}/members/{id}`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: MemberUpdateSettingsParametersToJSON(requestParameters.memberUpdateSettingsParameters),
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => MemberProjectDetailFromJSON(jsonValue));
+    }
+
+    /**
+     * Update user settings in the project. Access token scope must include <code>team.manage</code>.
+     * Update a member\'s project settings
+     */
+    async memberUpdateSettings(requestParameters: MemberUpdateSettingsRequest): Promise<MemberProjectDetail> {
+        const response = await this.memberUpdateSettingsRaw(requestParameters);
         return await response.value();
     }
 
