@@ -17,6 +17,10 @@ import {
     LocalePreviewFromJSON,
     LocalePreviewFromJSONTyped,
     LocalePreviewToJSON,
+    MemberProjectDetailProjectRoles,
+    MemberProjectDetailProjectRolesFromJSON,
+    MemberProjectDetailProjectRolesFromJSONTyped,
+    MemberProjectDetailProjectRolesToJSON,
     MemberSpaces,
     MemberSpacesFromJSON,
     MemberSpacesFromJSONTyped,
@@ -83,6 +87,12 @@ export interface Invitation {
     permissions?: object;
     /**
      * 
+     * @type {Array<string>}
+     * @memberof Invitation
+     */
+    localeIds?: Array<string>;
+    /**
+     * 
      * @type {Date}
      * @memberof Invitation
      */
@@ -105,6 +115,12 @@ export interface Invitation {
      * @memberof Invitation
      */
     spaces?: Array<MemberSpaces>;
+    /**
+     * 
+     * @type {Array<MemberProjectDetailProjectRoles>}
+     * @memberof Invitation
+     */
+    projectRole?: Array<MemberProjectDetailProjectRoles>;
 }
 
 export function InvitationFromJSON(json: any): Invitation {
@@ -125,10 +141,12 @@ export function InvitationFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'locales': !exists(json, 'locales') ? undefined : ((json['locales'] as Array<any>).map(LocalePreviewFromJSON)),
         'defaultLocaleCodes': !exists(json, 'default_locale_codes') ? undefined : json['default_locale_codes'],
         'permissions': !exists(json, 'permissions') ? undefined : json['permissions'],
+        'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'acceptedAt': !exists(json, 'accepted_at') ? undefined : (new Date(json['accepted_at'])),
         'spaces': !exists(json, 'spaces') ? undefined : ((json['spaces'] as Array<any>).map(MemberSpacesFromJSON)),
+        'projectRole': !exists(json, 'project_role') ? undefined : ((json['project_role'] as Array<any>).map(MemberProjectDetailProjectRolesFromJSON)),
     };
 }
 
@@ -149,10 +167,12 @@ export function InvitationToJSON(value?: Invitation | null): any {
         'locales': value.locales === undefined ? undefined : ((value.locales as Array<any>).map(LocalePreviewToJSON)),
         'default_locale_codes': value.defaultLocaleCodes,
         'permissions': value.permissions,
+        'locale_ids': value.localeIds,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'accepted_at': value.acceptedAt === undefined ? undefined : (value.acceptedAt.toISOString()),
         'spaces': value.spaces === undefined ? undefined : ((value.spaces as Array<any>).map(MemberSpacesToJSON)),
+        'project_role': value.projectRole === undefined ? undefined : ((value.projectRole as Array<any>).map(MemberProjectDetailProjectRolesToJSON)),
     };
 }
 

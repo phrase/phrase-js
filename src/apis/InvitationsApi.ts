@@ -26,6 +26,9 @@ import {
     InvitationUpdateParameters,
     InvitationUpdateParametersFromJSON,
     InvitationUpdateParametersToJSON,
+    InvitationUpdateSettingsParameters,
+    InvitationUpdateSettingsParametersFromJSON,
+    InvitationUpdateSettingsParametersToJSON,
 } from '../models';
 
 export interface InvitationCreateRequest {
@@ -56,6 +59,13 @@ export interface InvitationUpdateRequest {
     accountId: string;
     id: string;
     invitationUpdateParameters: InvitationUpdateParameters;
+    xPhraseAppOTP?: string;
+}
+
+export interface InvitationUpdateSettingsRequest {
+    projectId: string;
+    id: string;
+    invitationUpdateSettingsParameters: InvitationUpdateSettingsParameters;
     xPhraseAppOTP?: string;
 }
 
@@ -313,6 +323,60 @@ export class InvitationsApi extends runtime.BaseAPI {
      */
     async invitationUpdate(requestParameters: InvitationUpdateRequest): Promise<Invitation> {
         const response = await this.invitationUpdateRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Update member\'s settings in the invitations. Access token scope must include <code>team.manage</code>.
+     * Update a member\'s invitation access
+     */
+    async invitationUpdateSettingsRaw(requestParameters: InvitationUpdateSettingsRequest): Promise<runtime.ApiResponse<Invitation>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling invitationUpdateSettings.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling invitationUpdateSettings.');
+        }
+
+        if (requestParameters.invitationUpdateSettingsParameters === null || requestParameters.invitationUpdateSettingsParameters === undefined) {
+            throw new runtime.RequiredError('invitationUpdateSettingsParameters','Required parameter requestParameters.invitationUpdateSettingsParameters was null or undefined when calling invitationUpdateSettings.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/projects/{project_id}/invitations/{id}`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: InvitationUpdateSettingsParametersToJSON(requestParameters.invitationUpdateSettingsParameters),
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => InvitationFromJSON(jsonValue));
+    }
+
+    /**
+     * Update member\'s settings in the invitations. Access token scope must include <code>team.manage</code>.
+     * Update a member\'s invitation access
+     */
+    async invitationUpdateSettings(requestParameters: InvitationUpdateSettingsRequest): Promise<Invitation> {
+        const response = await this.invitationUpdateSettingsRaw(requestParameters);
         return await response.value();
     }
 

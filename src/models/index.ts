@@ -51,6 +51,7 @@ export * from './InlineResponse422Errors';
 export * from './Invitation';
 export * from './InvitationCreateParameters';
 export * from './InvitationUpdateParameters';
+export * from './InvitationUpdateSettingsParameters';
 export * from './Job';
 export * from './JobCompleteParameters';
 export * from './JobCreateParameters';
