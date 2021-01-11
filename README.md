@@ -166,6 +166,7 @@ Class | Method | HTTP request | Description
 *BranchesApi* | **branchShow** | **GET** /projects/{project_id}/branches/{name} | Get a single branch
 *BranchesApi* | **branchUpdate** | **PATCH** /projects/{project_id}/branches/{name} | Update a branch
 *BranchesApi* | **branchesList** | **GET** /projects/{project_id}/branches | List branches
+*BranchesApi* | **variablesList** | **GET** /projects/{project_id}/variables | List variables
 *CommentsApi* | **commentCreate** | **POST** /projects/{project_id}/keys/{key_id}/comments | Create a comment
 *CommentsApi* | **commentDelete** | **DELETE** /projects/{project_id}/keys/{key_id}/comments/{id} | Delete a comment
 *CommentsApi* | **commentMarkCheck** | **GET** /projects/{project_id}/keys/{key_id}/comments/{id}/read | Check if comment is read
@@ -324,6 +325,10 @@ Class | Method | HTTP request | Description
 *UploadsApi* | **uploadShow** | **GET** /projects/{project_id}/uploads/{id} | View upload details
 *UploadsApi* | **uploadsList** | **GET** /projects/{project_id}/uploads | List uploads
 *UsersApi* | **showUser** | **GET** /user | Show current User
+*VariablesApi* | **variableCreate** | **POST** /projects/{project_id}/variables | Create a variable
+*VariablesApi* | **variableDelete** | **DELETE** /projects/{project_id}/variables/{name} | Delete a variable
+*VariablesApi* | **variableShow** | **GET** /projects/{project_id}/variables/{name} | Get a single variable
+*VariablesApi* | **variableUpdate** | **PATCH** /projects/{project_id}/variables/{name} | Update a variable
 *VersionsHistoryApi* | **versionShow** | **GET** /projects/{project_id}/translations/{translation_id}/versions/{id} | Get a single version
 *VersionsHistoryApi* | **versionsList** | **GET** /projects/{project_id}/translations/{translation_id}/versions | List all versions
 *WebhooksApi* | **webhookCreate** | **POST** /projects/{project_id}/webhooks | Create a webhook

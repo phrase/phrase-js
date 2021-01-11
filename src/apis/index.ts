@@ -30,5 +30,6 @@ export * from './TeamsApi';
 export * from './TranslationsApi';
 export * from './UploadsApi';
 export * from './UsersApi';
+export * from './VariablesApi';
 export * from './VersionsHistoryApi';
 export * from './WebhooksApi';

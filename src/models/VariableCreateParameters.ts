@@ -15,28 +15,28 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface BranchUpdateParameters
+ * @interface VariableCreateParameters
  */
-export interface BranchUpdateParameters {
+export interface VariableCreateParameters {
     /**
      * Name of the variable
      * @type {string}
-     * @memberof BranchUpdateParameters
+     * @memberof VariableCreateParameters
      */
     name?: string;
     /**
      * Value of the variable
      * @type {string}
-     * @memberof BranchUpdateParameters
+     * @memberof VariableCreateParameters
      */
     value?: string;
 }
 
-export function BranchUpdateParametersFromJSON(json: any): BranchUpdateParameters {
-    return BranchUpdateParametersFromJSONTyped(json, false);
+export function VariableCreateParametersFromJSON(json: any): VariableCreateParameters {
+    return VariableCreateParametersFromJSONTyped(json, false);
 }
 
-export function BranchUpdateParametersFromJSONTyped(json: any, ignoreDiscriminator: boolean): BranchUpdateParameters {
+export function VariableCreateParametersFromJSONTyped(json: any, ignoreDiscriminator: boolean): VariableCreateParameters {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -47,7 +47,7 @@ export function BranchUpdateParametersFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function BranchUpdateParametersToJSON(value?: BranchUpdateParameters | null): any {
+export function VariableCreateParametersToJSON(value?: VariableCreateParameters | null): any {
     if (value === undefined) {
         return undefined;
     }

@@ -23,9 +23,9 @@ import {
     BranchMergeParameters,
     BranchMergeParametersFromJSON,
     BranchMergeParametersToJSON,
-    BranchUpdateParameters,
-    BranchUpdateParametersFromJSON,
-    BranchUpdateParametersToJSON,
+    BranchUpdateParameters1,
+    BranchUpdateParameters1FromJSON,
+    BranchUpdateParameters1ToJSON,
 } from '../models';
 
 export interface BranchCompareRequest {
@@ -62,11 +62,18 @@ export interface BranchShowRequest {
 export interface BranchUpdateRequest {
     projectId: string;
     name: string;
-    branchUpdateParameters: BranchUpdateParameters;
+    branchUpdateParameters1: BranchUpdateParameters1;
     xPhraseAppOTP?: string;
 }
 
 export interface BranchesListRequest {
+    projectId: string;
+    xPhraseAppOTP?: string;
+    page?: number;
+    perPage?: number;
+}
+
+export interface VariablesListRequest {
     projectId: string;
     xPhraseAppOTP?: string;
     page?: number;
@@ -336,8 +343,8 @@ export class BranchesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling branchUpdate.');
         }
 
-        if (requestParameters.branchUpdateParameters === null || requestParameters.branchUpdateParameters === undefined) {
-            throw new runtime.RequiredError('branchUpdateParameters','Required parameter requestParameters.branchUpdateParameters was null or undefined when calling branchUpdate.');
+        if (requestParameters.branchUpdateParameters1 === null || requestParameters.branchUpdateParameters1 === undefined) {
+            throw new runtime.RequiredError('branchUpdateParameters1','Required parameter requestParameters.branchUpdateParameters1 was null or undefined when calling branchUpdate.');
         }
 
         const queryParameters: any = {};
@@ -362,7 +369,7 @@ export class BranchesApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: BranchUpdateParametersToJSON(requestParameters.branchUpdateParameters),
+            body: BranchUpdateParameters1ToJSON(requestParameters.branchUpdateParameters1),
         });
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BranchFromJSON(jsonValue));
@@ -425,6 +432,57 @@ export class BranchesApi extends runtime.BaseAPI {
      */
     async branchesList(requestParameters: BranchesListRequest): Promise<Array<Branch>> {
         const response = await this.branchesListRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * List all variables for the current project.
+     * List variables
+     */
+    async variablesListRaw(requestParameters: VariablesListRequest): Promise<runtime.ApiResponse<Array<object>>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling variablesList.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.perPage !== undefined) {
+            queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/projects/{project_id}/variables`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        });
+
+        return new runtime.JSONApiResponse<any>(response);
+    }
+
+    /**
+     * List all variables for the current project.
+     * List variables
+     */
+    async variablesList(requestParameters: VariablesListRequest): Promise<Array<object>> {
+        const response = await this.variablesListRaw(requestParameters);
         return await response.value();
     }
 

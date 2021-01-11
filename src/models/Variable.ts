@@ -15,28 +15,40 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface BranchUpdateParameters
+ * @interface Variable
  */
-export interface BranchUpdateParameters {
+export interface Variable {
     /**
-     * Name of the variable
+     * 
      * @type {string}
-     * @memberof BranchUpdateParameters
+     * @memberof Variable
      */
     name?: string;
     /**
-     * Value of the variable
+     * 
      * @type {string}
-     * @memberof BranchUpdateParameters
+     * @memberof Variable
      */
     value?: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof Variable
+     */
+    createdAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof Variable
+     */
+    updatedAt?: Date;
 }
 
-export function BranchUpdateParametersFromJSON(json: any): BranchUpdateParameters {
-    return BranchUpdateParametersFromJSONTyped(json, false);
+export function VariableFromJSON(json: any): Variable {
+    return VariableFromJSONTyped(json, false);
 }
 
-export function BranchUpdateParametersFromJSONTyped(json: any, ignoreDiscriminator: boolean): BranchUpdateParameters {
+export function VariableFromJSONTyped(json: any, ignoreDiscriminator: boolean): Variable {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -44,10 +56,12 @@ export function BranchUpdateParametersFromJSONTyped(json: any, ignoreDiscriminat
         
         'name': !exists(json, 'name') ? undefined : json['name'],
         'value': !exists(json, 'value') ? undefined : json['value'],
+        'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
+        'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
     };
 }
 
-export function BranchUpdateParametersToJSON(value?: BranchUpdateParameters | null): any {
+export function VariableToJSON(value?: Variable | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -58,6 +72,8 @@ export function BranchUpdateParametersToJSON(value?: BranchUpdateParameters | nu
         
         'name': value.name,
         'value': value.value,
+        'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
+        'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
     };
 }
 
