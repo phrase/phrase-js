@@ -15,32 +15,39 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface BranchUpdateParameters1
+ * @interface VariableUpdateParameters
  */
-export interface BranchUpdateParameters1 {
+export interface VariableUpdateParameters {
     /**
-     * Name of the branch
+     * Name of the variable
      * @type {string}
-     * @memberof BranchUpdateParameters1
+     * @memberof VariableUpdateParameters
      */
     name?: string;
+    /**
+     * Value of the variable
+     * @type {string}
+     * @memberof VariableUpdateParameters
+     */
+    value?: string;
 }
 
-export function BranchUpdateParameters1FromJSON(json: any): BranchUpdateParameters1 {
-    return BranchUpdateParameters1FromJSONTyped(json, false);
+export function VariableUpdateParametersFromJSON(json: any): VariableUpdateParameters {
+    return VariableUpdateParametersFromJSONTyped(json, false);
 }
 
-export function BranchUpdateParameters1FromJSONTyped(json: any, ignoreDiscriminator: boolean): BranchUpdateParameters1 {
+export function VariableUpdateParametersFromJSONTyped(json: any, ignoreDiscriminator: boolean): VariableUpdateParameters {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
         'name': !exists(json, 'name') ? undefined : json['name'],
+        'value': !exists(json, 'value') ? undefined : json['value'],
     };
 }
 
-export function BranchUpdateParameters1ToJSON(value?: BranchUpdateParameters1 | null): any {
+export function VariableUpdateParametersToJSON(value?: VariableUpdateParameters | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -50,6 +57,7 @@ export function BranchUpdateParameters1ToJSON(value?: BranchUpdateParameters1 | 
     return {
         
         'name': value.name,
+        'value': value.value,
     };
 }
 

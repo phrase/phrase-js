@@ -23,9 +23,9 @@ import {
     BranchMergeParameters,
     BranchMergeParametersFromJSON,
     BranchMergeParametersToJSON,
-    BranchUpdateParameters1,
-    BranchUpdateParameters1FromJSON,
-    BranchUpdateParameters1ToJSON,
+    BranchUpdateParameters,
+    BranchUpdateParametersFromJSON,
+    BranchUpdateParametersToJSON,
 } from '../models';
 
 export interface BranchCompareRequest {
@@ -62,7 +62,7 @@ export interface BranchShowRequest {
 export interface BranchUpdateRequest {
     projectId: string;
     name: string;
-    branchUpdateParameters1: BranchUpdateParameters1;
+    branchUpdateParameters: BranchUpdateParameters;
     xPhraseAppOTP?: string;
 }
 
@@ -336,8 +336,8 @@ export class BranchesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling branchUpdate.');
         }
 
-        if (requestParameters.branchUpdateParameters1 === null || requestParameters.branchUpdateParameters1 === undefined) {
-            throw new runtime.RequiredError('branchUpdateParameters1','Required parameter requestParameters.branchUpdateParameters1 was null or undefined when calling branchUpdate.');
+        if (requestParameters.branchUpdateParameters === null || requestParameters.branchUpdateParameters === undefined) {
+            throw new runtime.RequiredError('branchUpdateParameters','Required parameter requestParameters.branchUpdateParameters was null or undefined when calling branchUpdate.');
         }
 
         const queryParameters: any = {};
@@ -362,7 +362,7 @@ export class BranchesApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: BranchUpdateParameters1ToJSON(requestParameters.branchUpdateParameters1),
+            body: BranchUpdateParametersToJSON(requestParameters.branchUpdateParameters),
         });
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BranchFromJSON(jsonValue));

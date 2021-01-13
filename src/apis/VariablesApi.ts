@@ -14,15 +14,15 @@
 
 import * as runtime from '../runtime';
 import {
-    BranchUpdateParameters,
-    BranchUpdateParametersFromJSON,
-    BranchUpdateParametersToJSON,
     Variable,
     VariableFromJSON,
     VariableToJSON,
     VariableCreateParameters,
     VariableCreateParametersFromJSON,
     VariableCreateParametersToJSON,
+    VariableUpdateParameters,
+    VariableUpdateParametersFromJSON,
+    VariableUpdateParametersToJSON,
 } from '../models';
 
 export interface VariableCreateRequest {
@@ -46,7 +46,7 @@ export interface VariableShowRequest {
 export interface VariableUpdateRequest {
     projectId: string;
     name: string;
-    branchUpdateParameters: BranchUpdateParameters;
+    variableUpdateParameters: VariableUpdateParameters;
     xPhraseAppOTP?: string;
 }
 
@@ -163,7 +163,7 @@ export class VariablesApi extends runtime.BaseAPI {
      * Get details on a single variable for a given project.
      * Get a single variable
      */
-    async variableShowRaw(requestParameters: VariableShowRequest): Promise<runtime.ApiResponse<object>> {
+    async variableShowRaw(requestParameters: VariableShowRequest): Promise<runtime.ApiResponse<Variable>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling variableShow.');
         }
@@ -194,14 +194,14 @@ export class VariablesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => VariableFromJSON(jsonValue));
     }
 
     /**
      * Get details on a single variable for a given project.
      * Get a single variable
      */
-    async variableShow(requestParameters: VariableShowRequest): Promise<object> {
+    async variableShow(requestParameters: VariableShowRequest): Promise<Variable> {
         const response = await this.variableShowRaw(requestParameters);
         return await response.value();
     }
@@ -210,7 +210,7 @@ export class VariablesApi extends runtime.BaseAPI {
      * Update an existing variable.
      * Update a variable
      */
-    async variableUpdateRaw(requestParameters: VariableUpdateRequest): Promise<runtime.ApiResponse<object>> {
+    async variableUpdateRaw(requestParameters: VariableUpdateRequest): Promise<runtime.ApiResponse<Variable>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling variableUpdate.');
         }
@@ -219,8 +219,8 @@ export class VariablesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling variableUpdate.');
         }
 
-        if (requestParameters.branchUpdateParameters === null || requestParameters.branchUpdateParameters === undefined) {
-            throw new runtime.RequiredError('branchUpdateParameters','Required parameter requestParameters.branchUpdateParameters was null or undefined when calling variableUpdate.');
+        if (requestParameters.variableUpdateParameters === null || requestParameters.variableUpdateParameters === undefined) {
+            throw new runtime.RequiredError('variableUpdateParameters','Required parameter requestParameters.variableUpdateParameters was null or undefined when calling variableUpdate.');
         }
 
         const queryParameters: any = {};
@@ -245,17 +245,17 @@ export class VariablesApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: BranchUpdateParametersToJSON(requestParameters.branchUpdateParameters),
+            body: VariableUpdateParametersToJSON(requestParameters.variableUpdateParameters),
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => VariableFromJSON(jsonValue));
     }
 
     /**
      * Update an existing variable.
      * Update a variable
      */
-    async variableUpdate(requestParameters: VariableUpdateRequest): Promise<object> {
+    async variableUpdate(requestParameters: VariableUpdateRequest): Promise<Variable> {
         const response = await this.variableUpdateRaw(requestParameters);
         return await response.value();
     }
@@ -264,7 +264,7 @@ export class VariablesApi extends runtime.BaseAPI {
      * List all variables for the current project.
      * List variables
      */
-    async variablesListRaw(requestParameters: VariablesListRequest): Promise<runtime.ApiResponse<Array<object>>> {
+    async variablesListRaw(requestParameters: VariablesListRequest): Promise<runtime.ApiResponse<Array<Variable>>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling variablesList.');
         }
@@ -299,14 +299,14 @@ export class VariablesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(VariableFromJSON));
     }
 
     /**
      * List all variables for the current project.
      * List variables
      */
-    async variablesList(requestParameters: VariablesListRequest): Promise<Array<object>> {
+    async variablesList(requestParameters: VariablesListRequest): Promise<Array<Variable>> {
         const response = await this.variablesListRaw(requestParameters);
         return await response.value();
     }

@@ -19,17 +19,11 @@ import { exists, mapValues } from '../runtime';
  */
 export interface BranchUpdateParameters {
     /**
-     * Name of the variable
+     * Name of the branch
      * @type {string}
      * @memberof BranchUpdateParameters
      */
     name?: string;
-    /**
-     * Value of the variable
-     * @type {string}
-     * @memberof BranchUpdateParameters
-     */
-    value?: string;
 }
 
 export function BranchUpdateParametersFromJSON(json: any): BranchUpdateParameters {
@@ -43,7 +37,6 @@ export function BranchUpdateParametersFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'name': !exists(json, 'name') ? undefined : json['name'],
-        'value': !exists(json, 'value') ? undefined : json['value'],
     };
 }
 
@@ -57,7 +50,6 @@ export function BranchUpdateParametersToJSON(value?: BranchUpdateParameters | nu
     return {
         
         'name': value.name,
-        'value': value.value,
     };
 }
 
