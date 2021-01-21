@@ -35,12 +35,14 @@ export interface ScreenshotDeleteRequest {
     projectId: string;
     id: string;
     xPhraseAppOTP?: string;
+    branch?: string;
 }
 
 export interface ScreenshotShowRequest {
     projectId: string;
     id: string;
     xPhraseAppOTP?: string;
+    branch?: string;
 }
 
 export interface ScreenshotUpdateRequest {
@@ -55,6 +57,7 @@ export interface ScreenshotsListRequest {
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
+    branch?: string;
     keyId?: string;
 }
 
@@ -128,6 +131,10 @@ export class ScreenshotsApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.branch !== undefined) {
+            queryParameters['branch'] = requestParameters.branch;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
@@ -174,6 +181,10 @@ export class ScreenshotsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.branch !== undefined) {
+            queryParameters['branch'] = requestParameters.branch;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -278,6 +289,10 @@ export class ScreenshotsApi extends runtime.BaseAPI {
 
         if (requestParameters.perPage !== undefined) {
             queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        if (requestParameters.branch !== undefined) {
+            queryParameters['branch'] = requestParameters.branch;
         }
 
         if (requestParameters.keyId !== undefined) {

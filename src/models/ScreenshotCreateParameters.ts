@@ -19,6 +19,12 @@ import { exists, mapValues } from '../runtime';
  */
 export interface ScreenshotCreateParameters {
     /**
+     * specify the branch to use
+     * @type {string}
+     * @memberof ScreenshotCreateParameters
+     */
+    branch?: string;
+    /**
      * Name of the screenshot
      * @type {string}
      * @memberof ScreenshotCreateParameters
@@ -48,6 +54,7 @@ export function ScreenshotCreateParametersFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
+        'branch': !exists(json, 'branch') ? undefined : json['branch'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'filename': !exists(json, 'filename') ? undefined : json['filename'],
@@ -63,6 +70,7 @@ export function ScreenshotCreateParametersToJSON(value?: ScreenshotCreateParamet
     }
     return {
         
+        'branch': value.branch,
         'name': value.name,
         'description': value.description,
         'filename': value.filename,

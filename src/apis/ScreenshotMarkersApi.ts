@@ -36,6 +36,7 @@ export interface ScreenshotMarkerDeleteRequest {
     projectId: string;
     screenshotId: string;
     xPhraseAppOTP?: string;
+    branch?: string;
 }
 
 export interface ScreenshotMarkerShowRequest {
@@ -43,6 +44,7 @@ export interface ScreenshotMarkerShowRequest {
     screenshotId: string;
     id: string;
     xPhraseAppOTP?: string;
+    branch?: string;
 }
 
 export interface ScreenshotMarkerUpdateRequest {
@@ -58,6 +60,7 @@ export interface ScreenshotMarkersListRequest {
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
+    branch?: string;
 }
 
 /**
@@ -134,6 +137,10 @@ export class ScreenshotMarkersApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.branch !== undefined) {
+            queryParameters['branch'] = requestParameters.branch;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
@@ -184,6 +191,10 @@ export class ScreenshotMarkersApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.branch !== undefined) {
+            queryParameters['branch'] = requestParameters.branch;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -292,6 +303,10 @@ export class ScreenshotMarkersApi extends runtime.BaseAPI {
 
         if (requestParameters.perPage !== undefined) {
             queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        if (requestParameters.branch !== undefined) {
+            queryParameters['branch'] = requestParameters.branch;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

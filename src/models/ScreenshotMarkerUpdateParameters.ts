@@ -19,6 +19,12 @@ import { exists, mapValues } from '../runtime';
  */
 export interface ScreenshotMarkerUpdateParameters {
     /**
+     * specify the branch to use
+     * @type {string}
+     * @memberof ScreenshotMarkerUpdateParameters
+     */
+    branch?: string;
+    /**
      * Specify the Key ID which should be highlighted on the specified screenshot. The Key must belong to the project.
      * @type {string}
      * @memberof ScreenshotMarkerUpdateParameters
@@ -42,6 +48,7 @@ export function ScreenshotMarkerUpdateParametersFromJSONTyped(json: any, ignoreD
     }
     return {
         
+        'branch': !exists(json, 'branch') ? undefined : json['branch'],
         'keyId': !exists(json, 'key_id') ? undefined : json['key_id'],
         'presentation': !exists(json, 'presentation') ? undefined : json['presentation'],
     };
@@ -56,6 +63,7 @@ export function ScreenshotMarkerUpdateParametersToJSON(value?: ScreenshotMarkerU
     }
     return {
         
+        'branch': value.branch,
         'key_id': value.keyId,
         'presentation': value.presentation,
     };
