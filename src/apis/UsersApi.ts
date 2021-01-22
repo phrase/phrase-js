@@ -14,9 +14,9 @@
 
 import * as runtime from '../runtime';
 import {
-    User,
-    UserFromJSON,
-    UserToJSON,
+    CurrentUser,
+    CurrentUserFromJSON,
+    CurrentUserToJSON,
 } from '../models';
 
 export interface ShowUserRequest {
@@ -32,7 +32,7 @@ export class UsersApi extends runtime.BaseAPI {
      * Show details for current User.
      * Show current User
      */
-    async showUserRaw(requestParameters: ShowUserRequest): Promise<runtime.ApiResponse<User>> {
+    async showUserRaw(requestParameters: ShowUserRequest): Promise<runtime.ApiResponse<CurrentUser>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -55,14 +55,14 @@ export class UsersApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UserFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CurrentUserFromJSON(jsonValue));
     }
 
     /**
      * Show details for current User.
      * Show current User
      */
-    async showUser(requestParameters: ShowUserRequest): Promise<User> {
+    async showUser(requestParameters: ShowUserRequest): Promise<CurrentUser> {
         const response = await this.showUserRaw(requestParameters);
         return await response.value();
     }

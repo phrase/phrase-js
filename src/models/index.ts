@@ -24,6 +24,7 @@ export * from './Comment';
 export * from './CommentCreateParameters';
 export * from './CommentMarkReadParameters';
 export * from './CommentUpdateParameters';
+export * from './CurrentUser';
 export * from './Distribution';
 export * from './DistributionCreateParameters';
 export * from './DistributionPreview';
