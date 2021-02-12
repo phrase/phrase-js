@@ -233,7 +233,7 @@ Class | Method | HTTP request | Description
 *KeysApi* | **keyDelete** | **DELETE** /projects/{project_id}/keys/{id} | Delete a key
 *KeysApi* | **keyShow** | **GET** /projects/{project_id}/keys/{id} | Get a single key
 *KeysApi* | **keyUpdate** | **PATCH** /projects/{project_id}/keys/{id} | Update a key
-*KeysApi* | **keysDelete** | **DELETE** /projects/{project_id}/keys | Delete collection of keys
+*KeysApi* | **keysDeleteCollection** | **DELETE** /projects/{project_id}/keys | Delete collection of keys
 *KeysApi* | **keysList** | **GET** /projects/{project_id}/keys | List keys
 *KeysApi* | **keysSearch** | **POST** /projects/{project_id}/keys/search | Search keys
 *KeysApi* | **keysTag** | **PATCH** /projects/{project_id}/keys/tag | Add tags to collection of keys
@@ -313,13 +313,13 @@ Class | Method | HTTP request | Description
 *TranslationsApi* | **translationVerify** | **PATCH** /projects/{project_id}/translations/{id}/verify | Verify a translation
 *TranslationsApi* | **translationsByKey** | **GET** /projects/{project_id}/keys/{key_id}/translations | List translations by key
 *TranslationsApi* | **translationsByLocale** | **GET** /projects/{project_id}/locales/{locale_id}/translations | List translations by locale
-*TranslationsApi* | **translationsExclude** | **PATCH** /projects/{project_id}/translations/exclude | Set exclude from export flag on translations selected by query
-*TranslationsApi* | **translationsInclude** | **PATCH** /projects/{project_id}/translations/include | Remove exlude from import flag from translations selected by query
+*TranslationsApi* | **translationsExcludeCollection** | **PATCH** /projects/{project_id}/translations/exclude | Set exclude from export flag on translations selected by query
+*TranslationsApi* | **translationsIncludeCollection** | **PATCH** /projects/{project_id}/translations/include | Remove exlude from import flag from translations selected by query
 *TranslationsApi* | **translationsList** | **GET** /projects/{project_id}/translations | List all translations
-*TranslationsApi* | **translationsReview** | **PATCH** /projects/{project_id}/translations/review | Review translations selected by query
+*TranslationsApi* | **translationsReviewCollection** | **PATCH** /projects/{project_id}/translations/review | Review translations selected by query
 *TranslationsApi* | **translationsSearch** | **POST** /projects/{project_id}/translations/search | Search translations
-*TranslationsApi* | **translationsUnverify** | **PATCH** /projects/{project_id}/translations/unverify | Mark translations selected by query as unverified
-*TranslationsApi* | **translationsVerify** | **PATCH** /projects/{project_id}/translations/verify | Verify translations selected by query
+*TranslationsApi* | **translationsUnverifyCollection** | **PATCH** /projects/{project_id}/translations/unverify | Mark translations selected by query as unverified
+*TranslationsApi* | **translationsVerifyCollection** | **PATCH** /projects/{project_id}/translations/verify | Verify translations selected by query
 *UploadsApi* | **uploadCreate** | **POST** /projects/{project_id}/uploads | Upload a new file
 *UploadsApi* | **uploadShow** | **GET** /projects/{project_id}/uploads/{id} | View upload details
 *UploadsApi* | **uploadsList** | **GET** /projects/{project_id}/uploads | List uploads

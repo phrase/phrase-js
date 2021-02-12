@@ -67,7 +67,7 @@ export interface KeyUpdateRequest {
     xPhraseAppOTP?: string;
 }
 
-export interface KeysDeleteRequest {
+export interface KeysDeleteCollectionRequest {
     projectId: string;
     xPhraseAppOTP?: string;
     branch?: string;
@@ -322,9 +322,9 @@ export class KeysApi extends runtime.BaseAPI {
      * Delete all keys matching query. Same constraints as list. Please limit the number of affected keys to about 1,000 as you might experience timeouts otherwise.
      * Delete collection of keys
      */
-    async keysDeleteRaw(requestParameters: KeysDeleteRequest): Promise<runtime.ApiResponse<AffectedResources>> {
+    async keysDeleteCollectionRaw(requestParameters: KeysDeleteCollectionRequest): Promise<runtime.ApiResponse<AffectedResources>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
-            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling keysDelete.');
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling keysDeleteCollection.');
         }
 
         const queryParameters: any = {};
@@ -368,8 +368,8 @@ export class KeysApi extends runtime.BaseAPI {
      * Delete all keys matching query. Same constraints as list. Please limit the number of affected keys to about 1,000 as you might experience timeouts otherwise.
      * Delete collection of keys
      */
-    async keysDelete(requestParameters: KeysDeleteRequest): Promise<AffectedResources> {
-        const response = await this.keysDeleteRaw(requestParameters);
+    async keysDeleteCollection(requestParameters: KeysDeleteCollectionRequest): Promise<AffectedResources> {
+        const response = await this.keysDeleteCollectionRaw(requestParameters);
         return await response.value();
     }
 

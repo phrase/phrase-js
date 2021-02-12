@@ -143,13 +143,13 @@ export interface TranslationsByLocaleRequest {
     q?: string;
 }
 
-export interface TranslationsExcludeRequest {
+export interface TranslationsExcludeCollectionRequest {
     projectId: string;
     translationsExcludeParameters: TranslationsExcludeParameters;
     xPhraseAppOTP?: string;
 }
 
-export interface TranslationsIncludeRequest {
+export interface TranslationsIncludeCollectionRequest {
     projectId: string;
     translationsIncludeParameters: TranslationsIncludeParameters;
     xPhraseAppOTP?: string;
@@ -166,7 +166,7 @@ export interface TranslationsListRequest {
     q?: string;
 }
 
-export interface TranslationsReviewRequest {
+export interface TranslationsReviewCollectionRequest {
     projectId: string;
     translationsReviewParameters: TranslationsReviewParameters;
     xPhraseAppOTP?: string;
@@ -180,13 +180,13 @@ export interface TranslationsSearchRequest {
     perPage?: number;
 }
 
-export interface TranslationsUnverifyRequest {
+export interface TranslationsUnverifyCollectionRequest {
     projectId: string;
     translationsUnverifyParameters: TranslationsUnverifyParameters;
     xPhraseAppOTP?: string;
 }
 
-export interface TranslationsVerifyRequest {
+export interface TranslationsVerifyCollectionRequest {
     projectId: string;
     translationsVerifyParameters: TranslationsVerifyParameters;
     xPhraseAppOTP?: string;
@@ -768,13 +768,13 @@ export class TranslationsApi extends runtime.BaseAPI {
      * Exclude translations matching query from locale export.
      * Set exclude from export flag on translations selected by query
      */
-    async translationsExcludeRaw(requestParameters: TranslationsExcludeRequest): Promise<runtime.ApiResponse<AffectedCount>> {
+    async translationsExcludeCollectionRaw(requestParameters: TranslationsExcludeCollectionRequest): Promise<runtime.ApiResponse<AffectedCount>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
-            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling translationsExclude.');
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling translationsExcludeCollection.');
         }
 
         if (requestParameters.translationsExcludeParameters === null || requestParameters.translationsExcludeParameters === undefined) {
-            throw new runtime.RequiredError('translationsExcludeParameters','Required parameter requestParameters.translationsExcludeParameters was null or undefined when calling translationsExclude.');
+            throw new runtime.RequiredError('translationsExcludeParameters','Required parameter requestParameters.translationsExcludeParameters was null or undefined when calling translationsExcludeCollection.');
         }
 
         const queryParameters: any = {};
@@ -809,8 +809,8 @@ export class TranslationsApi extends runtime.BaseAPI {
      * Exclude translations matching query from locale export.
      * Set exclude from export flag on translations selected by query
      */
-    async translationsExclude(requestParameters: TranslationsExcludeRequest): Promise<AffectedCount> {
-        const response = await this.translationsExcludeRaw(requestParameters);
+    async translationsExcludeCollection(requestParameters: TranslationsExcludeCollectionRequest): Promise<AffectedCount> {
+        const response = await this.translationsExcludeCollectionRaw(requestParameters);
         return await response.value();
     }
 
@@ -818,13 +818,13 @@ export class TranslationsApi extends runtime.BaseAPI {
      * Include translations matching query in locale export.
      * Remove exlude from import flag from translations selected by query
      */
-    async translationsIncludeRaw(requestParameters: TranslationsIncludeRequest): Promise<runtime.ApiResponse<AffectedCount>> {
+    async translationsIncludeCollectionRaw(requestParameters: TranslationsIncludeCollectionRequest): Promise<runtime.ApiResponse<AffectedCount>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
-            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling translationsInclude.');
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling translationsIncludeCollection.');
         }
 
         if (requestParameters.translationsIncludeParameters === null || requestParameters.translationsIncludeParameters === undefined) {
-            throw new runtime.RequiredError('translationsIncludeParameters','Required parameter requestParameters.translationsIncludeParameters was null or undefined when calling translationsInclude.');
+            throw new runtime.RequiredError('translationsIncludeParameters','Required parameter requestParameters.translationsIncludeParameters was null or undefined when calling translationsIncludeCollection.');
         }
 
         const queryParameters: any = {};
@@ -859,8 +859,8 @@ export class TranslationsApi extends runtime.BaseAPI {
      * Include translations matching query in locale export.
      * Remove exlude from import flag from translations selected by query
      */
-    async translationsInclude(requestParameters: TranslationsIncludeRequest): Promise<AffectedCount> {
-        const response = await this.translationsIncludeRaw(requestParameters);
+    async translationsIncludeCollection(requestParameters: TranslationsIncludeCollectionRequest): Promise<AffectedCount> {
+        const response = await this.translationsIncludeCollectionRaw(requestParameters);
         return await response.value();
     }
 
@@ -935,13 +935,13 @@ export class TranslationsApi extends runtime.BaseAPI {
      * Review translations matching query.
      * Review translations selected by query
      */
-    async translationsReviewRaw(requestParameters: TranslationsReviewRequest): Promise<runtime.ApiResponse<AffectedCount>> {
+    async translationsReviewCollectionRaw(requestParameters: TranslationsReviewCollectionRequest): Promise<runtime.ApiResponse<AffectedCount>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
-            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling translationsReview.');
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling translationsReviewCollection.');
         }
 
         if (requestParameters.translationsReviewParameters === null || requestParameters.translationsReviewParameters === undefined) {
-            throw new runtime.RequiredError('translationsReviewParameters','Required parameter requestParameters.translationsReviewParameters was null or undefined when calling translationsReview.');
+            throw new runtime.RequiredError('translationsReviewParameters','Required parameter requestParameters.translationsReviewParameters was null or undefined when calling translationsReviewCollection.');
         }
 
         const queryParameters: any = {};
@@ -976,8 +976,8 @@ export class TranslationsApi extends runtime.BaseAPI {
      * Review translations matching query.
      * Review translations selected by query
      */
-    async translationsReview(requestParameters: TranslationsReviewRequest): Promise<AffectedCount> {
-        const response = await this.translationsReviewRaw(requestParameters);
+    async translationsReviewCollection(requestParameters: TranslationsReviewCollectionRequest): Promise<AffectedCount> {
+        const response = await this.translationsReviewCollectionRaw(requestParameters);
         return await response.value();
     }
 
@@ -1043,13 +1043,13 @@ export class TranslationsApi extends runtime.BaseAPI {
      * Mark translations matching query as unverified.
      * Mark translations selected by query as unverified
      */
-    async translationsUnverifyRaw(requestParameters: TranslationsUnverifyRequest): Promise<runtime.ApiResponse<AffectedCount>> {
+    async translationsUnverifyCollectionRaw(requestParameters: TranslationsUnverifyCollectionRequest): Promise<runtime.ApiResponse<AffectedCount>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
-            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling translationsUnverify.');
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling translationsUnverifyCollection.');
         }
 
         if (requestParameters.translationsUnverifyParameters === null || requestParameters.translationsUnverifyParameters === undefined) {
-            throw new runtime.RequiredError('translationsUnverifyParameters','Required parameter requestParameters.translationsUnverifyParameters was null or undefined when calling translationsUnverify.');
+            throw new runtime.RequiredError('translationsUnverifyParameters','Required parameter requestParameters.translationsUnverifyParameters was null or undefined when calling translationsUnverifyCollection.');
         }
 
         const queryParameters: any = {};
@@ -1084,8 +1084,8 @@ export class TranslationsApi extends runtime.BaseAPI {
      * Mark translations matching query as unverified.
      * Mark translations selected by query as unverified
      */
-    async translationsUnverify(requestParameters: TranslationsUnverifyRequest): Promise<AffectedCount> {
-        const response = await this.translationsUnverifyRaw(requestParameters);
+    async translationsUnverifyCollection(requestParameters: TranslationsUnverifyCollectionRequest): Promise<AffectedCount> {
+        const response = await this.translationsUnverifyCollectionRaw(requestParameters);
         return await response.value();
     }
 
@@ -1093,13 +1093,13 @@ export class TranslationsApi extends runtime.BaseAPI {
      * Verify translations matching query.
      * Verify translations selected by query
      */
-    async translationsVerifyRaw(requestParameters: TranslationsVerifyRequest): Promise<runtime.ApiResponse<AffectedCount>> {
+    async translationsVerifyCollectionRaw(requestParameters: TranslationsVerifyCollectionRequest): Promise<runtime.ApiResponse<AffectedCount>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
-            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling translationsVerify.');
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling translationsVerifyCollection.');
         }
 
         if (requestParameters.translationsVerifyParameters === null || requestParameters.translationsVerifyParameters === undefined) {
-            throw new runtime.RequiredError('translationsVerifyParameters','Required parameter requestParameters.translationsVerifyParameters was null or undefined when calling translationsVerify.');
+            throw new runtime.RequiredError('translationsVerifyParameters','Required parameter requestParameters.translationsVerifyParameters was null or undefined when calling translationsVerifyCollection.');
         }
 
         const queryParameters: any = {};
@@ -1134,8 +1134,8 @@ export class TranslationsApi extends runtime.BaseAPI {
      * Verify translations matching query.
      * Verify translations selected by query
      */
-    async translationsVerify(requestParameters: TranslationsVerifyRequest): Promise<AffectedCount> {
-        const response = await this.translationsVerifyRaw(requestParameters);
+    async translationsVerifyCollection(requestParameters: TranslationsVerifyCollectionRequest): Promise<AffectedCount> {
+        const response = await this.translationsVerifyCollectionRaw(requestParameters);
         return await response.value();
     }
 
