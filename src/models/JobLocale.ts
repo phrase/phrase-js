@@ -63,6 +63,18 @@ export interface JobLocale {
      * @memberof JobLocale
      */
     completed?: boolean;
+    /**
+     * 
+     * @type {Date}
+     * @memberof JobLocale
+     */
+    translationCompletedAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof JobLocale
+     */
+    reviewCompletedAt?: Date;
 }
 
 export function JobLocaleFromJSON(json: any): JobLocale {
@@ -80,6 +92,8 @@ export function JobLocaleFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'locale': !exists(json, 'locale') ? undefined : LocalePreviewFromJSON(json['locale']),
         'users': !exists(json, 'users') ? undefined : ((json['users'] as Array<any>).map(UserPreviewFromJSON)),
         'completed': !exists(json, 'completed') ? undefined : json['completed'],
+        'translationCompletedAt': !exists(json, 'translation_completed_at') ? undefined : (new Date(json['translation_completed_at'])),
+        'reviewCompletedAt': !exists(json, 'review_completed_at') ? undefined : (new Date(json['review_completed_at'])),
     };
 }
 
@@ -97,6 +111,8 @@ export function JobLocaleToJSON(value?: JobLocale | null): any {
         'locale': LocalePreviewToJSON(value.locale),
         'users': value.users === undefined ? undefined : ((value.users as Array<any>).map(UserPreviewToJSON)),
         'completed': value.completed,
+        'translation_completed_at': value.translationCompletedAt === undefined ? undefined : (value.translationCompletedAt.toISOString()),
+        'review_completed_at': value.reviewCompletedAt === undefined ? undefined : (value.reviewCompletedAt.toISOString()),
     };
 }
 
