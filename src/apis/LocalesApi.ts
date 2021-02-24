@@ -194,7 +194,7 @@ export class LocalesApi extends runtime.BaseAPI {
      * Download a locale in a specific file format.
      * Download a locale
      */
-    async localeDownloadRaw(requestParameters: LocaleDownloadRequest): Promise<runtime.ApiResponse<any>> {
+    async localeDownloadRaw(requestParameters: LocaleDownloadRequest): Promise<runtime.ApiResponse<Blob>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling localeDownload.');
         }
@@ -285,14 +285,14 @@ export class LocalesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.TextApiResponse(response) as any;
+        return new runtime.BlobApiResponse(response);
     }
 
     /**
      * Download a locale in a specific file format.
      * Download a locale
      */
-    async localeDownload(requestParameters: LocaleDownloadRequest): Promise<any> {
+    async localeDownload(requestParameters: LocaleDownloadRequest): Promise<Blob> {
         const response = await this.localeDownloadRaw(requestParameters);
         return await response.value();
     }
