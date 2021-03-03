@@ -108,6 +108,7 @@ export * from './ScreenshotMarkerCreateParameters';
 export * from './ScreenshotMarkerUpdateParameters';
 export * from './ScreenshotUpdateParameters';
 export * from './Space';
+export * from './Space1';
 export * from './SpaceCreateParameters';
 export * from './SpaceUpdateParameters';
 export * from './SpacesProjectsCreateParameters';

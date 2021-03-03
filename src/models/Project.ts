@@ -17,6 +17,10 @@ import {
     AccountFromJSON,
     AccountFromJSONTyped,
     AccountToJSON,
+    Space1,
+    Space1FromJSON,
+    Space1FromJSONTyped,
+    Space1ToJSON,
 } from './';
 
 /**
@@ -63,6 +67,12 @@ export interface Project {
     account?: Account;
     /**
      * 
+     * @type {Space1}
+     * @memberof Project
+     */
+    space?: Space1;
+    /**
+     * 
      * @type {Date}
      * @memberof Project
      */
@@ -91,6 +101,7 @@ export function ProjectFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
         'mainFormat': !exists(json, 'main_format') ? undefined : json['main_format'],
         'projectImageUrl': !exists(json, 'project_image_url') ? undefined : json['project_image_url'],
         'account': !exists(json, 'account') ? undefined : AccountFromJSON(json['account']),
+        'space': !exists(json, 'space') ? undefined : Space1FromJSON(json['space']),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
     };
@@ -111,6 +122,7 @@ export function ProjectToJSON(value?: Project | null): any {
         'main_format': value.mainFormat,
         'project_image_url': value.projectImageUrl,
         'account': AccountToJSON(value.account),
+        'space': Space1ToJSON(value.space),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
     };
