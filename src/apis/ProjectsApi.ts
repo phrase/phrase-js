@@ -53,6 +53,7 @@ export interface ProjectsListRequest {
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
+    accountId?: string;
     sortBy?: string;
 }
 
@@ -256,6 +257,10 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         if (requestParameters.perPage !== undefined) {
             queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        if (requestParameters.accountId !== undefined) {
+            queryParameters['account_id'] = requestParameters.accountId;
         }
 
         if (requestParameters.sortBy !== undefined) {
