@@ -54,6 +54,12 @@ export interface Account {
      * @memberof Account
      */
     updatedAt?: Date;
+    /**
+     * 
+     * @type {string}
+     * @memberof Account
+     */
+    companyLogoUrl?: string;
 }
 
 export function AccountFromJSON(json: any): Account {
@@ -72,6 +78,7 @@ export function AccountFromJSONTyped(json: any, ignoreDiscriminator: boolean): A
         'company': !exists(json, 'company') ? undefined : json['company'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
+        'companyLogoUrl': !exists(json, 'company_logo_url') ? undefined : json['company_logo_url'],
     };
 }
 
@@ -90,6 +97,7 @@ export function AccountToJSON(value?: Account | null): any {
         'company': value.company,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
+        'company_logo_url': value.companyLogoUrl,
     };
 }
 
