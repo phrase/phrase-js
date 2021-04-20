@@ -81,6 +81,7 @@ export interface LocalesListRequest {
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
+    sortBy?: string;
     branch?: string;
 }
 
@@ -419,6 +420,10 @@ export class LocalesApi extends runtime.BaseAPI {
 
         if (requestParameters.perPage !== undefined) {
             queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        if (requestParameters.sortBy !== undefined) {
+            queryParameters['sort_by'] = requestParameters.sortBy;
         }
 
         if (requestParameters.branch !== undefined) {
