@@ -30,6 +30,18 @@ export interface Branch {
      * @type {string}
      * @memberof Branch
      */
+    baseProjectId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Branch
+     */
+    branchProjectId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Branch
+     */
     name?: string;
     /**
      * 
@@ -79,6 +91,8 @@ export function BranchFromJSONTyped(json: any, ignoreDiscriminator: boolean): Br
     }
     return {
         
+        'baseProjectId': !exists(json, 'base_project_id') ? undefined : json['base_project_id'],
+        'branchProjectId': !exists(json, 'branch_project_id') ? undefined : json['branch_project_id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
@@ -98,6 +112,8 @@ export function BranchToJSON(value?: Branch | null): any {
     }
     return {
         
+        'base_project_id': value.baseProjectId,
+        'branch_project_id': value.branchProjectId,
         'name': value.name,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),

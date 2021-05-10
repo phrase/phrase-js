@@ -60,6 +60,102 @@ export interface ProjectCreateParameters {
      * @memberof ProjectCreateParameters
      */
     sourceProjectId?: string;
+    /**
+     * (Optional) Enable machine translation support in the project. Required for Autopilot and Smart Suggest
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    machineTranslationEnabled?: boolean;
+    /**
+     * (Optional) Enable branching in the project
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    enableBranching?: boolean;
+    /**
+     * (Optional) Protect the master branch in project where branching is enabled
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    protectMasterBranch?: boolean;
+    /**
+     * (Optional) Otherwise, translators are not allowed to edit translations other than strings
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    enableAllDataTypeTranslationKeysForTranslators?: boolean;
+    /**
+     * (Optional) We can validate and highlight your ICU messages. <a href=\"https://help.phrase.com/help/icu-message-format\">Read more</a>
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    enableIcuMessageFormat?: boolean;
+    /**
+     * (Optional) Displays the input fields for the \'ZERO\' plural form for every key as well although only some languages require the \'ZERO\' explicitly.
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    zeroPluralFormEnabled?: boolean;
+    /**
+     * (Optional) Autopilot, requires machine_translation_enabled. <a href=\"https://help.phrase.com/help/autopilot\">Read more</a>
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    autotranslateEnabled?: boolean;
+    /**
+     * (Optional) Requires autotranslate_enabled to be true
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    autotranslateCheckNewTranslationKeys?: boolean;
+    /**
+     * (Optional) Requires autotranslate_enabled to be true
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    autotranslateCheckNewUploads?: boolean;
+    /**
+     * (Optional) Requires autotranslate_enabled to be true
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    autotranslateCheckNewLocales?: boolean;
+    /**
+     * (Optional) Requires autotranslate_enabled to be true
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    autotranslateMarkAsUnverified?: boolean;
+    /**
+     * (Optional) Requires autotranslate_enabled to be true
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    autotranslateUseMachineTranslation?: boolean;
+    /**
+     * (Optional) Requires autotranslate_enabled to be true
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    autotranslateUseTranslationMemory?: boolean;
+    /**
+     * (Optional) Smart Suggest, requires machine_translation_enabled
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    smartSuggestEnabled?: boolean;
+    /**
+     * (Optional) Requires smart_suggest_enabled to be true
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    smartSuggestUseGlossary?: boolean;
+    /**
+     * (Optional) Requires smart_suggest_enabled to be true
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    smartSuggestUseMachineTranslation?: boolean;
 }
 
 export function ProjectCreateParametersFromJSON(json: any): ProjectCreateParameters {
@@ -79,6 +175,22 @@ export function ProjectCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'removeProjectImage': !exists(json, 'remove_project_image') ? undefined : json['remove_project_image'],
         'accountId': !exists(json, 'account_id') ? undefined : json['account_id'],
         'sourceProjectId': !exists(json, 'source_project_id') ? undefined : json['source_project_id'],
+        'machineTranslationEnabled': !exists(json, 'machine_translation_enabled') ? undefined : json['machine_translation_enabled'],
+        'enableBranching': !exists(json, 'enable_branching') ? undefined : json['enable_branching'],
+        'protectMasterBranch': !exists(json, 'protect_master_branch') ? undefined : json['protect_master_branch'],
+        'enableAllDataTypeTranslationKeysForTranslators': !exists(json, 'enable_all_data_type_translation_keys_for_translators') ? undefined : json['enable_all_data_type_translation_keys_for_translators'],
+        'enableIcuMessageFormat': !exists(json, 'enable_icu_message_format') ? undefined : json['enable_icu_message_format'],
+        'zeroPluralFormEnabled': !exists(json, 'zero_plural_form_enabled') ? undefined : json['zero_plural_form_enabled'],
+        'autotranslateEnabled': !exists(json, 'autotranslate_enabled') ? undefined : json['autotranslate_enabled'],
+        'autotranslateCheckNewTranslationKeys': !exists(json, 'autotranslate_check_new_translation_keys') ? undefined : json['autotranslate_check_new_translation_keys'],
+        'autotranslateCheckNewUploads': !exists(json, 'autotranslate_check_new_uploads') ? undefined : json['autotranslate_check_new_uploads'],
+        'autotranslateCheckNewLocales': !exists(json, 'autotranslate_check_new_locales') ? undefined : json['autotranslate_check_new_locales'],
+        'autotranslateMarkAsUnverified': !exists(json, 'autotranslate_mark_as_unverified') ? undefined : json['autotranslate_mark_as_unverified'],
+        'autotranslateUseMachineTranslation': !exists(json, 'autotranslate_use_machine_translation') ? undefined : json['autotranslate_use_machine_translation'],
+        'autotranslateUseTranslationMemory': !exists(json, 'autotranslate_use_translation_memory') ? undefined : json['autotranslate_use_translation_memory'],
+        'smartSuggestEnabled': !exists(json, 'smart_suggest_enabled') ? undefined : json['smart_suggest_enabled'],
+        'smartSuggestUseGlossary': !exists(json, 'smart_suggest_use_glossary') ? undefined : json['smart_suggest_use_glossary'],
+        'smartSuggestUseMachineTranslation': !exists(json, 'smart_suggest_use_machine_translation') ? undefined : json['smart_suggest_use_machine_translation'],
     };
 }
 
@@ -98,6 +210,22 @@ export function ProjectCreateParametersToJSON(value?: ProjectCreateParameters | 
         'remove_project_image': value.removeProjectImage,
         'account_id': value.accountId,
         'source_project_id': value.sourceProjectId,
+        'machine_translation_enabled': value.machineTranslationEnabled,
+        'enable_branching': value.enableBranching,
+        'protect_master_branch': value.protectMasterBranch,
+        'enable_all_data_type_translation_keys_for_translators': value.enableAllDataTypeTranslationKeysForTranslators,
+        'enable_icu_message_format': value.enableIcuMessageFormat,
+        'zero_plural_form_enabled': value.zeroPluralFormEnabled,
+        'autotranslate_enabled': value.autotranslateEnabled,
+        'autotranslate_check_new_translation_keys': value.autotranslateCheckNewTranslationKeys,
+        'autotranslate_check_new_uploads': value.autotranslateCheckNewUploads,
+        'autotranslate_check_new_locales': value.autotranslateCheckNewLocales,
+        'autotranslate_mark_as_unverified': value.autotranslateMarkAsUnverified,
+        'autotranslate_use_machine_translation': value.autotranslateUseMachineTranslation,
+        'autotranslate_use_translation_memory': value.autotranslateUseTranslationMemory,
+        'smart_suggest_enabled': value.smartSuggestEnabled,
+        'smart_suggest_use_glossary': value.smartSuggestUseGlossary,
+        'smart_suggest_use_machine_translation': value.smartSuggestUseMachineTranslation,
     };
 }
 
