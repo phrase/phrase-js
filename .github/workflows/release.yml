@@ -2,7 +2,7 @@
 name: Package
 on:
   release:
-    types: [created]
+    types: [created, published]
 jobs:
   build:
     runs-on: ubuntu-latest
