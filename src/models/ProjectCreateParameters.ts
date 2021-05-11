@@ -61,6 +61,12 @@ export interface ProjectCreateParameters {
      */
     sourceProjectId?: string;
     /**
+     * (Optional) Review Workflow. \"simple\" / \"review\". <a href=\"https://help.phrase.com/help/advanced-review-workflow\">Read more</a>
+     * @type {string}
+     * @memberof ProjectCreateParameters
+     */
+    workflow?: string;
+    /**
      * (Optional) Enable machine translation support in the project. Required for Autopilot and Smart Suggest
      * @type {boolean}
      * @memberof ProjectCreateParameters
@@ -175,6 +181,7 @@ export function ProjectCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'removeProjectImage': !exists(json, 'remove_project_image') ? undefined : json['remove_project_image'],
         'accountId': !exists(json, 'account_id') ? undefined : json['account_id'],
         'sourceProjectId': !exists(json, 'source_project_id') ? undefined : json['source_project_id'],
+        'workflow': !exists(json, 'workflow') ? undefined : json['workflow'],
         'machineTranslationEnabled': !exists(json, 'machine_translation_enabled') ? undefined : json['machine_translation_enabled'],
         'enableBranching': !exists(json, 'enable_branching') ? undefined : json['enable_branching'],
         'protectMasterBranch': !exists(json, 'protect_master_branch') ? undefined : json['protect_master_branch'],
@@ -210,6 +217,7 @@ export function ProjectCreateParametersToJSON(value?: ProjectCreateParameters | 
         'remove_project_image': value.removeProjectImage,
         'account_id': value.accountId,
         'source_project_id': value.sourceProjectId,
+        'workflow': value.workflow,
         'machine_translation_enabled': value.machineTranslationEnabled,
         'enable_branching': value.enableBranching,
         'protect_master_branch': value.protectMasterBranch,
