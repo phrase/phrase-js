@@ -12,13 +12,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    AnyType,
-    AnyTypeFromJSON,
-    AnyTypeFromJSONTyped,
-    AnyTypeToJSON,
-} from './';
-
 /**
  * 
  * @export
@@ -39,16 +32,16 @@ export interface MemberSpaces {
     name?: string;
     /**
      * 
-     * @type {AnyType}
+     * @type {Date}
      * @memberof MemberSpaces
      */
-    createdAt?: AnyType;
+    createdAt?: Date;
     /**
      * 
-     * @type {AnyType}
+     * @type {Date}
      * @memberof MemberSpaces
      */
-    updatedAt?: AnyType;
+    updatedAt?: Date;
     /**
      * 
      * @type {number}
@@ -69,8 +62,8 @@ export function MemberSpacesFromJSONTyped(json: any, ignoreDiscriminator: boolea
         
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
-        'createdAt': !exists(json, 'created_at') ? undefined : AnyTypeFromJSON(json['created_at']),
-        'updatedAt': !exists(json, 'updated_at') ? undefined : AnyTypeFromJSON(json['updated_at']),
+        'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
+        'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'projectsCount': !exists(json, 'projects_count') ? undefined : json['projects_count'],
     };
 }
@@ -86,8 +79,8 @@ export function MemberSpacesToJSON(value?: MemberSpaces | null): any {
         
         'id': value.id,
         'name': value.name,
-        'created_at': AnyTypeToJSON(value.createdAt),
-        'updated_at': AnyTypeToJSON(value.updatedAt),
+        'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
+        'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'projects_count': value.projectsCount,
     };
 }
