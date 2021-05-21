@@ -21,6 +21,10 @@ import {
     AccountDetails1FromJSON,
     AccountDetails1FromJSONTyped,
     AccountDetails1ToJSON,
+    Subscription,
+    SubscriptionFromJSON,
+    SubscriptionFromJSONTyped,
+    SubscriptionToJSON,
 } from './';
 
 /**
@@ -71,6 +75,12 @@ export interface AccountDetails {
      * @memberof AccountDetails
      */
     companyLogoUrl?: string;
+    /**
+     * 
+     * @type {Subscription}
+     * @memberof AccountDetails
+     */
+    subscription?: Subscription;
 }
 
 export function AccountDetailsFromJSON(json: any): AccountDetails {
@@ -90,6 +100,7 @@ export function AccountDetailsFromJSONTyped(json: any, ignoreDiscriminator: bool
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'companyLogoUrl': !exists(json, 'company_logo_url') ? undefined : json['company_logo_url'],
+        'subscription': !exists(json, 'subscription') ? undefined : SubscriptionFromJSON(json['subscription']),
     };
 }
 
@@ -109,6 +120,7 @@ export function AccountDetailsToJSON(value?: AccountDetails | null): any {
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'company_logo_url': value.companyLogoUrl,
+        'subscription': SubscriptionToJSON(value.subscription),
     };
 }
 

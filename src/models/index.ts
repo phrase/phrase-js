@@ -118,6 +118,7 @@ export * from './StyleguideDetails';
 export * from './StyleguideDetails1';
 export * from './StyleguidePreview';
 export * from './StyleguideUpdateParameters';
+export * from './Subscription';
 export * from './Tag';
 export * from './TagCreateParameters';
 export * from './TagWithStats';
