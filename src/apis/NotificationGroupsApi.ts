@@ -25,6 +25,15 @@ export interface NotificationGroupsListRequest {
     perPage?: number;
 }
 
+export interface NotificationGroupsMarkAllAsReadRequest {
+    xPhraseAppOTP?: string;
+}
+
+export interface NotificationGroupsMarkAsReadRequest {
+    id: string;
+    xPhraseAppOTP?: string;
+}
+
 /**
  * 
  */
@@ -34,7 +43,7 @@ export class NotificationGroupsApi extends runtime.BaseAPI {
      * List all notification groups from the current user
      * List notification groups
      */
-    async notificationGroupsListRaw(requestParameters: NotificationGroupsListRequest): Promise<runtime.ApiResponse<Array<NotificationGroupDetail>>> {
+    async notificationGroupsListRaw(requestParameters: NotificationGroupsListRequest): Promise<runtime.ApiResponse<Array<object>>> {
         const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
@@ -65,15 +74,97 @@ export class NotificationGroupsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(NotificationGroupDetailFromJSON));
+        return new runtime.JSONApiResponse<any>(response);
     }
 
     /**
      * List all notification groups from the current user
      * List notification groups
      */
-    async notificationGroupsList(requestParameters: NotificationGroupsListRequest): Promise<Array<NotificationGroupDetail>> {
+    async notificationGroupsList(requestParameters: NotificationGroupsListRequest): Promise<Array<object>> {
         const response = await this.notificationGroupsListRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Mark all notification groups of the current user as read
+     * Mark all notification groups as read
+     */
+    async notificationGroupsMarkAllAsReadRaw(requestParameters: NotificationGroupsMarkAllAsReadRequest): Promise<runtime.ApiResponse<Array<object>>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/notification_groups/mark_all_as_read`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        });
+
+        return new runtime.JSONApiResponse<any>(response);
+    }
+
+    /**
+     * Mark all notification groups of the current user as read
+     * Mark all notification groups as read
+     */
+    async notificationGroupsMarkAllAsRead(requestParameters: NotificationGroupsMarkAllAsReadRequest): Promise<Array<object>> {
+        const response = await this.notificationGroupsMarkAllAsReadRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Mark a notifications group of the current user as read
+     * Mark a notification group as read
+     */
+    async notificationGroupsMarkAsReadRaw(requestParameters: NotificationGroupsMarkAsReadRequest): Promise<runtime.ApiResponse<NotificationGroupDetail>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling notificationGroupsMarkAsRead.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/notification_groups/{id}/mark_as_read`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => NotificationGroupDetailFromJSON(jsonValue));
+    }
+
+    /**
+     * Mark a notifications group of the current user as read
+     * Mark a notification group as read
+     */
+    async notificationGroupsMarkAsRead(requestParameters: NotificationGroupsMarkAsReadRequest): Promise<NotificationGroupDetail> {
+        const response = await this.notificationGroupsMarkAsReadRaw(requestParameters);
         return await response.value();
     }
 
