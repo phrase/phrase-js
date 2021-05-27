@@ -249,6 +249,8 @@ Class | Method | HTTP request | Description
 *MembersApi* | **memberUpdate** | **PATCH** /accounts/{account_id}/members/{id} | Update a member
 *MembersApi* | **memberUpdateSettings** | **PATCH** /projects/{project_id}/members/{id} | Update a member\&#39;s project settings
 *MembersApi* | **membersList** | **GET** /accounts/{account_id}/members | List members
+*NotificationGroupsApi* | **notificationGroupsList** | **GET** /notification_groups | List notification groups
+*NotificationsApi* | **notificationsList** | **GET** /notifications | List notifications
 *OrdersApi* | **orderConfirm** | **PATCH** /projects/{project_id}/orders/{id}/confirm | Confirm an order
 *OrdersApi* | **orderCreate** | **POST** /projects/{project_id}/orders | Create a new order
 *OrdersApi* | **orderDelete** | **DELETE** /projects/{project_id}/orders/{id} | Cancel an order

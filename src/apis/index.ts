@@ -18,6 +18,8 @@ export * from './JobsApi';
 export * from './KeysApi';
 export * from './LocalesApi';
 export * from './MembersApi';
+export * from './NotificationGroupsApi';
+export * from './NotificationsApi';
 export * from './OrdersApi';
 export * from './ProjectsApi';
 export * from './ReleasesApi';

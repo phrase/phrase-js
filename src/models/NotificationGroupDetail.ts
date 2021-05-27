@@ -15,67 +15,60 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface User
+ * @interface NotificationGroupDetail
  */
-export interface User {
+export interface NotificationGroupDetail {
     /**
      * 
      * @type {string}
-     * @memberof User
+     * @memberof NotificationGroupDetail
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof User
+     * @memberof NotificationGroupDetail
      */
-    username?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof User
-     */
-    name?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof User
-     */
-    position?: string;
+    eventName?: string;
     /**
      * 
      * @type {Date}
-     * @memberof User
+     * @memberof NotificationGroupDetail
      */
     createdAt?: Date;
     /**
      * 
      * @type {Date}
-     * @memberof User
+     * @memberof NotificationGroupDetail
      */
     updatedAt?: Date;
+    /**
+     * 
+     * @type {object}
+     * @memberof NotificationGroupDetail
+     */
+    latestNotification?: object;
 }
 
-export function UserFromJSON(json: any): User {
-    return UserFromJSONTyped(json, false);
+export function NotificationGroupDetailFromJSON(json: any): NotificationGroupDetail {
+    return NotificationGroupDetailFromJSONTyped(json, false);
 }
 
-export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User {
+export function NotificationGroupDetailFromJSONTyped(json: any, ignoreDiscriminator: boolean): NotificationGroupDetail {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
         'id': !exists(json, 'id') ? undefined : json['id'],
-        'username': !exists(json, 'username') ? undefined : json['username'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'position': !exists(json, 'position') ? undefined : json['position'],
+        'eventName': !exists(json, 'event_name') ? undefined : json['event_name'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
+        'latestNotification': !exists(json, 'latest_notification') ? undefined : json['latest_notification'],
     };
 }
 
-export function UserToJSON(value?: User | null): any {
+export function NotificationGroupDetailToJSON(value?: NotificationGroupDetail | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -85,11 +78,10 @@ export function UserToJSON(value?: User | null): any {
     return {
         
         'id': value.id,
-        'username': value.username,
-        'name': value.name,
-        'position': value.position,
+        'event_name': value.eventName,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
+        'latest_notification': value.latestNotification,
     };
 }
 

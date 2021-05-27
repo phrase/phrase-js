@@ -12,12 +12,25 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    Subscription,
+    SubscriptionFromJSON,
+    SubscriptionFromJSONTyped,
+    SubscriptionToJSON,
+} from './';
+
 /**
  * 
  * @export
  * @interface AccountDetails1
  */
 export interface AccountDetails1 {
+    /**
+     * 
+     * @type {Subscription}
+     * @memberof AccountDetails1
+     */
+    subscription?: Subscription;
     /**
      * 
      * @type {string}
@@ -36,6 +49,7 @@ export function AccountDetails1FromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
         
+        'subscription': !exists(json, 'subscription') ? undefined : SubscriptionFromJSON(json['subscription']),
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
     };
 }
@@ -49,6 +63,7 @@ export function AccountDetails1ToJSON(value?: AccountDetails1 | null): any {
     }
     return {
         
+        'subscription': SubscriptionToJSON(value.subscription),
         'slug': value.slug,
     };
 }
