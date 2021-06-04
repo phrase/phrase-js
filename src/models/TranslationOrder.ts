@@ -40,6 +40,12 @@ export interface TranslationOrder {
      * @type {string}
      * @memberof TranslationOrder
      */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TranslationOrder
+     */
     lsp?: string;
     /**
      * 
@@ -144,6 +150,7 @@ export function TranslationOrderFromJSONTyped(json: any, ignoreDiscriminator: bo
     return {
         
         'id': !exists(json, 'id') ? undefined : json['id'],
+        'name': !exists(json, 'name') ? undefined : json['name'],
         'lsp': !exists(json, 'lsp') ? undefined : json['lsp'],
         'amountInCents': !exists(json, 'amount_in_cents') ? undefined : json['amount_in_cents'],
         'currency': !exists(json, 'currency') ? undefined : json['currency'],
@@ -173,6 +180,7 @@ export function TranslationOrderToJSON(value?: TranslationOrder | null): any {
     return {
         
         'id': value.id,
+        'name': value.name,
         'lsp': value.lsp,
         'amount_in_cents': value.amountInCents,
         'currency': value.currency,

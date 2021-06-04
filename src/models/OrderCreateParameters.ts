@@ -25,6 +25,12 @@ export interface OrderCreateParameters {
      */
     branch?: string;
     /**
+     * the name of the order, default name is: Translation order from \'current datetime\'
+     * @type {string}
+     * @memberof OrderCreateParameters
+     */
+    name?: string;
+    /**
      * Name of the LSP that should process this order. Can be one of gengo, textmaster.
      * @type {string}
      * @memberof OrderCreateParameters
@@ -115,6 +121,7 @@ export function OrderCreateParametersFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
+        'name': !exists(json, 'name') ? undefined : json['name'],
         'lsp': !exists(json, 'lsp') ? undefined : json['lsp'],
         'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
         'targetLocaleIds': !exists(json, 'target_locale_ids') ? undefined : json['target_locale_ids'],
@@ -141,6 +148,7 @@ export function OrderCreateParametersToJSON(value?: OrderCreateParameters | null
     return {
         
         'branch': value.branch,
+        'name': value.name,
         'lsp': value.lsp,
         'source_locale_id': value.sourceLocaleId,
         'target_locale_ids': value.targetLocaleIds,
