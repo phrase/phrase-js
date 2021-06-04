@@ -55,6 +55,12 @@ export interface Comment {
      * @memberof Comment
      */
     updatedAt?: Date;
+    /**
+     * 
+     * @type {Array<UserPreview>}
+     * @memberof Comment
+     */
+    mentionedUsers?: Array<UserPreview>;
 }
 
 export function CommentFromJSON(json: any): Comment {
@@ -72,6 +78,7 @@ export function CommentFromJSONTyped(json: any, ignoreDiscriminator: boolean): C
         'user': !exists(json, 'user') ? undefined : UserPreviewFromJSON(json['user']),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
+        'mentionedUsers': !exists(json, 'mentioned_users') ? undefined : ((json['mentioned_users'] as Array<any>).map(UserPreviewFromJSON)),
     };
 }
 
@@ -89,6 +96,7 @@ export function CommentToJSON(value?: Comment | null): any {
         'user': UserPreviewToJSON(value.user),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
+        'mentioned_users': value.mentionedUsers === undefined ? undefined : ((value.mentionedUsers as Array<any>).map(UserPreviewToJSON)),
     };
 }
 
