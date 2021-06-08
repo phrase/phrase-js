@@ -44,6 +44,12 @@ export interface NotificationGroupDetail {
     updatedAt?: Date;
     /**
      * 
+     * @type {number}
+     * @memberof NotificationGroupDetail
+     */
+    notificationsCount?: number;
+    /**
+     * 
      * @type {object}
      * @memberof NotificationGroupDetail
      */
@@ -64,6 +70,7 @@ export function NotificationGroupDetailFromJSONTyped(json: any, ignoreDiscrimina
         'eventName': !exists(json, 'event_name') ? undefined : json['event_name'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
+        'notificationsCount': !exists(json, 'notifications_count') ? undefined : json['notifications_count'],
         'latestNotification': !exists(json, 'latest_notification') ? undefined : json['latest_notification'],
     };
 }
@@ -81,6 +88,7 @@ export function NotificationGroupDetailToJSON(value?: NotificationGroupDetail | 
         'event_name': value.eventName,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
+        'notifications_count': value.notificationsCount,
         'latest_notification': value.latestNotification,
     };
 }
