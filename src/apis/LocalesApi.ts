@@ -23,10 +23,19 @@ import {
     LocaleDetails,
     LocaleDetailsFromJSON,
     LocaleDetailsToJSON,
+    LocalePreview1,
+    LocalePreview1FromJSON,
+    LocalePreview1ToJSON,
     LocaleUpdateParameters,
     LocaleUpdateParametersFromJSON,
     LocaleUpdateParametersToJSON,
 } from '../models';
+
+export interface AccountLocalesRequest {
+    xPhraseAppOTP?: string;
+    page?: number;
+    perPage?: number;
+}
 
 export interface LocaleCreateRequest {
     projectId: string;
@@ -89,6 +98,53 @@ export interface LocalesListRequest {
  * 
  */
 export class LocalesApi extends runtime.BaseAPI {
+
+    /**
+     * List all locales unique by locale code used across all projects within an account.
+     * List locales used in account
+     */
+    async accountLocalesRaw(requestParameters: AccountLocalesRequest): Promise<runtime.ApiResponse<Array<LocalePreview1>>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.perPage !== undefined) {
+            queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/accounts/{account_id}/locales`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(LocalePreview1FromJSON));
+    }
+
+    /**
+     * List all locales unique by locale code used across all projects within an account.
+     * List locales used in account
+     */
+    async accountLocales(requestParameters: AccountLocalesRequest): Promise<Array<LocalePreview1>> {
+        const response = await this.accountLocalesRaw(requestParameters);
+        return await response.value();
+    }
 
     /**
      * Create a new locale.

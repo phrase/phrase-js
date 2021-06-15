@@ -79,6 +79,7 @@ export * from './LocaleCreateParameters';
 export * from './LocaleDetails';
 export * from './LocaleDetails1';
 export * from './LocalePreview';
+export * from './LocalePreview1';
 export * from './LocaleStatistics';
 export * from './LocaleUpdateParameters';
 export * from './Member';
