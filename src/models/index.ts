@@ -71,6 +71,8 @@ export * from './JobUpdateParameters';
 export * from './KeyCreateParameters';
 export * from './KeyPreview';
 export * from './KeyUpdateParameters';
+export * from './KeysExcludeParameters';
+export * from './KeysIncludeParameters';
 export * from './KeysSearchParameters';
 export * from './KeysTagParameters';
 export * from './KeysUntagParameters';

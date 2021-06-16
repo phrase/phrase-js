@@ -234,6 +234,8 @@ Class | Method | HTTP request | Description
 *KeysApi* | **keyShow** | **GET** /projects/{project_id}/keys/{id} | Get a single key
 *KeysApi* | **keyUpdate** | **PATCH** /projects/{project_id}/keys/{id} | Update a key
 *KeysApi* | **keysDeleteCollection** | **DELETE** /projects/{project_id}/keys | Delete collection of keys
+*KeysApi* | **keysExclude** | **PATCH** /projects/{project_id}/keys/exclude | Exclude a locale on a collection of keys
+*KeysApi* | **keysInclude** | **PATCH** /projects/{project_id}/keys/include | Include a locale on a collection of keys
 *KeysApi* | **keysList** | **GET** /projects/{project_id}/keys | List keys
 *KeysApi* | **keysSearch** | **POST** /projects/{project_id}/keys/search | Search keys
 *KeysApi* | **keysTag** | **PATCH** /projects/{project_id}/keys/tag | Add tags to collection of keys

@@ -23,6 +23,12 @@ import {
     KeyUpdateParameters,
     KeyUpdateParametersFromJSON,
     KeyUpdateParametersToJSON,
+    KeysExcludeParameters,
+    KeysExcludeParametersFromJSON,
+    KeysExcludeParametersToJSON,
+    KeysIncludeParameters,
+    KeysIncludeParametersFromJSON,
+    KeysIncludeParametersToJSON,
     KeysSearchParameters,
     KeysSearchParametersFromJSON,
     KeysSearchParametersToJSON,
@@ -73,6 +79,18 @@ export interface KeysDeleteCollectionRequest {
     branch?: string;
     q?: string;
     localeId?: string;
+}
+
+export interface KeysExcludeRequest {
+    projectId: string;
+    keysExcludeParameters: KeysExcludeParameters;
+    xPhraseAppOTP?: string;
+}
+
+export interface KeysIncludeRequest {
+    projectId: string;
+    keysIncludeParameters: KeysIncludeParameters;
+    xPhraseAppOTP?: string;
 }
 
 export interface KeysListRequest {
@@ -370,6 +388,106 @@ export class KeysApi extends runtime.BaseAPI {
      */
     async keysDeleteCollection(requestParameters: KeysDeleteCollectionRequest): Promise<AffectedResources> {
         const response = await this.keysDeleteCollectionRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Exclude a locale on keys matching query. Same constraints as list.
+     * Exclude a locale on a collection of keys
+     */
+    async keysExcludeRaw(requestParameters: KeysExcludeRequest): Promise<runtime.ApiResponse<AffectedResources>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling keysExclude.');
+        }
+
+        if (requestParameters.keysExcludeParameters === null || requestParameters.keysExcludeParameters === undefined) {
+            throw new runtime.RequiredError('keysExcludeParameters','Required parameter requestParameters.keysExcludeParameters was null or undefined when calling keysExclude.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/projects/{project_id}/keys/exclude`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: KeysExcludeParametersToJSON(requestParameters.keysExcludeParameters),
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AffectedResourcesFromJSON(jsonValue));
+    }
+
+    /**
+     * Exclude a locale on keys matching query. Same constraints as list.
+     * Exclude a locale on a collection of keys
+     */
+    async keysExclude(requestParameters: KeysExcludeRequest): Promise<AffectedResources> {
+        const response = await this.keysExcludeRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Include a locale on keys matching query. Same constraints as list.
+     * Include a locale on a collection of keys
+     */
+    async keysIncludeRaw(requestParameters: KeysIncludeRequest): Promise<runtime.ApiResponse<AffectedResources>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling keysInclude.');
+        }
+
+        if (requestParameters.keysIncludeParameters === null || requestParameters.keysIncludeParameters === undefined) {
+            throw new runtime.RequiredError('keysIncludeParameters','Required parameter requestParameters.keysIncludeParameters was null or undefined when calling keysInclude.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/projects/{project_id}/keys/include`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: KeysIncludeParametersToJSON(requestParameters.keysIncludeParameters),
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AffectedResourcesFromJSON(jsonValue));
+    }
+
+    /**
+     * Include a locale on keys matching query. Same constraints as list.
+     * Include a locale on a collection of keys
+     */
+    async keysInclude(requestParameters: KeysIncludeRequest): Promise<AffectedResources> {
+        const response = await this.keysIncludeRaw(requestParameters);
         return await response.value();
     }
 
