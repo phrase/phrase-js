@@ -284,6 +284,7 @@ Class | Method | HTTP request | Description
 *ScreenshotsApi* | **screenshotShow** | **GET** /projects/{project_id}/screenshots/{id} | Get a single screenshot
 *ScreenshotsApi* | **screenshotUpdate** | **PATCH** /projects/{project_id}/screenshots/{id} | Update a screenshot
 *ScreenshotsApi* | **screenshotsList** | **GET** /projects/{project_id}/screenshots | List screenshots
+*SearchApi* | **searchInAccount** | **POST** /accounts/{account_id}/search | Search across projects
 *SpacesApi* | **spaceCreate** | **POST** /accounts/{account_id}/spaces | Create a Space
 *SpacesApi* | **spaceDelete** | **DELETE** /accounts/{account_id}/spaces/{id} | Delete Space
 *SpacesApi* | **spaceShow** | **GET** /accounts/{account_id}/spaces/{id} | Get Space

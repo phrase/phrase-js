@@ -25,6 +25,7 @@ export * from './ProjectsApi';
 export * from './ReleasesApi';
 export * from './ScreenshotMarkersApi';
 export * from './ScreenshotsApi';
+export * from './SearchApi';
 export * from './SpacesApi';
 export * from './StyleGuidesApi';
 export * from './TagsApi';

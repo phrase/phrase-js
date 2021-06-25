@@ -1,6 +1,7 @@
 export * from './Account';
 export * from './AccountDetails';
 export * from './AccountDetails1';
+export * from './AccountSearchResult';
 export * from './AffectedCount';
 export * from './AffectedResources';
 export * from './Authorization';
@@ -113,6 +114,7 @@ export * from './ScreenshotMarker';
 export * from './ScreenshotMarkerCreateParameters';
 export * from './ScreenshotMarkerUpdateParameters';
 export * from './ScreenshotUpdateParameters';
+export * from './SearchInAccountParameters';
 export * from './Space';
 export * from './Space1';
 export * from './SpaceCreateParameters';
