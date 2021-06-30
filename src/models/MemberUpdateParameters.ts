@@ -19,7 +19,13 @@ import { exists, mapValues } from '../runtime';
  */
 export interface MemberUpdateParameters {
     /**
-     * Member role, can be any of of Manager, Developer, Translator
+     * Update strategy, can be any of set, add, remove. If provided, it will set, add or remove given spaces, projects and locale ids from users access list.
+     * @type {string}
+     * @memberof MemberUpdateParameters
+     */
+    strategy?: string;
+    /**
+     * Member role, can be any of of Admin, ProjectManager, Developer, Designer, Translator
      * @type {string}
      * @memberof MemberUpdateParameters
      */
@@ -66,6 +72,7 @@ export function MemberUpdateParametersFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
         
+        'strategy': !exists(json, 'strategy') ? undefined : json['strategy'],
         'role': !exists(json, 'role') ? undefined : json['role'],
         'projectIds': !exists(json, 'project_ids') ? undefined : json['project_ids'],
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
@@ -84,6 +91,7 @@ export function MemberUpdateParametersToJSON(value?: MemberUpdateParameters | nu
     }
     return {
         
+        'strategy': value.strategy,
         'role': value.role,
         'project_ids': value.projectIds,
         'locale_ids': value.localeIds,
