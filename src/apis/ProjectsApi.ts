@@ -55,6 +55,7 @@ export interface ProjectsListRequest {
     perPage?: number;
     accountId?: string;
     sortBy?: string;
+    filters?: Array<string>;
 }
 
 /**
@@ -265,6 +266,10 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         if (requestParameters.sortBy !== undefined) {
             queryParameters['sort_by'] = requestParameters.sortBy;
+        }
+
+        if (requestParameters.filters) {
+            queryParameters['filters'] = requestParameters.filters;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
