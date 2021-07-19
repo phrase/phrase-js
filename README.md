@@ -218,6 +218,16 @@ Class | Method | HTTP request | Description
 *JobLocalesApi* | **jobLocaleUpdate** | **PATCH** /projects/{project_id}/jobs/{job_id}/locales/{id} | Update a job locale
 *JobLocalesApi* | **jobLocalesCreate** | **POST** /projects/{project_id}/jobs/{job_id}/locales | Create a job locale
 *JobLocalesApi* | **jobLocalesList** | **GET** /projects/{project_id}/jobs/{job_id}/locales | List job locales
+*JobTemplateLocalesApi* | **jobTemplateLocaleDelete** | **DELETE** /projects/{project_id}/job_templates/{job_template_id}/locales/{job_template_locale_id} | Delete a job template locale
+*JobTemplateLocalesApi* | **jobTemplateLocaleShow** | **GET** /projects/{project_id}/job_templates/{job_template_id}/locales/{job_template_locale_id} | Get a single job template locale
+*JobTemplateLocalesApi* | **jobTemplateLocaleUpdate** | **PATCH** /projects/{project_id}/job_templates/{job_template_id}/locales/{job_template_locale_id} | Update a job template locale
+*JobTemplateLocalesApi* | **jobTemplateLocalesCreate** | **POST** /projects/{project_id}/job_templates/{job_template_id}/locales | Create a job template locale
+*JobTemplateLocalesApi* | **jobTemplateLocalesList** | **GET** /projects/{project_id}/job_templates/{job_template_id}/locales | List job template locales
+*JobTemplatesApi* | **jobTemplateCreate** | **POST** /projects/{project_id}/job_templates | Create a job template
+*JobTemplatesApi* | **jobTemplateDelete** | **DELETE** /projects/{project_id}/job_templates/{id} | Delete a job template
+*JobTemplatesApi* | **jobTemplateShow** | **GET** /projects/{project_id}/job_templates/{id} | Get a single job template
+*JobTemplatesApi* | **jobTemplateUpdate** | **PATCH** /projects/{project_id}/job_templates/{id} | Update a job template
+*JobTemplatesApi* | **jobTemplatesList** | **GET** /projects/{project_id}/job_templates | List job templates
 *JobsApi* | **jobComplete** | **POST** /projects/{project_id}/jobs/{id}/complete | Complete a job
 *JobsApi* | **jobCreate** | **POST** /projects/{project_id}/jobs | Create a job
 *JobsApi* | **jobDelete** | **DELETE** /projects/{project_id}/jobs/{id} | Delete a job
