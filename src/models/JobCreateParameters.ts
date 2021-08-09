@@ -31,6 +31,12 @@ export interface JobCreateParameters {
      */
     name?: string;
     /**
+     * The API id of the source language
+     * @type {string}
+     * @memberof JobCreateParameters
+     */
+    sourceLocaleId?: string;
+    /**
      * Briefing for the translators
      * @type {string}
      * @memberof JobCreateParameters
@@ -74,6 +80,7 @@ export function JobCreateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
         'name': !exists(json, 'name') ? undefined : json['name'],
+        'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'dueDate': !exists(json, 'due_date') ? undefined : (new Date(json['due_date'])),
         'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
@@ -93,6 +100,7 @@ export function JobCreateParametersToJSON(value?: JobCreateParameters | null): a
         
         'branch': value.branch,
         'name': value.name,
+        'source_locale_id': value.sourceLocaleId,
         'briefing': value.briefing,
         'due_date': value.dueDate === undefined ? undefined : (value.dueDate.toISOString()),
         'ticket_url': value.ticketUrl,
