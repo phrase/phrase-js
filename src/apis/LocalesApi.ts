@@ -32,6 +32,7 @@ import {
 } from '../models';
 
 export interface AccountLocalesRequest {
+    id: string;
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
@@ -104,6 +105,10 @@ export class LocalesApi extends runtime.BaseAPI {
      * List locales used in account
      */
     async accountLocalesRaw(requestParameters: AccountLocalesRequest): Promise<runtime.ApiResponse<Array<LocalePreview1>>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling accountLocales.');
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
@@ -128,7 +133,7 @@ export class LocalesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/accounts/{account_id}/locales`,
+            path: `/accounts/{account_id}/locales`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
