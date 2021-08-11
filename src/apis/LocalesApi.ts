@@ -70,6 +70,7 @@ export interface LocaleDownloadRequest {
     includeUnverifiedTranslations?: boolean;
     useLastReviewedVersion?: boolean;
     fallbackLocaleId?: string;
+    sourceLocaleId?: string;
 }
 
 export interface LocaleShowRequest {
@@ -325,6 +326,10 @@ export class LocalesApi extends runtime.BaseAPI {
 
         if (requestParameters.fallbackLocaleId !== undefined) {
             queryParameters['fallback_locale_id'] = requestParameters.fallbackLocaleId;
+        }
+
+        if (requestParameters.sourceLocaleId !== undefined) {
+            queryParameters['source_locale_id'] = requestParameters.sourceLocaleId;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
