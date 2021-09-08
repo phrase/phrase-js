@@ -25,23 +25,17 @@ export interface TranslationsVerifyParameters {
      */
     branch?: string;
     /**
+     * specify the locale of the translations to be verified
+     * @type {string}
+     * @memberof TranslationsVerifyParameters
+     */
+    localeId?: string;
+    /**
      * Specify a query to find translations by content (including wildcards).<br><br> The following qualifiers are supported in the query:<br> <ul>   <li><code>id:translation_id,...</code> for queries on a comma-separated list of ids</li>   <li><code>tags:XYZ</code> for tags on the translation</li>   <li><code>unverified:{true|false}</code> for verification status</li>   <li><code>excluded:{true|false}</code> for exclusion status</li>   <li><code>updated_at:{>=|<=}2013-02-21T00:00:00Z</code> for date range queries</li> </ul> Find more examples <a href=\"#overview--usage-examples\">here</a>. 
      * @type {string}
      * @memberof TranslationsVerifyParameters
      */
     q?: string;
-    /**
-     * Sort criteria. Can be one of: key_name, created_at, updated_at.
-     * @type {string}
-     * @memberof TranslationsVerifyParameters
-     */
-    sort?: string;
-    /**
-     * Order direction. Can be one of: asc, desc.
-     * @type {string}
-     * @memberof TranslationsVerifyParameters
-     */
-    order?: string;
 }
 
 export function TranslationsVerifyParametersFromJSON(json: any): TranslationsVerifyParameters {
@@ -55,9 +49,8 @@ export function TranslationsVerifyParametersFromJSONTyped(json: any, ignoreDiscr
     return {
         
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
+        'localeId': !exists(json, 'locale_id') ? undefined : json['locale_id'],
         'q': !exists(json, 'q') ? undefined : json['q'],
-        'sort': !exists(json, 'sort') ? undefined : json['sort'],
-        'order': !exists(json, 'order') ? undefined : json['order'],
     };
 }
 
@@ -71,9 +64,8 @@ export function TranslationsVerifyParametersToJSON(value?: TranslationsVerifyPar
     return {
         
         'branch': value.branch,
+        'locale_id': value.localeId,
         'q': value.q,
-        'sort': value.sort,
-        'order': value.order,
     };
 }
 
