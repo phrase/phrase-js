@@ -49,6 +49,12 @@ export interface InvitationCreateParameters {
      */
     spaceIds?: Array<string>;
     /**
+     * List of teams the user is assigned to.
+     * @type {Array<string>}
+     * @memberof InvitationCreateParameters
+     */
+    teamIds?: Array<string>;
+    /**
      * List of default locales for the user.
      * @type {Array<string>}
      * @memberof InvitationCreateParameters
@@ -77,6 +83,7 @@ export function InvitationCreateParametersFromJSONTyped(json: any, ignoreDiscrim
         'projectIds': !exists(json, 'project_ids') ? undefined : json['project_ids'],
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'spaceIds': !exists(json, 'space_ids') ? undefined : json['space_ids'],
+        'teamIds': !exists(json, 'team_ids') ? undefined : json['team_ids'],
         'defaultLocaleCodes': !exists(json, 'default_locale_codes') ? undefined : json['default_locale_codes'],
         'permissions': !exists(json, 'permissions') ? undefined : json['permissions'],
     };
@@ -96,6 +103,7 @@ export function InvitationCreateParametersToJSON(value?: InvitationCreateParamet
         'project_ids': value.projectIds,
         'locale_ids': value.localeIds,
         'space_ids': value.spaceIds,
+        'team_ids': value.teamIds,
         'default_locale_codes': value.defaultLocaleCodes,
         'permissions': value.permissions,
     };
