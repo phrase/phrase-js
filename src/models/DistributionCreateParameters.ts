@@ -37,6 +37,12 @@ export interface DistributionCreateParameters {
      */
     platforms?: Array<string>;
     /**
+     * List of locale ids that will be part of distribution releases
+     * @type {Array<string>}
+     * @memberof DistributionCreateParameters
+     */
+    localeIds?: Array<string>;
+    /**
      * Additional formatting and render options. Only <code>enclose_in_cdata</code> is available for platform <code>android</code>.
      * @type {{ [key: string]: string; }}
      * @memberof DistributionCreateParameters
@@ -75,6 +81,7 @@ export function DistributionCreateParametersFromJSONTyped(json: any, ignoreDiscr
         'name': !exists(json, 'name') ? undefined : json['name'],
         'projectId': !exists(json, 'project_id') ? undefined : json['project_id'],
         'platforms': !exists(json, 'platforms') ? undefined : json['platforms'],
+        'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'formatOptions': !exists(json, 'format_options') ? undefined : json['format_options'],
         'fallbackToNonRegionalLocale': !exists(json, 'fallback_to_non_regional_locale') ? undefined : json['fallback_to_non_regional_locale'],
         'fallbackToDefaultLocale': !exists(json, 'fallback_to_default_locale') ? undefined : json['fallback_to_default_locale'],
@@ -94,6 +101,7 @@ export function DistributionCreateParametersToJSON(value?: DistributionCreatePar
         'name': value.name,
         'project_id': value.projectId,
         'platforms': value.platforms,
+        'locale_ids': value.localeIds,
         'format_options': value.formatOptions,
         'fallback_to_non_regional_locale': value.fallbackToNonRegionalLocale,
         'fallback_to_default_locale': value.fallbackToDefaultLocale,

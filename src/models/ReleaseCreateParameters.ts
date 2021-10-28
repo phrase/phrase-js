@@ -31,6 +31,12 @@ export interface ReleaseCreateParameters {
      */
     platforms?: Array<string>;
     /**
+     * List of locale ids that will be included in the release. If empty, distribution locales will be used
+     * @type {Array<string>}
+     * @memberof ReleaseCreateParameters
+     */
+    localeIds?: Array<string>;
+    /**
      * Branch used for release
      * @type {string}
      * @memberof ReleaseCreateParameters
@@ -50,6 +56,7 @@ export function ReleaseCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
         
         'description': !exists(json, 'description') ? undefined : json['description'],
         'platforms': !exists(json, 'platforms') ? undefined : json['platforms'],
+        'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
     };
 }
@@ -65,6 +72,7 @@ export function ReleaseCreateParametersToJSON(value?: ReleaseCreateParameters | 
         
         'description': value.description,
         'platforms': value.platforms,
+        'locale_ids': value.localeIds,
         'branch': value.branch,
     };
 }
