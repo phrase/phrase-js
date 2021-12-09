@@ -31,11 +31,17 @@ export interface JobLocalesCreateParameters {
      */
     localeId?: string;
     /**
-     * Array of user ids to be assigned to the job locale
+     * Array of user ids to be assigned to the job locale as translators
      * @type {Array<string>}
      * @memberof JobLocalesCreateParameters
      */
     userIds?: Array<string>;
+    /**
+     * Array of reviewer ids to be assigned to the job locale as reviewers
+     * @type {Array<string>}
+     * @memberof JobLocalesCreateParameters
+     */
+    reviewerIds?: Array<string>;
 }
 
 export function JobLocalesCreateParametersFromJSON(json: any): JobLocalesCreateParameters {
@@ -51,6 +57,7 @@ export function JobLocalesCreateParametersFromJSONTyped(json: any, ignoreDiscrim
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
         'localeId': !exists(json, 'locale_id') ? undefined : json['locale_id'],
         'userIds': !exists(json, 'user_ids') ? undefined : json['user_ids'],
+        'reviewerIds': !exists(json, 'reviewer_ids') ? undefined : json['reviewer_ids'],
     };
 }
 
@@ -66,6 +73,7 @@ export function JobLocalesCreateParametersToJSON(value?: JobLocalesCreateParamet
         'branch': value.branch,
         'locale_id': value.localeId,
         'user_ids': value.userIds,
+        'reviewer_ids': value.reviewerIds,
     };
 }
 

@@ -36,6 +36,12 @@ export interface JobLocaleUpdateParameters {
      * @memberof JobLocaleUpdateParameters
      */
     userIds?: Array<string>;
+    /**
+     * Array of reviewer ids to be assigned to the job locale as reviewers
+     * @type {Array<string>}
+     * @memberof JobLocaleUpdateParameters
+     */
+    reviewerIds?: Array<string>;
 }
 
 export function JobLocaleUpdateParametersFromJSON(json: any): JobLocaleUpdateParameters {
@@ -51,6 +57,7 @@ export function JobLocaleUpdateParametersFromJSONTyped(json: any, ignoreDiscrimi
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
         'localeId': !exists(json, 'locale_id') ? undefined : json['locale_id'],
         'userIds': !exists(json, 'user_ids') ? undefined : json['user_ids'],
+        'reviewerIds': !exists(json, 'reviewer_ids') ? undefined : json['reviewer_ids'],
     };
 }
 
@@ -66,6 +73,7 @@ export function JobLocaleUpdateParametersToJSON(value?: JobLocaleUpdateParameter
         'branch': value.branch,
         'locale_id': value.localeId,
         'user_ids': value.userIds,
+        'reviewer_ids': value.reviewerIds,
     };
 }
 

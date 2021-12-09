@@ -20,6 +20,9 @@ import {
     JobLocaleCompleteParameters,
     JobLocaleCompleteParametersFromJSON,
     JobLocaleCompleteParametersToJSON,
+    JobLocaleCompleteReviewParameters,
+    JobLocaleCompleteReviewParametersFromJSON,
+    JobLocaleCompleteReviewParametersToJSON,
     JobLocaleReopenParameters,
     JobLocaleReopenParametersFromJSON,
     JobLocaleReopenParametersToJSON,
@@ -36,6 +39,14 @@ export interface JobLocaleCompleteRequest {
     jobId: string;
     id: string;
     jobLocaleCompleteParameters: JobLocaleCompleteParameters;
+    xPhraseAppOTP?: string;
+}
+
+export interface JobLocaleCompleteReviewRequest {
+    projectId: string;
+    jobId: string;
+    id: string;
+    jobLocaleCompleteReviewParameters: JobLocaleCompleteReviewParameters;
     xPhraseAppOTP?: string;
 }
 
@@ -147,6 +158,64 @@ export class JobLocalesApi extends runtime.BaseAPI {
      */
     async jobLocaleComplete(requestParameters: JobLocaleCompleteRequest): Promise<JobLocale> {
         const response = await this.jobLocaleCompleteRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Mark job locale as reviewed.
+     * Review a job locale
+     */
+    async jobLocaleCompleteReviewRaw(requestParameters: JobLocaleCompleteReviewRequest): Promise<runtime.ApiResponse<JobLocale>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobLocaleCompleteReview.');
+        }
+
+        if (requestParameters.jobId === null || requestParameters.jobId === undefined) {
+            throw new runtime.RequiredError('jobId','Required parameter requestParameters.jobId was null or undefined when calling jobLocaleCompleteReview.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling jobLocaleCompleteReview.');
+        }
+
+        if (requestParameters.jobLocaleCompleteReviewParameters === null || requestParameters.jobLocaleCompleteReviewParameters === undefined) {
+            throw new runtime.RequiredError('jobLocaleCompleteReviewParameters','Required parameter requestParameters.jobLocaleCompleteReviewParameters was null or undefined when calling jobLocaleCompleteReview.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/projects/{project_id}/jobs/{job_id}/locales/{id}/complete_review`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"job_id"}}`, encodeURIComponent(String(requestParameters.jobId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: JobLocaleCompleteReviewParametersToJSON(requestParameters.jobLocaleCompleteReviewParameters),
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => JobLocaleFromJSON(jsonValue));
+    }
+
+    /**
+     * Mark job locale as reviewed.
+     * Review a job locale
+     */
+    async jobLocaleCompleteReview(requestParameters: JobLocaleCompleteReviewRequest): Promise<JobLocale> {
+        const response = await this.jobLocaleCompleteReviewRaw(requestParameters);
         return await response.value();
     }
 

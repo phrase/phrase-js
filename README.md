@@ -212,6 +212,7 @@ Class | Method | HTTP request | Description
 *InvitationsApi* | **invitationUpdateSettings** | **PATCH** /projects/{project_id}/invitations/{id} | Update a member\&#39;s invitation access
 *InvitationsApi* | **invitationsList** | **GET** /accounts/{account_id}/invitations | List invitations
 *JobLocalesApi* | **jobLocaleComplete** | **POST** /projects/{project_id}/jobs/{job_id}/locales/{id}/complete | Complete a job locale
+*JobLocalesApi* | **jobLocaleCompleteReview** | **POST** /projects/{project_id}/jobs/{job_id}/locales/{id}/complete_review | Review a job locale
 *JobLocalesApi* | **jobLocaleDelete** | **DELETE** /projects/{project_id}/jobs/{job_id}/locales/{id} | Delete a job locale
 *JobLocalesApi* | **jobLocaleReopen** | **POST** /projects/{project_id}/jobs/{job_id}/locales/{id}/reopen | Reopen a job locale
 *JobLocalesApi* | **jobLocaleShow** | **GET** /projects/{project_id}/jobs/{job_id}/locale/{id} | Get a single job locale
