@@ -12,6 +12,7 @@ export * from './GitLabSyncApi';
 export * from './GlossariesApi';
 export * from './GlossaryTermTranslationsApi';
 export * from './GlossaryTermsApi';
+export * from './ICUApi';
 export * from './InvitationsApi';
 export * from './JobLocalesApi';
 export * from './JobTemplateLocalesApi';

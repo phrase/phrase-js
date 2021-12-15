@@ -204,6 +204,7 @@ Class | Method | HTTP request | Description
 *GlossaryTermsApi* | **glossaryTermShow** | **GET** /accounts/{account_id}/glossaries/{glossary_id}/terms/{id} | Get a single glossary term
 *GlossaryTermsApi* | **glossaryTermUpdate** | **PATCH** /accounts/{account_id}/glossaries/{glossary_id}/terms/{id} | Update a glossary term
 *GlossaryTermsApi* | **glossaryTermsList** | **GET** /accounts/{account_id}/glossaries/{glossary_id}/terms | List glossary terms
+*ICUApi* | **icuSkeleton** | **POST** /icu/skeleton | Build icu skeletons
 *InvitationsApi* | **invitationCreate** | **POST** /accounts/{account_id}/invitations | Create a new invitation
 *InvitationsApi* | **invitationDelete** | **DELETE** /accounts/{account_id}/invitations/{id} | Delete an invitation
 *InvitationsApi* | **invitationResend** | **POST** /accounts/{account_id}/invitations/{id}/resend | Resend an invitation

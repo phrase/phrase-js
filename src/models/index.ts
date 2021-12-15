@@ -48,6 +48,8 @@ export * from './GlossaryTermTranslationCreateParameters';
 export * from './GlossaryTermTranslationUpdateParameters';
 export * from './GlossaryTermUpdateParameters';
 export * from './GlossaryUpdateParameters';
+export * from './Icu';
+export * from './IcuSkeletonParameters';
 export * from './InlineResponse422';
 export * from './InlineResponse422Errors';
 export * from './Invitation';
