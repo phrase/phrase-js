@@ -41,7 +41,7 @@ export interface UserPreview {
      * @type {string}
      * @memberof UserPreview
      */
-    role?: string;
+    gravatarUid?: string;
 }
 
 export function UserPreviewFromJSON(json: any): UserPreview {
@@ -57,7 +57,7 @@ export function UserPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'id': !exists(json, 'id') ? undefined : json['id'],
         'username': !exists(json, 'username') ? undefined : json['username'],
         'name': !exists(json, 'name') ? undefined : json['name'],
-        'role': !exists(json, 'role') ? undefined : json['role'],
+        'gravatarUid': !exists(json, 'gravatar_uid') ? undefined : json['gravatar_uid'],
     };
 }
 
@@ -73,7 +73,7 @@ export function UserPreviewToJSON(value?: UserPreview | null): any {
         'id': value.id,
         'username': value.username,
         'name': value.name,
-        'role': value.role,
+        'gravatar_uid': value.gravatarUid,
     };
 }
 

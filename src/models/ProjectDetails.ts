@@ -29,6 +29,10 @@ import {
     Space1FromJSON,
     Space1FromJSONTyped,
     Space1ToJSON,
+    UserPreview,
+    UserPreviewFromJSON,
+    UserPreviewFromJSONTyped,
+    UserPreviewToJSON,
 } from './';
 
 /**
@@ -81,6 +85,12 @@ export interface ProjectDetails {
     space?: Space1;
     /**
      * 
+     * @type {UserPreview}
+     * @memberof ProjectDetails
+     */
+    pointOfContact?: UserPreview;
+    /**
+     * 
      * @type {Date}
      * @memberof ProjectDetails
      */
@@ -116,6 +126,7 @@ export function ProjectDetailsFromJSONTyped(json: any, ignoreDiscriminator: bool
         'projectImageUrl': !exists(json, 'project_image_url') ? undefined : json['project_image_url'],
         'account': !exists(json, 'account') ? undefined : AccountFromJSON(json['account']),
         'space': !exists(json, 'space') ? undefined : Space1FromJSON(json['space']),
+        'pointOfContact': !exists(json, 'point_of_contact') ? undefined : UserPreviewFromJSON(json['point_of_contact']),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'sharesTranslationMemory': !exists(json, 'shares_translation_memory') ? undefined : json['shares_translation_memory'],
@@ -138,6 +149,7 @@ export function ProjectDetailsToJSON(value?: ProjectDetails | null): any {
         'project_image_url': value.projectImageUrl,
         'account': AccountToJSON(value.account),
         'space': Space1ToJSON(value.space),
+        'point_of_contact': UserPreviewToJSON(value.pointOfContact),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'shares_translation_memory': value.sharesTranslationMemory,
