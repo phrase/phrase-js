@@ -145,6 +145,7 @@ export * from './TagWithStats1';
 export * from './TagWithStats1Statistics';
 export * from './TagWithStats1Statistics1';
 export * from './Team';
+export * from './Team1';
 export * from './TeamCreateParameters';
 export * from './TeamDetail';
 export * from './TeamUpdateParameters';

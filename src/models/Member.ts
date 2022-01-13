@@ -21,6 +21,10 @@ import {
     ProjectLocalesFromJSON,
     ProjectLocalesFromJSONTyped,
     ProjectLocalesToJSON,
+    Team1,
+    Team1FromJSON,
+    Team1FromJSONTyped,
+    Team1ToJSON,
 } from './';
 
 /**
@@ -49,6 +53,18 @@ export interface Member {
     username?: string;
     /**
      * 
+     * @type {Date}
+     * @memberof Member
+     */
+    createdAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof Member
+     */
+    lastActivityAt?: Date;
+    /**
+     * 
      * @type {string}
      * @memberof Member
      */
@@ -73,6 +89,12 @@ export interface Member {
     defaultLocaleCodes?: Array<string>;
     /**
      * 
+     * @type {Array<Team1>}
+     * @memberof Member
+     */
+    teams?: Array<Team1>;
+    /**
+     * 
      * @type {Array<MemberSpaces>}
      * @memberof Member
      */
@@ -92,10 +114,13 @@ export function MemberFromJSONTyped(json: any, ignoreDiscriminator: boolean): Me
         'id': !exists(json, 'id') ? undefined : json['id'],
         'email': !exists(json, 'email') ? undefined : json['email'],
         'username': !exists(json, 'username') ? undefined : json['username'],
+        'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
+        'lastActivityAt': !exists(json, 'last_activity_at') ? undefined : (new Date(json['last_activity_at'])),
         'role': !exists(json, 'role') ? undefined : json['role'],
         'projects': !exists(json, 'projects') ? undefined : ((json['projects'] as Array<any>).map(ProjectLocalesFromJSON)),
         'permissions': !exists(json, 'permissions') ? undefined : json['permissions'],
         'defaultLocaleCodes': !exists(json, 'default_locale_codes') ? undefined : json['default_locale_codes'],
+        'teams': !exists(json, 'teams') ? undefined : ((json['teams'] as Array<any>).map(Team1FromJSON)),
         'spaces': !exists(json, 'spaces') ? undefined : ((json['spaces'] as Array<any>).map(MemberSpacesFromJSON)),
     };
 }
@@ -112,10 +137,13 @@ export function MemberToJSON(value?: Member | null): any {
         'id': value.id,
         'email': value.email,
         'username': value.username,
+        'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
+        'last_activity_at': value.lastActivityAt === undefined ? undefined : (value.lastActivityAt.toISOString()),
         'role': value.role,
         'projects': value.projects === undefined ? undefined : ((value.projects as Array<any>).map(ProjectLocalesToJSON)),
         'permissions': value.permissions,
         'default_locale_codes': value.defaultLocaleCodes,
+        'teams': value.teams === undefined ? undefined : ((value.teams as Array<any>).map(Team1ToJSON)),
         'spaces': value.spaces === undefined ? undefined : ((value.spaces as Array<any>).map(MemberSpacesToJSON)),
     };
 }
