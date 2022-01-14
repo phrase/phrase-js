@@ -13,6 +13,10 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    Items,
+    ItemsFromJSON,
+    ItemsFromJSONTyped,
+    ItemsToJSON,
     LocalePreview,
     LocalePreviewFromJSON,
     LocalePreviewFromJSONTyped,
@@ -117,6 +121,12 @@ export interface Invitation {
     spaces?: Array<MemberSpaces>;
     /**
      * 
+     * @type {Array<Items>}
+     * @memberof Invitation
+     */
+    teams?: Array<Items>;
+    /**
+     * 
      * @type {Array<MemberProjectDetailProjectRoles>}
      * @memberof Invitation
      */
@@ -146,6 +156,7 @@ export function InvitationFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'acceptedAt': !exists(json, 'accepted_at') ? undefined : (new Date(json['accepted_at'])),
         'spaces': !exists(json, 'spaces') ? undefined : ((json['spaces'] as Array<any>).map(MemberSpacesFromJSON)),
+        'teams': !exists(json, 'teams') ? undefined : ((json['teams'] as Array<any>).map(ItemsFromJSON)),
         'projectRole': !exists(json, 'project_role') ? undefined : ((json['project_role'] as Array<any>).map(MemberProjectDetailProjectRolesFromJSON)),
     };
 }
@@ -172,6 +183,7 @@ export function InvitationToJSON(value?: Invitation | null): any {
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'accepted_at': value.acceptedAt === undefined ? undefined : (value.acceptedAt.toISOString()),
         'spaces': value.spaces === undefined ? undefined : ((value.spaces as Array<any>).map(MemberSpacesToJSON)),
+        'teams': value.teams === undefined ? undefined : ((value.teams as Array<any>).map(ItemsToJSON)),
         'project_role': value.projectRole === undefined ? undefined : ((value.projectRole as Array<any>).map(MemberProjectDetailProjectRolesToJSON)),
     };
 }
