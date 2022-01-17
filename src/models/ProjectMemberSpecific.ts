@@ -12,76 +12,55 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    LocalePreview,
-    LocalePreviewFromJSON,
-    LocalePreviewFromJSONTyped,
-    LocalePreviewToJSON,
-    ProjectLocales1,
-    ProjectLocales1FromJSON,
-    ProjectLocales1FromJSONTyped,
-    ProjectLocales1ToJSON,
-    ProjectMemberSpecific,
-    ProjectMemberSpecificFromJSON,
-    ProjectMemberSpecificFromJSONTyped,
-    ProjectMemberSpecificToJSON,
-} from './';
-
 /**
  * 
  * @export
- * @interface ProjectLocales
+ * @interface ProjectMemberSpecific
  */
-export interface ProjectLocales {
+export interface ProjectMemberSpecific {
     /**
      * 
      * @type {string}
-     * @memberof ProjectLocales
+     * @memberof ProjectMemberSpecific
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof ProjectLocales
+     * @memberof ProjectMemberSpecific
      */
     name?: string;
     /**
      * 
      * @type {string}
-     * @memberof ProjectLocales
+     * @memberof ProjectMemberSpecific
      */
     projectRole?: string;
     /**
      * 
      * @type {string}
-     * @memberof ProjectLocales
+     * @memberof ProjectMemberSpecific
      */
     mainFormat?: string;
     /**
      * 
      * @type {Date}
-     * @memberof ProjectLocales
+     * @memberof ProjectMemberSpecific
      */
     createdAt?: Date;
     /**
      * 
      * @type {Date}
-     * @memberof ProjectLocales
+     * @memberof ProjectMemberSpecific
      */
     updatedAt?: Date;
-    /**
-     * 
-     * @type {Array<LocalePreview>}
-     * @memberof ProjectLocales
-     */
-    locales?: Array<LocalePreview>;
 }
 
-export function ProjectLocalesFromJSON(json: any): ProjectLocales {
-    return ProjectLocalesFromJSONTyped(json, false);
+export function ProjectMemberSpecificFromJSON(json: any): ProjectMemberSpecific {
+    return ProjectMemberSpecificFromJSONTyped(json, false);
 }
 
-export function ProjectLocalesFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProjectLocales {
+export function ProjectMemberSpecificFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProjectMemberSpecific {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -93,11 +72,10 @@ export function ProjectLocalesFromJSONTyped(json: any, ignoreDiscriminator: bool
         'mainFormat': !exists(json, 'main_format') ? undefined : json['main_format'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
-        'locales': !exists(json, 'locales') ? undefined : ((json['locales'] as Array<any>).map(LocalePreviewFromJSON)),
     };
 }
 
-export function ProjectLocalesToJSON(value?: ProjectLocales | null): any {
+export function ProjectMemberSpecificToJSON(value?: ProjectMemberSpecific | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -112,7 +90,6 @@ export function ProjectLocalesToJSON(value?: ProjectLocales | null): any {
         'main_format': value.mainFormat,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
-        'locales': value.locales === undefined ? undefined : ((value.locales as Array<any>).map(LocalePreviewToJSON)),
     };
 }
 

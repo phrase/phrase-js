@@ -113,6 +113,7 @@ export * from './ProjectDetails';
 export * from './ProjectDetails1';
 export * from './ProjectLocales';
 export * from './ProjectLocales1';
+export * from './ProjectMemberSpecific';
 export * from './ProjectShort';
 export * from './ProjectUpdateParameters';
 export * from './Release';
