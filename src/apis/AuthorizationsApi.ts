@@ -86,14 +86,6 @@ export class AuthorizationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/authorizations`,
             method: 'POST',
@@ -138,14 +130,6 @@ export class AuthorizationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/authorizations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'DELETE',
@@ -189,14 +173,6 @@ export class AuthorizationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/authorizations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'GET',
@@ -246,14 +222,6 @@ export class AuthorizationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/authorizations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'PATCH',
@@ -302,14 +270,6 @@ export class AuthorizationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/authorizations`,
             method: 'GET',

@@ -65,14 +65,6 @@ export class DocumentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/documents/{id}`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'DELETE',
@@ -124,14 +116,6 @@ export class DocumentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/documents`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))),
             method: 'GET',

@@ -131,14 +131,6 @@ export class CommentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/keys/{key_id}/comments`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"key_id"}}`, encodeURIComponent(String(requestParameters.keyId))),
             method: 'POST',
@@ -195,14 +187,6 @@ export class CommentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/keys/{key_id}/comments/{id}`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"key_id"}}`, encodeURIComponent(String(requestParameters.keyId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'DELETE',
@@ -258,14 +242,6 @@ export class CommentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/keys/{key_id}/comments/{id}/read`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"key_id"}}`, encodeURIComponent(String(requestParameters.keyId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'GET',
@@ -323,14 +299,6 @@ export class CommentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/keys/{key_id}/comments/{id}/read`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"key_id"}}`, encodeURIComponent(String(requestParameters.keyId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'PATCH',
@@ -387,14 +355,6 @@ export class CommentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/keys/{key_id}/comments/{id}/read`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"key_id"}}`, encodeURIComponent(String(requestParameters.keyId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'DELETE',
@@ -450,14 +410,6 @@ export class CommentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/keys/{key_id}/comments/{id}`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"key_id"}}`, encodeURIComponent(String(requestParameters.keyId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'GET',
@@ -515,14 +467,6 @@ export class CommentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/keys/{key_id}/comments/{id}`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"key_id"}}`, encodeURIComponent(String(requestParameters.keyId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'PATCH',
@@ -583,14 +527,6 @@ export class CommentsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/keys/{key_id}/comments`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"key_id"}}`, encodeURIComponent(String(requestParameters.keyId))),
             method: 'GET',

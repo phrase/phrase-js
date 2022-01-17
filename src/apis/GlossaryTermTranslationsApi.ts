@@ -93,14 +93,6 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/accounts/{account_id}/glossaries/{glossary_id}/terms/{term_id}/translations`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"glossary_id"}}`, encodeURIComponent(String(requestParameters.glossaryId))).replace(`{${"term_id"}}`, encodeURIComponent(String(requestParameters.termId))),
             method: 'POST',
@@ -157,14 +149,6 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/accounts/{account_id}/glossaries/{glossary_id}/terms/{term_id}/translations/{id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"glossary_id"}}`, encodeURIComponent(String(requestParameters.glossaryId))).replace(`{${"term_id"}}`, encodeURIComponent(String(requestParameters.termId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'DELETE',
@@ -226,14 +210,6 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/accounts/{account_id}/glossaries/{glossary_id}/terms/{term_id}/translations/{id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"glossary_id"}}`, encodeURIComponent(String(requestParameters.glossaryId))).replace(`{${"term_id"}}`, encodeURIComponent(String(requestParameters.termId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'PATCH',

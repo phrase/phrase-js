@@ -106,14 +106,6 @@ export class JobTemplateLocalesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/job_templates/{job_template_id}/locales/{job_template_locale_id}`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"job_template_id"}}`, encodeURIComponent(String(requestParameters.jobTemplateId))).replace(`{${"job_template_locale_id"}}`, encodeURIComponent(String(requestParameters.jobTemplateLocaleId))),
             method: 'DELETE',
@@ -169,14 +161,6 @@ export class JobTemplateLocalesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/job_templates/{job_template_id}/locales/{job_template_locale_id}`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"job_template_id"}}`, encodeURIComponent(String(requestParameters.jobTemplateId))).replace(`{${"job_template_locale_id"}}`, encodeURIComponent(String(requestParameters.jobTemplateLocaleId))),
             method: 'GET',
@@ -234,14 +218,6 @@ export class JobTemplateLocalesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/job_templates/{job_template_id}/locales/{job_template_locale_id}`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"job_template_id"}}`, encodeURIComponent(String(requestParameters.jobTemplateId))).replace(`{${"job_template_locale_id"}}`, encodeURIComponent(String(requestParameters.jobTemplateLocaleId))),
             method: 'PATCH',
@@ -296,14 +272,6 @@ export class JobTemplateLocalesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/job_templates/{job_template_id}/locales`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"job_template_id"}}`, encodeURIComponent(String(requestParameters.jobTemplateId))),
             method: 'POST',
@@ -364,14 +332,6 @@ export class JobTemplateLocalesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = typeof token === 'function' ? token("bearerAuth", []) : token;
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
         const response = await this.request({
             path: `/projects/{project_id}/job_templates/{job_template_id}/locales`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"job_template_id"}}`, encodeURIComponent(String(requestParameters.jobTemplateId))),
             method: 'GET',
