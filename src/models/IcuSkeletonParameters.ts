@@ -31,6 +31,12 @@ export interface IcuSkeletonParameters {
      */
     localeCodes?: Array<string>;
     /**
+     * Keep the content and add missing plural forms for each locale
+     * @type {boolean}
+     * @memberof IcuSkeletonParameters
+     */
+    keepContent?: boolean;
+    /**
      * Indicates whether the zero form should be included or excluded in the returned skeletons
      * @type {boolean}
      * @memberof IcuSkeletonParameters
@@ -50,6 +56,7 @@ export function IcuSkeletonParametersFromJSONTyped(json: any, ignoreDiscriminato
         
         'content': !exists(json, 'content') ? undefined : json['content'],
         'localeCodes': !exists(json, 'locale_codes') ? undefined : json['locale_codes'],
+        'keepContent': !exists(json, 'keep_content') ? undefined : json['keep_content'],
         'zeroFormEnabled': !exists(json, 'zero_form_enabled') ? undefined : json['zero_form_enabled'],
     };
 }
@@ -65,6 +72,7 @@ export function IcuSkeletonParametersToJSON(value?: IcuSkeletonParameters | null
         
         'content': value.content,
         'locale_codes': value.localeCodes,
+        'keep_content': value.keepContent,
         'zero_form_enabled': value.zeroFormEnabled,
     };
 }
