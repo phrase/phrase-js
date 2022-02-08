@@ -235,9 +235,11 @@ Class | Method | HTTP request | Description
 *JobsApi* | **jobDelete** | **DELETE** /projects/{project_id}/jobs/{id} | Delete a job
 *JobsApi* | **jobKeysCreate** | **POST** /projects/{project_id}/jobs/{id}/keys | Add keys to job
 *JobsApi* | **jobKeysDelete** | **DELETE** /projects/{project_id}/jobs/{id}/keys | Remove keys from job
+*JobsApi* | **jobLock** | **POST** /projects/{project_id}/jobs/{id}/lock | Lock a job
 *JobsApi* | **jobReopen** | **POST** /projects/{project_id}/jobs/{id}/reopen | Reopen a job
 *JobsApi* | **jobShow** | **GET** /projects/{project_id}/jobs/{id} | Get a single job
 *JobsApi* | **jobStart** | **POST** /projects/{project_id}/jobs/{id}/start | Start a job
+*JobsApi* | **jobUnlock** | **POST** /projects/{project_id}/jobs/{id}/unlock | Unlock a job
 *JobsApi* | **jobUpdate** | **PATCH** /projects/{project_id}/jobs/{id} | Update a job
 *JobsApi* | **jobsByAccount** | **GET** /accounts/{account_id}/jobs | List account jobs
 *JobsApi* | **jobsList** | **GET** /projects/{project_id}/jobs | List jobs

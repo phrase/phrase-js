@@ -75,6 +75,13 @@ export interface JobKeysDeleteRequest {
     translationKeyIds?: Array<string>;
 }
 
+export interface JobLockRequest {
+    projectId: string;
+    id: string;
+    xPhraseAppOTP?: string;
+    branch?: string;
+}
+
 export interface JobReopenRequest {
     projectId: string;
     id: string;
@@ -94,6 +101,13 @@ export interface JobStartRequest {
     id: string;
     jobStartParameters: JobStartParameters;
     xPhraseAppOTP?: string;
+}
+
+export interface JobUnlockRequest {
+    projectId: string;
+    id: string;
+    xPhraseAppOTP?: string;
+    branch?: string;
 }
 
 export interface JobUpdateRequest {
@@ -394,6 +408,57 @@ export class JobsApi extends runtime.BaseAPI {
     }
 
     /**
+     * If you are the job owner, you may lock a job using this API request.
+     * Lock a job
+     */
+    async jobLockRaw(requestParameters: JobLockRequest): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobLock.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling jobLock.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.branch !== undefined) {
+            queryParameters['branch'] = requestParameters.branch;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/projects/{project_id}/jobs/{id}/lock`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        });
+
+        return new runtime.TextApiResponse(response) as any;
+    }
+
+    /**
+     * If you are the job owner, you may lock a job using this API request.
+     * Lock a job
+     */
+    async jobLock(requestParameters: JobLockRequest): Promise<any> {
+        const response = await this.jobLockRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
      * Mark a job as uncompleted.
      * Reopen a job
      */
@@ -549,6 +614,57 @@ export class JobsApi extends runtime.BaseAPI {
      */
     async jobStart(requestParameters: JobStartRequest): Promise<JobDetails> {
         const response = await this.jobStartRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * If you are the job owner, you may unlock a locked job using this API request.
+     * Unlock a job
+     */
+    async jobUnlockRaw(requestParameters: JobUnlockRequest): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobUnlock.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling jobUnlock.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.branch !== undefined) {
+            queryParameters['branch'] = requestParameters.branch;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/projects/{project_id}/jobs/{id}/unlock`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        });
+
+        return new runtime.TextApiResponse(response) as any;
+    }
+
+    /**
+     * If you are the job owner, you may unlock a locked job using this API request.
+     * Unlock a job
+     */
+    async jobUnlock(requestParameters: JobUnlockRequest): Promise<any> {
+        const response = await this.jobUnlockRaw(requestParameters);
         return await response.value();
     }
 
