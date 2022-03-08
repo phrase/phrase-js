@@ -66,6 +66,12 @@ export interface JobCreateParameters {
      * @memberof JobCreateParameters
      */
     translationKeyIds?: Array<string>;
+    /**
+     * id of a job template you would like to model the created job after. Any manually added parameters will take preference over template attributes.
+     * @type {string}
+     * @memberof JobCreateParameters
+     */
+    jobTemplateId?: string;
 }
 
 export function JobCreateParametersFromJSON(json: any): JobCreateParameters {
@@ -86,6 +92,7 @@ export function JobCreateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'translationKeyIds': !exists(json, 'translation_key_ids') ? undefined : json['translation_key_ids'],
+        'jobTemplateId': !exists(json, 'job_template_id') ? undefined : json['job_template_id'],
     };
 }
 
@@ -106,6 +113,7 @@ export function JobCreateParametersToJSON(value?: JobCreateParameters | null): a
         'ticket_url': value.ticketUrl,
         'tags': value.tags,
         'translation_key_ids': value.translationKeyIds,
+        'job_template_id': value.jobTemplateId,
     };
 }
 
