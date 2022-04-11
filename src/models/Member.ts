@@ -21,10 +21,10 @@ import {
     ProjectLocalesFromJSON,
     ProjectLocalesFromJSONTyped,
     ProjectLocalesToJSON,
-    Team1,
-    Team1FromJSON,
-    Team1FromJSONTyped,
-    Team1ToJSON,
+    TeamShort,
+    TeamShortFromJSON,
+    TeamShortFromJSONTyped,
+    TeamShortToJSON,
 } from './';
 
 /**
@@ -89,10 +89,10 @@ export interface Member {
     defaultLocaleCodes?: Array<string>;
     /**
      * 
-     * @type {Array<Team1>}
+     * @type {Array<TeamShort>}
      * @memberof Member
      */
-    teams?: Array<Team1>;
+    teams?: Array<TeamShort>;
     /**
      * 
      * @type {Array<MemberSpaces>}
@@ -120,7 +120,7 @@ export function MemberFromJSONTyped(json: any, ignoreDiscriminator: boolean): Me
         'projects': !exists(json, 'projects') ? undefined : ((json['projects'] as Array<any>).map(ProjectLocalesFromJSON)),
         'permissions': !exists(json, 'permissions') ? undefined : json['permissions'],
         'defaultLocaleCodes': !exists(json, 'default_locale_codes') ? undefined : json['default_locale_codes'],
-        'teams': !exists(json, 'teams') ? undefined : ((json['teams'] as Array<any>).map(Team1FromJSON)),
+        'teams': !exists(json, 'teams') ? undefined : ((json['teams'] as Array<any>).map(TeamShortFromJSON)),
         'spaces': !exists(json, 'spaces') ? undefined : ((json['spaces'] as Array<any>).map(MemberSpacesFromJSON)),
     };
 }
@@ -143,7 +143,7 @@ export function MemberToJSON(value?: Member | null): any {
         'projects': value.projects === undefined ? undefined : ((value.projects as Array<any>).map(ProjectLocalesToJSON)),
         'permissions': value.permissions,
         'default_locale_codes': value.defaultLocaleCodes,
-        'teams': value.teams === undefined ? undefined : ((value.teams as Array<any>).map(Team1ToJSON)),
+        'teams': value.teams === undefined ? undefined : ((value.teams as Array<any>).map(TeamShortToJSON)),
         'spaces': value.spaces === undefined ? undefined : ((value.spaces as Array<any>).map(MemberSpacesToJSON)),
     };
 }

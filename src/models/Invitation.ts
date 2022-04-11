@@ -13,10 +13,6 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    Items,
-    ItemsFromJSON,
-    ItemsFromJSONTyped,
-    ItemsToJSON,
     LocalePreview,
     LocalePreviewFromJSON,
     LocalePreviewFromJSONTyped,
@@ -25,14 +21,18 @@ import {
     MemberProjectDetailProjectRolesFromJSON,
     MemberProjectDetailProjectRolesFromJSONTyped,
     MemberProjectDetailProjectRolesToJSON,
-    MemberSpaces,
-    MemberSpacesFromJSON,
-    MemberSpacesFromJSONTyped,
-    MemberSpacesToJSON,
     ProjectShort,
     ProjectShortFromJSON,
     ProjectShortFromJSONTyped,
     ProjectShortToJSON,
+    Space,
+    SpaceFromJSON,
+    SpaceFromJSONTyped,
+    SpaceToJSON,
+    TeamShort,
+    TeamShortFromJSON,
+    TeamShortFromJSONTyped,
+    TeamShortToJSON,
 } from './';
 
 /**
@@ -79,6 +79,12 @@ export interface Invitation {
     locales?: Array<LocalePreview>;
     /**
      * 
+     * @type {Array<TeamShort>}
+     * @memberof Invitation
+     */
+    teams?: Array<TeamShort>;
+    /**
+     * 
      * @type {Array<string>}
      * @memberof Invitation
      */
@@ -115,16 +121,10 @@ export interface Invitation {
     acceptedAt?: Date;
     /**
      * 
-     * @type {Array<MemberSpaces>}
+     * @type {Array<Space>}
      * @memberof Invitation
      */
-    spaces?: Array<MemberSpaces>;
-    /**
-     * 
-     * @type {Array<Items>}
-     * @memberof Invitation
-     */
-    teams?: Array<Items>;
+    spaces?: Array<Space>;
     /**
      * 
      * @type {Array<MemberProjectDetailProjectRoles>}
@@ -149,14 +149,14 @@ export function InvitationFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'state': !exists(json, 'state') ? undefined : json['state'],
         'projects': !exists(json, 'projects') ? undefined : ((json['projects'] as Array<any>).map(ProjectShortFromJSON)),
         'locales': !exists(json, 'locales') ? undefined : ((json['locales'] as Array<any>).map(LocalePreviewFromJSON)),
+        'teams': !exists(json, 'teams') ? undefined : ((json['teams'] as Array<any>).map(TeamShortFromJSON)),
         'defaultLocaleCodes': !exists(json, 'default_locale_codes') ? undefined : json['default_locale_codes'],
         'permissions': !exists(json, 'permissions') ? undefined : json['permissions'],
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'acceptedAt': !exists(json, 'accepted_at') ? undefined : (new Date(json['accepted_at'])),
-        'spaces': !exists(json, 'spaces') ? undefined : ((json['spaces'] as Array<any>).map(MemberSpacesFromJSON)),
-        'teams': !exists(json, 'teams') ? undefined : ((json['teams'] as Array<any>).map(ItemsFromJSON)),
+        'spaces': !exists(json, 'spaces') ? undefined : ((json['spaces'] as Array<any>).map(SpaceFromJSON)),
         'projectRole': !exists(json, 'project_role') ? undefined : ((json['project_role'] as Array<any>).map(MemberProjectDetailProjectRolesFromJSON)),
     };
 }
@@ -176,14 +176,14 @@ export function InvitationToJSON(value?: Invitation | null): any {
         'state': value.state,
         'projects': value.projects === undefined ? undefined : ((value.projects as Array<any>).map(ProjectShortToJSON)),
         'locales': value.locales === undefined ? undefined : ((value.locales as Array<any>).map(LocalePreviewToJSON)),
+        'teams': value.teams === undefined ? undefined : ((value.teams as Array<any>).map(TeamShortToJSON)),
         'default_locale_codes': value.defaultLocaleCodes,
         'permissions': value.permissions,
         'locale_ids': value.localeIds,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'accepted_at': value.acceptedAt === undefined ? undefined : (value.acceptedAt.toISOString()),
-        'spaces': value.spaces === undefined ? undefined : ((value.spaces as Array<any>).map(MemberSpacesToJSON)),
-        'teams': value.teams === undefined ? undefined : ((value.teams as Array<any>).map(ItemsToJSON)),
+        'spaces': value.spaces === undefined ? undefined : ((value.spaces as Array<any>).map(SpaceToJSON)),
         'project_role': value.projectRole === undefined ? undefined : ((value.projectRole as Array<any>).map(MemberProjectDetailProjectRolesToJSON)),
     };
 }

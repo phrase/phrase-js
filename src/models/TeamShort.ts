@@ -15,40 +15,40 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Team1
+ * @interface TeamShort
  */
-export interface Team1 {
+export interface TeamShort {
     /**
      * 
      * @type {string}
-     * @memberof Team1
+     * @memberof TeamShort
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof Team1
+     * @memberof TeamShort
      */
     name?: string;
     /**
      * 
      * @type {Date}
-     * @memberof Team1
+     * @memberof TeamShort
      */
     createdAt?: Date;
     /**
      * 
      * @type {Date}
-     * @memberof Team1
+     * @memberof TeamShort
      */
     updatedAt?: Date;
 }
 
-export function Team1FromJSON(json: any): Team1 {
-    return Team1FromJSONTyped(json, false);
+export function TeamShortFromJSON(json: any): TeamShort {
+    return TeamShortFromJSONTyped(json, false);
 }
 
-export function Team1FromJSONTyped(json: any, ignoreDiscriminator: boolean): Team1 {
+export function TeamShortFromJSONTyped(json: any, ignoreDiscriminator: boolean): TeamShort {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -61,7 +61,7 @@ export function Team1FromJSONTyped(json: any, ignoreDiscriminator: boolean): Tea
     };
 }
 
-export function Team1ToJSON(value?: Team1 | null): any {
+export function TeamShortToJSON(value?: TeamShort | null): any {
     if (value === undefined) {
         return undefined;
     }
