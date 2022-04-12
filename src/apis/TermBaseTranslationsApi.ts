@@ -33,14 +33,6 @@ export interface GlossaryTermTranslationCreateRequest {
     xPhraseAppOTP?: string;
 }
 
-export interface GlossaryTermTranslationDeleteRequest {
-    accountId: string;
-    glossaryId: string;
-    termId: string;
-    id: string;
-    xPhraseAppOTP?: string;
-}
-
 export interface GlossaryTermTranslationUpdateRequest {
     accountId: string;
     glossaryId: string;
@@ -53,11 +45,11 @@ export interface GlossaryTermTranslationUpdateRequest {
 /**
  * 
  */
-export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
+export class TermBaseTranslationsApi extends runtime.BaseAPI {
 
     /**
-     * Create a new glossary term translation.
-     * Create a glossary term translation
+     * Create a new translation for a term in a term base (previously: glossary).
+     * Create a translation for a term
      */
     async glossaryTermTranslationCreateRaw(requestParameters: GlossaryTermTranslationCreateRequest): Promise<runtime.ApiResponse<GlossaryTermTranslation>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -105,8 +97,8 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new glossary term translation.
-     * Create a glossary term translation
+     * Create a new translation for a term in a term base (previously: glossary).
+     * Create a translation for a term
      */
     async glossaryTermTranslationCreate(requestParameters: GlossaryTermTranslationCreateRequest): Promise<GlossaryTermTranslation> {
         const response = await this.glossaryTermTranslationCreateRaw(requestParameters);
@@ -114,63 +106,8 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing glossary term translation.
-     * Delete a glossary term translation
-     */
-    async glossaryTermTranslationDeleteRaw(requestParameters: GlossaryTermTranslationDeleteRequest): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
-            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling glossaryTermTranslationDelete.');
-        }
-
-        if (requestParameters.glossaryId === null || requestParameters.glossaryId === undefined) {
-            throw new runtime.RequiredError('glossaryId','Required parameter requestParameters.glossaryId was null or undefined when calling glossaryTermTranslationDelete.');
-        }
-
-        if (requestParameters.termId === null || requestParameters.termId === undefined) {
-            throw new runtime.RequiredError('termId','Required parameter requestParameters.termId was null or undefined when calling glossaryTermTranslationDelete.');
-        }
-
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling glossaryTermTranslationDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
-            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
-        }
-
-        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
-            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
-        }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
-        }
-
-        const response = await this.request({
-            path: `/accounts/{account_id}/glossaries/{glossary_id}/terms/{term_id}/translations/{id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"glossary_id"}}`, encodeURIComponent(String(requestParameters.glossaryId))).replace(`{${"term_id"}}`, encodeURIComponent(String(requestParameters.termId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        });
-
-        return new runtime.TextApiResponse(response) as any;
-    }
-
-    /**
-     * Delete an existing glossary term translation.
-     * Delete a glossary term translation
-     */
-    async glossaryTermTranslationDelete(requestParameters: GlossaryTermTranslationDeleteRequest): Promise<any> {
-        const response = await this.glossaryTermTranslationDeleteRaw(requestParameters);
-        return await response.value();
-    }
-
-    /**
-     * Update an existing glossary term translation.
-     * Update a glossary term translation
+     * Update an existing translation for a term in a term base (previously: glossary).
+     * Update a translation for a term
      */
     async glossaryTermTranslationUpdateRaw(requestParameters: GlossaryTermTranslationUpdateRequest): Promise<runtime.ApiResponse<GlossaryTermTranslation>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -222,8 +159,8 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing glossary term translation.
-     * Update a glossary term translation
+     * Update an existing translation for a term in a term base (previously: glossary).
+     * Update a translation for a term
      */
     async glossaryTermTranslationUpdate(requestParameters: GlossaryTermTranslationUpdateRequest): Promise<GlossaryTermTranslation> {
         const response = await this.glossaryTermTranslationUpdateRaw(requestParameters);
