@@ -60,7 +60,7 @@ export interface GlossaryUpdateRequest {
 /**
  * 
  */
-export class TermBaseApi extends runtime.BaseAPI {
+export class TermBasesApi extends runtime.BaseAPI {
 
     /**
      * List all term bases (previously: glossaries) the current user has access to.

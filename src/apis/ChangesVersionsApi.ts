@@ -42,7 +42,7 @@ export interface VersionsListRequest {
 /**
  * 
  */
-export class VersionsHistoryApi extends runtime.BaseAPI {
+export class ChangesVersionsApi extends runtime.BaseAPI {
 
     /**
      * Get details on a single version.
