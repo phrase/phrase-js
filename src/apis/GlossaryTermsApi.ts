@@ -65,11 +65,11 @@ export interface GlossaryTermsListRequest {
 /**
  * 
  */
-export class TermsInTermBaseApi extends runtime.BaseAPI {
+export class GlossaryTermsApi extends runtime.BaseAPI {
 
     /**
-     * Create a new term in a term base (previously: glossary).
-     * Create a term
+     * Create a new glossary term.
+     * Create a glossary term
      */
     async glossaryTermCreateRaw(requestParameters: GlossaryTermCreateRequest): Promise<runtime.ApiResponse<GlossaryTerm>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -113,8 +113,8 @@ export class TermsInTermBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new term in a term base (previously: glossary).
-     * Create a term
+     * Create a new glossary term.
+     * Create a glossary term
      */
     async glossaryTermCreate(requestParameters: GlossaryTermCreateRequest): Promise<GlossaryTerm> {
         const response = await this.glossaryTermCreateRaw(requestParameters);
@@ -122,8 +122,8 @@ export class TermsInTermBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing term in a term base (previously: glossary).
-     * Delete a term
+     * Delete an existing glossary term.
+     * Delete a glossary term
      */
     async glossaryTermDeleteRaw(requestParameters: GlossaryTermDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -164,8 +164,8 @@ export class TermsInTermBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing term in a term base (previously: glossary).
-     * Delete a term
+     * Delete an existing glossary term.
+     * Delete a glossary term
      */
     async glossaryTermDelete(requestParameters: GlossaryTermDeleteRequest): Promise<any> {
         const response = await this.glossaryTermDeleteRaw(requestParameters);
@@ -173,8 +173,8 @@ export class TermsInTermBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details for a single term in the term base (previously: glossary).
-     * Get a single term
+     * Get details on a single glossary term.
+     * Get a single glossary term
      */
     async glossaryTermShowRaw(requestParameters: GlossaryTermShowRequest): Promise<runtime.ApiResponse<GlossaryTerm>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -215,8 +215,8 @@ export class TermsInTermBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details for a single term in the term base (previously: glossary).
-     * Get a single term
+     * Get details on a single glossary term.
+     * Get a single glossary term
      */
     async glossaryTermShow(requestParameters: GlossaryTermShowRequest): Promise<GlossaryTerm> {
         const response = await this.glossaryTermShowRaw(requestParameters);
@@ -224,8 +224,8 @@ export class TermsInTermBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing term in a term base (previously: glossary).
-     * Update a term
+     * Update an existing glossary term.
+     * Update a glossary term
      */
     async glossaryTermUpdateRaw(requestParameters: GlossaryTermUpdateRequest): Promise<runtime.ApiResponse<GlossaryTerm>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -273,8 +273,8 @@ export class TermsInTermBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing term in a term base (previously: glossary).
-     * Update a term
+     * Update an existing glossary term.
+     * Update a glossary term
      */
     async glossaryTermUpdate(requestParameters: GlossaryTermUpdateRequest): Promise<GlossaryTerm> {
         const response = await this.glossaryTermUpdateRaw(requestParameters);
@@ -282,8 +282,8 @@ export class TermsInTermBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all terms in term bases (previously: glossary) that the current user has access to.
-     * List terms
+     * List all glossary terms the current user has access to.
+     * List glossary terms
      */
     async glossaryTermsListRaw(requestParameters: GlossaryTermsListRequest): Promise<runtime.ApiResponse<Array<GlossaryTerm>>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -328,8 +328,8 @@ export class TermsInTermBaseApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all terms in term bases (previously: glossary) that the current user has access to.
-     * List terms
+     * List all glossary terms the current user has access to.
+     * List glossary terms
      */
     async glossaryTermsList(requestParameters: GlossaryTermsListRequest): Promise<Array<GlossaryTerm>> {
         const response = await this.glossaryTermsListRaw(requestParameters);

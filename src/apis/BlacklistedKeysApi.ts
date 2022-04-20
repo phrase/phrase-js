@@ -61,11 +61,11 @@ export interface BlacklistedKeysListRequest {
 /**
  * 
  */
-export class BlockedKeysApi extends runtime.BaseAPI {
+export class BlacklistedKeysApi extends runtime.BaseAPI {
 
     /**
-     * Create a new rule for blocking keys.
-     * Create a blocked key
+     * Create a new rule for blacklisting keys.
+     * Create a blacklisted key
      */
     async blacklistedKeyCreateRaw(requestParameters: BlacklistedKeyCreateRequest): Promise<runtime.ApiResponse<BlacklistedKey>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
@@ -105,8 +105,8 @@ export class BlockedKeysApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new rule for blocking keys.
-     * Create a blocked key
+     * Create a new rule for blacklisting keys.
+     * Create a blacklisted key
      */
     async blacklistedKeyCreate(requestParameters: BlacklistedKeyCreateRequest): Promise<BlacklistedKey> {
         const response = await this.blacklistedKeyCreateRaw(requestParameters);
@@ -114,8 +114,8 @@ export class BlockedKeysApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing rule for blocking keys.
-     * Delete a blocked key
+     * Delete an existing rule for blacklisting keys.
+     * Delete a blacklisted key
      */
     async blacklistedKeyDeleteRaw(requestParameters: BlacklistedKeyDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
@@ -152,8 +152,8 @@ export class BlockedKeysApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing rule for blocking keys.
-     * Delete a blocked key
+     * Delete an existing rule for blacklisting keys.
+     * Delete a blacklisted key
      */
     async blacklistedKeyDelete(requestParameters: BlacklistedKeyDeleteRequest): Promise<any> {
         const response = await this.blacklistedKeyDeleteRaw(requestParameters);
@@ -161,8 +161,8 @@ export class BlockedKeysApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details on a single rule for blocking keys for a given project.
-     * Get a single blocked key
+     * Get details on a single rule for blacklisting keys for a given project.
+     * Get a single blacklisted key
      */
     async blacklistedKeyShowRaw(requestParameters: BlacklistedKeyShowRequest): Promise<runtime.ApiResponse<BlacklistedKey>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
@@ -199,8 +199,8 @@ export class BlockedKeysApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details on a single rule for blocking keys for a given project.
-     * Get a single blocked key
+     * Get details on a single rule for blacklisting keys for a given project.
+     * Get a single blacklisted key
      */
     async blacklistedKeyShow(requestParameters: BlacklistedKeyShowRequest): Promise<BlacklistedKey> {
         const response = await this.blacklistedKeyShowRaw(requestParameters);
@@ -208,8 +208,8 @@ export class BlockedKeysApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing rule for blocking keys.
-     * Update a blocked key
+     * Update an existing rule for blacklisting keys.
+     * Update a blacklisted key
      */
     async blacklistedKeyUpdateRaw(requestParameters: BlacklistedKeyUpdateRequest): Promise<runtime.ApiResponse<BlacklistedKey>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
@@ -253,8 +253,8 @@ export class BlockedKeysApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing rule for blocking keys.
-     * Update a blocked key
+     * Update an existing rule for blacklisting keys.
+     * Update a blacklisted key
      */
     async blacklistedKeyUpdate(requestParameters: BlacklistedKeyUpdateRequest): Promise<BlacklistedKey> {
         const response = await this.blacklistedKeyUpdateRaw(requestParameters);
@@ -262,8 +262,8 @@ export class BlockedKeysApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all rules for blocking keys for the given project.
-     * List blocked keys
+     * List all rules for blacklisting keys for the given project.
+     * List blacklisted keys
      */
     async blacklistedKeysListRaw(requestParameters: BlacklistedKeysListRequest): Promise<runtime.ApiResponse<Array<BlacklistedKey>>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
@@ -308,8 +308,8 @@ export class BlockedKeysApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all rules for blocking keys for the given project.
-     * List blocked keys
+     * List all rules for blacklisting keys for the given project.
+     * List blacklisted keys
      */
     async blacklistedKeysList(requestParameters: BlacklistedKeysListRequest): Promise<Array<BlacklistedKey>> {
         const response = await this.blacklistedKeysListRaw(requestParameters);

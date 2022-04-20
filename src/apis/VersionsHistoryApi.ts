@@ -42,7 +42,7 @@ export interface VersionsListRequest {
 /**
  * 
  */
-export class ChangesVersionsApi extends runtime.BaseAPI {
+export class VersionsHistoryApi extends runtime.BaseAPI {
 
     /**
      * Get details on a single version.
@@ -100,7 +100,7 @@ export class ChangesVersionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all changes done to a given translation.
+     * List all versions for the given translation.
      * List all versions
      */
     async versionsListRaw(requestParameters: VersionsListRequest): Promise<runtime.ApiResponse<Array<TranslationVersion>>> {
@@ -150,7 +150,7 @@ export class ChangesVersionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all changes done to a given translation.
+     * List all versions for the given translation.
      * List all versions
      */
     async versionsList(requestParameters: VersionsListRequest): Promise<Array<TranslationVersion>> {

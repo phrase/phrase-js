@@ -19,7 +19,7 @@ import { exists, mapValues } from '../runtime';
  */
 export interface BlacklistedKeyUpdateParameters {
     /**
-     * Blocked key name
+     * Blacklisted key name
      * @type {string}
      * @memberof BlacklistedKeyUpdateParameters
      */

@@ -60,11 +60,11 @@ export interface GlossaryUpdateRequest {
 /**
  * 
  */
-export class TermBasesApi extends runtime.BaseAPI {
+export class GlossariesApi extends runtime.BaseAPI {
 
     /**
-     * List all term bases (previously: glossaries) the current user has access to.
-     * List term bases
+     * List all glossaries the current user has access to.
+     * List glossaries
      */
     async glossariesListRaw(requestParameters: GlossariesListRequest): Promise<runtime.ApiResponse<Array<Glossary>>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -105,8 +105,8 @@ export class TermBasesApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all term bases (previously: glossaries) the current user has access to.
-     * List term bases
+     * List all glossaries the current user has access to.
+     * List glossaries
      */
     async glossariesList(requestParameters: GlossariesListRequest): Promise<Array<Glossary>> {
         const response = await this.glossariesListRaw(requestParameters);
@@ -114,8 +114,8 @@ export class TermBasesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new term base (previously: glossary).
-     * Create a term base
+     * Create a new glossary.
+     * Create a glossary
      */
     async glossaryCreateRaw(requestParameters: GlossaryCreateRequest): Promise<runtime.ApiResponse<Glossary>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -155,8 +155,8 @@ export class TermBasesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new term base (previously: glossary).
-     * Create a term base
+     * Create a new glossary.
+     * Create a glossary
      */
     async glossaryCreate(requestParameters: GlossaryCreateRequest): Promise<Glossary> {
         const response = await this.glossaryCreateRaw(requestParameters);
@@ -164,8 +164,8 @@ export class TermBasesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing term base (previously: glossary).
-     * Delete a term base
+     * Delete an existing glossary.
+     * Delete a glossary
      */
     async glossaryDeleteRaw(requestParameters: GlossaryDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -202,8 +202,8 @@ export class TermBasesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing term base (previously: glossary).
-     * Delete a term base
+     * Delete an existing glossary.
+     * Delete a glossary
      */
     async glossaryDelete(requestParameters: GlossaryDeleteRequest): Promise<any> {
         const response = await this.glossaryDeleteRaw(requestParameters);
@@ -211,8 +211,8 @@ export class TermBasesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details on a single term base (previously: glossary).
-     * Get a single term base
+     * Get details on a single glossary.
+     * Get a single glossary
      */
     async glossaryShowRaw(requestParameters: GlossaryShowRequest): Promise<runtime.ApiResponse<Glossary>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -249,8 +249,8 @@ export class TermBasesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details on a single term base (previously: glossary).
-     * Get a single term base
+     * Get details on a single glossary.
+     * Get a single glossary
      */
     async glossaryShow(requestParameters: GlossaryShowRequest): Promise<Glossary> {
         const response = await this.glossaryShowRaw(requestParameters);
@@ -258,8 +258,8 @@ export class TermBasesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing term base (previously: glossary).
-     * Update a term base
+     * Update an existing glossary.
+     * Update a glossary
      */
     async glossaryUpdateRaw(requestParameters: GlossaryUpdateRequest): Promise<runtime.ApiResponse<Glossary>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -303,8 +303,8 @@ export class TermBasesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing term base (previously: glossary).
-     * Update a term base
+     * Update an existing glossary.
+     * Update a glossary
      */
     async glossaryUpdate(requestParameters: GlossaryUpdateRequest): Promise<Glossary> {
         const response = await this.glossaryUpdateRaw(requestParameters);
