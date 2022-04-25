@@ -17,9 +17,6 @@ import {
     Screenshot,
     ScreenshotFromJSON,
     ScreenshotToJSON,
-    ScreenshotCreateParameters,
-    ScreenshotCreateParametersFromJSON,
-    ScreenshotCreateParametersToJSON,
     ScreenshotUpdateParameters,
     ScreenshotUpdateParametersFromJSON,
     ScreenshotUpdateParametersToJSON,
@@ -27,8 +24,11 @@ import {
 
 export interface ScreenshotCreateRequest {
     projectId: string;
-    screenshotCreateParameters: ScreenshotCreateParameters;
     xPhraseAppOTP?: string;
+    branch?: string;
+    name?: string;
+    description?: string;
+    filename?: Blob;
 }
 
 export interface ScreenshotDeleteRequest {
@@ -75,15 +75,9 @@ export class ScreenshotsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling screenshotCreate.');
         }
 
-        if (requestParameters.screenshotCreateParameters === null || requestParameters.screenshotCreateParameters === undefined) {
-            throw new runtime.RequiredError('screenshotCreateParameters','Required parameter requestParameters.screenshotCreateParameters was null or undefined when calling screenshotCreate.');
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
 
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
             headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
@@ -96,12 +90,44 @@ export class ScreenshotsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
         }
 
+        const consumes: runtime.Consume[] = [
+            { contentType: 'multipart/form-data' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): any };
+        let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new URLSearchParams();
+        }
+
+        if (requestParameters.branch !== undefined) {
+            formParams.append('branch', requestParameters.branch as any);
+        }
+
+        if (requestParameters.name !== undefined) {
+            formParams.append('name', requestParameters.name as any);
+        }
+
+        if (requestParameters.description !== undefined) {
+            formParams.append('description', requestParameters.description as any);
+        }
+
+        if (requestParameters.filename !== undefined) {
+            formParams.append('filename', requestParameters.filename as any);
+        }
+
         const response = await this.request({
             path: `/projects/{project_id}/screenshots`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ScreenshotCreateParametersToJSON(requestParameters.screenshotCreateParameters),
+            body: formParams,
         });
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ScreenshotFromJSON(jsonValue));
