@@ -14,6 +14,7 @@ export * from './GlossaryTermTranslationsApi';
 export * from './GlossaryTermsApi';
 export * from './ICUApi';
 export * from './InvitationsApi';
+export * from './JobCommentsApi';
 export * from './JobLocalesApi';
 export * from './JobTemplateLocalesApi';
 export * from './JobTemplatesApi';

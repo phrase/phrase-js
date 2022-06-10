@@ -212,6 +212,11 @@ Class | Method | HTTP request | Description
 *InvitationsApi* | **invitationUpdate** | **PATCH** /accounts/{account_id}/invitations/{id} | Update an invitation
 *InvitationsApi* | **invitationUpdateSettings** | **PATCH** /projects/{project_id}/invitations/{id} | Update a member\&#39;s invitation access
 *InvitationsApi* | **invitationsList** | **GET** /accounts/{account_id}/invitations | List invitations
+*JobCommentsApi* | **jobCommentCreate** | **POST** /projects/{project_id}/jobs/{job_id}/comments | Create a job comment
+*JobCommentsApi* | **jobCommentDelete** | **DELETE** /projects/{project_id}/jobs/{job_id}/comments/{id} | Delete a job comment
+*JobCommentsApi* | **jobCommentShow** | **GET** /projects/{project_id}/jobs/{job_id}/comments/{id} | Get a single job comment
+*JobCommentsApi* | **jobCommentUpdate** | **PATCH** /projects/{project_id}/jobs/{job_id}/comments/{id} | Update a job comment
+*JobCommentsApi* | **jobCommentsList** | **GET** /projects/{project_id}/jobs/{job_id}/comments | List job comments
 *JobLocalesApi* | **jobLocaleComplete** | **POST** /projects/{project_id}/jobs/{job_id}/locales/{id}/complete | Complete a job locale
 *JobLocalesApi* | **jobLocaleCompleteReview** | **POST** /projects/{project_id}/jobs/{job_id}/locales/{id}/complete_review | Review a job locale
 *JobLocalesApi* | **jobLocaleDelete** | **DELETE** /projects/{project_id}/jobs/{job_id}/locales/{id} | Delete a job locale
