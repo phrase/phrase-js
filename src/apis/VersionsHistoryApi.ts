@@ -100,7 +100,7 @@ export class VersionsHistoryApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all versions for the given translation.
+     * List all changes done to a given translation.
      * List all versions
      */
     async versionsListRaw(requestParameters: VersionsListRequest): Promise<runtime.ApiResponse<Array<TranslationVersion>>> {
@@ -150,7 +150,7 @@ export class VersionsHistoryApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all versions for the given translation.
+     * List all changes done to a given translation.
      * List all versions
      */
     async versionsList(requestParameters: VersionsListRequest): Promise<Array<TranslationVersion>> {

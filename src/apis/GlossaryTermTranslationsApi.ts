@@ -56,8 +56,8 @@ export interface GlossaryTermTranslationUpdateRequest {
 export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
 
     /**
-     * Create a new glossary term translation.
-     * Create a glossary term translation
+     * Create a new translation for a term in a term base (previously: glossary).
+     * Create a translation for a term
      */
     async glossaryTermTranslationCreateRaw(requestParameters: GlossaryTermTranslationCreateRequest): Promise<runtime.ApiResponse<GlossaryTermTranslation>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -105,8 +105,8 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new glossary term translation.
-     * Create a glossary term translation
+     * Create a new translation for a term in a term base (previously: glossary).
+     * Create a translation for a term
      */
     async glossaryTermTranslationCreate(requestParameters: GlossaryTermTranslationCreateRequest): Promise<GlossaryTermTranslation> {
         const response = await this.glossaryTermTranslationCreateRaw(requestParameters);
@@ -114,8 +114,8 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing glossary term translation.
-     * Delete a glossary term translation
+     * Delete an existing translation of a term in a term base (previously: glossary).
+     * Delete a translation for a term
      */
     async glossaryTermTranslationDeleteRaw(requestParameters: GlossaryTermTranslationDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -160,8 +160,8 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing glossary term translation.
-     * Delete a glossary term translation
+     * Delete an existing translation of a term in a term base (previously: glossary).
+     * Delete a translation for a term
      */
     async glossaryTermTranslationDelete(requestParameters: GlossaryTermTranslationDeleteRequest): Promise<any> {
         const response = await this.glossaryTermTranslationDeleteRaw(requestParameters);
@@ -169,8 +169,8 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing glossary term translation.
-     * Update a glossary term translation
+     * Update an existing translation for a term in a term base (previously: glossary).
+     * Update a translation for a term
      */
     async glossaryTermTranslationUpdateRaw(requestParameters: GlossaryTermTranslationUpdateRequest): Promise<runtime.ApiResponse<GlossaryTermTranslation>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -222,8 +222,8 @@ export class GlossaryTermTranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing glossary term translation.
-     * Update a glossary term translation
+     * Update an existing translation for a term in a term base (previously: glossary).
+     * Update a translation for a term
      */
     async glossaryTermTranslationUpdate(requestParameters: GlossaryTermTranslationUpdateRequest): Promise<GlossaryTermTranslation> {
         const response = await this.glossaryTermTranslationUpdateRaw(requestParameters);
