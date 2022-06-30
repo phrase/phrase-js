@@ -87,6 +87,12 @@ export interface LocaleDetails {
     sourceLocale?: LocalePreview;
     /**
      * 
+     * @type {LocalePreview}
+     * @memberof LocaleDetails
+     */
+    fallbackLocale?: LocalePreview;
+    /**
+     * 
      * @type {Date}
      * @memberof LocaleDetails
      */
@@ -123,6 +129,7 @@ export function LocaleDetailsFromJSONTyped(json: any, ignoreDiscriminator: boole
         'rtl': !exists(json, 'rtl') ? undefined : json['rtl'],
         'pluralForms': !exists(json, 'plural_forms') ? undefined : json['plural_forms'],
         'sourceLocale': !exists(json, 'source_locale') ? undefined : LocalePreviewFromJSON(json['source_locale']),
+        'fallbackLocale': !exists(json, 'fallback_locale') ? undefined : LocalePreviewFromJSON(json['fallback_locale']),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'statistics': !exists(json, 'statistics') ? undefined : LocaleStatisticsFromJSON(json['statistics']),
@@ -146,6 +153,7 @@ export function LocaleDetailsToJSON(value?: LocaleDetails | null): any {
         'rtl': value.rtl,
         'plural_forms': value.pluralForms,
         'source_locale': LocalePreviewToJSON(value.sourceLocale),
+        'fallback_locale': LocalePreviewToJSON(value.fallbackLocale),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'statistics': LocaleStatisticsToJSON(value.statistics),

@@ -49,6 +49,12 @@ export interface DistributionUpdateParameters {
      */
     formatOptions?: { [key: string]: string; };
     /**
+     * Use fallback locale if there is no translation in the current locale.
+     * @type {boolean}
+     * @memberof DistributionUpdateParameters
+     */
+    fallbackLocalesEnabled?: boolean;
+    /**
      * Indicates whether to fallback to non regional locale when locale can not be found
      * @type {boolean}
      * @memberof DistributionUpdateParameters
@@ -83,6 +89,7 @@ export function DistributionUpdateParametersFromJSONTyped(json: any, ignoreDiscr
         'platforms': !exists(json, 'platforms') ? undefined : json['platforms'],
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'formatOptions': !exists(json, 'format_options') ? undefined : json['format_options'],
+        'fallbackLocalesEnabled': !exists(json, 'fallback_locales_enabled') ? undefined : json['fallback_locales_enabled'],
         'fallbackToNonRegionalLocale': !exists(json, 'fallback_to_non_regional_locale') ? undefined : json['fallback_to_non_regional_locale'],
         'fallbackToDefaultLocale': !exists(json, 'fallback_to_default_locale') ? undefined : json['fallback_to_default_locale'],
         'useLastReviewedVersion': !exists(json, 'use_last_reviewed_version') ? undefined : json['use_last_reviewed_version'],
@@ -103,6 +110,7 @@ export function DistributionUpdateParametersToJSON(value?: DistributionUpdatePar
         'platforms': value.platforms,
         'locale_ids': value.localeIds,
         'format_options': value.formatOptions,
+        'fallback_locales_enabled': value.fallbackLocalesEnabled,
         'fallback_to_non_regional_locale': value.fallbackToNonRegionalLocale,
         'fallback_to_default_locale': value.fallbackToDefaultLocale,
         'use_last_reviewed_version': value.useLastReviewedVersion,

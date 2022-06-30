@@ -61,6 +61,12 @@ export interface LocaleUpdateParameters {
      */
     sourceLocaleId?: string;
     /**
+     * Fallback locale for empty translations. Can be a locale name or id.
+     * @type {string}
+     * @memberof LocaleUpdateParameters
+     */
+    fallbackLocaleId?: string;
+    /**
      * Indicates that new translations for this locale should be marked as unverified. Part of the <a href=\"https://help.phrase.com/help/verification-and-proofreading\" target=\"_blank\">Advanced Workflows</a> feature.
      * @type {boolean}
      * @memberof LocaleUpdateParameters
@@ -97,6 +103,7 @@ export function LocaleUpdateParametersFromJSONTyped(json: any, ignoreDiscriminat
         'main': !exists(json, 'main') ? undefined : json['main'],
         'rtl': !exists(json, 'rtl') ? undefined : json['rtl'],
         'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
+        'fallbackLocaleId': !exists(json, 'fallback_locale_id') ? undefined : json['fallback_locale_id'],
         'unverifyNewTranslations': !exists(json, 'unverify_new_translations') ? undefined : json['unverify_new_translations'],
         'unverifyUpdatedTranslations': !exists(json, 'unverify_updated_translations') ? undefined : json['unverify_updated_translations'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
@@ -119,6 +126,7 @@ export function LocaleUpdateParametersToJSON(value?: LocaleUpdateParameters | nu
         'main': value.main,
         'rtl': value.rtl,
         'source_locale_id': value.sourceLocaleId,
+        'fallback_locale_id': value.fallbackLocaleId,
         'unverify_new_translations': value.unverifyNewTranslations,
         'unverify_updated_translations': value.unverifyUpdatedTranslations,
         'autotranslate': value.autotranslate,
