@@ -360,6 +360,9 @@ Class | Method | HTTP request | Description
 *VariablesApi* | **variablesList** | **GET** /projects/{project_id}/variables | List variables
 *VersionsHistoryApi* | **versionShow** | **GET** /projects/{project_id}/translations/{translation_id}/versions/{id} | Get a single version
 *VersionsHistoryApi* | **versionsList** | **GET** /projects/{project_id}/translations/{translation_id}/versions | List all versions
+*WebhookDeliveriesApi* | **webhookDeliveriesList** | **GET** /projects/{project_id}/webhooks/{webhook_id}/deliveries | List webhook deliveries
+*WebhookDeliveriesApi* | **webhookDeliveriesRedeliver** | **POST** /projects/{project_id}/webhooks/{webhook_id}/deliveries/{id}/redeliver | Redeliver a single webhook delivery
+*WebhookDeliveriesApi* | **webhookDeliveriesShow** | **GET** /projects/{project_id}/webhooks/{webhook_id}/deliveries/{id} | Get a single webhook delivery
 *WebhooksApi* | **webhookCreate** | **POST** /projects/{project_id}/webhooks | Create a webhook
 *WebhooksApi* | **webhookDelete** | **DELETE** /projects/{project_id}/webhooks/{id} | Delete a webhook
 *WebhooksApi* | **webhookShow** | **GET** /projects/{project_id}/webhooks/{id} | Get a single webhook

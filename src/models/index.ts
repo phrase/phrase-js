@@ -189,4 +189,5 @@ export * from './VariableCreateParameters';
 export * from './VariableUpdateParameters';
 export * from './Webhook';
 export * from './WebhookCreateParameters';
+export * from './WebhookDelivery';
 export * from './WebhookUpdateParameters';

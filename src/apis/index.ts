@@ -39,4 +39,5 @@ export * from './UploadsApi';
 export * from './UsersApi';
 export * from './VariablesApi';
 export * from './VersionsHistoryApi';
+export * from './WebhookDeliveriesApi';
 export * from './WebhooksApi';
