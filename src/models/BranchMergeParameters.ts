@@ -19,7 +19,7 @@ import { exists, mapValues } from '../runtime';
  */
 export interface BranchMergeParameters {
     /**
-     * strategy used for merge blocking, use_master or use_branch
+     * strategy used for merge blocking, use_main or use_branch
      * @type {string}
      * @memberof BranchMergeParameters
      */
