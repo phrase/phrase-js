@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Phrase API Reference
+ * Phrase Strings API Reference
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@phrase.com
@@ -43,7 +43,7 @@ export interface LocaleUpdateParameters {
      */
     _default?: boolean;
     /**
-     * Indicates whether locale is a main locale. Main locales are part of the <a href=\"https://help.phrase.com/help/verification-and-proofreading\" target=\"_blank\">Verification System</a> feature.
+     * Indicates whether locale is a main locale. Main locales are part of the <a href=\"https://support.phrase.com/hc/en-us/articles/5784094755484\" target=\"_blank\">Verification System</a> feature.
      * @type {boolean}
      * @memberof LocaleUpdateParameters
      */
@@ -67,13 +67,13 @@ export interface LocaleUpdateParameters {
      */
     fallbackLocaleId?: string;
     /**
-     * Indicates that new translations for this locale should be marked as unverified. Part of the <a href=\"https://help.phrase.com/help/verification-and-proofreading\" target=\"_blank\">Advanced Workflows</a> feature.
+     * Indicates that new translations for this locale should be marked as unverified. Part of the <a href=\"https://support.phrase.com/hc/en-us/articles/5784094755484\" target=\"_blank\">Advanced Workflows</a> feature.
      * @type {boolean}
      * @memberof LocaleUpdateParameters
      */
     unverifyNewTranslations?: boolean;
     /**
-     * Indicates that updated translations for this locale should be marked as unverified. Part of the <a href=\"https://help.phrase.com/help/verification-and-proofreading\" target=\"_blank\">Advanced Workflows</a> feature.
+     * Indicates that updated translations for this locale should be marked as unverified. Part of the <a href=\"https://support.phrase.com/hc/en-us/articles/5784094755484\" target=\"_blank\">Advanced Workflows</a> feature.
      * @type {boolean}
      * @memberof LocaleUpdateParameters
      */

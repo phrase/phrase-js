@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Phrase API Reference
+ * Phrase Strings API Reference
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@phrase.com
@@ -51,8 +51,8 @@ export interface BitbucketSyncsListRequest {
 export class BitbucketSyncApi extends runtime.BaseAPI {
 
     /**
-     * Export translations from Phrase to Bitbucket according to the .phraseapp.yml file within the Bitbucket Repository.
-     * Export from Phrase to Bitbucket
+     * Export translations from Phrase Strings to Bitbucket according to the .phraseapp.yml file within the Bitbucket Repository.
+     * Export from Phrase Strings to Bitbucket
      */
     async bitbucketSyncExportRaw(requestParameters: BitbucketSyncExportRequest): Promise<runtime.ApiResponse<BitbucketSyncExportResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
@@ -92,8 +92,8 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Export translations from Phrase to Bitbucket according to the .phraseapp.yml file within the Bitbucket Repository.
-     * Export from Phrase to Bitbucket
+     * Export translations from Phrase Strings to Bitbucket according to the .phraseapp.yml file within the Bitbucket Repository.
+     * Export from Phrase Strings to Bitbucket
      */
     async bitbucketSyncExport(requestParameters: BitbucketSyncExportRequest): Promise<BitbucketSyncExportResponse> {
         const response = await this.bitbucketSyncExportRaw(requestParameters);
@@ -101,8 +101,8 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Import translations from Bitbucket to Phrase according to the .phraseapp.yml file within the Bitbucket repository.
-     * Import to Phrase from Bitbucket
+     * Import translations from Bitbucket to Phrase Strings according to the .phraseapp.yml file within the Bitbucket repository.
+     * Import to Phrase Strings from Bitbucket
      */
     async bitbucketSyncImportRaw(requestParameters: BitbucketSyncImportRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
@@ -142,8 +142,8 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Import translations from Bitbucket to Phrase according to the .phraseapp.yml file within the Bitbucket repository.
-     * Import to Phrase from Bitbucket
+     * Import translations from Bitbucket to Phrase Strings according to the .phraseapp.yml file within the Bitbucket repository.
+     * Import to Phrase Strings from Bitbucket
      */
     async bitbucketSyncImport(requestParameters: BitbucketSyncImportRequest): Promise<any> {
         const response = await this.bitbucketSyncImportRaw(requestParameters);
@@ -151,7 +151,7 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all Bitbucket repositories for which synchronisation with Phrase is activated.
+     * List all Bitbucket repositories for which synchronisation with Phrase Strings is activated.
      * List Bitbucket syncs
      */
     async bitbucketSyncsListRaw(requestParameters: BitbucketSyncsListRequest): Promise<runtime.ApiResponse<Array<BitbucketSync>>> {
@@ -185,7 +185,7 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all Bitbucket repositories for which synchronisation with Phrase is activated.
+     * List all Bitbucket repositories for which synchronisation with Phrase Strings is activated.
      * List Bitbucket syncs
      */
     async bitbucketSyncsList(requestParameters: BitbucketSyncsListRequest): Promise<Array<BitbucketSync>> {

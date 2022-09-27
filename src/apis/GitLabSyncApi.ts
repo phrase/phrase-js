@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Phrase API Reference
+ * Phrase Strings API Reference
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@phrase.com
@@ -133,8 +133,8 @@ export class GitLabSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Export translations from Phrase to GitLab according to the .phraseapp.yml file within the GitLab repository.
-     * Export from Phrase to GitLab
+     * Export translations from Phrase Strings to GitLab according to the .phraseapp.yml file within the GitLab repository.
+     * Export from Phrase Strings to GitLab
      */
     async gitlabSyncExportRaw(requestParameters: GitlabSyncExportRequest): Promise<runtime.ApiResponse<GitlabSyncExport>> {
         if (requestParameters.gitlabSyncId === null || requestParameters.gitlabSyncId === undefined) {
@@ -174,8 +174,8 @@ export class GitLabSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Export translations from Phrase to GitLab according to the .phraseapp.yml file within the GitLab repository.
-     * Export from Phrase to GitLab
+     * Export translations from Phrase Strings to GitLab according to the .phraseapp.yml file within the GitLab repository.
+     * Export from Phrase Strings to GitLab
      */
     async gitlabSyncExport(requestParameters: GitlabSyncExportRequest): Promise<GitlabSyncExport> {
         const response = await this.gitlabSyncExportRaw(requestParameters);
@@ -238,7 +238,7 @@ export class GitLabSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Import translations from GitLab to Phrase according to the .phraseapp.yml file within the GitLab repository.
+     * Import translations from GitLab to Phrase Strings according to the .phraseapp.yml file within the GitLab repository.
      * Import from GitLab to Phrase
      */
     async gitlabSyncImportRaw(requestParameters: GitlabSyncImportRequest): Promise<runtime.ApiResponse<Array<Upload>>> {
@@ -279,7 +279,7 @@ export class GitLabSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Import translations from GitLab to Phrase according to the .phraseapp.yml file within the GitLab repository.
+     * Import translations from GitLab to Phrase Strings according to the .phraseapp.yml file within the GitLab repository.
      * Import from GitLab to Phrase
      */
     async gitlabSyncImport(requestParameters: GitlabSyncImportRequest): Promise<Array<Upload>> {
@@ -288,7 +288,7 @@ export class GitLabSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all GitLab Sync Settings for which synchronisation with Phrase and GitLab is activated.
+     * List all GitLab Sync Settings for which synchronisation with Phrase Strings and GitLab is activated.
      * List GitLab syncs
      */
     async gitlabSyncListRaw(requestParameters: GitlabSyncListRequest): Promise<runtime.ApiResponse<Array<GitlabSync>>> {
@@ -322,7 +322,7 @@ export class GitLabSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all GitLab Sync Settings for which synchronisation with Phrase and GitLab is activated.
+     * List all GitLab Sync Settings for which synchronisation with Phrase Strings and GitLab is activated.
      * List GitLab syncs
      */
     async gitlabSyncList(requestParameters: GitlabSyncListRequest): Promise<Array<GitlabSync>> {

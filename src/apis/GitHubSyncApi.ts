@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Phrase API Reference
+ * Phrase Strings API Reference
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@phrase.com
@@ -41,8 +41,8 @@ export interface GithubSyncImportRequest {
 export class GitHubSyncApi extends runtime.BaseAPI {
 
     /**
-     * Export translations from Phrase to GitHub according to the .phraseapp.yml file within the GitHub repository.
-     * Export from Phrase to GitHub
+     * Export translations from Phrase Strings to GitHub according to the .phraseapp.yml file within the GitHub repository.
+     * Export from Phrase Strings to GitHub
      */
     async githubSyncExportRaw(requestParameters: GithubSyncExportRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.githubSyncExportParameters === null || requestParameters.githubSyncExportParameters === undefined) {
@@ -78,8 +78,8 @@ export class GitHubSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Export translations from Phrase to GitHub according to the .phraseapp.yml file within the GitHub repository.
-     * Export from Phrase to GitHub
+     * Export translations from Phrase Strings to GitHub according to the .phraseapp.yml file within the GitHub repository.
+     * Export from Phrase Strings to GitHub
      */
     async githubSyncExport(requestParameters: GithubSyncExportRequest): Promise<any> {
         const response = await this.githubSyncExportRaw(requestParameters);
@@ -87,8 +87,8 @@ export class GitHubSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Import files to Phrase from your connected GitHub repository.
-     * Import to Phrase from GitHub
+     * Import files to Phrase Strings from your connected GitHub repository.
+     * Import to Phrase Strings from GitHub
      */
     async githubSyncImportRaw(requestParameters: GithubSyncImportRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.githubSyncImportParameters === null || requestParameters.githubSyncImportParameters === undefined) {
@@ -124,8 +124,8 @@ export class GitHubSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Import files to Phrase from your connected GitHub repository.
-     * Import to Phrase from GitHub
+     * Import files to Phrase Strings from your connected GitHub repository.
+     * Import to Phrase Strings from GitHub
      */
     async githubSyncImport(requestParameters: GithubSyncImportRequest): Promise<any> {
         const response = await this.githubSyncImportRaw(requestParameters);

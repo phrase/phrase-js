@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Phrase API Reference
+ * Phrase Strings API Reference
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@phrase.com

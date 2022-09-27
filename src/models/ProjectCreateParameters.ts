@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Phrase API Reference
+ * Phrase Strings API Reference
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@phrase.com
@@ -25,7 +25,7 @@ export interface ProjectCreateParameters {
      */
     name?: string;
     /**
-     * Main file format specified by its API Extension name. Used for locale downloads if no format is specified. For API Extension names of available file formats see <a href=\"https://help.phrase.com/help/supported-platforms-and-formats\">Format Guide</a> or our <a href=\"#formats\">Formats API Endpoint</a>.
+     * Main file format specified by its API Extension name. Used for locale downloads if no format is specified. For API Extension names of available file formats see <a href=\"https://support.phrase.com/hc/en-us/articles/5784070560412\">Format Guide</a> or our <a href=\"#formats\">Formats API Endpoint</a>.
      * @type {string}
      * @memberof ProjectCreateParameters
      */
@@ -61,7 +61,7 @@ export interface ProjectCreateParameters {
      */
     sourceProjectId?: string;
     /**
-     * (Optional) Review Workflow. \"simple\" / \"review\". <a href=\"https://help.phrase.com/help/advanced-review-workflow\">Read more</a>
+     * (Optional) Review Workflow. \"simple\" / \"review\". <a href=\"https://support.phrase.com/hc/en-us/articles/5784094755484\">Read more</a>
      * @type {string}
      * @memberof ProjectCreateParameters
      */
@@ -91,7 +91,7 @@ export interface ProjectCreateParameters {
      */
     enableAllDataTypeTranslationKeysForTranslators?: boolean;
     /**
-     * (Optional) We can validate and highlight your ICU messages. <a href=\"https://help.phrase.com/help/icu-message-format\">Read more</a>
+     * (Optional) We can validate and highlight your ICU messages. <a href=\"https://support.phrase.com/hc/en-us/articles/5822319545116\">Read more</a>
      * @type {boolean}
      * @memberof ProjectCreateParameters
      */
@@ -103,7 +103,7 @@ export interface ProjectCreateParameters {
      */
     zeroPluralFormEnabled?: boolean;
     /**
-     * (Optional) Autopilot, requires machine_translation_enabled. <a href=\"https://help.phrase.com/help/autopilot\">Read more</a>
+     * (Optional) Autopilot, requires machine_translation_enabled. <a href=\"https://support.phrase.com/hc/en-us/articles/5822187934364\">Read more</a>
      * @type {boolean}
      * @memberof ProjectCreateParameters
      */
