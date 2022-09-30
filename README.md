@@ -344,9 +344,9 @@ Class | Method | HTTP request | Description
 *TagsApi* | **tagShow** | **GET** /projects/{project_id}/tags/{name} | Get a single tag
 *TagsApi* | **tagsList** | **GET** /projects/{project_id}/tags | List tags
 *TeamsApi* | **teamCreate** | **POST** /accounts/{account_id}/teams | Create a Team
-*TeamsApi* | **teamDelete** | **DELETE** /accounts/{account_id}/teams/{team_id} | Delete Team
-*TeamsApi* | **teamShow** | **GET** /accounts/{account_id}/teams/{team_id} | Get Team
-*TeamsApi* | **teamUpdate** | **PATCH** /accounts/{account_id}/teams/{team_id} | Update Team
+*TeamsApi* | **teamDelete** | **DELETE** /accounts/{account_id}/teams/{id} | Delete Team
+*TeamsApi* | **teamShow** | **GET** /accounts/{account_id}/teams/{id} | Get Team
+*TeamsApi* | **teamUpdate** | **PATCH** /accounts/{account_id}/teams/{id} | Update Team
 *TeamsApi* | **teamsList** | **GET** /accounts/{account_id}/teams | List Teams
 *TeamsApi* | **teamsProjectsCreate** | **POST** /accounts/{account_id}/teams/{team_id}/projects | Add Project
 *TeamsApi* | **teamsProjectsDelete** | **DELETE** /accounts/{account_id}/teams/{team_id}/projects/{id} | Remove Project

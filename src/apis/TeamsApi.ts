@@ -195,7 +195,7 @@ export class TeamsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/accounts/{account_id}/teams/{team_id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/accounts/{account_id}/teams/{id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -242,7 +242,7 @@ export class TeamsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/accounts/{account_id}/teams/{team_id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/accounts/{account_id}/teams/{id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -295,7 +295,7 @@ export class TeamsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/accounts/{account_id}/teams/{team_id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/accounts/{account_id}/teams/{id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
