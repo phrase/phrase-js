@@ -134,7 +134,7 @@ export class LocalesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/accounts/{account_id}/locales`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/accounts/{id}/locales`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
