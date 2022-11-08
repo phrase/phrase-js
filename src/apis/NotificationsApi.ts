@@ -23,6 +23,7 @@ export interface NotificationsListRequest {
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
+    unseen?: boolean;
 }
 
 export interface NotificationsMarkAllAsReadRequest {
@@ -52,6 +53,10 @@ export class NotificationsApi extends runtime.BaseAPI {
 
         if (requestParameters.perPage !== undefined) {
             queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        if (requestParameters.unseen !== undefined) {
+            queryParameters['unseen'] = requestParameters.unseen;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
