@@ -79,7 +79,7 @@ export interface BranchesListRequest {
 export class BranchesApi extends runtime.BaseAPI {
 
     /**
-     * Compare branch with main branch.
+     * Compare branch with main branch. <br><br><i>Note: Comparing a branch may take several minutes depending on the project size.</i>
      * Compare branches
      */
     async branchCompareRaw(requestParameters: BranchCompareRequest): Promise<runtime.ApiResponse<any>> {
@@ -117,7 +117,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Compare branch with main branch.
+     * Compare branch with main branch. <br><br><i>Note: Comparing a branch may take several minutes depending on the project size.</i>
      * Compare branches
      */
     async branchCompare(requestParameters: BranchCompareRequest): Promise<any> {
@@ -126,7 +126,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new branch.
+     * Create a new branch. <br><br><i>Note: Creating a new branch may take several minutes depending on the project size.</i>
      * Create a branch
      */
     async branchCreateRaw(requestParameters: BranchCreateRequest): Promise<runtime.ApiResponse<Branch>> {
@@ -167,7 +167,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new branch.
+     * Create a new branch. <br><br><i>Note: Creating a new branch may take several minutes depending on the project size.</i>
      * Create a branch
      */
     async branchCreate(requestParameters: BranchCreateRequest): Promise<Branch> {
@@ -223,7 +223,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Merge an existing branch.
+     * Merge an existing branch. <br><br><i>Note: Merging a branch may take several minutes depending on diff size.</i>
      * Merge a branch
      */
     async branchMergeRaw(requestParameters: BranchMergeRequest): Promise<runtime.ApiResponse<any>> {
@@ -268,7 +268,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Merge an existing branch.
+     * Merge an existing branch. <br><br><i>Note: Merging a branch may take several minutes depending on diff size.</i>
      * Merge a branch
      */
     async branchMerge(requestParameters: BranchMergeRequest): Promise<any> {

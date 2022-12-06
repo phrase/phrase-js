@@ -356,7 +356,7 @@ Class | Method | HTTP request | Description
 *TeamsApi* | **teamsUsersDelete** | **DELETE** /accounts/{account_id}/teams/{team_id}/users/{id} | Remove User
 *TranslationsApi* | **translationCreate** | **POST** /projects/{project_id}/translations | Create a translation
 *TranslationsApi* | **translationExclude** | **PATCH** /projects/{project_id}/translations/{id}/exclude | Exclude a translation from export
-*TranslationsApi* | **translationInclude** | **PATCH** /projects/{project_id}/translations/{id}/include | Revoke exclusion of a translation in export
+*TranslationsApi* | **translationInclude** | **PATCH** /projects/{project_id}/translations/{id}/include | Include a translation
 *TranslationsApi* | **translationReview** | **PATCH** /projects/{project_id}/translations/{id}/review | Review a translation
 *TranslationsApi* | **translationShow** | **GET** /projects/{project_id}/translations/{id} | Get a single translation
 *TranslationsApi* | **translationUnverify** | **PATCH** /projects/{project_id}/translations/{id}/unverify | Mark a translation as unverified
@@ -364,15 +364,15 @@ Class | Method | HTTP request | Description
 *TranslationsApi* | **translationVerify** | **PATCH** /projects/{project_id}/translations/{id}/verify | Verify a translation
 *TranslationsApi* | **translationsByKey** | **GET** /projects/{project_id}/keys/{key_id}/translations | List translations by key
 *TranslationsApi* | **translationsByLocale** | **GET** /projects/{project_id}/locales/{locale_id}/translations | List translations by locale
-*TranslationsApi* | **translationsExcludeCollection** | **PATCH** /projects/{project_id}/translations/exclude | Set exclude from export flag on translations selected by query
-*TranslationsApi* | **translationsIncludeCollection** | **PATCH** /projects/{project_id}/translations/include | Remove exlude from import flag from translations selected by query
+*TranslationsApi* | **translationsExcludeCollection** | **PATCH** /projects/{project_id}/translations/exclude | Exclude translations by query
+*TranslationsApi* | **translationsIncludeCollection** | **PATCH** /projects/{project_id}/translations/include | Include translations by query
 *TranslationsApi* | **translationsList** | **GET** /projects/{project_id}/translations | List all translations
 *TranslationsApi* | **translationsReviewCollection** | **PATCH** /projects/{project_id}/translations/review | Review translations selected by query
 *TranslationsApi* | **translationsSearch** | **POST** /projects/{project_id}/translations/search | Search translations
-*TranslationsApi* | **translationsUnverifyCollection** | **PATCH** /projects/{project_id}/translations/unverify | Mark translations selected by query as unverified
-*TranslationsApi* | **translationsVerifyCollection** | **PATCH** /projects/{project_id}/translations/verify | Verify translations selected by query
+*TranslationsApi* | **translationsUnverifyCollection** | **PATCH** /projects/{project_id}/translations/unverify | Unverify translations by query
+*TranslationsApi* | **translationsVerifyCollection** | **PATCH** /projects/{project_id}/translations/verify | Verify translations by query
 *UploadsApi* | **uploadCreate** | **POST** /projects/{project_id}/uploads | Upload a new file
-*UploadsApi* | **uploadShow** | **GET** /projects/{project_id}/uploads/{id} | View upload details
+*UploadsApi* | **uploadShow** | **GET** /projects/{project_id}/uploads/{id} | Get a single upload
 *UploadsApi* | **uploadsList** | **GET** /projects/{project_id}/uploads | List uploads
 *UsersApi* | **showUser** | **GET** /user | Show current User
 *VariablesApi* | **variableCreate** | **POST** /projects/{project_id}/variables | Create a variable

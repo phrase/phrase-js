@@ -181,7 +181,7 @@ export class UploadsApi extends runtime.BaseAPI {
 
     /**
      * View details and summary for a single upload.
-     * View upload details
+     * Get a single upload
      */
     async uploadShowRaw(requestParameters: UploadShowRequest): Promise<runtime.ApiResponse<Upload>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
@@ -223,7 +223,7 @@ export class UploadsApi extends runtime.BaseAPI {
 
     /**
      * View details and summary for a single upload.
-     * View upload details
+     * Get a single upload
      */
     async uploadShow(requestParameters: UploadShowRequest): Promise<Upload> {
         const response = await this.uploadShowRaw(requestParameters);

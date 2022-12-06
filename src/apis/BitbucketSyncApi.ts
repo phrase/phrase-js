@@ -51,7 +51,7 @@ export interface BitbucketSyncsListRequest {
 export class BitbucketSyncApi extends runtime.BaseAPI {
 
     /**
-     * Export translations from Phrase Strings to Bitbucket according to the .phraseapp.yml file within the Bitbucket Repository.
+     * Export translations from Phrase Strings to Bitbucket according to the .phraseapp.yml file within the Bitbucket Repository. <br><br><i>Note: Export is done asynchronously and may take several seconds depending on the project size.</i>
      * Export from Phrase Strings to Bitbucket
      */
     async bitbucketSyncExportRaw(requestParameters: BitbucketSyncExportRequest): Promise<runtime.ApiResponse<BitbucketSyncExportResponse>> {
@@ -92,7 +92,7 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Export translations from Phrase Strings to Bitbucket according to the .phraseapp.yml file within the Bitbucket Repository.
+     * Export translations from Phrase Strings to Bitbucket according to the .phraseapp.yml file within the Bitbucket Repository. <br><br><i>Note: Export is done asynchronously and may take several seconds depending on the project size.</i>
      * Export from Phrase Strings to Bitbucket
      */
     async bitbucketSyncExport(requestParameters: BitbucketSyncExportRequest): Promise<BitbucketSyncExportResponse> {
@@ -101,7 +101,7 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Import translations from Bitbucket to Phrase Strings according to the .phraseapp.yml file within the Bitbucket repository.
+     * Import translations from Bitbucket to Phrase Strings according to the .phraseapp.yml file within the Bitbucket repository. <br><br><i>Note: Import is done asynchronously and may take several seconds depending on the project size.</i>
      * Import to Phrase Strings from Bitbucket
      */
     async bitbucketSyncImportRaw(requestParameters: BitbucketSyncImportRequest): Promise<runtime.ApiResponse<any>> {
@@ -142,7 +142,7 @@ export class BitbucketSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Import translations from Bitbucket to Phrase Strings according to the .phraseapp.yml file within the Bitbucket repository.
+     * Import translations from Bitbucket to Phrase Strings according to the .phraseapp.yml file within the Bitbucket repository. <br><br><i>Note: Import is done asynchronously and may take several seconds depending on the project size.</i>
      * Import to Phrase Strings from Bitbucket
      */
     async bitbucketSyncImport(requestParameters: BitbucketSyncImportRequest): Promise<any> {

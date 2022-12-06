@@ -41,7 +41,7 @@ export interface GithubSyncImportRequest {
 export class GitHubSyncApi extends runtime.BaseAPI {
 
     /**
-     * Export translations from Phrase Strings to GitHub according to the .phraseapp.yml file within the GitHub repository.
+     * Export translations from Phrase Strings to GitHub according to the .phraseapp.yml file within the GitHub repository. <br><br><i>Note: Export is done asynchronously and may take several seconds depending on the project size.</i>
      * Export from Phrase Strings to GitHub
      */
     async githubSyncExportRaw(requestParameters: GithubSyncExportRequest): Promise<runtime.ApiResponse<any>> {
@@ -78,7 +78,7 @@ export class GitHubSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Export translations from Phrase Strings to GitHub according to the .phraseapp.yml file within the GitHub repository.
+     * Export translations from Phrase Strings to GitHub according to the .phraseapp.yml file within the GitHub repository. <br><br><i>Note: Export is done asynchronously and may take several seconds depending on the project size.</i>
      * Export from Phrase Strings to GitHub
      */
     async githubSyncExport(requestParameters: GithubSyncExportRequest): Promise<any> {
@@ -87,7 +87,7 @@ export class GitHubSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Import files to Phrase Strings from your connected GitHub repository.
+     * Import files to Phrase Strings from your connected GitHub repository. <br><br><i>Note: Import is done asynchronously and may take several seconds depending on the project size.</i>
      * Import to Phrase Strings from GitHub
      */
     async githubSyncImportRaw(requestParameters: GithubSyncImportRequest): Promise<runtime.ApiResponse<any>> {
@@ -124,7 +124,7 @@ export class GitHubSyncApi extends runtime.BaseAPI {
     }
 
     /**
-     * Import files to Phrase Strings from your connected GitHub repository.
+     * Import files to Phrase Strings from your connected GitHub repository. <br><br><i>Note: Import is done asynchronously and may take several seconds depending on the project size.</i>
      * Import to Phrase Strings from GitHub
      */
     async githubSyncImport(requestParameters: GithubSyncImportRequest): Promise<any> {
