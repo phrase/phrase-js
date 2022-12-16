@@ -25,7 +25,7 @@ export interface ProjectCreateParameters {
      */
     name?: string;
     /**
-     * Main file format specified by its API Extension name. Used for locale downloads if no format is specified. For API Extension names of available file formats see <a href=\"https://support.phrase.com/hc/en-us/articles/5784070560412\">Format Guide</a> or our <a href=\"#formats\">Formats API Endpoint</a>.
+     * Main file format specified by its API Extension name. Used for locale downloads if no format is specified. For API Extension names of available file formats see <a href=\"https://support.phrase.com/hc/en-us/sections/6111343326364\">Format Guide</a> or our <a href=\"#formats\">Formats API Endpoint</a>.
      * @type {string}
      * @memberof ProjectCreateParameters
      */
