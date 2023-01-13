@@ -73,6 +73,12 @@ export interface ProjectDetails {
     projectImageUrl?: string;
     /**
      * 
+     * @type {string}
+     * @memberof ProjectDetails
+     */
+    media?: string;
+    /**
+     * 
      * @type {Account}
      * @memberof ProjectDetails
      */
@@ -124,6 +130,7 @@ export function ProjectDetailsFromJSONTyped(json: any, ignoreDiscriminator: bool
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
         'mainFormat': !exists(json, 'main_format') ? undefined : json['main_format'],
         'projectImageUrl': !exists(json, 'project_image_url') ? undefined : json['project_image_url'],
+        'media': !exists(json, 'media') ? undefined : json['media'],
         'account': !exists(json, 'account') ? undefined : AccountFromJSON(json['account']),
         'space': !exists(json, 'space') ? undefined : Space1FromJSON(json['space']),
         'pointOfContact': !exists(json, 'point_of_contact') ? undefined : UserPreviewFromJSON(json['point_of_contact']),
@@ -147,6 +154,7 @@ export function ProjectDetailsToJSON(value?: ProjectDetails | null): any {
         'slug': value.slug,
         'main_format': value.mainFormat,
         'project_image_url': value.projectImageUrl,
+        'media': value.media,
         'account': AccountToJSON(value.account),
         'space': Space1ToJSON(value.space),
         'point_of_contact': UserPreviewToJSON(value.pointOfContact),

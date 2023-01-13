@@ -31,11 +31,23 @@ export interface ProjectUpdateParameters {
      */
     name?: string;
     /**
+     * (Optional) User ID of the point of contact for the project. Pass `null` to unset.
+     * @type {string}
+     * @memberof ProjectUpdateParameters
+     */
+    pointOfContact?: string;
+    /**
      * (Optional) Main file format specified by its API Extension name. Used for locale downloads if no format is specified. For API Extension names of available file formats see <a href=\"https://support.phrase.com/hc/en-us/sections/6111343326364\">Format Guide</a> or our <a href=\"#formats\">Formats API Endpoint</a>.
      * @type {string}
      * @memberof ProjectUpdateParameters
      */
     mainFormat?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof ProjectUpdateParameters
+     */
+    media?: object;
     /**
      * (Optional) Indicates whether the project should share the account\'s translation memory
      * @type {boolean}
@@ -170,7 +182,9 @@ export function ProjectUpdateParametersFromJSONTyped(json: any, ignoreDiscrimina
         
         'accountId': !exists(json, 'account_id') ? undefined : json['account_id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
+        'pointOfContact': !exists(json, 'point_of_contact') ? undefined : json['point_of_contact'],
         'mainFormat': !exists(json, 'main_format') ? undefined : json['main_format'],
+        'media': !exists(json, 'media') ? undefined : json['media'],
         'sharesTranslationMemory': !exists(json, 'shares_translation_memory') ? undefined : json['shares_translation_memory'],
         'projectImage': !exists(json, 'project_image') ? undefined : json['project_image'],
         'removeProjectImage': !exists(json, 'remove_project_image') ? undefined : json['remove_project_image'],
@@ -205,7 +219,9 @@ export function ProjectUpdateParametersToJSON(value?: ProjectUpdateParameters | 
         
         'account_id': value.accountId,
         'name': value.name,
+        'point_of_contact': value.pointOfContact,
         'main_format': value.mainFormat,
+        'media': value.media,
         'shares_translation_memory': value.sharesTranslationMemory,
         'project_image': value.projectImage,
         'remove_project_image': value.removeProjectImage,

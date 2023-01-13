@@ -31,6 +31,12 @@ export interface ProjectCreateParameters {
      */
     mainFormat?: string;
     /**
+     * (Optional) Main technology stack used in the project. It affects for example the suggested placeholder style. Predefined values include: `Ruby`, `JavaScript`, `AngularJS`, `React`, `iOS`, `Android`, `Python`, `PHP`, `Java`, `Go`, `Windows Phone`, `Rails`, `Node.js`, `.NET`, `Django`, `Symfony`, `Yii Framework`, `Zend Framework`, `Apple App Store Description`, `Google Play Description`, but it can also take any other value.
+     * @type {string}
+     * @memberof ProjectCreateParameters
+     */
+    media?: string;
+    /**
      * Indicates whether the project should share the account\'s translation memory
      * @type {boolean}
      * @memberof ProjectCreateParameters
@@ -54,6 +60,12 @@ export interface ProjectCreateParameters {
      * @memberof ProjectCreateParameters
      */
     accountId?: string;
+    /**
+     * (Optional) User ID of the point of contact for the project.
+     * @type {string}
+     * @memberof ProjectCreateParameters
+     */
+    pointOfContact?: string;
     /**
      * When a source project ID is given, a clone of that project will be created, including all locales, keys and translations as well as the main project settings if they are not defined otherwise through the params.
      * @type {string}
@@ -176,10 +188,12 @@ export function ProjectCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
         
         'name': !exists(json, 'name') ? undefined : json['name'],
         'mainFormat': !exists(json, 'main_format') ? undefined : json['main_format'],
+        'media': !exists(json, 'media') ? undefined : json['media'],
         'sharesTranslationMemory': !exists(json, 'shares_translation_memory') ? undefined : json['shares_translation_memory'],
         'projectImage': !exists(json, 'project_image') ? undefined : json['project_image'],
         'removeProjectImage': !exists(json, 'remove_project_image') ? undefined : json['remove_project_image'],
         'accountId': !exists(json, 'account_id') ? undefined : json['account_id'],
+        'pointOfContact': !exists(json, 'point_of_contact') ? undefined : json['point_of_contact'],
         'sourceProjectId': !exists(json, 'source_project_id') ? undefined : json['source_project_id'],
         'workflow': !exists(json, 'workflow') ? undefined : json['workflow'],
         'machineTranslationEnabled': !exists(json, 'machine_translation_enabled') ? undefined : json['machine_translation_enabled'],
@@ -212,10 +226,12 @@ export function ProjectCreateParametersToJSON(value?: ProjectCreateParameters | 
         
         'name': value.name,
         'main_format': value.mainFormat,
+        'media': value.media,
         'shares_translation_memory': value.sharesTranslationMemory,
         'project_image': value.projectImage,
         'remove_project_image': value.removeProjectImage,
         'account_id': value.accountId,
+        'point_of_contact': value.pointOfContact,
         'source_project_id': value.sourceProjectId,
         'workflow': value.workflow,
         'machine_translation_enabled': value.machineTranslationEnabled,
