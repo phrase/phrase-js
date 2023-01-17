@@ -55,6 +55,8 @@ export interface LocaleDownloadRequest {
     projectId: string;
     id: string;
     xPhraseAppOTP?: string;
+    ifModifiedSince?: string;
+    ifNoneMatch?: string;
     branch?: string;
     fileFormat?: string;
     tags?: string;
@@ -336,6 +338,14 @@ export class LocalesApi extends runtime.BaseAPI {
 
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
             headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (requestParameters.ifModifiedSince !== undefined && requestParameters.ifModifiedSince !== null) {
+            headerParameters['If-Modified-Since'] = String(requestParameters.ifModifiedSince);
+        }
+
+        if (requestParameters.ifNoneMatch !== undefined && requestParameters.ifNoneMatch !== null) {
+            headerParameters['If-None-Match'] = String(requestParameters.ifNoneMatch);
         }
 
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
