@@ -43,7 +43,7 @@ export class NotificationGroupsApi extends runtime.BaseAPI {
      * List all notification groups from the current user
      * List notification groups
      */
-    async notificationGroupsListRaw(requestParameters: NotificationGroupsListRequest): Promise<runtime.ApiResponse<Array<object>>> {
+    async notificationGroupsListRaw(requestParameters: NotificationGroupsListRequest): Promise<runtime.ApiResponse<Array<NotificationGroupDetail>>> {
         const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
@@ -74,14 +74,14 @@ export class NotificationGroupsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(NotificationGroupDetailFromJSON));
     }
 
     /**
      * List all notification groups from the current user
      * List notification groups
      */
-    async notificationGroupsList(requestParameters: NotificationGroupsListRequest): Promise<Array<object>> {
+    async notificationGroupsList(requestParameters: NotificationGroupsListRequest): Promise<Array<NotificationGroupDetail>> {
         const response = await this.notificationGroupsListRaw(requestParameters);
         return await response.value();
     }
@@ -90,7 +90,7 @@ export class NotificationGroupsApi extends runtime.BaseAPI {
      * Mark all notification groups of the current user as read
      * Mark all notification groups as read
      */
-    async notificationGroupsMarkAllAsReadRaw(requestParameters: NotificationGroupsMarkAllAsReadRequest): Promise<runtime.ApiResponse<Array<object>>> {
+    async notificationGroupsMarkAllAsReadRaw(requestParameters: NotificationGroupsMarkAllAsReadRequest): Promise<runtime.ApiResponse<Array<NotificationGroupDetail>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -113,14 +113,14 @@ export class NotificationGroupsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(NotificationGroupDetailFromJSON));
     }
 
     /**
      * Mark all notification groups of the current user as read
      * Mark all notification groups as read
      */
-    async notificationGroupsMarkAllAsRead(requestParameters: NotificationGroupsMarkAllAsReadRequest): Promise<Array<object>> {
+    async notificationGroupsMarkAllAsRead(requestParameters: NotificationGroupsMarkAllAsReadRequest): Promise<Array<NotificationGroupDetail>> {
         const response = await this.notificationGroupsMarkAllAsReadRaw(requestParameters);
         return await response.value();
     }

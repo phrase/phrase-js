@@ -12,6 +12,13 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    Notification,
+    NotificationFromJSON,
+    NotificationFromJSONTyped,
+    NotificationToJSON,
+} from './';
+
 /**
  * 
  * @export
@@ -50,10 +57,10 @@ export interface NotificationGroupDetail {
     notificationsCount?: number;
     /**
      * 
-     * @type {object}
+     * @type {Notification}
      * @memberof NotificationGroupDetail
      */
-    latestNotification?: object;
+    latestNotification?: Notification;
 }
 
 export function NotificationGroupDetailFromJSON(json: any): NotificationGroupDetail {
@@ -71,7 +78,7 @@ export function NotificationGroupDetailFromJSONTyped(json: any, ignoreDiscrimina
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'notificationsCount': !exists(json, 'notifications_count') ? undefined : json['notifications_count'],
-        'latestNotification': !exists(json, 'latest_notification') ? undefined : json['latest_notification'],
+        'latestNotification': !exists(json, 'latest_notification') ? undefined : NotificationFromJSON(json['latest_notification']),
     };
 }
 
@@ -89,7 +96,7 @@ export function NotificationGroupDetailToJSON(value?: NotificationGroupDetail | 
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'notifications_count': value.notificationsCount,
-        'latest_notification': value.latestNotification,
+        'latest_notification': NotificationToJSON(value.latestNotification),
     };
 }
 

@@ -20,6 +20,9 @@ import {
     JobTemplateCreateParameters,
     JobTemplateCreateParametersFromJSON,
     JobTemplateCreateParametersToJSON,
+    JobTemplateDetails,
+    JobTemplateDetailsFromJSON,
+    JobTemplateDetailsToJSON,
     JobTemplateUpdateParameters,
     JobTemplateUpdateParametersFromJSON,
     JobTemplateUpdateParametersToJSON,
@@ -32,13 +35,6 @@ export interface JobTemplateCreateRequest {
 }
 
 export interface JobTemplateDeleteRequest {
-    projectId: string;
-    id: string;
-    xPhraseAppOTP?: string;
-    branch?: string;
-}
-
-export interface JobTemplateShowRequest {
     projectId: string;
     id: string;
     xPhraseAppOTP?: string;
@@ -60,6 +56,13 @@ export interface JobTemplatesListRequest {
     branch?: string;
 }
 
+export interface JobTemplatesShowRequest {
+    projectId: string;
+    id: string;
+    xPhraseAppOTP?: string;
+    branch?: string;
+}
+
 /**
  * 
  */
@@ -69,7 +72,7 @@ export class JobTemplatesApi extends runtime.BaseAPI {
      * Create a new job template.
      * Create a job template
      */
-    async jobTemplateCreateRaw(requestParameters: JobTemplateCreateRequest): Promise<runtime.ApiResponse<object>> {
+    async jobTemplateCreateRaw(requestParameters: JobTemplateCreateRequest): Promise<runtime.ApiResponse<JobTemplateDetails>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobTemplateCreate.');
         }
@@ -103,14 +106,14 @@ export class JobTemplatesApi extends runtime.BaseAPI {
             body: JobTemplateCreateParametersToJSON(requestParameters.jobTemplateCreateParameters),
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => JobTemplateDetailsFromJSON(jsonValue));
     }
 
     /**
      * Create a new job template.
      * Create a job template
      */
-    async jobTemplateCreate(requestParameters: JobTemplateCreateRequest): Promise<object> {
+    async jobTemplateCreate(requestParameters: JobTemplateCreateRequest): Promise<JobTemplateDetails> {
         const response = await this.jobTemplateCreateRaw(requestParameters);
         return await response.value();
     }
@@ -167,61 +170,10 @@ export class JobTemplatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details on a single job template for a given project.
-     * Get a single job template
-     */
-    async jobTemplateShowRaw(requestParameters: JobTemplateShowRequest): Promise<runtime.ApiResponse<object>> {
-        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
-            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobTemplateShow.');
-        }
-
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling jobTemplateShow.');
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters.branch !== undefined) {
-            queryParameters['branch'] = requestParameters.branch;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
-            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
-        }
-
-        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
-            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
-        }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
-        }
-
-        const response = await this.request({
-            path: `/projects/{project_id}/job_templates/{id}`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        });
-
-        return new runtime.JSONApiResponse<any>(response);
-    }
-
-    /**
-     * Get details on a single job template for a given project.
-     * Get a single job template
-     */
-    async jobTemplateShow(requestParameters: JobTemplateShowRequest): Promise<object> {
-        const response = await this.jobTemplateShowRaw(requestParameters);
-        return await response.value();
-    }
-
-    /**
      * Update an existing job template.
      * Update a job template
      */
-    async jobTemplateUpdateRaw(requestParameters: JobTemplateUpdateRequest): Promise<runtime.ApiResponse<object>> {
+    async jobTemplateUpdateRaw(requestParameters: JobTemplateUpdateRequest): Promise<runtime.ApiResponse<JobTemplateDetails>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobTemplateUpdate.');
         }
@@ -259,14 +211,14 @@ export class JobTemplatesApi extends runtime.BaseAPI {
             body: JobTemplateUpdateParametersToJSON(requestParameters.jobTemplateUpdateParameters),
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => JobTemplateDetailsFromJSON(jsonValue));
     }
 
     /**
      * Update an existing job template.
      * Update a job template
      */
-    async jobTemplateUpdate(requestParameters: JobTemplateUpdateRequest): Promise<object> {
+    async jobTemplateUpdate(requestParameters: JobTemplateUpdateRequest): Promise<JobTemplateDetails> {
         const response = await this.jobTemplateUpdateRaw(requestParameters);
         return await response.value();
     }
@@ -323,6 +275,57 @@ export class JobTemplatesApi extends runtime.BaseAPI {
      */
     async jobTemplatesList(requestParameters: JobTemplatesListRequest): Promise<Array<JobTemplate>> {
         const response = await this.jobTemplatesListRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Get details on a single job template for a given project.
+     * Get a single job template
+     */
+    async jobTemplatesShowRaw(requestParameters: JobTemplatesShowRequest): Promise<runtime.ApiResponse<JobTemplateDetails>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobTemplatesShow.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling jobTemplatesShow.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.branch !== undefined) {
+            queryParameters['branch'] = requestParameters.branch;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/projects/{project_id}/job_templates/{id}`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => JobTemplateDetailsFromJSON(jsonValue));
+    }
+
+    /**
+     * Get details on a single job template for a given project.
+     * Get a single job template
+     */
+    async jobTemplatesShow(requestParameters: JobTemplatesShowRequest): Promise<JobTemplateDetails> {
+        const response = await this.jobTemplatesShowRaw(requestParameters);
         return await response.value();
     }
 

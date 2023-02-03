@@ -181,7 +181,7 @@ export class JobCommentsApi extends runtime.BaseAPI {
      * Get details on a single job comment.
      * Get a single job comment
      */
-    async jobCommentShowRaw(requestParameters: JobCommentShowRequest): Promise<runtime.ApiResponse<object>> {
+    async jobCommentShowRaw(requestParameters: JobCommentShowRequest): Promise<runtime.ApiResponse<JobComment>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobCommentShow.');
         }
@@ -220,14 +220,14 @@ export class JobCommentsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => JobCommentFromJSON(jsonValue));
     }
 
     /**
      * Get details on a single job comment.
      * Get a single job comment
      */
-    async jobCommentShow(requestParameters: JobCommentShowRequest): Promise<object> {
+    async jobCommentShow(requestParameters: JobCommentShowRequest): Promise<JobComment> {
         const response = await this.jobCommentShowRaw(requestParameters);
         return await response.value();
     }
@@ -236,7 +236,7 @@ export class JobCommentsApi extends runtime.BaseAPI {
      * Update an existing job comment.
      * Update a job comment
      */
-    async jobCommentUpdateRaw(requestParameters: JobCommentUpdateRequest): Promise<runtime.ApiResponse<object>> {
+    async jobCommentUpdateRaw(requestParameters: JobCommentUpdateRequest): Promise<runtime.ApiResponse<JobComment>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobCommentUpdate.');
         }
@@ -278,14 +278,14 @@ export class JobCommentsApi extends runtime.BaseAPI {
             body: JobCommentUpdateParametersToJSON(requestParameters.jobCommentUpdateParameters),
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => JobCommentFromJSON(jsonValue));
     }
 
     /**
      * Update an existing job comment.
      * Update a job comment
      */
-    async jobCommentUpdate(requestParameters: JobCommentUpdateRequest): Promise<object> {
+    async jobCommentUpdate(requestParameters: JobCommentUpdateRequest): Promise<JobComment> {
         const response = await this.jobCommentUpdateRaw(requestParameters);
         return await response.value();
     }
@@ -294,7 +294,7 @@ export class JobCommentsApi extends runtime.BaseAPI {
      * List all comments for a job.
      * List job comments
      */
-    async jobCommentsListRaw(requestParameters: JobCommentsListRequest): Promise<runtime.ApiResponse<Array<object>>> {
+    async jobCommentsListRaw(requestParameters: JobCommentsListRequest): Promise<runtime.ApiResponse<Array<JobComment>>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobCommentsList.');
         }
@@ -329,14 +329,14 @@ export class JobCommentsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(JobCommentFromJSON));
     }
 
     /**
      * List all comments for a job.
      * List job comments
      */
-    async jobCommentsList(requestParameters: JobCommentsListRequest): Promise<Array<object>> {
+    async jobCommentsList(requestParameters: JobCommentsListRequest): Promise<Array<JobComment>> {
         const response = await this.jobCommentsListRaw(requestParameters);
         return await response.value();
     }

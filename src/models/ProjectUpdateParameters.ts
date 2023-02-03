@@ -43,11 +43,11 @@ export interface ProjectUpdateParameters {
      */
     mainFormat?: string;
     /**
-     * 
-     * @type {object}
+     * (Optional) Main technology stack used in the project. It affects for example the suggested placeholder style. Predefined values include: `Ruby`, `JavaScript`, `AngularJS`, `React`, `iOS`, `Android`, `Python`, `PHP`, `Java`, `Go`, `Windows Phone`, `Rails`, `Node.js`, `.NET`, `Django`, `Symfony`, `Yii Framework`, `Zend Framework`, `Apple App Store Description`, `Google Play Description`, but it can also take any other value.
+     * @type {string}
      * @memberof ProjectUpdateParameters
      */
-    media?: object;
+    media?: string;
     /**
      * (Optional) Indicates whether the project should share the account\'s translation memory
      * @type {boolean}

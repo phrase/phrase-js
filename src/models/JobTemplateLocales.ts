@@ -30,40 +30,40 @@ import {
 /**
  * 
  * @export
- * @interface JobTemplateLocale
+ * @interface JobTemplateLocales
  */
-export interface JobTemplateLocale {
+export interface JobTemplateLocales {
     /**
      * 
      * @type {string}
-     * @memberof JobTemplateLocale
+     * @memberof JobTemplateLocales
      */
     id?: string;
     /**
      * 
      * @type {JobTemplatePreview}
-     * @memberof JobTemplateLocale
+     * @memberof JobTemplateLocales
      */
     jobTemplate?: JobTemplatePreview;
     /**
      * 
      * @type {LocalePreview}
-     * @memberof JobTemplateLocale
+     * @memberof JobTemplateLocales
      */
     locale?: LocalePreview;
     /**
      * 
      * @type {Array<JobTemplateUserPreview>}
-     * @memberof JobTemplateLocale
+     * @memberof JobTemplateLocales
      */
     users?: Array<JobTemplateUserPreview>;
 }
 
-export function JobTemplateLocaleFromJSON(json: any): JobTemplateLocale {
-    return JobTemplateLocaleFromJSONTyped(json, false);
+export function JobTemplateLocalesFromJSON(json: any): JobTemplateLocales {
+    return JobTemplateLocalesFromJSONTyped(json, false);
 }
 
-export function JobTemplateLocaleFromJSONTyped(json: any, ignoreDiscriminator: boolean): JobTemplateLocale {
+export function JobTemplateLocalesFromJSONTyped(json: any, ignoreDiscriminator: boolean): JobTemplateLocales {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -76,7 +76,7 @@ export function JobTemplateLocaleFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function JobTemplateLocaleToJSON(value?: JobTemplateLocale | null): any {
+export function JobTemplateLocalesToJSON(value?: JobTemplateLocales | null): any {
     if (value === undefined) {
         return undefined;
     }

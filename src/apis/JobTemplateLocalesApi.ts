@@ -14,12 +14,12 @@
 
 import * as runtime from '../runtime';
 import {
-    JobTemplateLocale,
-    JobTemplateLocaleFromJSON,
-    JobTemplateLocaleToJSON,
     JobTemplateLocaleUpdateParameters,
     JobTemplateLocaleUpdateParametersFromJSON,
     JobTemplateLocaleUpdateParametersToJSON,
+    JobTemplateLocales,
+    JobTemplateLocalesFromJSON,
+    JobTemplateLocalesToJSON,
     JobTemplateLocalesCreateParameters,
     JobTemplateLocalesCreateParametersFromJSON,
     JobTemplateLocalesCreateParametersToJSON,
@@ -129,7 +129,7 @@ export class JobTemplateLocalesApi extends runtime.BaseAPI {
      * Get a single job template locale for a given job template.
      * Get a single job template locale
      */
-    async jobTemplateLocaleShowRaw(requestParameters: JobTemplateLocaleShowRequest): Promise<runtime.ApiResponse<object>> {
+    async jobTemplateLocaleShowRaw(requestParameters: JobTemplateLocaleShowRequest): Promise<runtime.ApiResponse<JobTemplateLocales>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobTemplateLocaleShow.');
         }
@@ -168,14 +168,14 @@ export class JobTemplateLocalesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => JobTemplateLocalesFromJSON(jsonValue));
     }
 
     /**
      * Get a single job template locale for a given job template.
      * Get a single job template locale
      */
-    async jobTemplateLocaleShow(requestParameters: JobTemplateLocaleShowRequest): Promise<object> {
+    async jobTemplateLocaleShow(requestParameters: JobTemplateLocaleShowRequest): Promise<JobTemplateLocales> {
         const response = await this.jobTemplateLocaleShowRaw(requestParameters);
         return await response.value();
     }
@@ -184,7 +184,7 @@ export class JobTemplateLocalesApi extends runtime.BaseAPI {
      * Update an existing job template locale.
      * Update a job template locale
      */
-    async jobTemplateLocaleUpdateRaw(requestParameters: JobTemplateLocaleUpdateRequest): Promise<runtime.ApiResponse<object>> {
+    async jobTemplateLocaleUpdateRaw(requestParameters: JobTemplateLocaleUpdateRequest): Promise<runtime.ApiResponse<JobTemplateLocales>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobTemplateLocaleUpdate.');
         }
@@ -226,14 +226,14 @@ export class JobTemplateLocalesApi extends runtime.BaseAPI {
             body: JobTemplateLocaleUpdateParametersToJSON(requestParameters.jobTemplateLocaleUpdateParameters),
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => JobTemplateLocalesFromJSON(jsonValue));
     }
 
     /**
      * Update an existing job template locale.
      * Update a job template locale
      */
-    async jobTemplateLocaleUpdate(requestParameters: JobTemplateLocaleUpdateRequest): Promise<object> {
+    async jobTemplateLocaleUpdate(requestParameters: JobTemplateLocaleUpdateRequest): Promise<JobTemplateLocales> {
         const response = await this.jobTemplateLocaleUpdateRaw(requestParameters);
         return await response.value();
     }
@@ -242,7 +242,7 @@ export class JobTemplateLocalesApi extends runtime.BaseAPI {
      * Create a new job template locale.
      * Create a job template locale
      */
-    async jobTemplateLocalesCreateRaw(requestParameters: JobTemplateLocalesCreateRequest): Promise<runtime.ApiResponse<JobTemplateLocale>> {
+    async jobTemplateLocalesCreateRaw(requestParameters: JobTemplateLocalesCreateRequest): Promise<runtime.ApiResponse<JobTemplateLocales>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobTemplateLocalesCreate.');
         }
@@ -280,14 +280,14 @@ export class JobTemplateLocalesApi extends runtime.BaseAPI {
             body: JobTemplateLocalesCreateParametersToJSON(requestParameters.jobTemplateLocalesCreateParameters),
         });
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => JobTemplateLocaleFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => JobTemplateLocalesFromJSON(jsonValue));
     }
 
     /**
      * Create a new job template locale.
      * Create a job template locale
      */
-    async jobTemplateLocalesCreate(requestParameters: JobTemplateLocalesCreateRequest): Promise<JobTemplateLocale> {
+    async jobTemplateLocalesCreate(requestParameters: JobTemplateLocalesCreateRequest): Promise<JobTemplateLocales> {
         const response = await this.jobTemplateLocalesCreateRaw(requestParameters);
         return await response.value();
     }
@@ -296,7 +296,7 @@ export class JobTemplateLocalesApi extends runtime.BaseAPI {
      * List all job template locales for a given job template.
      * List job template locales
      */
-    async jobTemplateLocalesListRaw(requestParameters: JobTemplateLocalesListRequest): Promise<runtime.ApiResponse<Array<object>>> {
+    async jobTemplateLocalesListRaw(requestParameters: JobTemplateLocalesListRequest): Promise<runtime.ApiResponse<Array<JobTemplateLocales>>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobTemplateLocalesList.');
         }
@@ -339,14 +339,14 @@ export class JobTemplateLocalesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(JobTemplateLocalesFromJSON));
     }
 
     /**
      * List all job template locales for a given job template.
      * List job template locales
      */
-    async jobTemplateLocalesList(requestParameters: JobTemplateLocalesListRequest): Promise<Array<object>> {
+    async jobTemplateLocalesList(requestParameters: JobTemplateLocalesListRequest): Promise<Array<JobTemplateLocales>> {
         const response = await this.jobTemplateLocalesListRaw(requestParameters);
         return await response.value();
     }

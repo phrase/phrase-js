@@ -44,7 +44,7 @@ export class NotificationsApi extends runtime.BaseAPI {
      * List all notifications from the current user
      * List notifications
      */
-    async notificationsListRaw(requestParameters: NotificationsListRequest): Promise<runtime.ApiResponse<Array<object>>> {
+    async notificationsListRaw(requestParameters: NotificationsListRequest): Promise<runtime.ApiResponse<Array<Notification>>> {
         const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
@@ -79,14 +79,14 @@ export class NotificationsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(NotificationFromJSON));
     }
 
     /**
      * List all notifications from the current user
      * List notifications
      */
-    async notificationsList(requestParameters: NotificationsListRequest): Promise<Array<object>> {
+    async notificationsList(requestParameters: NotificationsListRequest): Promise<Array<Notification>> {
         const response = await this.notificationsListRaw(requestParameters);
         return await response.value();
     }
@@ -95,7 +95,7 @@ export class NotificationsApi extends runtime.BaseAPI {
      * Mark all notifications of the current user as read
      * Mark all notifications as read
      */
-    async notificationsMarkAllAsReadRaw(requestParameters: NotificationsMarkAllAsReadRequest): Promise<runtime.ApiResponse<Array<object>>> {
+    async notificationsMarkAllAsReadRaw(requestParameters: NotificationsMarkAllAsReadRequest): Promise<runtime.ApiResponse<Array<Notification>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -118,14 +118,14 @@ export class NotificationsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(NotificationFromJSON));
     }
 
     /**
      * Mark all notifications of the current user as read
      * Mark all notifications as read
      */
-    async notificationsMarkAllAsRead(requestParameters: NotificationsMarkAllAsReadRequest): Promise<Array<object>> {
+    async notificationsMarkAllAsRead(requestParameters: NotificationsMarkAllAsReadRequest): Promise<Array<Notification>> {
         const response = await this.notificationsMarkAllAsReadRaw(requestParameters);
         return await response.value();
     }
