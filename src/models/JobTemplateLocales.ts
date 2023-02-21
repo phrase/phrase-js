@@ -13,14 +13,14 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    Items,
+    ItemsFromJSON,
+    ItemsFromJSONTyped,
+    ItemsToJSON,
     JobTemplatePreview,
     JobTemplatePreviewFromJSON,
     JobTemplatePreviewFromJSONTyped,
     JobTemplatePreviewToJSON,
-    JobTemplateUserPreview,
-    JobTemplateUserPreviewFromJSON,
-    JobTemplateUserPreviewFromJSONTyped,
-    JobTemplateUserPreviewToJSON,
     LocalePreview,
     LocalePreviewFromJSON,
     LocalePreviewFromJSONTyped,
@@ -53,10 +53,16 @@ export interface JobTemplateLocales {
     locale?: LocalePreview;
     /**
      * 
-     * @type {Array<JobTemplateUserPreview>}
+     * @type {Array<Items>}
      * @memberof JobTemplateLocales
      */
-    users?: Array<JobTemplateUserPreview>;
+    users?: Array<Items>;
+    /**
+     * 
+     * @type {Array<Items>}
+     * @memberof JobTemplateLocales
+     */
+    teams?: Array<Items>;
 }
 
 export function JobTemplateLocalesFromJSON(json: any): JobTemplateLocales {
@@ -72,7 +78,8 @@ export function JobTemplateLocalesFromJSONTyped(json: any, ignoreDiscriminator: 
         'id': !exists(json, 'id') ? undefined : json['id'],
         'jobTemplate': !exists(json, 'job_template') ? undefined : JobTemplatePreviewFromJSON(json['job_template']),
         'locale': !exists(json, 'locale') ? undefined : LocalePreviewFromJSON(json['locale']),
-        'users': !exists(json, 'users') ? undefined : ((json['users'] as Array<any>).map(JobTemplateUserPreviewFromJSON)),
+        'users': !exists(json, 'users') ? undefined : ((json['users'] as Array<any>).map(ItemsFromJSON)),
+        'teams': !exists(json, 'teams') ? undefined : ((json['teams'] as Array<any>).map(ItemsFromJSON)),
     };
 }
 
@@ -88,7 +95,8 @@ export function JobTemplateLocalesToJSON(value?: JobTemplateLocales | null): any
         'id': value.id,
         'job_template': JobTemplatePreviewToJSON(value.jobTemplate),
         'locale': LocalePreviewToJSON(value.locale),
-        'users': value.users === undefined ? undefined : ((value.users as Array<any>).map(JobTemplateUserPreviewToJSON)),
+        'users': value.users === undefined ? undefined : ((value.users as Array<any>).map(ItemsToJSON)),
+        'teams': value.teams === undefined ? undefined : ((value.teams as Array<any>).map(ItemsToJSON)),
     };
 }
 

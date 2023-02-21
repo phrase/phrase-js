@@ -42,6 +42,18 @@ export interface JobLocaleUpdateParameters {
      * @memberof JobLocaleUpdateParameters
      */
     reviewerIds?: Array<string>;
+    /**
+     * Array of team ids to be assigned to the job locale as translators
+     * @type {Array<string>}
+     * @memberof JobLocaleUpdateParameters
+     */
+    translatorTeamIds?: Array<string>;
+    /**
+     * Array of team ids to be assigned to the job locale as reviewers
+     * @type {Array<string>}
+     * @memberof JobLocaleUpdateParameters
+     */
+    reviewerTeamIds?: Array<string>;
 }
 
 export function JobLocaleUpdateParametersFromJSON(json: any): JobLocaleUpdateParameters {
@@ -58,6 +70,8 @@ export function JobLocaleUpdateParametersFromJSONTyped(json: any, ignoreDiscrimi
         'localeId': !exists(json, 'locale_id') ? undefined : json['locale_id'],
         'userIds': !exists(json, 'user_ids') ? undefined : json['user_ids'],
         'reviewerIds': !exists(json, 'reviewer_ids') ? undefined : json['reviewer_ids'],
+        'translatorTeamIds': !exists(json, 'translator_team_ids') ? undefined : json['translator_team_ids'],
+        'reviewerTeamIds': !exists(json, 'reviewer_team_ids') ? undefined : json['reviewer_team_ids'],
     };
 }
 
@@ -74,6 +88,8 @@ export function JobLocaleUpdateParametersToJSON(value?: JobLocaleUpdateParameter
         'locale_id': value.localeId,
         'user_ids': value.userIds,
         'reviewer_ids': value.reviewerIds,
+        'translator_team_ids': value.translatorTeamIds,
+        'reviewer_team_ids': value.reviewerTeamIds,
     };
 }
 

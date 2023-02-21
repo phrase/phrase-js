@@ -29,7 +29,7 @@ export interface JobLocalesCreateParameters {
      * @type {string}
      * @memberof JobLocalesCreateParameters
      */
-    localeId?: string;
+    localeId: string;
     /**
      * Array of user ids to be assigned to the job locale as translators
      * @type {Array<string>}
@@ -42,6 +42,18 @@ export interface JobLocalesCreateParameters {
      * @memberof JobLocalesCreateParameters
      */
     reviewerIds?: Array<string>;
+    /**
+     * Array of team ids to be assigned to the job locale as translators
+     * @type {Array<string>}
+     * @memberof JobLocalesCreateParameters
+     */
+    translatorTeamIds?: Array<string>;
+    /**
+     * Array of team ids to be assigned to the job locale as reviewers
+     * @type {Array<string>}
+     * @memberof JobLocalesCreateParameters
+     */
+    reviewerTeamIds?: Array<string>;
 }
 
 export function JobLocalesCreateParametersFromJSON(json: any): JobLocalesCreateParameters {
@@ -55,9 +67,11 @@ export function JobLocalesCreateParametersFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
-        'localeId': !exists(json, 'locale_id') ? undefined : json['locale_id'],
+        'localeId': json['locale_id'],
         'userIds': !exists(json, 'user_ids') ? undefined : json['user_ids'],
         'reviewerIds': !exists(json, 'reviewer_ids') ? undefined : json['reviewer_ids'],
+        'translatorTeamIds': !exists(json, 'translator_team_ids') ? undefined : json['translator_team_ids'],
+        'reviewerTeamIds': !exists(json, 'reviewer_team_ids') ? undefined : json['reviewer_team_ids'],
     };
 }
 
@@ -74,6 +88,8 @@ export function JobLocalesCreateParametersToJSON(value?: JobLocalesCreateParamet
         'locale_id': value.localeId,
         'user_ids': value.userIds,
         'reviewer_ids': value.reviewerIds,
+        'translator_team_ids': value.translatorTeamIds,
+        'reviewer_team_ids': value.reviewerTeamIds,
     };
 }
 

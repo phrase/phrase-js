@@ -21,10 +21,14 @@ import {
     LocalePreviewFromJSON,
     LocalePreviewFromJSONTyped,
     LocalePreviewToJSON,
-    UserPreview,
-    UserPreviewFromJSON,
-    UserPreviewFromJSONTyped,
-    UserPreviewToJSON,
+    LocaleTeamPreview,
+    LocaleTeamPreviewFromJSON,
+    LocaleTeamPreviewFromJSONTyped,
+    LocaleTeamPreviewToJSON,
+    LocaleUserPreview,
+    LocaleUserPreviewFromJSON,
+    LocaleUserPreviewFromJSONTyped,
+    LocaleUserPreviewToJSON,
 } from './';
 
 /**
@@ -53,10 +57,16 @@ export interface JobLocale {
     locale?: LocalePreview;
     /**
      * 
-     * @type {Array<UserPreview>}
+     * @type {Array<LocaleUserPreview>}
      * @memberof JobLocale
      */
-    users?: Array<UserPreview>;
+    users?: Array<LocaleUserPreview>;
+    /**
+     * 
+     * @type {Array<LocaleTeamPreview>}
+     * @memberof JobLocale
+     */
+    teams?: Array<LocaleTeamPreview>;
     /**
      * 
      * @type {boolean}
@@ -90,7 +100,8 @@ export function JobLocaleFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'id': !exists(json, 'id') ? undefined : json['id'],
         'job': !exists(json, 'job') ? undefined : JobPreviewFromJSON(json['job']),
         'locale': !exists(json, 'locale') ? undefined : LocalePreviewFromJSON(json['locale']),
-        'users': !exists(json, 'users') ? undefined : ((json['users'] as Array<any>).map(UserPreviewFromJSON)),
+        'users': !exists(json, 'users') ? undefined : ((json['users'] as Array<any>).map(LocaleUserPreviewFromJSON)),
+        'teams': !exists(json, 'teams') ? undefined : ((json['teams'] as Array<any>).map(LocaleTeamPreviewFromJSON)),
         'completed': !exists(json, 'completed') ? undefined : json['completed'],
         'translationCompletedAt': !exists(json, 'translation_completed_at') ? undefined : (new Date(json['translation_completed_at'])),
         'reviewCompletedAt': !exists(json, 'review_completed_at') ? undefined : (new Date(json['review_completed_at'])),
@@ -109,7 +120,8 @@ export function JobLocaleToJSON(value?: JobLocale | null): any {
         'id': value.id,
         'job': JobPreviewToJSON(value.job),
         'locale': LocalePreviewToJSON(value.locale),
-        'users': value.users === undefined ? undefined : ((value.users as Array<any>).map(UserPreviewToJSON)),
+        'users': value.users === undefined ? undefined : ((value.users as Array<any>).map(LocaleUserPreviewToJSON)),
+        'teams': value.teams === undefined ? undefined : ((value.teams as Array<any>).map(LocaleTeamPreviewToJSON)),
         'completed': value.completed,
         'translation_completed_at': value.translationCompletedAt === undefined ? undefined : (value.translationCompletedAt.toISOString()),
         'review_completed_at': value.reviewCompletedAt === undefined ? undefined : (value.reviewCompletedAt.toISOString()),

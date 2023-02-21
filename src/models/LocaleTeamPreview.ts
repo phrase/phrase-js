@@ -15,53 +15,46 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface JobTemplateUserPreview
+ * @interface LocaleTeamPreview
  */
-export interface JobTemplateUserPreview {
+export interface LocaleTeamPreview {
     /**
      * 
      * @type {string}
-     * @memberof JobTemplateUserPreview
+     * @memberof LocaleTeamPreview
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof JobTemplateUserPreview
-     */
-    username?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JobTemplateUserPreview
+     * @memberof LocaleTeamPreview
      */
     name?: string;
     /**
      * 
      * @type {string}
-     * @memberof JobTemplateUserPreview
+     * @memberof LocaleTeamPreview
      */
     role?: string;
 }
 
-export function JobTemplateUserPreviewFromJSON(json: any): JobTemplateUserPreview {
-    return JobTemplateUserPreviewFromJSONTyped(json, false);
+export function LocaleTeamPreviewFromJSON(json: any): LocaleTeamPreview {
+    return LocaleTeamPreviewFromJSONTyped(json, false);
 }
 
-export function JobTemplateUserPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolean): JobTemplateUserPreview {
+export function LocaleTeamPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolean): LocaleTeamPreview {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
         'id': !exists(json, 'id') ? undefined : json['id'],
-        'username': !exists(json, 'username') ? undefined : json['username'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'role': !exists(json, 'role') ? undefined : json['role'],
     };
 }
 
-export function JobTemplateUserPreviewToJSON(value?: JobTemplateUserPreview | null): any {
+export function LocaleTeamPreviewToJSON(value?: LocaleTeamPreview | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -71,7 +64,6 @@ export function JobTemplateUserPreviewToJSON(value?: JobTemplateUserPreview | nu
     return {
         
         'id': value.id,
-        'username': value.username,
         'name': value.name,
         'role': value.role,
     };
