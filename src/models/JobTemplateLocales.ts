@@ -13,10 +13,6 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    Items,
-    ItemsFromJSON,
-    ItemsFromJSONTyped,
-    ItemsToJSON,
     JobTemplatePreview,
     JobTemplatePreviewFromJSON,
     JobTemplatePreviewFromJSONTyped,
@@ -25,6 +21,14 @@ import {
     LocalePreviewFromJSON,
     LocalePreviewFromJSONTyped,
     LocalePreviewToJSON,
+    LocaleTeamPreview,
+    LocaleTeamPreviewFromJSON,
+    LocaleTeamPreviewFromJSONTyped,
+    LocaleTeamPreviewToJSON,
+    LocaleUserPreview,
+    LocaleUserPreviewFromJSON,
+    LocaleUserPreviewFromJSONTyped,
+    LocaleUserPreviewToJSON,
 } from './';
 
 /**
@@ -53,16 +57,16 @@ export interface JobTemplateLocales {
     locale?: LocalePreview;
     /**
      * 
-     * @type {Array<Items>}
+     * @type {Array<LocaleUserPreview>}
      * @memberof JobTemplateLocales
      */
-    users?: Array<Items>;
+    users?: Array<LocaleUserPreview>;
     /**
      * 
-     * @type {Array<Items>}
+     * @type {Array<LocaleTeamPreview>}
      * @memberof JobTemplateLocales
      */
-    teams?: Array<Items>;
+    teams?: Array<LocaleTeamPreview>;
 }
 
 export function JobTemplateLocalesFromJSON(json: any): JobTemplateLocales {
@@ -78,8 +82,8 @@ export function JobTemplateLocalesFromJSONTyped(json: any, ignoreDiscriminator: 
         'id': !exists(json, 'id') ? undefined : json['id'],
         'jobTemplate': !exists(json, 'job_template') ? undefined : JobTemplatePreviewFromJSON(json['job_template']),
         'locale': !exists(json, 'locale') ? undefined : LocalePreviewFromJSON(json['locale']),
-        'users': !exists(json, 'users') ? undefined : ((json['users'] as Array<any>).map(ItemsFromJSON)),
-        'teams': !exists(json, 'teams') ? undefined : ((json['teams'] as Array<any>).map(ItemsFromJSON)),
+        'users': !exists(json, 'users') ? undefined : ((json['users'] as Array<any>).map(LocaleUserPreviewFromJSON)),
+        'teams': !exists(json, 'teams') ? undefined : ((json['teams'] as Array<any>).map(LocaleTeamPreviewFromJSON)),
     };
 }
 
@@ -95,8 +99,8 @@ export function JobTemplateLocalesToJSON(value?: JobTemplateLocales | null): any
         'id': value.id,
         'job_template': JobTemplatePreviewToJSON(value.jobTemplate),
         'locale': LocalePreviewToJSON(value.locale),
-        'users': value.users === undefined ? undefined : ((value.users as Array<any>).map(ItemsToJSON)),
-        'teams': value.teams === undefined ? undefined : ((value.teams as Array<any>).map(ItemsToJSON)),
+        'users': value.users === undefined ? undefined : ((value.users as Array<any>).map(LocaleUserPreviewToJSON)),
+        'teams': value.teams === undefined ? undefined : ((value.teams as Array<any>).map(LocaleTeamPreviewToJSON)),
     };
 }
 
