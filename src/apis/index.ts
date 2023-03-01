@@ -25,6 +25,8 @@ export * from './MembersApi';
 export * from './NotificationGroupsApi';
 export * from './NotificationsApi';
 export * from './OrdersApi';
+export * from './OrganizationJobTemplateLocalesApi';
+export * from './OrganizationJobTemplatesApi';
 export * from './ProjectsApi';
 export * from './ReleasesApi';
 export * from './ScreenshotMarkersApi';
