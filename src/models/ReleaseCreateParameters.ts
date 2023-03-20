@@ -37,6 +37,12 @@ export interface ReleaseCreateParameters {
      */
     localeIds?: Array<string>;
     /**
+     * Only include tagged keys in the release. For a key to be included it must be tagged with all tags provided
+     * @type {Array<string>}
+     * @memberof ReleaseCreateParameters
+     */
+    tags?: Array<string>;
+    /**
      * Branch used for release
      * @type {string}
      * @memberof ReleaseCreateParameters
@@ -57,6 +63,7 @@ export function ReleaseCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'description': !exists(json, 'description') ? undefined : json['description'],
         'platforms': !exists(json, 'platforms') ? undefined : json['platforms'],
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
+        'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
     };
 }
@@ -73,6 +80,7 @@ export function ReleaseCreateParametersToJSON(value?: ReleaseCreateParameters | 
         'description': value.description,
         'platforms': value.platforms,
         'locale_ids': value.localeIds,
+        'tags': value.tags,
         'branch': value.branch,
     };
 }

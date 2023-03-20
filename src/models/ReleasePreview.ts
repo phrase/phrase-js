@@ -75,6 +75,12 @@ export interface ReleasePreview {
     localeCodes?: Array<string>;
     /**
      * 
+     * @type {Array<string>}
+     * @memberof ReleasePreview
+     */
+    tags?: Array<string>;
+    /**
+     * 
      * @type {ProjectShort}
      * @memberof ReleasePreview
      */
@@ -111,6 +117,7 @@ export function ReleasePreviewFromJSONTyped(json: any, ignoreDiscriminator: bool
         'platforms': !exists(json, 'platforms') ? undefined : json['platforms'],
         'environments': !exists(json, 'environments') ? undefined : json['environments'],
         'localeCodes': !exists(json, 'locale_codes') ? undefined : json['locale_codes'],
+        'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'project': !exists(json, 'project') ? undefined : ProjectShortFromJSON(json['project']),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
@@ -134,6 +141,7 @@ export function ReleasePreviewToJSON(value?: ReleasePreview | null): any {
         'platforms': value.platforms,
         'environments': value.environments,
         'locale_codes': value.localeCodes,
+        'tags': value.tags,
         'project': ProjectShortToJSON(value.project),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
