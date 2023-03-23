@@ -42,6 +42,12 @@ export interface IcuSkeletonParameters {
      * @memberof IcuSkeletonParameters
      */
     zeroFormEnabled?: boolean;
+    /**
+     * Strings supports two CLDR variants, when it comes to pluralization rules. \\ You can choose which one you want to use when constructing the skeletons. Possible values \\ are `legacy` and `cldr_41`. Default value is `legacy`.
+     * @type {string}
+     * @memberof IcuSkeletonParameters
+     */
+    cldrVersion?: string;
 }
 
 export function IcuSkeletonParametersFromJSON(json: any): IcuSkeletonParameters {
@@ -58,6 +64,7 @@ export function IcuSkeletonParametersFromJSONTyped(json: any, ignoreDiscriminato
         'localeCodes': !exists(json, 'locale_codes') ? undefined : json['locale_codes'],
         'keepContent': !exists(json, 'keep_content') ? undefined : json['keep_content'],
         'zeroFormEnabled': !exists(json, 'zero_form_enabled') ? undefined : json['zero_form_enabled'],
+        'cldrVersion': !exists(json, 'cldr_version') ? undefined : json['cldr_version'],
     };
 }
 
@@ -74,6 +81,7 @@ export function IcuSkeletonParametersToJSON(value?: IcuSkeletonParameters | null
         'locale_codes': value.localeCodes,
         'keep_content': value.keepContent,
         'zero_form_enabled': value.zeroFormEnabled,
+        'cldr_version': value.cldrVersion,
     };
 }
 
