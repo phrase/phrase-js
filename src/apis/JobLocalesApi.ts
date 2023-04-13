@@ -369,7 +369,7 @@ export class JobLocalesApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/projects/{project_id}/jobs/{job_id}/locale/{id}`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"job_id"}}`, encodeURIComponent(String(requestParameters.jobId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/projects/{project_id}/jobs/{job_id}/locales/{id}`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"job_id"}}`, encodeURIComponent(String(requestParameters.jobId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
