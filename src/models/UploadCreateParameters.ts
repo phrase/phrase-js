@@ -103,7 +103,7 @@ export interface UploadCreateParameters {
      */
     autotranslate?: boolean;
     /**
-     * Indicated whether the imported translations should be marked as reviewed. This setting is available if the review workflow (currently beta) is enabled for the project.
+     * Indicated whether the imported translations should be marked as reviewed. This setting is available if the review workflow is enabled for the project.
      * @type {boolean}
      * @memberof UploadCreateParameters
      */
