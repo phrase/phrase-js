@@ -31,7 +31,7 @@ export interface DistributionCreateParameters {
      */
     projectId?: string;
     /**
-     * List of platforms the distribution should support.
+     * List of platforms the distribution should support. Valid values are: * `android` * `ios` * `flutter` * `i18next`
      * @type {Array<string>}
      * @memberof DistributionCreateParameters
      */
