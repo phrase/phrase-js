@@ -220,8 +220,8 @@ export class JobLocalesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing job locale.
-     * Delete a job locale
+     * Removes a target locale from a job.
+     * Remove a target locale from a job
      */
     async jobLocaleDeleteRaw(requestParameters: JobLocaleDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
@@ -266,8 +266,8 @@ export class JobLocalesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing job locale.
-     * Delete a job locale
+     * Removes a target locale from a job.
+     * Remove a target locale from a job
      */
     async jobLocaleDelete(requestParameters: JobLocaleDeleteRequest): Promise<any> {
         const response = await this.jobLocaleDeleteRaw(requestParameters);
@@ -333,8 +333,8 @@ export class JobLocalesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get a single job locale for a given job.
-     * Get a single job locale
+     * Get a single target locale for a given job.
+     * Show single job target locale
      */
     async jobLocaleShowRaw(requestParameters: JobLocaleShowRequest): Promise<runtime.ApiResponse<JobLocale>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
@@ -379,8 +379,8 @@ export class JobLocalesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get a single job locale for a given job.
-     * Get a single job locale
+     * Get a single target locale for a given job.
+     * Show single job target locale
      */
     async jobLocaleShow(requestParameters: JobLocaleShowRequest): Promise<JobLocale> {
         const response = await this.jobLocaleShowRaw(requestParameters);
@@ -388,8 +388,8 @@ export class JobLocalesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing job locale.
-     * Update a job locale
+     * Update an existing job target locale.
+     * Update a job target locale
      */
     async jobLocaleUpdateRaw(requestParameters: JobLocaleUpdateRequest): Promise<runtime.ApiResponse<JobLocale>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
@@ -437,8 +437,8 @@ export class JobLocalesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing job locale.
-     * Update a job locale
+     * Update an existing job target locale.
+     * Update a job target locale
      */
     async jobLocaleUpdate(requestParameters: JobLocaleUpdateRequest): Promise<JobLocale> {
         const response = await this.jobLocaleUpdateRaw(requestParameters);
@@ -446,8 +446,8 @@ export class JobLocalesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new job locale.
-     * Create a job locale
+     * Adds a target locale to a job.
+     * Add a target locale to a job
      */
     async jobLocalesCreateRaw(requestParameters: JobLocalesCreateRequest): Promise<runtime.ApiResponse<JobLocale>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
@@ -491,8 +491,8 @@ export class JobLocalesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new job locale.
-     * Create a job locale
+     * Adds a target locale to a job.
+     * Add a target locale to a job
      */
     async jobLocalesCreate(requestParameters: JobLocalesCreateRequest): Promise<JobLocale> {
         const response = await this.jobLocalesCreateRaw(requestParameters);
@@ -500,8 +500,8 @@ export class JobLocalesApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all job locales for a given job.
-     * List job locales
+     * List all target locales for a given job.
+     * List job target locales
      */
     async jobLocalesListRaw(requestParameters: JobLocalesListRequest): Promise<runtime.ApiResponse<Array<JobLocale>>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
@@ -550,8 +550,8 @@ export class JobLocalesApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all job locales for a given job.
-     * List job locales
+     * List all target locales for a given job.
+     * List job target locales
      */
     async jobLocalesList(requestParameters: JobLocalesListRequest): Promise<Array<JobLocale>> {
         const response = await this.jobLocalesListRaw(requestParameters);

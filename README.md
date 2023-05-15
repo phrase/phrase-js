@@ -241,12 +241,12 @@ Class | Method | HTTP request | Description
 *JobCommentsApi* | **jobCommentsList** | **GET** /projects/{project_id}/jobs/{job_id}/comments | List job comments
 *JobLocalesApi* | **jobLocaleComplete** | **POST** /projects/{project_id}/jobs/{job_id}/locales/{id}/complete | Complete a job locale
 *JobLocalesApi* | **jobLocaleCompleteReview** | **POST** /projects/{project_id}/jobs/{job_id}/locales/{id}/complete_review | Review a job locale
-*JobLocalesApi* | **jobLocaleDelete** | **DELETE** /projects/{project_id}/jobs/{job_id}/locales/{id} | Delete a job locale
+*JobLocalesApi* | **jobLocaleDelete** | **DELETE** /projects/{project_id}/jobs/{job_id}/locales/{id} | Remove a target locale from a job
 *JobLocalesApi* | **jobLocaleReopen** | **POST** /projects/{project_id}/jobs/{job_id}/locales/{id}/reopen | Reopen a job locale
-*JobLocalesApi* | **jobLocaleShow** | **GET** /projects/{project_id}/jobs/{job_id}/locales/{id} | Get a single job locale
-*JobLocalesApi* | **jobLocaleUpdate** | **PATCH** /projects/{project_id}/jobs/{job_id}/locales/{id} | Update a job locale
-*JobLocalesApi* | **jobLocalesCreate** | **POST** /projects/{project_id}/jobs/{job_id}/locales | Create a job locale
-*JobLocalesApi* | **jobLocalesList** | **GET** /projects/{project_id}/jobs/{job_id}/locales | List job locales
+*JobLocalesApi* | **jobLocaleShow** | **GET** /projects/{project_id}/jobs/{job_id}/locales/{id} | Show single job target locale
+*JobLocalesApi* | **jobLocaleUpdate** | **PATCH** /projects/{project_id}/jobs/{job_id}/locales/{id} | Update a job target locale
+*JobLocalesApi* | **jobLocalesCreate** | **POST** /projects/{project_id}/jobs/{job_id}/locales | Add a target locale to a job
+*JobLocalesApi* | **jobLocalesList** | **GET** /projects/{project_id}/jobs/{job_id}/locales | List job target locales
 *JobTemplateLocalesApi* | **jobTemplateLocaleDelete** | **DELETE** /projects/{project_id}/job_templates/{job_template_id}/locales/{job_template_locale_id} | Delete a job template locale
 *JobTemplateLocalesApi* | **jobTemplateLocaleShow** | **GET** /projects/{project_id}/job_templates/{job_template_id}/locales/{job_template_locale_id} | Get a single job template locale
 *JobTemplateLocalesApi* | **jobTemplateLocaleUpdate** | **PATCH** /projects/{project_id}/job_templates/{job_template_id}/locales/{job_template_locale_id} | Update a job template locale

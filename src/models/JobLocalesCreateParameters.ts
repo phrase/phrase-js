@@ -25,7 +25,7 @@ export interface JobLocalesCreateParameters {
      */
     branch?: string;
     /**
-     * locale id
+     * ID of a locale to be added
      * @type {string}
      * @memberof JobLocalesCreateParameters
      */

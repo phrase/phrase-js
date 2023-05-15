@@ -25,7 +25,7 @@ export interface JobLocaleUpdateParameters {
      */
     branch?: string;
     /**
-     * locale id
+     * ID of a target locale to update
      * @type {string}
      * @memberof JobLocaleUpdateParameters
      */
