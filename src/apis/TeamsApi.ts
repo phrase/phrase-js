@@ -367,7 +367,7 @@ export class TeamsApi extends runtime.BaseAPI {
 
     /**
      * Adds an existing project to the team.
-     * Add Project
+     * Add Project to Team
      */
     async teamsProjectsCreateRaw(requestParameters: TeamsProjectsCreateRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -412,7 +412,7 @@ export class TeamsApi extends runtime.BaseAPI {
 
     /**
      * Adds an existing project to the team.
-     * Add Project
+     * Add Project to Team
      */
     async teamsProjectsCreate(requestParameters: TeamsProjectsCreateRequest): Promise<any> {
         const response = await this.teamsProjectsCreateRaw(requestParameters);
@@ -421,7 +421,7 @@ export class TeamsApi extends runtime.BaseAPI {
 
     /**
      * Removes a specified project from the specified team.
-     * Remove Project
+     * Remove Project from Team
      */
     async teamsProjectsDeleteRaw(requestParameters: TeamsProjectsDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -463,7 +463,7 @@ export class TeamsApi extends runtime.BaseAPI {
 
     /**
      * Removes a specified project from the specified team.
-     * Remove Project
+     * Remove Project from Team
      */
     async teamsProjectsDelete(requestParameters: TeamsProjectsDeleteRequest): Promise<any> {
         const response = await this.teamsProjectsDeleteRaw(requestParameters);

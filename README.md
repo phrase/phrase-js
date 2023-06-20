@@ -373,9 +373,9 @@ Class | Method | HTTP request | Description
 *SpacesApi* | **spaceShow** | **GET** /accounts/{account_id}/spaces/{id} | Get Space
 *SpacesApi* | **spaceUpdate** | **PATCH** /accounts/{account_id}/spaces/{id} | Update Space
 *SpacesApi* | **spacesList** | **GET** /accounts/{account_id}/spaces | List Spaces
-*SpacesApi* | **spacesProjectsCreate** | **POST** /accounts/{account_id}/spaces/{space_id}/projects | Add Project
-*SpacesApi* | **spacesProjectsDelete** | **DELETE** /accounts/{account_id}/spaces/{space_id}/projects/{id} | Remove Project
-*SpacesApi* | **spacesProjectsList** | **GET** /accounts/{account_id}/spaces/{space_id}/projects | List Projects
+*SpacesApi* | **spacesProjectsCreate** | **POST** /accounts/{account_id}/spaces/{space_id}/projects | Add Project to Space
+*SpacesApi* | **spacesProjectsDelete** | **DELETE** /accounts/{account_id}/spaces/{space_id}/projects/{id} | Remove Project from Space
+*SpacesApi* | **spacesProjectsList** | **GET** /accounts/{account_id}/spaces/{space_id}/projects | List Projects in Space
 *StyleGuidesApi* | **styleguideCreate** | **POST** /projects/{project_id}/styleguides | Create a style guide
 *StyleGuidesApi* | **styleguideDelete** | **DELETE** /projects/{project_id}/styleguides/{id} | Delete a style guide
 *StyleGuidesApi* | **styleguideShow** | **GET** /projects/{project_id}/styleguides/{id} | Get a single style guide
@@ -390,8 +390,8 @@ Class | Method | HTTP request | Description
 *TeamsApi* | **teamShow** | **GET** /accounts/{account_id}/teams/{id} | Get Team
 *TeamsApi* | **teamUpdate** | **PATCH** /accounts/{account_id}/teams/{id} | Update Team
 *TeamsApi* | **teamsList** | **GET** /accounts/{account_id}/teams | List Teams
-*TeamsApi* | **teamsProjectsCreate** | **POST** /accounts/{account_id}/teams/{team_id}/projects | Add Project
-*TeamsApi* | **teamsProjectsDelete** | **DELETE** /accounts/{account_id}/teams/{team_id}/projects/{id} | Remove Project
+*TeamsApi* | **teamsProjectsCreate** | **POST** /accounts/{account_id}/teams/{team_id}/projects | Add Project to Team
+*TeamsApi* | **teamsProjectsDelete** | **DELETE** /accounts/{account_id}/teams/{team_id}/projects/{id} | Remove Project from Team
 *TeamsApi* | **teamsSpacesCreate** | **POST** /accounts/{account_id}/teams/{team_id}/spaces | Add Space
 *TeamsApi* | **teamsSpacesDelete** | **DELETE** /accounts/{account_id}/teams/{team_id}/spaces/{id} | Remove Space
 *TeamsApi* | **teamsUsersCreate** | **POST** /accounts/{account_id}/teams/{team_id}/users | Add User

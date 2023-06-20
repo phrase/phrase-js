@@ -341,7 +341,7 @@ export class SpacesApi extends runtime.BaseAPI {
 
     /**
      * Adds an existing project to the space.
-     * Add Project
+     * Add Project to Space
      */
     async spacesProjectsCreateRaw(requestParameters: SpacesProjectsCreateRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -386,7 +386,7 @@ export class SpacesApi extends runtime.BaseAPI {
 
     /**
      * Adds an existing project to the space.
-     * Add Project
+     * Add Project to Space
      */
     async spacesProjectsCreate(requestParameters: SpacesProjectsCreateRequest): Promise<any> {
         const response = await this.spacesProjectsCreateRaw(requestParameters);
@@ -395,7 +395,7 @@ export class SpacesApi extends runtime.BaseAPI {
 
     /**
      * Removes a specified project from the specified space.
-     * Remove Project
+     * Remove Project from Space
      */
     async spacesProjectsDeleteRaw(requestParameters: SpacesProjectsDeleteRequest): Promise<runtime.ApiResponse<any>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -437,7 +437,7 @@ export class SpacesApi extends runtime.BaseAPI {
 
     /**
      * Removes a specified project from the specified space.
-     * Remove Project
+     * Remove Project from Space
      */
     async spacesProjectsDelete(requestParameters: SpacesProjectsDeleteRequest): Promise<any> {
         const response = await this.spacesProjectsDeleteRaw(requestParameters);
@@ -446,7 +446,7 @@ export class SpacesApi extends runtime.BaseAPI {
 
     /**
      * List all projects for the specified Space.
-     * List Projects
+     * List Projects in Space
      */
     async spacesProjectsListRaw(requestParameters: SpacesProjectsListRequest): Promise<runtime.ApiResponse<Array<Project>>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
@@ -492,7 +492,7 @@ export class SpacesApi extends runtime.BaseAPI {
 
     /**
      * List all projects for the specified Space.
-     * List Projects
+     * List Projects in Space
      */
     async spacesProjectsList(requestParameters: SpacesProjectsListRequest): Promise<Array<Project>> {
         const response = await this.spacesProjectsListRaw(requestParameters);
