@@ -144,11 +144,19 @@ export class UploadsApi extends runtime.BaseAPI {
         }
 
         if (requestParameters.localeMapping !== undefined) {
-            formParams.append('locale_mapping', requestParameters.localeMapping as any);
+            this.flattenDeepParams({
+                locale_mapping: requestParameters.localeMapping
+            }).forEach(([name, value]) => {
+                formParams.append(name, value as any);
+            });
         }
 
         if (requestParameters.formatOptions !== undefined) {
-            formParams.append('format_options', requestParameters.formatOptions as any);
+            this.flattenDeepParams({
+                format_options: requestParameters.formatOptions
+            }).forEach(([name, value]) => {
+                formParams.append(name, value as any);
+            });
         }
 
         if (requestParameters.autotranslate !== undefined) {
