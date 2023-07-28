@@ -20,10 +20,10 @@ import { exists, mapValues } from '../runtime';
 export interface GitlabSyncHistory {
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof GitlabSyncHistory
      */
-    status?: number;
+    status?: string;
     /**
      * 
      * @type {string}
