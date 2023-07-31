@@ -38,6 +38,7 @@ export * from './GitlabSync';
 export * from './GitlabSyncExport';
 export * from './GitlabSyncExportParameters';
 export * from './GitlabSyncHistory';
+export * from './GitlabSyncHistoryErrors';
 export * from './GitlabSyncImportParameters';
 export * from './Glossary';
 export * from './GlossaryCreateParameters';
