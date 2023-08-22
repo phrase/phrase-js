@@ -220,6 +220,10 @@ Class | Method | HTTP request | Description
 *BranchesApi* | **branchShow** | **GET** /projects/{project_id}/branches/{name} | Get a single branch
 *BranchesApi* | **branchUpdate** | **PATCH** /projects/{project_id}/branches/{name} | Update a branch
 *BranchesApi* | **branchesList** | **GET** /projects/{project_id}/branches | List branches
+*CommentReactionsApi* | **reactionCreate** | **POST** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/reactions | Create a reaction
+*CommentReactionsApi* | **reactionDelete** | **DELETE** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/reactions/{id} | Delete a reaction
+*CommentReactionsApi* | **reactionShow** | **GET** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/reactions/{id} | Get a single reaction
+*CommentReactionsApi* | **reactionsList** | **GET** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/reactions | List reactions
 *CommentsApi* | **commentCreate** | **POST** /projects/{project_id}/keys/{key_id}/comments | Create a comment
 *CommentsApi* | **commentDelete** | **DELETE** /projects/{project_id}/keys/{key_id}/comments/{id} | Delete a comment
 *CommentsApi* | **commentMarkCheck** | **GET** /projects/{project_id}/keys/{key_id}/comments/{id}/read | Check if comment is read
