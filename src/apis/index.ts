@@ -4,6 +4,7 @@ export * from './BitbucketSyncApi';
 export * from './BlacklistedKeysApi';
 export * from './BranchesApi';
 export * from './CommentReactionsApi';
+export * from './CommentRepliesApi';
 export * from './CommentsApi';
 export * from './DistributionsApi';
 export * from './DocumentsApi';

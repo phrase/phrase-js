@@ -33,6 +33,8 @@ export interface CommentCreateRequest {
     keyId: string;
     commentCreateParameters: CommentCreateParameters;
     xPhraseAppOTP?: string;
+    message?: string;
+    localeIds?: Array<string>;
 }
 
 export interface CommentDeleteRequest {
@@ -115,6 +117,14 @@ export class CommentsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.message !== undefined) {
+            queryParameters['message'] = requestParameters.message;
+        }
+
+        if (requestParameters.localeIds) {
+            queryParameters['locale_ids'] = requestParameters.localeIds;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 

@@ -25,6 +25,7 @@ export interface ReactionCreateRequest {
     commentId: string;
     xPhraseAppOTP?: string;
     branch?: string;
+    emoji?: string;
 }
 
 export interface ReactionDeleteRequest {
@@ -81,6 +82,10 @@ export class CommentReactionsApi extends runtime.BaseAPI {
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
+        }
+
+        if (requestParameters.emoji !== undefined) {
+            queryParameters['emoji'] = requestParameters.emoji;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

@@ -13,6 +13,10 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    LocalePreview,
+    LocalePreviewFromJSON,
+    LocalePreviewFromJSONTyped,
+    LocalePreviewToJSON,
     UserPreview,
     UserPreviewFromJSON,
     UserPreviewFromJSONTyped,
@@ -39,6 +43,12 @@ export interface Comment {
     message?: string;
     /**
      * 
+     * @type {boolean}
+     * @memberof Comment
+     */
+    hasReplies?: boolean;
+    /**
+     * 
      * @type {UserPreview}
      * @memberof Comment
      */
@@ -61,6 +71,12 @@ export interface Comment {
      * @memberof Comment
      */
     mentionedUsers?: Array<UserPreview>;
+    /**
+     * 
+     * @type {Array<LocalePreview>}
+     * @memberof Comment
+     */
+    locales?: Array<LocalePreview>;
 }
 
 export function CommentFromJSON(json: any): Comment {
@@ -75,10 +91,12 @@ export function CommentFromJSONTyped(json: any, ignoreDiscriminator: boolean): C
         
         'id': !exists(json, 'id') ? undefined : json['id'],
         'message': !exists(json, 'message') ? undefined : json['message'],
+        'hasReplies': !exists(json, 'has_replies') ? undefined : json['has_replies'],
         'user': !exists(json, 'user') ? undefined : UserPreviewFromJSON(json['user']),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'mentionedUsers': !exists(json, 'mentioned_users') ? undefined : ((json['mentioned_users'] as Array<any>).map(UserPreviewFromJSON)),
+        'locales': !exists(json, 'locales') ? undefined : ((json['locales'] as Array<any>).map(LocalePreviewFromJSON)),
     };
 }
 
@@ -93,10 +111,12 @@ export function CommentToJSON(value?: Comment | null): any {
         
         'id': value.id,
         'message': value.message,
+        'has_replies': value.hasReplies,
         'user': UserPreviewToJSON(value.user),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'mentioned_users': value.mentionedUsers === undefined ? undefined : ((value.mentionedUsers as Array<any>).map(UserPreviewToJSON)),
+        'locales': value.locales === undefined ? undefined : ((value.locales as Array<any>).map(LocalePreviewToJSON)),
     };
 }
 

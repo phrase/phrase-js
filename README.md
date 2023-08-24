@@ -224,6 +224,12 @@ Class | Method | HTTP request | Description
 *CommentReactionsApi* | **reactionDelete** | **DELETE** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/reactions/{id} | Delete a reaction
 *CommentReactionsApi* | **reactionShow** | **GET** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/reactions/{id} | Get a single reaction
 *CommentReactionsApi* | **reactionsList** | **GET** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/reactions | List reactions
+*CommentRepliesApi* | **repliesList** | **GET** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/replies | List replies
+*CommentRepliesApi* | **replyCreate** | **POST** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/replies | Create a reply
+*CommentRepliesApi* | **replyDelete** | **DELETE** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/replies/{id} | Delete a reply
+*CommentRepliesApi* | **replyMarkAsRead** | **PATCH** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/replies/{id}/mark_as_read | Mark a reply as read
+*CommentRepliesApi* | **replyMarkAsUnread** | **PATCH** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/replies/{id}/mark_as_unread | Mark a reply as unread
+*CommentRepliesApi* | **replyShow** | **GET** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/replies/{id} | Get a single reply
 *CommentsApi* | **commentCreate** | **POST** /projects/{project_id}/keys/{key_id}/comments | Create a comment
 *CommentsApi* | **commentDelete** | **DELETE** /projects/{project_id}/keys/{key_id}/comments/{id} | Delete a comment
 *CommentsApi* | **commentMarkCheck** | **GET** /projects/{project_id}/keys/{key_id}/comments/{id}/read | Check if comment is read
