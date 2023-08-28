@@ -26,6 +26,9 @@ import {
     CommentUpdateParameters,
     CommentUpdateParametersFromJSON,
     CommentUpdateParametersToJSON,
+    CommentsListParameters,
+    CommentsListParametersFromJSON,
+    CommentsListParametersToJSON,
 } from '../models';
 
 export interface CommentCreateRequest {
@@ -88,10 +91,14 @@ export interface CommentUpdateRequest {
 export interface CommentsListRequest {
     projectId: string;
     keyId: string;
+    commentsListParameters: CommentsListParameters;
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
     branch?: string;
+    query?: string;
+    localeIds?: Array<string>;
+    filters?: Array<string>;
 }
 
 /**
@@ -510,6 +517,10 @@ export class CommentsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('keyId','Required parameter requestParameters.keyId was null or undefined when calling commentsList.');
         }
 
+        if (requestParameters.commentsListParameters === null || requestParameters.commentsListParameters === undefined) {
+            throw new runtime.RequiredError('commentsListParameters','Required parameter requestParameters.commentsListParameters was null or undefined when calling commentsList.');
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
@@ -524,7 +535,21 @@ export class CommentsApi extends runtime.BaseAPI {
             queryParameters['branch'] = requestParameters.branch;
         }
 
+        if (requestParameters.query !== undefined) {
+            queryParameters['query'] = requestParameters.query;
+        }
+
+        if (requestParameters.localeIds) {
+            queryParameters['locale_ids'] = requestParameters.localeIds;
+        }
+
+        if (requestParameters.filters) {
+            queryParameters['filters'] = requestParameters.filters;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
             headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
@@ -542,6 +567,7 @@ export class CommentsApi extends runtime.BaseAPI {
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
+            body: CommentsListParametersToJSON(requestParameters.commentsListParameters),
         });
 
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(CommentFromJSON));

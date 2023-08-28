@@ -17,16 +17,22 @@ import {
     Comment,
     CommentFromJSON,
     CommentToJSON,
+    RepliesListParameters,
+    RepliesListParametersFromJSON,
+    RepliesListParametersToJSON,
 } from '../models';
 
 export interface RepliesListRequest {
     projectId: string;
     keyId: string;
     commentId: string;
+    repliesListParameters: RepliesListParameters;
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
     branch?: string;
+    query?: string;
+    filters?: Array<string>;
 }
 
 export interface ReplyCreateRequest {
@@ -96,6 +102,10 @@ export class CommentRepliesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('commentId','Required parameter requestParameters.commentId was null or undefined when calling repliesList.');
         }
 
+        if (requestParameters.repliesListParameters === null || requestParameters.repliesListParameters === undefined) {
+            throw new runtime.RequiredError('repliesListParameters','Required parameter requestParameters.repliesListParameters was null or undefined when calling repliesList.');
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
@@ -110,7 +120,17 @@ export class CommentRepliesApi extends runtime.BaseAPI {
             queryParameters['branch'] = requestParameters.branch;
         }
 
+        if (requestParameters.query !== undefined) {
+            queryParameters['query'] = requestParameters.query;
+        }
+
+        if (requestParameters.filters) {
+            queryParameters['filters'] = requestParameters.filters;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
             headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
@@ -128,6 +148,7 @@ export class CommentRepliesApi extends runtime.BaseAPI {
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
+            body: RepliesListParametersToJSON(requestParameters.repliesListParameters),
         });
 
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(CommentFromJSON));
