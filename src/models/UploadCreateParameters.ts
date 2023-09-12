@@ -108,6 +108,12 @@ export interface UploadCreateParameters {
      * @memberof UploadCreateParameters
      */
     markReviewed?: boolean;
+    /**
+     * Indicates whether only keys affected (created or updated) by the upload should be tagged. The default is `false`
+     * @type {boolean}
+     * @memberof UploadCreateParameters
+     */
+    tagOnlyAffectedKeys?: boolean;
 }
 
 export function UploadCreateParametersFromJSON(json: any): UploadCreateParameters {
@@ -135,6 +141,7 @@ export function UploadCreateParametersFromJSONTyped(json: any, ignoreDiscriminat
         'formatOptions': !exists(json, 'format_options') ? undefined : json['format_options'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
         'markReviewed': !exists(json, 'mark_reviewed') ? undefined : json['mark_reviewed'],
+        'tagOnlyAffectedKeys': !exists(json, 'tag_only_affected_keys') ? undefined : json['tag_only_affected_keys'],
     };
 }
 
@@ -162,6 +169,7 @@ export function UploadCreateParametersToJSON(value?: UploadCreateParameters | nu
         'format_options': value.formatOptions,
         'autotranslate': value.autotranslate,
         'mark_reviewed': value.markReviewed,
+        'tag_only_affected_keys': value.tagOnlyAffectedKeys,
     };
 }
 

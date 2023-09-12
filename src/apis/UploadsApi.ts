@@ -37,6 +37,7 @@ export interface UploadCreateRequest {
     formatOptions?: object;
     autotranslate?: boolean;
     markReviewed?: boolean;
+    tagOnlyAffectedKeys?: boolean;
 }
 
 export interface UploadShowRequest {
@@ -165,6 +166,10 @@ export class UploadsApi extends runtime.BaseAPI {
 
         if (requestParameters.markReviewed !== undefined) {
             formParams.append('mark_reviewed', requestParameters.markReviewed as any);
+        }
+
+        if (requestParameters.tagOnlyAffectedKeys !== undefined) {
+            formParams.append('tag_only_affected_keys', requestParameters.tagOnlyAffectedKeys as any);
         }
 
         const response = await this.request({
