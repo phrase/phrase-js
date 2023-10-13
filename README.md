@@ -245,6 +245,11 @@ Class | Method | HTTP request | Description
 *DistributionsApi* | **distributionsList** | **GET** /accounts/{account_id}/distributions | List distributions
 *DocumentsApi* | **documentDelete** | **DELETE** /projects/{project_id}/documents/{id} | Delete document
 *DocumentsApi* | **documentsList** | **GET** /projects/{project_id}/documents | List documents
+*FigmaAttachmentsApi* | **figmaAttachmentCreate** | **POST** /projects/{project_id}/figma_attachments | Create a Figma attachment
+*FigmaAttachmentsApi* | **figmaAttachmentDelete** | **DELETE** /projects/{project_id}/figma_attachments/{id} | Delete a Figma attachment
+*FigmaAttachmentsApi* | **figmaAttachmentShow** | **GET** /projects/{project_id}/figma_attachments/{id} | Get a single Figma attachment
+*FigmaAttachmentsApi* | **figmaAttachmentUpdate** | **PATCH** /projects/{project_id}/figma_attachments/{id} | Update a Figma attachment
+*FigmaAttachmentsApi* | **figmaAttachmentsList** | **GET** /projects/{project_id}/figma_attachments | List Figma attachments
 *FormatsApi* | **formatsList** | **GET** /formats | List formats
 *GitHubSyncApi* | **githubSyncExport** | **POST** /github_syncs/export | Export from Phrase Strings to GitHub
 *GitHubSyncApi* | **githubSyncImport** | **POST** /github_syncs/import | Import to Phrase Strings from GitHub
@@ -323,6 +328,8 @@ Class | Method | HTTP request | Description
 *KeysApi* | **keysSearch** | **POST** /projects/{project_id}/keys/search | Search keys
 *KeysApi* | **keysTag** | **PATCH** /projects/{project_id}/keys/tag | Add tags to collection of keys
 *KeysApi* | **keysUntag** | **PATCH** /projects/{project_id}/keys/untag | Remove tags from collection of keys
+*KeysFigmaAttachmentsApi* | **figmaAttachmentAttachToKey** | **POST** /projects/{project_id}/figma_attachments/{figma_attachment_id}/keys | Attach the Figma attachment to a key
+*KeysFigmaAttachmentsApi* | **figmaAttachmentDetachFromKey** | **DELETE** /projects/{project_id}/figma_attachments/{figma_attachment_id}/keys/{id} | Detach the Figma attachment from a key
 *LocalesApi* | **accountLocales** | **GET** /accounts/{id}/locales | List locales used in account
 *LocalesApi* | **localeCreate** | **POST** /projects/{project_id}/locales | Create a locale
 *LocalesApi* | **localeDelete** | **DELETE** /projects/{project_id}/locales/{id} | Delete a locale
