@@ -99,6 +99,7 @@ export interface CommentsListRequest {
     query?: string;
     localeIds?: Array<string>;
     filters?: Array<string>;
+    order?: string;
 }
 
 /**
@@ -545,6 +546,10 @@ export class CommentsApi extends runtime.BaseAPI {
 
         if (requestParameters.filters) {
             queryParameters['filters'] = requestParameters.filters;
+        }
+
+        if (requestParameters.order !== undefined) {
+            queryParameters['order'] = requestParameters.order;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

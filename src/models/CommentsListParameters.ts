@@ -42,6 +42,12 @@ export interface CommentsListParameters {
      * @memberof CommentsListParameters
      */
     filters?: Array<string>;
+    /**
+     * Specify ordering of comments
+     * @type {string}
+     * @memberof CommentsListParameters
+     */
+    order?: string;
 }
 
 export function CommentsListParametersFromJSON(json: any): CommentsListParameters {
@@ -58,6 +64,7 @@ export function CommentsListParametersFromJSONTyped(json: any, ignoreDiscriminat
         'query': !exists(json, 'query') ? undefined : json['query'],
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'filters': !exists(json, 'filters') ? undefined : json['filters'],
+        'order': !exists(json, 'order') ? undefined : json['order'],
     };
 }
 
@@ -74,6 +81,7 @@ export function CommentsListParametersToJSON(value?: CommentsListParameters | nu
         'query': value.query,
         'locale_ids': value.localeIds,
         'filters': value.filters,
+        'order': value.order,
     };
 }
 

@@ -33,6 +33,7 @@ export interface RepliesListRequest {
     branch?: string;
     query?: string;
     filters?: Array<string>;
+    order?: string;
 }
 
 export interface ReplyCreateRequest {
@@ -126,6 +127,10 @@ export class CommentRepliesApi extends runtime.BaseAPI {
 
         if (requestParameters.filters) {
             queryParameters['filters'] = requestParameters.filters;
+        }
+
+        if (requestParameters.order !== undefined) {
+            queryParameters['order'] = requestParameters.order;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

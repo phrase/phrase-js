@@ -36,6 +36,12 @@ export interface RepliesListParameters {
      * @memberof RepliesListParameters
      */
     filters?: Array<string>;
+    /**
+     * Specify ordering of comments
+     * @type {string}
+     * @memberof RepliesListParameters
+     */
+    order?: string;
 }
 
 export function RepliesListParametersFromJSON(json: any): RepliesListParameters {
@@ -51,6 +57,7 @@ export function RepliesListParametersFromJSONTyped(json: any, ignoreDiscriminato
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
         'query': !exists(json, 'query') ? undefined : json['query'],
         'filters': !exists(json, 'filters') ? undefined : json['filters'],
+        'order': !exists(json, 'order') ? undefined : json['order'],
     };
 }
 
@@ -66,6 +73,7 @@ export function RepliesListParametersToJSON(value?: RepliesListParameters | null
         'branch': value.branch,
         'query': value.query,
         'filters': value.filters,
+        'order': value.order,
     };
 }
 

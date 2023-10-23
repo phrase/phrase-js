@@ -61,6 +61,7 @@ export interface JobCommentsListRequest {
     jobId: string;
     xPhraseAppOTP?: string;
     branch?: string;
+    order?: string;
 }
 
 /**
@@ -307,6 +308,10 @@ export class JobCommentsApi extends runtime.BaseAPI {
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
+        }
+
+        if (requestParameters.order !== undefined) {
+            queryParameters['order'] = requestParameters.order;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
