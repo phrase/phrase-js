@@ -13,14 +13,14 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    MemberProjectDetailProjectRoles,
-    MemberProjectDetailProjectRolesFromJSON,
-    MemberProjectDetailProjectRolesFromJSONTyped,
-    MemberProjectDetailProjectRolesToJSON,
-    MemberSpaces,
-    MemberSpacesFromJSON,
-    MemberSpacesFromJSONTyped,
-    MemberSpacesToJSON,
+    MemberProjectDetailProjectRolesInner,
+    MemberProjectDetailProjectRolesInnerFromJSON,
+    MemberProjectDetailProjectRolesInnerFromJSONTyped,
+    MemberProjectDetailProjectRolesInnerToJSON,
+    MemberSpacesInner,
+    MemberSpacesInnerFromJSON,
+    MemberSpacesInnerFromJSONTyped,
+    MemberSpacesInnerToJSON,
     ProjectLocales,
     ProjectLocalesFromJSON,
     ProjectLocalesFromJSONTyped,
@@ -83,16 +83,16 @@ export interface MemberProjectDetail {
     defaultLocaleCodes?: Array<string>;
     /**
      * 
-     * @type {Array<MemberSpaces>}
+     * @type {Array<MemberSpacesInner>}
      * @memberof MemberProjectDetail
      */
-    spaces?: Array<MemberSpaces>;
+    spaces?: Array<MemberSpacesInner>;
     /**
      * 
-     * @type {Array<MemberProjectDetailProjectRoles>}
+     * @type {Array<MemberProjectDetailProjectRolesInner>}
      * @memberof MemberProjectDetail
      */
-    projectRoles?: Array<MemberProjectDetailProjectRoles>;
+    projectRoles?: Array<MemberProjectDetailProjectRolesInner>;
 }
 
 export function MemberProjectDetailFromJSON(json: any): MemberProjectDetail {
@@ -113,8 +113,8 @@ export function MemberProjectDetailFromJSONTyped(json: any, ignoreDiscriminator:
         'permissions': !exists(json, 'permissions') ? undefined : json['permissions'],
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'defaultLocaleCodes': !exists(json, 'default_locale_codes') ? undefined : json['default_locale_codes'],
-        'spaces': !exists(json, 'spaces') ? undefined : ((json['spaces'] as Array<any>).map(MemberSpacesFromJSON)),
-        'projectRoles': !exists(json, 'project_roles') ? undefined : ((json['project_roles'] as Array<any>).map(MemberProjectDetailProjectRolesFromJSON)),
+        'spaces': !exists(json, 'spaces') ? undefined : ((json['spaces'] as Array<any>).map(MemberSpacesInnerFromJSON)),
+        'projectRoles': !exists(json, 'project_roles') ? undefined : ((json['project_roles'] as Array<any>).map(MemberProjectDetailProjectRolesInnerFromJSON)),
     };
 }
 
@@ -135,8 +135,8 @@ export function MemberProjectDetailToJSON(value?: MemberProjectDetail | null): a
         'permissions': value.permissions,
         'locale_ids': value.localeIds,
         'default_locale_codes': value.defaultLocaleCodes,
-        'spaces': value.spaces === undefined ? undefined : ((value.spaces as Array<any>).map(MemberSpacesToJSON)),
-        'project_roles': value.projectRoles === undefined ? undefined : ((value.projectRoles as Array<any>).map(MemberProjectDetailProjectRolesToJSON)),
+        'spaces': value.spaces === undefined ? undefined : ((value.spaces as Array<any>).map(MemberSpacesInnerToJSON)),
+        'project_roles': value.projectRoles === undefined ? undefined : ((value.projectRoles as Array<any>).map(MemberProjectDetailProjectRolesInnerToJSON)),
     };
 }
 

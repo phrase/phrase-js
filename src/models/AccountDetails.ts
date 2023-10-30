@@ -13,14 +13,6 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    Account,
-    AccountFromJSON,
-    AccountFromJSONTyped,
-    AccountToJSON,
-    AccountDetails1,
-    AccountDetails1FromJSON,
-    AccountDetails1FromJSONTyped,
-    AccountDetails1ToJSON,
     Subscription,
     SubscriptionFromJSON,
     SubscriptionFromJSONTyped,

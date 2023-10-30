@@ -13,14 +13,6 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    Locale,
-    LocaleFromJSON,
-    LocaleFromJSONTyped,
-    LocaleToJSON,
-    LocaleDetails1,
-    LocaleDetails1FromJSON,
-    LocaleDetails1FromJSONTyped,
-    LocaleDetails1ToJSON,
     LocalePreview,
     LocalePreviewFromJSON,
     LocalePreviewFromJSONTyped,

@@ -14,12 +14,12 @@
 
 import * as runtime from '../runtime';
 import {
-    InlineResponse422,
-    InlineResponse422FromJSON,
-    InlineResponse422ToJSON,
     Invitation,
     InvitationFromJSON,
     InvitationToJSON,
+    InvitationCreate422Response,
+    InvitationCreate422ResponseFromJSON,
+    InvitationCreate422ResponseToJSON,
     InvitationCreateParameters,
     InvitationCreateParametersFromJSON,
     InvitationCreateParametersToJSON,

@@ -15,46 +15,46 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface MemberSpaces
+ * @interface MemberSpacesInner
  */
-export interface MemberSpaces {
+export interface MemberSpacesInner {
     /**
      * 
      * @type {string}
-     * @memberof MemberSpaces
+     * @memberof MemberSpacesInner
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof MemberSpaces
+     * @memberof MemberSpacesInner
      */
     name?: string;
     /**
      * 
      * @type {Date}
-     * @memberof MemberSpaces
+     * @memberof MemberSpacesInner
      */
     createdAt?: Date;
     /**
      * 
      * @type {Date}
-     * @memberof MemberSpaces
+     * @memberof MemberSpacesInner
      */
     updatedAt?: Date;
     /**
      * 
      * @type {number}
-     * @memberof MemberSpaces
+     * @memberof MemberSpacesInner
      */
     projectsCount?: number;
 }
 
-export function MemberSpacesFromJSON(json: any): MemberSpaces {
-    return MemberSpacesFromJSONTyped(json, false);
+export function MemberSpacesInnerFromJSON(json: any): MemberSpacesInner {
+    return MemberSpacesInnerFromJSONTyped(json, false);
 }
 
-export function MemberSpacesFromJSONTyped(json: any, ignoreDiscriminator: boolean): MemberSpaces {
+export function MemberSpacesInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): MemberSpacesInner {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -68,7 +68,7 @@ export function MemberSpacesFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-export function MemberSpacesToJSON(value?: MemberSpaces | null): any {
+export function MemberSpacesInnerToJSON(value?: MemberSpacesInner | null): any {
     if (value === undefined) {
         return undefined;
     }

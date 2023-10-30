@@ -15,46 +15,39 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface InlineResponse422Errors
+ * @interface GitlabSyncHistoryErrorsInner
  */
-export interface InlineResponse422Errors {
+export interface GitlabSyncHistoryErrorsInner {
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse422Errors
+     * @memberof GitlabSyncHistoryErrorsInner
      */
-    resource?: string;
+    error?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse422Errors
-     */
-    field?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse422Errors
+     * @memberof GitlabSyncHistoryErrorsInner
      */
     message?: string;
 }
 
-export function InlineResponse422ErrorsFromJSON(json: any): InlineResponse422Errors {
-    return InlineResponse422ErrorsFromJSONTyped(json, false);
+export function GitlabSyncHistoryErrorsInnerFromJSON(json: any): GitlabSyncHistoryErrorsInner {
+    return GitlabSyncHistoryErrorsInnerFromJSONTyped(json, false);
 }
 
-export function InlineResponse422ErrorsFromJSONTyped(json: any, ignoreDiscriminator: boolean): InlineResponse422Errors {
+export function GitlabSyncHistoryErrorsInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): GitlabSyncHistoryErrorsInner {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'resource': !exists(json, 'resource') ? undefined : json['resource'],
-        'field': !exists(json, 'field') ? undefined : json['field'],
+        'error': !exists(json, 'error') ? undefined : json['error'],
         'message': !exists(json, 'message') ? undefined : json['message'],
     };
 }
 
-export function InlineResponse422ErrorsToJSON(value?: InlineResponse422Errors | null): any {
+export function GitlabSyncHistoryErrorsInnerToJSON(value?: GitlabSyncHistoryErrorsInner | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -63,8 +56,7 @@ export function InlineResponse422ErrorsToJSON(value?: InlineResponse422Errors | 
     }
     return {
         
-        'resource': value.resource,
-        'field': value.field,
+        'error': value.error,
         'message': value.message,
     };
 }

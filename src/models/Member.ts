@@ -13,10 +13,10 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    MemberSpaces,
-    MemberSpacesFromJSON,
-    MemberSpacesFromJSONTyped,
-    MemberSpacesToJSON,
+    MemberSpacesInner,
+    MemberSpacesInnerFromJSON,
+    MemberSpacesInnerFromJSONTyped,
+    MemberSpacesInnerToJSON,
     ProjectLocales,
     ProjectLocalesFromJSON,
     ProjectLocalesFromJSONTyped,
@@ -95,10 +95,10 @@ export interface Member {
     teams?: Array<TeamShort>;
     /**
      * 
-     * @type {Array<MemberSpaces>}
+     * @type {Array<MemberSpacesInner>}
      * @memberof Member
      */
-    spaces?: Array<MemberSpaces>;
+    spaces?: Array<MemberSpacesInner>;
 }
 
 export function MemberFromJSON(json: any): Member {
@@ -121,7 +121,7 @@ export function MemberFromJSONTyped(json: any, ignoreDiscriminator: boolean): Me
         'permissions': !exists(json, 'permissions') ? undefined : json['permissions'],
         'defaultLocaleCodes': !exists(json, 'default_locale_codes') ? undefined : json['default_locale_codes'],
         'teams': !exists(json, 'teams') ? undefined : ((json['teams'] as Array<any>).map(TeamShortFromJSON)),
-        'spaces': !exists(json, 'spaces') ? undefined : ((json['spaces'] as Array<any>).map(MemberSpacesFromJSON)),
+        'spaces': !exists(json, 'spaces') ? undefined : ((json['spaces'] as Array<any>).map(MemberSpacesInnerFromJSON)),
     };
 }
 
@@ -144,7 +144,7 @@ export function MemberToJSON(value?: Member | null): any {
         'permissions': value.permissions,
         'default_locale_codes': value.defaultLocaleCodes,
         'teams': value.teams === undefined ? undefined : ((value.teams as Array<any>).map(TeamShortToJSON)),
-        'spaces': value.spaces === undefined ? undefined : ((value.spaces as Array<any>).map(MemberSpacesToJSON)),
+        'spaces': value.spaces === undefined ? undefined : ((value.spaces as Array<any>).map(MemberSpacesInnerToJSON)),
     };
 }
 

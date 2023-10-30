@@ -13,14 +13,6 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    Tag,
-    TagFromJSON,
-    TagFromJSONTyped,
-    TagToJSON,
-    TagWithStats1,
-    TagWithStats1FromJSON,
-    TagWithStats1FromJSONTyped,
-    TagWithStats1ToJSON,
     TagWithStats1Statistics1,
     TagWithStats1Statistics1FromJSON,
     TagWithStats1Statistics1FromJSONTyped,

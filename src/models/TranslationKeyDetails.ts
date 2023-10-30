@@ -13,14 +13,6 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    TranslationKey,
-    TranslationKeyFromJSON,
-    TranslationKeyFromJSONTyped,
-    TranslationKeyToJSON,
-    TranslationKeyDetails1,
-    TranslationKeyDetails1FromJSON,
-    TranslationKeyDetails1FromJSONTyped,
-    TranslationKeyDetails1ToJSON,
     UserPreview,
     UserPreviewFromJSON,
     UserPreviewFromJSONTyped,

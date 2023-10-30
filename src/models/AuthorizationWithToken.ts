@@ -12,17 +12,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    Authorization,
-    AuthorizationFromJSON,
-    AuthorizationFromJSONTyped,
-    AuthorizationToJSON,
-    AuthorizationWithToken1,
-    AuthorizationWithToken1FromJSON,
-    AuthorizationWithToken1FromJSONTyped,
-    AuthorizationWithToken1ToJSON,
-} from './';
-
 /**
  * 
  * @export

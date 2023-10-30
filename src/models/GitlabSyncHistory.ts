@@ -13,10 +13,10 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    GitlabSyncHistoryErrors,
-    GitlabSyncHistoryErrorsFromJSON,
-    GitlabSyncHistoryErrorsFromJSONTyped,
-    GitlabSyncHistoryErrorsToJSON,
+    GitlabSyncHistoryErrorsInner,
+    GitlabSyncHistoryErrorsInnerFromJSON,
+    GitlabSyncHistoryErrorsInnerFromJSONTyped,
+    GitlabSyncHistoryErrorsInnerToJSON,
 } from './';
 
 /**
@@ -39,10 +39,10 @@ export interface GitlabSyncHistory {
     action?: string;
     /**
      * 
-     * @type {Array<GitlabSyncHistoryErrors>}
+     * @type {Array<GitlabSyncHistoryErrorsInner>}
      * @memberof GitlabSyncHistory
      */
-    errors?: Array<GitlabSyncHistoryErrors>;
+    errors?: Array<GitlabSyncHistoryErrorsInner>;
     /**
      * 
      * @type {Date}
@@ -69,7 +69,7 @@ export function GitlabSyncHistoryFromJSONTyped(json: any, ignoreDiscriminator: b
         
         'status': !exists(json, 'status') ? undefined : json['status'],
         'action': !exists(json, 'action') ? undefined : json['action'],
-        'errors': !exists(json, 'errors') ? undefined : ((json['errors'] as Array<any>).map(GitlabSyncHistoryErrorsFromJSON)),
+        'errors': !exists(json, 'errors') ? undefined : ((json['errors'] as Array<any>).map(GitlabSyncHistoryErrorsInnerFromJSON)),
         'date': !exists(json, 'date') ? undefined : (new Date(json['date'])),
         'details': !exists(json, 'details') ? undefined : json['details'],
     };
@@ -86,7 +86,7 @@ export function GitlabSyncHistoryToJSON(value?: GitlabSyncHistory | null): any {
         
         'status': value.status,
         'action': value.action,
-        'errors': value.errors === undefined ? undefined : ((value.errors as Array<any>).map(GitlabSyncHistoryErrorsToJSON)),
+        'errors': value.errors === undefined ? undefined : ((value.errors as Array<any>).map(GitlabSyncHistoryErrorsInnerToJSON)),
         'date': value.date === undefined ? undefined : (value.date.toISOString()),
         'details': value.details,
     };

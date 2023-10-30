@@ -13,18 +13,10 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    JobTemplateDetails1,
-    JobTemplateDetails1FromJSON,
-    JobTemplateDetails1FromJSONTyped,
-    JobTemplateDetails1ToJSON,
     LocalePreview,
     LocalePreviewFromJSON,
     LocalePreviewFromJSONTyped,
     LocalePreviewToJSON,
-    OrganizationJobTemplate,
-    OrganizationJobTemplateFromJSON,
-    OrganizationJobTemplateFromJSONTyped,
-    OrganizationJobTemplateToJSON,
     UserPreview,
     UserPreviewFromJSON,
     UserPreviewFromJSONTyped,

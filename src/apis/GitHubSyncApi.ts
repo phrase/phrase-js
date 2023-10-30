@@ -20,9 +20,9 @@ import {
     GithubSyncImportParameters,
     GithubSyncImportParametersFromJSON,
     GithubSyncImportParametersToJSON,
-    InlineResponse422,
-    InlineResponse422FromJSON,
-    InlineResponse422ToJSON,
+    InvitationCreate422Response,
+    InvitationCreate422ResponseFromJSON,
+    InvitationCreate422ResponseToJSON,
 } from '../models';
 
 export interface GithubSyncExportRequest {

@@ -15,28 +15,28 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface MemberProjectDetailProjectRoles
+ * @interface MemberProjectDetailProjectRolesInner
  */
-export interface MemberProjectDetailProjectRoles {
+export interface MemberProjectDetailProjectRolesInner {
     /**
      * 
      * @type {string}
-     * @memberof MemberProjectDetailProjectRoles
+     * @memberof MemberProjectDetailProjectRolesInner
      */
     projectId?: string;
     /**
      * 
      * @type {string}
-     * @memberof MemberProjectDetailProjectRoles
+     * @memberof MemberProjectDetailProjectRolesInner
      */
     role?: string;
 }
 
-export function MemberProjectDetailProjectRolesFromJSON(json: any): MemberProjectDetailProjectRoles {
-    return MemberProjectDetailProjectRolesFromJSONTyped(json, false);
+export function MemberProjectDetailProjectRolesInnerFromJSON(json: any): MemberProjectDetailProjectRolesInner {
+    return MemberProjectDetailProjectRolesInnerFromJSONTyped(json, false);
 }
 
-export function MemberProjectDetailProjectRolesFromJSONTyped(json: any, ignoreDiscriminator: boolean): MemberProjectDetailProjectRoles {
+export function MemberProjectDetailProjectRolesInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): MemberProjectDetailProjectRolesInner {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -47,7 +47,7 @@ export function MemberProjectDetailProjectRolesFromJSONTyped(json: any, ignoreDi
     };
 }
 
-export function MemberProjectDetailProjectRolesToJSON(value?: MemberProjectDetailProjectRoles | null): any {
+export function MemberProjectDetailProjectRolesInnerToJSON(value?: MemberProjectDetailProjectRolesInner | null): any {
     if (value === undefined) {
         return undefined;
     }

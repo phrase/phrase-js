@@ -12,17 +12,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    Styleguide,
-    StyleguideFromJSON,
-    StyleguideFromJSONTyped,
-    StyleguideToJSON,
-    StyleguideDetails1,
-    StyleguideDetails1FromJSON,
-    StyleguideDetails1FromJSONTyped,
-    StyleguideDetails1ToJSON,
-} from './';
-
 /**
  * 
  * @export

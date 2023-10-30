@@ -17,14 +17,6 @@ import {
     LocalePreviewFromJSON,
     LocalePreviewFromJSONTyped,
     LocalePreviewToJSON,
-    ProjectLocales1,
-    ProjectLocales1FromJSON,
-    ProjectLocales1FromJSONTyped,
-    ProjectLocales1ToJSON,
-    ProjectMemberSpecific,
-    ProjectMemberSpecificFromJSON,
-    ProjectMemberSpecificFromJSONTyped,
-    ProjectMemberSpecificToJSON,
 } from './';
 
 /**
