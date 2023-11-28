@@ -33,6 +33,7 @@ export * from './OrganizationJobTemplateLocalesApi';
 export * from './OrganizationJobTemplatesApi';
 export * from './ProjectsApi';
 export * from './ReleasesApi';
+export * from './ReportsApi';
 export * from './ScreenshotMarkersApi';
 export * from './ScreenshotsApi';
 export * from './SearchApi';

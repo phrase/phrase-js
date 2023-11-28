@@ -38,6 +38,7 @@ src/apis/OrganizationJobTemplateLocalesApi.ts
 src/apis/OrganizationJobTemplatesApi.ts
 src/apis/ProjectsApi.ts
 src/apis/ReleasesApi.ts
+src/apis/ReportsApi.ts
 src/apis/ScreenshotMarkersApi.ts
 src/apis/ScreenshotsApi.ts
 src/apis/SearchApi.ts
@@ -155,6 +156,7 @@ src/models/LocaleCreateParameters.ts
 src/models/LocaleDetails.ts
 src/models/LocalePreview.ts
 src/models/LocalePreview1.ts
+src/models/LocaleReport.ts
 src/models/LocaleStatistics.ts
 src/models/LocaleTeamPreview.ts
 src/models/LocaleUpdateParameters.ts
@@ -180,6 +182,7 @@ src/models/Project.ts
 src/models/ProjectCreateParameters.ts
 src/models/ProjectDetails.ts
 src/models/ProjectLocales.ts
+src/models/ProjectReport.ts
 src/models/ProjectShort.ts
 src/models/ProjectUpdateParameters.ts
 src/models/Release.ts

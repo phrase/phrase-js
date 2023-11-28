@@ -374,6 +374,8 @@ Class | Method | HTTP request | Description
 *ReleasesApi* | **releaseShow** | **GET** /accounts/{account_id}/distributions/{distribution_id}/releases/{id} | Get a single release
 *ReleasesApi* | **releaseUpdate** | **PATCH** /accounts/{account_id}/distributions/{distribution_id}/releases/{id} | Update a release
 *ReleasesApi* | **releasesList** | **GET** /accounts/{account_id}/distributions/{distribution_id}/releases | List releases
+*ReportsApi* | **reportLocalesList** | **GET** /projects/{project_id}/report/locales | List Locale Reports
+*ReportsApi* | **reportShow** | **GET** /projects/{project_id}/report | Get Project Report
 *ScreenshotMarkersApi* | **screenshotMarkerCreate** | **POST** /projects/{project_id}/screenshots/{screenshot_id}/markers | Create a screenshot marker
 *ScreenshotMarkersApi* | **screenshotMarkerDelete** | **DELETE** /projects/{project_id}/screenshots/{screenshot_id}/markers | Delete a screenshot marker
 *ScreenshotMarkersApi* | **screenshotMarkerShow** | **GET** /projects/{project_id}/screenshots/{screenshot_id}/markers/{id} | Get a single screenshot marker
