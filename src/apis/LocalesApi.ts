@@ -73,6 +73,7 @@ export interface LocaleDownloadRequest {
     useLastReviewedVersion?: boolean;
     fallbackLocaleId?: string;
     sourceLocaleId?: string;
+    customMetadataFilters?: object;
 }
 
 export interface LocaleShowRequest {
@@ -332,6 +333,10 @@ export class LocalesApi extends runtime.BaseAPI {
 
         if (requestParameters.sourceLocaleId !== undefined) {
             queryParameters['source_locale_id'] = requestParameters.sourceLocaleId;
+        }
+
+        if (requestParameters.customMetadataFilters !== undefined) {
+            queryParameters['custom_metadata_filters'] = requestParameters.customMetadataFilters;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
