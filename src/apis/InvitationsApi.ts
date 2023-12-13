@@ -14,12 +14,12 @@
 
 import * as runtime from '../runtime';
 import {
+    CustomMetadataPropertyCreate422Response,
+    CustomMetadataPropertyCreate422ResponseFromJSON,
+    CustomMetadataPropertyCreate422ResponseToJSON,
     Invitation,
     InvitationFromJSON,
     InvitationToJSON,
-    InvitationCreate422Response,
-    InvitationCreate422ResponseFromJSON,
-    InvitationCreate422ResponseToJSON,
     InvitationCreateParameters,
     InvitationCreateParametersFromJSON,
     InvitationCreateParametersToJSON,

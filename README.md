@@ -238,6 +238,11 @@ Class | Method | HTTP request | Description
 *CommentsApi* | **commentShow** | **GET** /projects/{project_id}/keys/{key_id}/comments/{id} | Get a single comment
 *CommentsApi* | **commentUpdate** | **PATCH** /projects/{project_id}/keys/{key_id}/comments/{id} | Update a comment
 *CommentsApi* | **commentsList** | **GET** /projects/{project_id}/keys/{key_id}/comments | List comments
+*CustomMetadataApi* | **customMetadataPropertiesDelete** | **DELETE** /accounts/{account_id}/custom_metadata/properties/{id} | Destroy property
+*CustomMetadataApi* | **customMetadataPropertiesList** | **GET** /accounts/{account_id}/custom_metadata/properties | List properties
+*CustomMetadataApi* | **customMetadataPropertyCreate** | **POST** /accounts/{account_id}/custom_metadata/properties | Create a property
+*CustomMetadataApi* | **customMetadataPropertyShow** | **GET** /accounts/{account_id}/custom_metadata/properties/{id} | Get a single property
+*CustomMetadataApi* | **customMetadataPropertyUpdate** | **PATCH** /accounts/{account_id}/custom_metadata/properties/{id} | Update a property
 *DistributionsApi* | **distributionCreate** | **POST** /accounts/{account_id}/distributions | Create a distribution
 *DistributionsApi* | **distributionDelete** | **DELETE** /accounts/{account_id}/distributions/{id} | Delete a distribution
 *DistributionsApi* | **distributionShow** | **GET** /accounts/{account_id}/distributions/{id} | Get a single distribution

@@ -14,15 +14,15 @@
 
 import * as runtime from '../runtime';
 import {
+    CustomMetadataPropertyCreate422Response,
+    CustomMetadataPropertyCreate422ResponseFromJSON,
+    CustomMetadataPropertyCreate422ResponseToJSON,
     GithubSyncExportParameters,
     GithubSyncExportParametersFromJSON,
     GithubSyncExportParametersToJSON,
     GithubSyncImportParameters,
     GithubSyncImportParametersFromJSON,
     GithubSyncImportParametersToJSON,
-    InvitationCreate422Response,
-    InvitationCreate422ResponseFromJSON,
-    InvitationCreate422ResponseToJSON,
 } from '../models';
 
 export interface GithubSyncExportRequest {

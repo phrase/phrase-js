@@ -108,6 +108,12 @@ export interface KeyUpdateParameters {
      * @memberof KeyUpdateParameters
      */
     localizedFormatKey?: string;
+    /**
+     * Updates/Creates custom metadata property name and value pairs to be associated with key. If you want to delete a custom metadata property, you can set its value to null. If you want to update a custom metadata property, you can set its value to the new value.
+     * @type {object}
+     * @memberof KeyUpdateParameters
+     */
+    customMetadata?: object;
 }
 
 export function KeyUpdateParametersFromJSON(json: any): KeyUpdateParameters {
@@ -135,6 +141,7 @@ export function KeyUpdateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'originalFile': !exists(json, 'original_file') ? undefined : json['original_file'],
         'localizedFormatString': !exists(json, 'localized_format_string') ? undefined : json['localized_format_string'],
         'localizedFormatKey': !exists(json, 'localized_format_key') ? undefined : json['localized_format_key'],
+        'customMetadata': !exists(json, 'custom_metadata') ? undefined : json['custom_metadata'],
     };
 }
 
@@ -162,6 +169,7 @@ export function KeyUpdateParametersToJSON(value?: KeyUpdateParameters | null): a
         'original_file': value.originalFile,
         'localized_format_string': value.localizedFormatString,
         'localized_format_key': value.localizedFormatKey,
+        'custom_metadata': value.customMetadata,
     };
 }
 

@@ -114,6 +114,12 @@ export interface KeyCreateParameters {
      * @memberof KeyCreateParameters
      */
     localizedFormatKey?: string;
+    /**
+     * Custom metadata property name and value pairs to be associated with key.
+     * @type {object}
+     * @memberof KeyCreateParameters
+     */
+    customMetadata?: object;
 }
 
 export function KeyCreateParametersFromJSON(json: any): KeyCreateParameters {
@@ -142,6 +148,7 @@ export function KeyCreateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'originalFile': !exists(json, 'original_file') ? undefined : json['original_file'],
         'localizedFormatString': !exists(json, 'localized_format_string') ? undefined : json['localized_format_string'],
         'localizedFormatKey': !exists(json, 'localized_format_key') ? undefined : json['localized_format_key'],
+        'customMetadata': !exists(json, 'custom_metadata') ? undefined : json['custom_metadata'],
     };
 }
 
@@ -170,6 +177,7 @@ export function KeyCreateParametersToJSON(value?: KeyCreateParameters | null): a
         'original_file': value.originalFile,
         'localized_format_string': value.localizedFormatString,
         'localized_format_key': value.localizedFormatKey,
+        'custom_metadata': value.customMetadata,
     };
 }
 

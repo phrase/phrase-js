@@ -133,6 +133,12 @@ export interface TranslationKeyDetails {
      * @memberof TranslationKeyDetails
      */
     creator?: UserPreview;
+    /**
+     * 
+     * @type {{ [key: string]: string; }}
+     * @memberof TranslationKeyDetails
+     */
+    customMetadata?: { [key: string]: string; };
 }
 
 export function TranslationKeyDetailsFromJSON(json: any): TranslationKeyDetails {
@@ -163,6 +169,7 @@ export function TranslationKeyDetailsFromJSONTyped(json: any, ignoreDiscriminato
         'originalFile': !exists(json, 'original_file') ? undefined : json['original_file'],
         'formatValueType': !exists(json, 'format_value_type') ? undefined : json['format_value_type'],
         'creator': !exists(json, 'creator') ? undefined : UserPreviewFromJSON(json['creator']),
+        'customMetadata': !exists(json, 'custom_metadata') ? undefined : json['custom_metadata'],
     };
 }
 
@@ -193,6 +200,7 @@ export function TranslationKeyDetailsToJSON(value?: TranslationKeyDetails | null
         'original_file': value.originalFile,
         'format_value_type': value.formatValueType,
         'creator': UserPreviewToJSON(value.creator),
+        'custom_metadata': value.customMetadata,
     };
 }
 

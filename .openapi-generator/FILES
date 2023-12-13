@@ -11,6 +11,7 @@ src/apis/BranchesApi.ts
 src/apis/CommentReactionsApi.ts
 src/apis/CommentRepliesApi.ts
 src/apis/CommentsApi.ts
+src/apis/CustomMetadataApi.ts
 src/apis/DistributionsApi.ts
 src/apis/DocumentsApi.ts
 src/apis/FigmaAttachmentsApi.ts
@@ -83,6 +84,10 @@ src/models/CommentReaction.ts
 src/models/CommentUpdateParameters.ts
 src/models/CommentsListParameters.ts
 src/models/CurrentUser.ts
+src/models/CustomMetadataDataType.ts
+src/models/CustomMetadataProperty.ts
+src/models/CustomMetadataPropertyCreate422Response.ts
+src/models/CustomMetadataPropertyCreate422ResponseErrorsInner.ts
 src/models/Distribution.ts
 src/models/DistributionCreateParameters.ts
 src/models/DistributionPreview.ts
@@ -112,8 +117,6 @@ src/models/GlossaryUpdateParameters.ts
 src/models/Icu.ts
 src/models/IcuSkeletonParameters.ts
 src/models/Invitation.ts
-src/models/InvitationCreate422Response.ts
-src/models/InvitationCreate422ResponseErrorsInner.ts
 src/models/InvitationCreateParameters.ts
 src/models/InvitationUpdateParameters.ts
 src/models/InvitationUpdateSettingsParameters.ts

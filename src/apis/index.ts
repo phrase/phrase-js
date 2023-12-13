@@ -6,6 +6,7 @@ export * from './BranchesApi';
 export * from './CommentReactionsApi';
 export * from './CommentRepliesApi';
 export * from './CommentsApi';
+export * from './CustomMetadataApi';
 export * from './DistributionsApi';
 export * from './DocumentsApi';
 export * from './FigmaAttachmentsApi';

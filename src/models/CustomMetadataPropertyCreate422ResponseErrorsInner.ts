@@ -15,34 +15,34 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface InvitationCreate422ResponseErrorsInner
+ * @interface CustomMetadataPropertyCreate422ResponseErrorsInner
  */
-export interface InvitationCreate422ResponseErrorsInner {
+export interface CustomMetadataPropertyCreate422ResponseErrorsInner {
     /**
      * 
      * @type {string}
-     * @memberof InvitationCreate422ResponseErrorsInner
+     * @memberof CustomMetadataPropertyCreate422ResponseErrorsInner
      */
     resource?: string;
     /**
      * 
      * @type {string}
-     * @memberof InvitationCreate422ResponseErrorsInner
+     * @memberof CustomMetadataPropertyCreate422ResponseErrorsInner
      */
     field?: string;
     /**
      * 
      * @type {string}
-     * @memberof InvitationCreate422ResponseErrorsInner
+     * @memberof CustomMetadataPropertyCreate422ResponseErrorsInner
      */
     message?: string;
 }
 
-export function InvitationCreate422ResponseErrorsInnerFromJSON(json: any): InvitationCreate422ResponseErrorsInner {
-    return InvitationCreate422ResponseErrorsInnerFromJSONTyped(json, false);
+export function CustomMetadataPropertyCreate422ResponseErrorsInnerFromJSON(json: any): CustomMetadataPropertyCreate422ResponseErrorsInner {
+    return CustomMetadataPropertyCreate422ResponseErrorsInnerFromJSONTyped(json, false);
 }
 
-export function InvitationCreate422ResponseErrorsInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): InvitationCreate422ResponseErrorsInner {
+export function CustomMetadataPropertyCreate422ResponseErrorsInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): CustomMetadataPropertyCreate422ResponseErrorsInner {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -54,7 +54,7 @@ export function InvitationCreate422ResponseErrorsInnerFromJSONTyped(json: any, i
     };
 }
 
-export function InvitationCreate422ResponseErrorsInnerToJSON(value?: InvitationCreate422ResponseErrorsInner | null): any {
+export function CustomMetadataPropertyCreate422ResponseErrorsInnerToJSON(value?: CustomMetadataPropertyCreate422ResponseErrorsInner | null): any {
     if (value === undefined) {
         return undefined;
     }
