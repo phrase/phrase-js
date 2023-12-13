@@ -56,6 +56,12 @@ export interface Upload {
      */
     tag?: string;
     /**
+     * The URL to the upload in Phrase Strings app. 
+     * @type {string}
+     * @memberof Upload
+     */
+    url?: string;
+    /**
      * 
      * @type {UploadSummary}
      * @memberof Upload
@@ -90,6 +96,7 @@ export function UploadFromJSONTyped(json: any, ignoreDiscriminator: boolean): Up
         'format': !exists(json, 'format') ? undefined : json['format'],
         'state': !exists(json, 'state') ? undefined : json['state'],
         'tag': !exists(json, 'tag') ? undefined : json['tag'],
+        'url': !exists(json, 'url') ? undefined : json['url'],
         'summary': !exists(json, 'summary') ? undefined : UploadSummaryFromJSON(json['summary']),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
@@ -110,6 +117,7 @@ export function UploadToJSON(value?: Upload | null): any {
         'format': value.format,
         'state': value.state,
         'tag': value.tag,
+        'url': value.url,
         'summary': UploadSummaryToJSON(value.summary),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
