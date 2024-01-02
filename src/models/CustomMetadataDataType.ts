@@ -12,7 +12,7 @@
  */
 
 /**
- * 
+ * data type of the property
  * @export
  * @enum {string}
  */

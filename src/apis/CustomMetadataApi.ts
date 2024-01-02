@@ -17,6 +17,12 @@ import {
     CustomMetadataDataType,
     CustomMetadataDataTypeFromJSON,
     CustomMetadataDataTypeToJSON,
+    CustomMetadataPropertiesCreateParameters,
+    CustomMetadataPropertiesCreateParametersFromJSON,
+    CustomMetadataPropertiesCreateParametersToJSON,
+    CustomMetadataPropertiesUpdateParameters,
+    CustomMetadataPropertiesUpdateParametersFromJSON,
+    CustomMetadataPropertiesUpdateParametersToJSON,
     CustomMetadataProperty,
     CustomMetadataPropertyFromJSON,
     CustomMetadataPropertyToJSON,
@@ -44,12 +50,8 @@ export interface CustomMetadataPropertiesListRequest {
 
 export interface CustomMetadataPropertyCreateRequest {
     accountId: string;
-    name: string;
-    dataType: CustomMetadataDataType;
+    customMetadataPropertiesCreateParameters: CustomMetadataPropertiesCreateParameters;
     xPhraseAppOTP?: string;
-    description?: string;
-    projectIds?: Array<string>;
-    valueOptions?: Array<string>;
 }
 
 export interface CustomMetadataPropertyShowRequest {
@@ -61,11 +63,8 @@ export interface CustomMetadataPropertyShowRequest {
 export interface CustomMetadataPropertyUpdateRequest {
     accountId: string;
     id: string;
+    customMetadataPropertiesUpdateParameters: CustomMetadataPropertiesUpdateParameters;
     xPhraseAppOTP?: string;
-    name?: string;
-    description?: string;
-    projectIds?: Array<string>;
-    valueOptions?: Array<string>;
 }
 
 /**
@@ -196,37 +195,15 @@ export class CustomMetadataApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling customMetadataPropertyCreate.');
         }
 
-        if (requestParameters.name === null || requestParameters.name === undefined) {
-            throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling customMetadataPropertyCreate.');
-        }
-
-        if (requestParameters.dataType === null || requestParameters.dataType === undefined) {
-            throw new runtime.RequiredError('dataType','Required parameter requestParameters.dataType was null or undefined when calling customMetadataPropertyCreate.');
+        if (requestParameters.customMetadataPropertiesCreateParameters === null || requestParameters.customMetadataPropertiesCreateParameters === undefined) {
+            throw new runtime.RequiredError('customMetadataPropertiesCreateParameters','Required parameter requestParameters.customMetadataPropertiesCreateParameters was null or undefined when calling customMetadataPropertyCreate.');
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.name !== undefined) {
-            queryParameters['name'] = requestParameters.name;
-        }
-
-        if (requestParameters.dataType !== undefined) {
-            queryParameters['data_type'] = requestParameters.dataType;
-        }
-
-        if (requestParameters.description !== undefined) {
-            queryParameters['description'] = requestParameters.description;
-        }
-
-        if (requestParameters.projectIds) {
-            queryParameters['project_ids'] = requestParameters.projectIds;
-        }
-
-        if (requestParameters.valueOptions) {
-            queryParameters['value_options'] = requestParameters.valueOptions;
-        }
-
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
             headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
@@ -244,6 +221,7 @@ export class CustomMetadataApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CustomMetadataPropertiesCreateParametersToJSON(requestParameters.customMetadataPropertiesCreateParameters),
         });
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CustomMetadataPropertyFromJSON(jsonValue));
@@ -318,25 +296,15 @@ export class CustomMetadataApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling customMetadataPropertyUpdate.');
         }
 
+        if (requestParameters.customMetadataPropertiesUpdateParameters === null || requestParameters.customMetadataPropertiesUpdateParameters === undefined) {
+            throw new runtime.RequiredError('customMetadataPropertiesUpdateParameters','Required parameter requestParameters.customMetadataPropertiesUpdateParameters was null or undefined when calling customMetadataPropertyUpdate.');
+        }
+
         const queryParameters: any = {};
 
-        if (requestParameters.name !== undefined) {
-            queryParameters['name'] = requestParameters.name;
-        }
-
-        if (requestParameters.description !== undefined) {
-            queryParameters['description'] = requestParameters.description;
-        }
-
-        if (requestParameters.projectIds) {
-            queryParameters['project_ids'] = requestParameters.projectIds;
-        }
-
-        if (requestParameters.valueOptions) {
-            queryParameters['value_options'] = requestParameters.valueOptions;
-        }
-
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
             headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
@@ -354,6 +322,7 @@ export class CustomMetadataApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: CustomMetadataPropertiesUpdateParametersToJSON(requestParameters.customMetadataPropertiesUpdateParameters),
         });
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CustomMetadataPropertyFromJSON(jsonValue));

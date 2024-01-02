@@ -85,6 +85,8 @@ src/models/CommentUpdateParameters.ts
 src/models/CommentsListParameters.ts
 src/models/CurrentUser.ts
 src/models/CustomMetadataDataType.ts
+src/models/CustomMetadataPropertiesCreateParameters.ts
+src/models/CustomMetadataPropertiesUpdateParameters.ts
 src/models/CustomMetadataProperty.ts
 src/models/CustomMetadataPropertyCreate422Response.ts
 src/models/CustomMetadataPropertyCreate422ResponseErrorsInner.ts

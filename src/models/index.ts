@@ -27,6 +27,8 @@ export * from './CommentUpdateParameters';
 export * from './CommentsListParameters';
 export * from './CurrentUser';
 export * from './CustomMetadataDataType';
+export * from './CustomMetadataPropertiesCreateParameters';
+export * from './CustomMetadataPropertiesUpdateParameters';
 export * from './CustomMetadataProperty';
 export * from './CustomMetadataPropertyCreate422Response';
 export * from './CustomMetadataPropertyCreate422ResponseErrorsInner';
