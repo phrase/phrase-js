@@ -38,6 +38,7 @@ src/apis/OrdersApi.ts
 src/apis/OrganizationJobTemplateLocalesApi.ts
 src/apis/OrganizationJobTemplatesApi.ts
 src/apis/ProjectsApi.ts
+src/apis/QualityPerformanceScoreApi.ts
 src/apis/ReleasesApi.ts
 src/apis/ReportsApi.ts
 src/apis/ScreenshotMarkersApi.ts
@@ -95,6 +96,7 @@ src/models/DistributionCreateParameters.ts
 src/models/DistributionPreview.ts
 src/models/DistributionUpdateParameters.ts
 src/models/Document.ts
+src/models/ErrorError.ts
 src/models/FigmaAttachment.ts
 src/models/FigmaAttachmentCreateParameters.ts
 src/models/FigmaAttachmentUpdateParameters.ts
@@ -172,6 +174,7 @@ src/models/MemberProjectDetailProjectRolesInner.ts
 src/models/MemberSpacesInner.ts
 src/models/MemberUpdateParameters.ts
 src/models/MemberUpdateSettingsParameters.ts
+src/models/ModelError.ts
 src/models/Notification.ts
 src/models/NotificationGroup.ts
 src/models/NotificationGroupDetail.ts
@@ -190,6 +193,12 @@ src/models/ProjectLocales.ts
 src/models/ProjectReport.ts
 src/models/ProjectShort.ts
 src/models/ProjectUpdateParameters.ts
+src/models/ProjectsQualityPerformanceScore200Response.ts
+src/models/ProjectsQualityPerformanceScore200ResponseAnyOf.ts
+src/models/ProjectsQualityPerformanceScore200ResponseAnyOfData.ts
+src/models/ProjectsQualityPerformanceScore200ResponseAnyOfDataTranslationsInner.ts
+src/models/ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInner.ts
+src/models/ProjectsQualityPerformanceScoreRequest.ts
 src/models/Release.ts
 src/models/ReleaseCreateParameters.ts
 src/models/ReleasePreview.ts
