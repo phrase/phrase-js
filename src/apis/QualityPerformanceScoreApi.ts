@@ -26,7 +26,7 @@ import {
 } from '../models';
 
 export interface ProjectsQualityPerformanceScoreOperationRequest {
-    id: string;
+    projectId: string;
     projectsQualityPerformanceScoreRequest: ProjectsQualityPerformanceScoreRequest;
     xPhraseAppOTP?: string;
 }
@@ -37,12 +37,12 @@ export interface ProjectsQualityPerformanceScoreOperationRequest {
 export class QualityPerformanceScoreApi extends runtime.BaseAPI {
 
     /**
-     * Get project\'s translations\' quality performance scores
-     * Get project\'s translations\' quality performance scores
+     * Retrieves the quality scores for your Strings translations. Returns a score, measured by Phrase QPS
+     * Get Translation Quality
      */
     async projectsQualityPerformanceScoreRaw(requestParameters: ProjectsQualityPerformanceScoreOperationRequest): Promise<runtime.ApiResponse<ProjectsQualityPerformanceScore200Response>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling projectsQualityPerformanceScore.');
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling projectsQualityPerformanceScore.');
         }
 
         if (requestParameters.projectsQualityPerformanceScoreRequest === null || requestParameters.projectsQualityPerformanceScoreRequest === undefined) {
@@ -67,7 +67,7 @@ export class QualityPerformanceScoreApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/projects/{id}/quality_performance_score`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/projects/{project_id}/quality_performance_score`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -78,8 +78,8 @@ export class QualityPerformanceScoreApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get project\'s translations\' quality performance scores
-     * Get project\'s translations\' quality performance scores
+     * Retrieves the quality scores for your Strings translations. Returns a score, measured by Phrase QPS
+     * Get Translation Quality
      */
     async projectsQualityPerformanceScore(requestParameters: ProjectsQualityPerformanceScoreOperationRequest): Promise<ProjectsQualityPerformanceScore200Response> {
         const response = await this.projectsQualityPerformanceScoreRaw(requestParameters);

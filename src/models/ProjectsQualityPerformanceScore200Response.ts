@@ -54,7 +54,7 @@ export interface ProjectsQualityPerformanceScore200Response {
      */
     data?: ProjectsQualityPerformanceScore200ResponseAnyOfData;
     /**
-     * Array of errors for any failing translation ids
+     * Array of errors for any failing translation IDs
      * @type {Array<ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInner>}
      * @memberof ProjectsQualityPerformanceScore200Response
      */
