@@ -47,7 +47,7 @@ export interface JobCreateParameters {
      * @type {Date}
      * @memberof JobCreateParameters
      */
-    dueDate?: Date;
+    dueDate?: Date | null;
     /**
      * URL to a ticket for this job (e.g. Jira, Trello)
      * @type {string}
@@ -88,7 +88,7 @@ export function JobCreateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'name': !exists(json, 'name') ? undefined : json['name'],
         'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
-        'dueDate': !exists(json, 'due_date') ? undefined : (new Date(json['due_date'])),
+        'dueDate': !exists(json, 'due_date') ? undefined : (json['due_date'] === null ? null : new Date(json['due_date'])),
         'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'translationKeyIds': !exists(json, 'translation_key_ids') ? undefined : json['translation_key_ids'],
@@ -109,7 +109,7 @@ export function JobCreateParametersToJSON(value?: JobCreateParameters | null): a
         'name': value.name,
         'source_locale_id': value.sourceLocaleId,
         'briefing': value.briefing,
-        'due_date': value.dueDate === undefined ? undefined : (value.dueDate.toISOString()),
+        'due_date': value.dueDate === undefined ? undefined : (value.dueDate === null ? null : value.dueDate.toISOString()),
         'ticket_url': value.ticketUrl,
         'tags': value.tags,
         'translation_key_ids': value.translationKeyIds,

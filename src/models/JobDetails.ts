@@ -64,7 +64,7 @@ export interface JobDetails {
      * @type {Date}
      * @memberof JobDetails
      */
-    dueDate?: Date;
+    dueDate?: Date | null;
     /**
      * 
      * @type {string}
@@ -146,7 +146,7 @@ export function JobDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
-        'dueDate': !exists(json, 'due_date') ? undefined : (new Date(json['due_date'])),
+        'dueDate': !exists(json, 'due_date') ? undefined : (json['due_date'] === null ? null : new Date(json['due_date'])),
         'state': !exists(json, 'state') ? undefined : json['state'],
         'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
         'project': !exists(json, 'project') ? undefined : ProjectShortFromJSON(json['project']),
@@ -173,7 +173,7 @@ export function JobDetailsToJSON(value?: JobDetails | null): any {
         'id': value.id,
         'name': value.name,
         'briefing': value.briefing,
-        'due_date': value.dueDate === undefined ? undefined : (value.dueDate.toISOString()),
+        'due_date': value.dueDate === undefined ? undefined : (value.dueDate === null ? null : value.dueDate.toISOString()),
         'state': value.state,
         'ticket_url': value.ticketUrl,
         'project': ProjectShortToJSON(value.project),
