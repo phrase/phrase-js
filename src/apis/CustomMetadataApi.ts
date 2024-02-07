@@ -44,6 +44,7 @@ export interface CustomMetadataPropertiesListRequest {
     projectId?: string;
     page?: number;
     perPage?: number;
+    q?: string;
     sort?: string;
     order?: string;
 }
@@ -144,6 +145,10 @@ export class CustomMetadataApi extends runtime.BaseAPI {
 
         if (requestParameters.perPage !== undefined) {
             queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
         }
 
         if (requestParameters.sort !== undefined) {
