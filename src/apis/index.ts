@@ -25,6 +25,7 @@ export * from './JobTemplatesApi';
 export * from './JobsApi';
 export * from './KeysApi';
 export * from './KeysFigmaAttachmentsApi';
+export * from './LinkedKeysApi';
 export * from './LocalesApi';
 export * from './MembersApi';
 export * from './NotificationGroupsApi';

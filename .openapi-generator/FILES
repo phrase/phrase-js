@@ -30,6 +30,7 @@ src/apis/JobTemplatesApi.ts
 src/apis/JobsApi.ts
 src/apis/KeysApi.ts
 src/apis/KeysFigmaAttachmentsApi.ts
+src/apis/LinkedKeysApi.ts
 src/apis/LocalesApi.ts
 src/apis/MembersApi.ts
 src/apis/NotificationGroupsApi.ts
@@ -151,6 +152,10 @@ src/models/JobTemplatePreview.ts
 src/models/JobTemplateUpdateParameters.ts
 src/models/JobUpdateParameters.ts
 src/models/KeyCreateParameters.ts
+src/models/KeyLink.ts
+src/models/KeyLinksBatchDestroyParameters.ts
+src/models/KeyLinksCreateParameters.ts
+src/models/KeyLinksIndex400Response.ts
 src/models/KeyPreview.ts
 src/models/KeyUpdateParameters.ts
 src/models/KeysExcludeParameters.ts

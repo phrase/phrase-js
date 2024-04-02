@@ -335,6 +335,10 @@ Class | Method | HTTP request | Description
 *KeysApi* | **keysUntag** | **PATCH** /projects/{project_id}/keys/untag | Remove tags from collection of keys
 *KeysFigmaAttachmentsApi* | **figmaAttachmentAttachToKey** | **POST** /projects/{project_id}/figma_attachments/{figma_attachment_id}/keys | Attach the Figma attachment to a key
 *KeysFigmaAttachmentsApi* | **figmaAttachmentDetachFromKey** | **DELETE** /projects/{project_id}/figma_attachments/{figma_attachment_id}/keys/{id} | Detach the Figma attachment from a key
+*LinkedKeysApi* | **keyLinksBatchDestroy** | **DELETE** /projects/{project_id}/keys/{id}/key_links | Batch unlink child keys from a parent key
+*LinkedKeysApi* | **keyLinksCreate** | **POST** /projects/{project_id}/keys/{id}/key_links | Link child keys to a parent key
+*LinkedKeysApi* | **keyLinksDestroy** | **DELETE** /projects/{project_id}/keys/{id}/key_links/{child_key_id} | Unlink a child key from a parent key
+*LinkedKeysApi* | **keyLinksIndex** | **GET** /projects/{project_id}/keys/{id}/key_links | Retrieve all child keys linked to a specific parent key
 *LocalesApi* | **accountLocales** | **GET** /accounts/{id}/locales | List locales used in account
 *LocalesApi* | **localeCreate** | **POST** /projects/{project_id}/locales | Create a locale
 *LocalesApi* | **localeDelete** | **DELETE** /projects/{project_id}/locales/{id} | Delete a locale
