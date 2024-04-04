@@ -32,26 +32,30 @@ import {
 } from '../models';
 
 export interface KeyLinksBatchDestroyRequest {
-    accountId: string;
+    projectId: string;
+    id: string;
     keyLinksBatchDestroyParameters: KeyLinksBatchDestroyParameters;
     xPhraseAppOTP?: string;
     unlinkParent?: boolean;
 }
 
 export interface KeyLinksCreateRequest {
-    accountId: string;
+    projectId: string;
+    id: string;
     keyLinksCreateParameters: KeyLinksCreateParameters;
     xPhraseAppOTP?: string;
 }
 
 export interface KeyLinksDestroyRequest {
-    accountId: string;
+    projectId: string;
+    id: string;
     childKeyId: string;
     xPhraseAppOTP?: string;
 }
 
 export interface KeyLinksIndexRequest {
-    accountId: string;
+    projectId: string;
+    id: string;
     xPhraseAppOTP?: string;
 }
 
@@ -65,8 +69,12 @@ export class LinkedKeysApi extends runtime.BaseAPI {
      * Batch unlink child keys from a parent key
      */
     async keyLinksBatchDestroyRaw(requestParameters: KeyLinksBatchDestroyRequest): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
-            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling keyLinksBatchDestroy.');
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling keyLinksBatchDestroy.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling keyLinksBatchDestroy.');
         }
 
         if (requestParameters.keyLinksBatchDestroyParameters === null || requestParameters.keyLinksBatchDestroyParameters === undefined) {
@@ -95,7 +103,7 @@ export class LinkedKeysApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/projects/{project_id}/keys/{id}/key_links`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))),
+            path: `/projects/{project_id}/keys/{id}/key_links`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -119,8 +127,12 @@ export class LinkedKeysApi extends runtime.BaseAPI {
      * Link child keys to a parent key
      */
     async keyLinksCreateRaw(requestParameters: KeyLinksCreateRequest): Promise<runtime.ApiResponse<KeyLink>> {
-        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
-            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling keyLinksCreate.');
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling keyLinksCreate.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling keyLinksCreate.');
         }
 
         if (requestParameters.keyLinksCreateParameters === null || requestParameters.keyLinksCreateParameters === undefined) {
@@ -145,7 +157,7 @@ export class LinkedKeysApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/projects/{project_id}/keys/{id}/key_links`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))),
+            path: `/projects/{project_id}/keys/{id}/key_links`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -169,8 +181,12 @@ export class LinkedKeysApi extends runtime.BaseAPI {
      * Unlink a child key from a parent key
      */
     async keyLinksDestroyRaw(requestParameters: KeyLinksDestroyRequest): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
-            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling keyLinksDestroy.');
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling keyLinksDestroy.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling keyLinksDestroy.');
         }
 
         if (requestParameters.childKeyId === null || requestParameters.childKeyId === undefined) {
@@ -193,7 +209,7 @@ export class LinkedKeysApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/projects/{project_id}/keys/{id}/key_links/{child_key_id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"child_key_id"}}`, encodeURIComponent(String(requestParameters.childKeyId))),
+            path: `/projects/{project_id}/keys/{id}/key_links/{child_key_id}`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"child_key_id"}}`, encodeURIComponent(String(requestParameters.childKeyId))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -216,8 +232,12 @@ export class LinkedKeysApi extends runtime.BaseAPI {
      * Retrieve all child keys linked to a specific parent key
      */
     async keyLinksIndexRaw(requestParameters: KeyLinksIndexRequest): Promise<runtime.ApiResponse<KeyLink>> {
-        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
-            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling keyLinksIndex.');
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling keyLinksIndex.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling keyLinksIndex.');
         }
 
         const queryParameters: any = {};
@@ -236,7 +256,7 @@ export class LinkedKeysApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/projects/{project_id}/keys/{id}/key_links`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))),
+            path: `/projects/{project_id}/keys/{id}/key_links`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
