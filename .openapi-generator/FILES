@@ -41,6 +41,7 @@ src/apis/OrganizationJobTemplatesApi.ts
 src/apis/ProjectsApi.ts
 src/apis/QualityPerformanceScoreApi.ts
 src/apis/ReleasesApi.ts
+src/apis/RepoSyncsApi.ts
 src/apis/ReportsApi.ts
 src/apis/ScreenshotMarkersApi.ts
 src/apis/ScreenshotsApi.ts
@@ -209,6 +210,11 @@ src/models/ReleaseCreateParameters.ts
 src/models/ReleasePreview.ts
 src/models/ReleaseUpdateParameters.ts
 src/models/RepliesListParameters.ts
+src/models/RepoSync.ts
+src/models/RepoSyncEvent.ts
+src/models/RepoSyncEventErrorsInner.ts
+src/models/RepoSyncExport.ts
+src/models/RepoSyncImport.ts
 src/models/Screenshot.ts
 src/models/ScreenshotMarker.ts
 src/models/ScreenshotMarkerCreateParameters.ts
