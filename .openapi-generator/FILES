@@ -253,6 +253,7 @@ src/models/TranslationIncludeParameters.ts
 src/models/TranslationKey.ts
 src/models/TranslationKeyDetails.ts
 src/models/TranslationOrder.ts
+src/models/TranslationParent.ts
 src/models/TranslationReviewParameters.ts
 src/models/TranslationUnverifyParameters.ts
 src/models/TranslationUpdateParameters.ts

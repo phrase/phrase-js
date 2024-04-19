@@ -21,6 +21,10 @@ import {
     LocalePreviewFromJSON,
     LocalePreviewFromJSONTyped,
     LocalePreviewToJSON,
+    TranslationParent,
+    TranslationParentFromJSON,
+    TranslationParentFromJSONTyped,
+    TranslationParentToJSON,
     UserPreview,
     UserPreviewFromJSON,
     UserPreviewFromJSONTyped,
@@ -111,6 +115,12 @@ export interface TranslationDetails {
      * @memberof TranslationDetails
      */
     wordCount?: number;
+    /**
+     * 
+     * @type {TranslationParent}
+     * @memberof TranslationDetails
+     */
+    linkedTranslation?: TranslationParent;
 }
 
 export function TranslationDetailsFromJSON(json: any): TranslationDetails {
@@ -136,6 +146,7 @@ export function TranslationDetailsFromJSONTyped(json: any, ignoreDiscriminator: 
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'user': !exists(json, 'user') ? undefined : UserPreviewFromJSON(json['user']),
         'wordCount': !exists(json, 'word_count') ? undefined : json['word_count'],
+        'linkedTranslation': !exists(json, 'linked_translation') ? undefined : TranslationParentFromJSON(json['linked_translation']),
     };
 }
 
@@ -161,6 +172,7 @@ export function TranslationDetailsToJSON(value?: TranslationDetails | null): any
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'user': UserPreviewToJSON(value.user),
         'word_count': value.wordCount,
+        'linked_translation': TranslationParentToJSON(value.linkedTranslation),
     };
 }
 

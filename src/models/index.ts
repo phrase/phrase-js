@@ -192,6 +192,7 @@ export * from './TranslationIncludeParameters';
 export * from './TranslationKey';
 export * from './TranslationKeyDetails';
 export * from './TranslationOrder';
+export * from './TranslationParent';
 export * from './TranslationReviewParameters';
 export * from './TranslationUnverifyParameters';
 export * from './TranslationUpdateParameters';
