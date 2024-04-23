@@ -29,7 +29,7 @@ export interface KeyCreateParameters {
      * @type {string}
      * @memberof KeyCreateParameters
      */
-    name?: string;
+    name: string;
     /**
      * Key description (usually includes contextual information for translators)
      * @type {string}
@@ -133,7 +133,7 @@ export function KeyCreateParametersFromJSONTyped(json: any, ignoreDiscriminator:
     return {
         
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
+        'name': json['name'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'plural': !exists(json, 'plural') ? undefined : json['plural'],
         'namePlural': !exists(json, 'name_plural') ? undefined : json['name_plural'],

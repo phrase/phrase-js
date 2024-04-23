@@ -55,7 +55,7 @@ export interface LocaleUpdateParameters {
      */
     rtl?: boolean;
     /**
-     * Source locale. Can be the name or public id of the locale. Preferred is the public id.
+     * Source locale. Can be the name or id of the locale. Preferred is id.
      * @type {string}
      * @memberof LocaleUpdateParameters
      */

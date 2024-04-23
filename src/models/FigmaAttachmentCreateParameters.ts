@@ -29,7 +29,7 @@ export interface FigmaAttachmentCreateParameters {
      * @type {string}
      * @memberof FigmaAttachmentCreateParameters
      */
-    url?: string;
+    url: string;
 }
 
 export function FigmaAttachmentCreateParametersFromJSON(json: any): FigmaAttachmentCreateParameters {
@@ -43,7 +43,7 @@ export function FigmaAttachmentCreateParametersFromJSONTyped(json: any, ignoreDi
     return {
         
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
-        'url': !exists(json, 'url') ? undefined : json['url'],
+        'url': json['url'],
     };
 }
 

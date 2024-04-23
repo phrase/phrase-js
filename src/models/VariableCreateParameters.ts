@@ -23,7 +23,7 @@ export interface VariableCreateParameters {
      * @type {string}
      * @memberof VariableCreateParameters
      */
-    name?: string;
+    name: string;
     /**
      * Value of the variable
      * @type {string}
@@ -42,7 +42,7 @@ export function VariableCreateParametersFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
         
-        'name': !exists(json, 'name') ? undefined : json['name'],
+        'name': json['name'],
         'value': !exists(json, 'value') ? undefined : json['value'],
     };
 }

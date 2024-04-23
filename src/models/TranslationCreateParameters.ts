@@ -25,7 +25,7 @@ export interface TranslationCreateParameters {
      */
     branch?: string;
     /**
-     * Locale. Can be the name or public id of the locale. Preferred is the public id.
+     * Locale. Can be the name or id of the locale. Preferred is id
      * @type {string}
      * @memberof TranslationCreateParameters
      */

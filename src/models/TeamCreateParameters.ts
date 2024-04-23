@@ -23,7 +23,7 @@ export interface TeamCreateParameters {
      * @type {string}
      * @memberof TeamCreateParameters
      */
-    name?: string;
+    name: string;
 }
 
 export function TeamCreateParametersFromJSON(json: any): TeamCreateParameters {
@@ -36,7 +36,7 @@ export function TeamCreateParametersFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
-        'name': !exists(json, 'name') ? undefined : json['name'],
+        'name': json['name'],
     };
 }
 

@@ -23,7 +23,7 @@ export interface SpacesProjectsCreateParameters {
      * @type {string}
      * @memberof SpacesProjectsCreateParameters
      */
-    id?: string;
+    id: string;
 }
 
 export function SpacesProjectsCreateParametersFromJSON(json: any): SpacesProjectsCreateParameters {
@@ -36,7 +36,7 @@ export function SpacesProjectsCreateParametersFromJSONTyped(json: any, ignoreDis
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'id': json['id'],
     };
 }
 

@@ -29,7 +29,7 @@ export interface TagCreateParameters {
      * @type {string}
      * @memberof TagCreateParameters
      */
-    name?: string;
+    name: string;
 }
 
 export function TagCreateParametersFromJSON(json: any): TagCreateParameters {
@@ -43,7 +43,7 @@ export function TagCreateParametersFromJSONTyped(json: any, ignoreDiscriminator:
     return {
         
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
+        'name': json['name'],
     };
 }
 

@@ -29,7 +29,7 @@ export interface ScreenshotMarkerCreateParameters {
      * @type {string}
      * @memberof ScreenshotMarkerCreateParameters
      */
-    keyId?: string;
+    keyId: string;
     /**
      * Presentation details of the screenshot marker in JSON format.<br/><br/>Each Screenshot Marker is represented as a rectangular shaped highlight box with the name of the specified Key attached. You can specify the marker position on the screenshot (<code>x</code>-axis and <code>y</code>-axis in pixels) from the top left corner of the screenshot and the dimensions of the marker itself (<code>w</code> and <code>h</code> in pixels).
      * @type {string}
@@ -49,7 +49,7 @@ export function ScreenshotMarkerCreateParametersFromJSONTyped(json: any, ignoreD
     return {
         
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
-        'keyId': !exists(json, 'key_id') ? undefined : json['key_id'],
+        'keyId': json['key_id'],
         'presentation': !exists(json, 'presentation') ? undefined : json['presentation'],
     };
 }

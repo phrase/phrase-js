@@ -29,21 +29,21 @@ export interface OrderCreateParameters {
      * @type {string}
      * @memberof OrderCreateParameters
      */
-    name?: string;
+    name: string;
     /**
      * Name of the LSP that should process this order. Can be one of gengo, textmaster.
      * @type {string}
      * @memberof OrderCreateParameters
      */
-    lsp?: string;
+    lsp: string;
     /**
-     * Source locale for the order. Can be the name or public id of the source locale. Preferred is the public id.
+     * Source locale for the order. Can be the name or id of the source locale. Preferred is id.
      * @type {string}
      * @memberof OrderCreateParameters
      */
     sourceLocaleId?: string;
     /**
-     * List of target locales you want the source content translate to. Can be the name or public id of the target locales. Preferred is the public id.
+     * List of target locales you want the source content translate to. Can be the name or id of the target locales. Preferred is id.
      * @type {Array<string>}
      * @memberof OrderCreateParameters
      */
@@ -121,8 +121,8 @@ export function OrderCreateParametersFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'lsp': !exists(json, 'lsp') ? undefined : json['lsp'],
+        'name': json['name'],
+        'lsp': json['lsp'],
         'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
         'targetLocaleIds': !exists(json, 'target_locale_ids') ? undefined : json['target_locale_ids'],
         'translationType': !exists(json, 'translation_type') ? undefined : json['translation_type'],

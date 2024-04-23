@@ -278,7 +278,7 @@ Class | Method | HTTP request | Description
 *GlossaryTermsApi* | **glossaryTermShow** | **GET** /accounts/{account_id}/glossaries/{glossary_id}/terms/{id} | Get a single term
 *GlossaryTermsApi* | **glossaryTermUpdate** | **PATCH** /accounts/{account_id}/glossaries/{glossary_id}/terms/{id} | Update a term
 *GlossaryTermsApi* | **glossaryTermsList** | **GET** /accounts/{account_id}/glossaries/{glossary_id}/terms | List terms
-*ICUApi* | **icuSkeleton** | **POST** /icu/skeleton | Build icu skeletons
+*ICUApi* | **icuSkeleton** | **POST** /icu/skeleton | Build ICU skeletons
 *InvitationsApi* | **invitationCreate** | **POST** /accounts/{account_id}/invitations | Create a new invitation
 *InvitationsApi* | **invitationDelete** | **DELETE** /accounts/{account_id}/invitations/{id} | Delete an invitation
 *InvitationsApi* | **invitationResend** | **POST** /accounts/{account_id}/invitations/{id}/resend | Resend an invitation
@@ -338,7 +338,7 @@ Class | Method | HTTP request | Description
 *LinkedKeysApi* | **keyLinksBatchDestroy** | **DELETE** /projects/{project_id}/keys/{id}/key_links | Batch unlink child keys from a parent key
 *LinkedKeysApi* | **keyLinksCreate** | **POST** /projects/{project_id}/keys/{id}/key_links | Link child keys to a parent key
 *LinkedKeysApi* | **keyLinksDestroy** | **DELETE** /projects/{project_id}/keys/{id}/key_links/{child_key_id} | Unlink a child key from a parent key
-*LinkedKeysApi* | **keyLinksIndex** | **GET** /projects/{project_id}/keys/{id}/key_links | Retrieve all child keys linked to a specific parent key
+*LinkedKeysApi* | **keyLinksIndex** | **GET** /projects/{project_id}/keys/{id}/key_links | List child keys of a parent key
 *LocalesApi* | **accountLocales** | **GET** /accounts/{id}/locales | List locales used in account
 *LocalesApi* | **localeCreate** | **POST** /projects/{project_id}/locales | Create a locale
 *LocalesApi* | **localeDelete** | **DELETE** /projects/{project_id}/locales/{id} | Delete a locale

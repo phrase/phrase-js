@@ -23,7 +23,7 @@ export interface AuthorizationCreateParameters {
      * @type {string}
      * @memberof AuthorizationCreateParameters
      */
-    note?: string;
+    note: string;
     /**
      * A list of scopes that the access can be used for.
      * @type {Array<string>}
@@ -48,7 +48,7 @@ export function AuthorizationCreateParametersFromJSONTyped(json: any, ignoreDisc
     }
     return {
         
-        'note': !exists(json, 'note') ? undefined : json['note'],
+        'note': json['note'],
         'scopes': !exists(json, 'scopes') ? undefined : json['scopes'],
         'expiresAt': !exists(json, 'expires_at') ? undefined : (new Date(json['expires_at'])),
     };

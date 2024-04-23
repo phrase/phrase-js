@@ -29,13 +29,13 @@ export interface LocaleCreateParameters {
      * @type {string}
      * @memberof LocaleCreateParameters
      */
-    name?: string;
+    name: string;
     /**
      * Locale ISO code
      * @type {string}
      * @memberof LocaleCreateParameters
      */
-    code?: string;
+    code: string;
     /**
      * Indicates whether locale is the default locale. If set to true, the previous default locale the project is no longer the default locale.
      * @type {boolean}
@@ -55,7 +55,7 @@ export interface LocaleCreateParameters {
      */
     rtl?: boolean;
     /**
-     * Source locale. Can be the name or public id of the locale. Preferred is the public id.
+     * Source locale. Can be the name or id of the locale. Preferred is id.
      * @type {string}
      * @memberof LocaleCreateParameters
      */
@@ -97,8 +97,8 @@ export function LocaleCreateParametersFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'code': !exists(json, 'code') ? undefined : json['code'],
+        'name': json['name'],
+        'code': json['code'],
         '_default': !exists(json, 'default') ? undefined : json['default'],
         'main': !exists(json, 'main') ? undefined : json['main'],
         'rtl': !exists(json, 'rtl') ? undefined : json['rtl'],

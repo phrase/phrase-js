@@ -23,7 +23,7 @@ export interface GlossaryCreateParameters {
      * @type {string}
      * @memberof GlossaryCreateParameters
      */
-    name?: string;
+    name: string;
     /**
      * List of project ids the glossary should be assigned to.
      * @type {string}
@@ -48,7 +48,7 @@ export function GlossaryCreateParametersFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
         
-        'name': !exists(json, 'name') ? undefined : json['name'],
+        'name': json['name'],
         'projectIds': !exists(json, 'project_ids') ? undefined : json['project_ids'],
         'spaceIds': !exists(json, 'space_ids') ? undefined : json['space_ids'],
     };

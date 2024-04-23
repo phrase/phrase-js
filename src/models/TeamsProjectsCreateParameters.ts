@@ -23,7 +23,7 @@ export interface TeamsProjectsCreateParameters {
      * @type {string}
      * @memberof TeamsProjectsCreateParameters
      */
-    id?: string;
+    id: string;
 }
 
 export function TeamsProjectsCreateParametersFromJSON(json: any): TeamsProjectsCreateParameters {
@@ -36,7 +36,7 @@ export function TeamsProjectsCreateParametersFromJSONTyped(json: any, ignoreDisc
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'id': json['id'],
     };
 }
 

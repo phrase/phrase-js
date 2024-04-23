@@ -23,7 +23,7 @@ export interface GlossaryTermCreateParameters {
      * @type {string}
      * @memberof GlossaryTermCreateParameters
      */
-    term?: string;
+    term: string;
     /**
      * Description of term
      * @type {string}
@@ -54,7 +54,7 @@ export function GlossaryTermCreateParametersFromJSONTyped(json: any, ignoreDiscr
     }
     return {
         
-        'term': !exists(json, 'term') ? undefined : json['term'],
+        'term': json['term'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'translatable': !exists(json, 'translatable') ? undefined : json['translatable'],
         'caseSensitive': !exists(json, 'case_sensitive') ? undefined : json['case_sensitive'],

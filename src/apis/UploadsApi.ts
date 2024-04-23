@@ -21,11 +21,11 @@ import {
 
 export interface UploadCreateRequest {
     projectId: string;
+    file: Blob;
+    fileFormat: string;
+    localeId: string;
     xPhraseAppOTP?: string;
     branch?: string;
-    file?: Blob;
-    fileFormat?: string;
-    localeId?: string;
     tags?: string;
     updateTranslations?: boolean;
     updateDescriptions?: boolean;
@@ -67,6 +67,18 @@ export class UploadsApi extends runtime.BaseAPI {
     async uploadCreateRaw(requestParameters: UploadCreateRequest): Promise<runtime.ApiResponse<Upload>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling uploadCreate.');
+        }
+
+        if (requestParameters.file === null || requestParameters.file === undefined) {
+            throw new runtime.RequiredError('file','Required parameter requestParameters.file was null or undefined when calling uploadCreate.');
+        }
+
+        if (requestParameters.fileFormat === null || requestParameters.fileFormat === undefined) {
+            throw new runtime.RequiredError('fileFormat','Required parameter requestParameters.fileFormat was null or undefined when calling uploadCreate.');
+        }
+
+        if (requestParameters.localeId === null || requestParameters.localeId === undefined) {
+            throw new runtime.RequiredError('localeId','Required parameter requestParameters.localeId was null or undefined when calling uploadCreate.');
         }
 
         const queryParameters: any = {};

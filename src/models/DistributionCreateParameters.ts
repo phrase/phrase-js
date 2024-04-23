@@ -23,13 +23,13 @@ export interface DistributionCreateParameters {
      * @type {string}
      * @memberof DistributionCreateParameters
      */
-    name?: string;
+    name: string;
     /**
      * Project id the distribution should be assigned to.
      * @type {string}
      * @memberof DistributionCreateParameters
      */
-    projectId?: string;
+    projectId: string;
     /**
      * List of platforms the distribution should support. Valid values are: * `android` * `ios` * `flutter` * `i18next` * `rails`
      * @type {Array<string>}
@@ -84,8 +84,8 @@ export function DistributionCreateParametersFromJSONTyped(json: any, ignoreDiscr
     }
     return {
         
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'projectId': !exists(json, 'project_id') ? undefined : json['project_id'],
+        'name': json['name'],
+        'projectId': json['project_id'],
         'platforms': !exists(json, 'platforms') ? undefined : json['platforms'],
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'formatOptions': !exists(json, 'format_options') ? undefined : json['format_options'],

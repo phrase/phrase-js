@@ -23,7 +23,7 @@ export interface SpaceCreateParameters {
      * @type {string}
      * @memberof SpaceCreateParameters
      */
-    name?: string;
+    name: string;
 }
 
 export function SpaceCreateParametersFromJSON(json: any): SpaceCreateParameters {
@@ -36,7 +36,7 @@ export function SpaceCreateParametersFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-        'name': !exists(json, 'name') ? undefined : json['name'],
+        'name': json['name'],
     };
 }
 

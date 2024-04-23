@@ -23,13 +23,13 @@ export interface GlossaryTermTranslationCreateParameters {
      * @type {string}
      * @memberof GlossaryTermTranslationCreateParameters
      */
-    localeCode?: string;
+    localeCode: string;
     /**
      * The content of the translation
      * @type {string}
      * @memberof GlossaryTermTranslationCreateParameters
      */
-    content?: string;
+    content: string;
 }
 
 export function GlossaryTermTranslationCreateParametersFromJSON(json: any): GlossaryTermTranslationCreateParameters {
@@ -42,8 +42,8 @@ export function GlossaryTermTranslationCreateParametersFromJSONTyped(json: any, 
     }
     return {
         
-        'localeCode': !exists(json, 'locale_code') ? undefined : json['locale_code'],
-        'content': !exists(json, 'content') ? undefined : json['content'],
+        'localeCode': json['locale_code'],
+        'content': json['content'],
     };
 }
 

@@ -23,7 +23,7 @@ export interface BranchCreateParameters {
      * @type {string}
      * @memberof BranchCreateParameters
      */
-    name?: string;
+    name: string;
 }
 
 export function BranchCreateParametersFromJSON(json: any): BranchCreateParameters {
@@ -36,7 +36,7 @@ export function BranchCreateParametersFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
         
-        'name': !exists(json, 'name') ? undefined : json['name'],
+        'name': json['name'],
     };
 }
 

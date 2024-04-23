@@ -38,43 +38,43 @@ export interface KeyLink {
      * @type {Date}
      * @memberof KeyLink
      */
-    createdAt: Date;
+    createdAt?: Date;
     /**
      * The timestamp when the link was last updated.
      * @type {Date}
      * @memberof KeyLink
      */
-    updatedAt: Date;
+    updatedAt?: Date;
     /**
      * 
      * @type {UserPreview}
      * @memberof KeyLink
      */
-    createdBy: UserPreview;
+    createdBy?: UserPreview;
     /**
      * 
      * @type {UserPreview}
      * @memberof KeyLink
      */
-    updatedBy: UserPreview;
+    updatedBy?: UserPreview;
     /**
      * 
      * @type {Account}
      * @memberof KeyLink
      */
-    account: Account;
+    account?: Account;
     /**
      * 
      * @type {KeyPreview}
      * @memberof KeyLink
      */
-    parent: KeyPreview;
+    parent?: KeyPreview;
     /**
      * The child translation keys linked to the parent.
      * @type {Array<KeyPreview>}
      * @memberof KeyLink
      */
-    children: Array<KeyPreview>;
+    children?: Array<KeyPreview>;
 }
 
 export function KeyLinkFromJSON(json: any): KeyLink {
@@ -87,13 +87,13 @@ export function KeyLinkFromJSONTyped(json: any, ignoreDiscriminator: boolean): K
     }
     return {
         
-        'createdAt': (new Date(json['created_at'])),
-        'updatedAt': (new Date(json['updated_at'])),
-        'createdBy': UserPreviewFromJSON(json['created_by']),
-        'updatedBy': UserPreviewFromJSON(json['updated_by']),
-        'account': AccountFromJSON(json['account']),
-        'parent': KeyPreviewFromJSON(json['parent']),
-        'children': ((json['children'] as Array<any>).map(KeyPreviewFromJSON)),
+        'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
+        'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
+        'createdBy': !exists(json, 'created_by') ? undefined : UserPreviewFromJSON(json['created_by']),
+        'updatedBy': !exists(json, 'updated_by') ? undefined : UserPreviewFromJSON(json['updated_by']),
+        'account': !exists(json, 'account') ? undefined : AccountFromJSON(json['account']),
+        'parent': !exists(json, 'parent') ? undefined : KeyPreviewFromJSON(json['parent']),
+        'children': !exists(json, 'children') ? undefined : ((json['children'] as Array<any>).map(KeyPreviewFromJSON)),
     };
 }
 
@@ -106,13 +106,13 @@ export function KeyLinkToJSON(value?: KeyLink | null): any {
     }
     return {
         
-        'created_at': (value.createdAt.toISOString()),
-        'updated_at': (value.updatedAt.toISOString()),
+        'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
+        'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'created_by': UserPreviewToJSON(value.createdBy),
         'updated_by': UserPreviewToJSON(value.updatedBy),
         'account': AccountToJSON(value.account),
         'parent': KeyPreviewToJSON(value.parent),
-        'children': ((value.children as Array<any>).map(KeyPreviewToJSON)),
+        'children': value.children === undefined ? undefined : ((value.children as Array<any>).map(KeyPreviewToJSON)),
     };
 }
 

@@ -23,7 +23,7 @@ export interface ProjectCreateParameters {
      * @type {string}
      * @memberof ProjectCreateParameters
      */
-    name?: string;
+    name: string;
     /**
      * Main file format specified by its API Extension name. Used for locale downloads if no format is specified. For API Extension names of available file formats see <a href=\"https://support.phrase.com/hc/en-us/sections/6111343326364\">Format Guide</a> or our <a href=\"#formats\">Formats API Endpoint</a>.
      * @type {string}
@@ -186,7 +186,7 @@ export function ProjectCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
-        'name': !exists(json, 'name') ? undefined : json['name'],
+        'name': json['name'],
         'mainFormat': !exists(json, 'main_format') ? undefined : json['main_format'],
         'media': !exists(json, 'media') ? undefined : json['media'],
         'sharesTranslationMemory': !exists(json, 'shares_translation_memory') ? undefined : json['shares_translation_memory'],

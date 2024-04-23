@@ -23,13 +23,13 @@ export interface InvitationCreateParameters {
      * @type {string}
      * @memberof InvitationCreateParameters
      */
-    email?: string;
+    email: string;
     /**
      * Invitiation role, can be any of Manager, Developer, Translator.
      * @type {string}
      * @memberof InvitationCreateParameters
      */
-    role?: string;
+    role: string;
     /**
      * List of project ids the invited user has access to.
      * @type {string}
@@ -78,8 +78,8 @@ export function InvitationCreateParametersFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'email': !exists(json, 'email') ? undefined : json['email'],
-        'role': !exists(json, 'role') ? undefined : json['role'],
+        'email': json['email'],
+        'role': json['role'],
         'projectIds': !exists(json, 'project_ids') ? undefined : json['project_ids'],
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'spaceIds': !exists(json, 'space_ids') ? undefined : json['space_ids'],

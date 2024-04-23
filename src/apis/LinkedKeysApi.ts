@@ -36,7 +36,6 @@ export interface KeyLinksBatchDestroyRequest {
     id: string;
     keyLinksBatchDestroyParameters: KeyLinksBatchDestroyParameters;
     xPhraseAppOTP?: string;
-    unlinkParent?: boolean;
 }
 
 export interface KeyLinksCreateRequest {
@@ -82,10 +81,6 @@ export class LinkedKeysApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.unlinkParent !== undefined) {
-            queryParameters['unlink_parent'] = requestParameters.unlinkParent;
-        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -229,7 +224,7 @@ export class LinkedKeysApi extends runtime.BaseAPI {
 
     /**
      * Returns detailed information about a parent key, including its linked child keys.
-     * Retrieve all child keys linked to a specific parent key
+     * List child keys of a parent key
      */
     async keyLinksIndexRaw(requestParameters: KeyLinksIndexRequest): Promise<runtime.ApiResponse<KeyLink>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
@@ -267,7 +262,7 @@ export class LinkedKeysApi extends runtime.BaseAPI {
 
     /**
      * Returns detailed information about a parent key, including its linked child keys.
-     * Retrieve all child keys linked to a specific parent key
+     * List child keys of a parent key
      */
     async keyLinksIndex(requestParameters: KeyLinksIndexRequest): Promise<KeyLink> {
         const response = await this.keyLinksIndexRaw(requestParameters);

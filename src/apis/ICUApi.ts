@@ -33,8 +33,8 @@ export interface IcuSkeletonRequest {
 export class ICUApi extends runtime.BaseAPI {
 
     /**
-     * Returns icu skeletons for multiple locale codes based on a source content.
-     * Build icu skeletons
+     * Returns ICU skeletons for multiple locale codes based on a source content.
+     * Build ICU skeletons
      */
     async icuSkeletonRaw(requestParameters: IcuSkeletonRequest): Promise<runtime.ApiResponse<Icu>> {
         if (requestParameters.icuSkeletonParameters === null || requestParameters.icuSkeletonParameters === undefined) {
@@ -70,8 +70,8 @@ export class ICUApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns icu skeletons for multiple locale codes based on a source content.
-     * Build icu skeletons
+     * Returns ICU skeletons for multiple locale codes based on a source content.
+     * Build ICU skeletons
      */
     async icuSkeleton(requestParameters: IcuSkeletonRequest): Promise<Icu> {
         const response = await this.icuSkeletonRaw(requestParameters);

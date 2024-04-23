@@ -23,7 +23,7 @@ export interface StyleguideCreateParameters {
      * @type {string}
      * @memberof StyleguideCreateParameters
      */
-    title?: string;
+    title: string;
     /**
      * Audience description
      * @type {string}
@@ -108,7 +108,7 @@ export function StyleguideCreateParametersFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'title': !exists(json, 'title') ? undefined : json['title'],
+        'title': json['title'],
         'audience': !exists(json, 'audience') ? undefined : json['audience'],
         'targetAudience': !exists(json, 'target_audience') ? undefined : json['target_audience'],
         'grammaticalPerson': !exists(json, 'grammatical_person') ? undefined : json['grammatical_person'],

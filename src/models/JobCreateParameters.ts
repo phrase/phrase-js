@@ -29,7 +29,7 @@ export interface JobCreateParameters {
      * @type {string}
      * @memberof JobCreateParameters
      */
-    name?: string;
+    name: string;
     /**
      * The API id of the source language
      * @type {string}
@@ -85,7 +85,7 @@ export function JobCreateParametersFromJSONTyped(json: any, ignoreDiscriminator:
     return {
         
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
+        'name': json['name'],
         'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'dueDate': !exists(json, 'due_date') ? undefined : (json['due_date'] === null ? null : new Date(json['due_date'])),

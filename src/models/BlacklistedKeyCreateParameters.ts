@@ -23,7 +23,7 @@ export interface BlacklistedKeyCreateParameters {
      * @type {string}
      * @memberof BlacklistedKeyCreateParameters
      */
-    name?: string;
+    name: string;
 }
 
 export function BlacklistedKeyCreateParametersFromJSON(json: any): BlacklistedKeyCreateParameters {
@@ -36,7 +36,7 @@ export function BlacklistedKeyCreateParametersFromJSONTyped(json: any, ignoreDis
     }
     return {
         
-        'name': !exists(json, 'name') ? undefined : json['name'],
+        'name': json['name'],
     };
 }
 

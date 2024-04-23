@@ -24,6 +24,12 @@ export interface KeyLinksBatchDestroyParameters {
      * @memberof KeyLinksBatchDestroyParameters
      */
     childKeyIds: Array<string>;
+    /**
+     * Whether to unlink the parent key as well and unmark it as linked-key.
+     * @type {boolean}
+     * @memberof KeyLinksBatchDestroyParameters
+     */
+    unlinkParent?: boolean;
 }
 
 export function KeyLinksBatchDestroyParametersFromJSON(json: any): KeyLinksBatchDestroyParameters {
@@ -37,6 +43,7 @@ export function KeyLinksBatchDestroyParametersFromJSONTyped(json: any, ignoreDis
     return {
         
         'childKeyIds': json['child_key_ids'],
+        'unlinkParent': !exists(json, 'unlink_parent') ? undefined : json['unlink_parent'],
     };
 }
 
@@ -50,6 +57,7 @@ export function KeyLinksBatchDestroyParametersToJSON(value?: KeyLinksBatchDestro
     return {
         
         'child_key_ids': value.childKeyIds,
+        'unlink_parent': value.unlinkParent,
     };
 }
 

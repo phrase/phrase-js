@@ -23,7 +23,7 @@ export interface WebhookCreateParameters {
      * @type {string}
      * @memberof WebhookCreateParameters
      */
-    callbackUrl?: string;
+    callbackUrl: string;
     /**
      * Webhook secret used to calculate signature. If empty, the default project secret will be used.
      * @type {string}
@@ -66,7 +66,7 @@ export function WebhookCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
-        'callbackUrl': !exists(json, 'callback_url') ? undefined : json['callback_url'],
+        'callbackUrl': json['callback_url'],
         'secret': !exists(json, 'secret') ? undefined : json['secret'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'events': !exists(json, 'events') ? undefined : json['events'],
