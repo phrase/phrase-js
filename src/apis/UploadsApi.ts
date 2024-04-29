@@ -28,6 +28,7 @@ export interface UploadCreateRequest {
     branch?: string;
     tags?: string;
     updateTranslations?: boolean;
+    updateTranslationKeys?: boolean;
     updateDescriptions?: boolean;
     convertEmoji?: boolean;
     skipUploadTags?: boolean;
@@ -134,6 +135,10 @@ export class UploadsApi extends runtime.BaseAPI {
 
         if (requestParameters.updateTranslations !== undefined) {
             formParams.append('update_translations', requestParameters.updateTranslations as any);
+        }
+
+        if (requestParameters.updateTranslationKeys !== undefined) {
+            formParams.append('update_translation_keys', requestParameters.updateTranslationKeys as any);
         }
 
         if (requestParameters.updateDescriptions !== undefined) {
