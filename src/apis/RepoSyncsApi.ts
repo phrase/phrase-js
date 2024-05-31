@@ -30,31 +30,31 @@ import {
 
 export interface RepoSyncActivateRequest {
     accountId: string;
-    repoSyncId: string;
+    id: string;
     xPhraseAppOTP?: string;
 }
 
 export interface RepoSyncDeactivateRequest {
     accountId: string;
-    repoSyncId: string;
+    id: string;
     xPhraseAppOTP?: string;
 }
 
 export interface RepoSyncEventsRequest {
     accountId: string;
-    repoSyncId: string;
+    id: string;
     xPhraseAppOTP?: string;
 }
 
 export interface RepoSyncExportRequest {
     accountId: string;
-    repoSyncId: string;
+    id: string;
     xPhraseAppOTP?: string;
 }
 
 export interface RepoSyncImportRequest {
     accountId: string;
-    repoSyncId: string;
+    id: string;
     xPhraseAppOTP?: string;
 }
 
@@ -65,7 +65,7 @@ export interface RepoSyncListRequest {
 
 export interface RepoSyncShowRequest {
     accountId: string;
-    repoSyncId: string;
+    id: string;
     xPhraseAppOTP?: string;
 }
 
@@ -83,8 +83,8 @@ export class RepoSyncsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling repoSyncActivate.');
         }
 
-        if (requestParameters.repoSyncId === null || requestParameters.repoSyncId === undefined) {
-            throw new runtime.RequiredError('repoSyncId','Required parameter requestParameters.repoSyncId was null or undefined when calling repoSyncActivate.');
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling repoSyncActivate.');
         }
 
         const queryParameters: any = {};
@@ -103,7 +103,7 @@ export class RepoSyncsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/accounts/{account_id}/repo_syncs/{repo_sync_id}/activate`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"repo_sync_id"}}`, encodeURIComponent(String(requestParameters.repoSyncId))),
+            path: `/accounts/{account_id}/repo_syncs/{id}/activate`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -130,8 +130,8 @@ export class RepoSyncsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling repoSyncDeactivate.');
         }
 
-        if (requestParameters.repoSyncId === null || requestParameters.repoSyncId === undefined) {
-            throw new runtime.RequiredError('repoSyncId','Required parameter requestParameters.repoSyncId was null or undefined when calling repoSyncDeactivate.');
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling repoSyncDeactivate.');
         }
 
         const queryParameters: any = {};
@@ -150,7 +150,7 @@ export class RepoSyncsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/accounts/{account_id}/repo_syncs/{repo_sync_id}/deactivate`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"repo_sync_id"}}`, encodeURIComponent(String(requestParameters.repoSyncId))),
+            path: `/accounts/{account_id}/repo_syncs/{id}/deactivate`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -177,8 +177,8 @@ export class RepoSyncsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling repoSyncEvents.');
         }
 
-        if (requestParameters.repoSyncId === null || requestParameters.repoSyncId === undefined) {
-            throw new runtime.RequiredError('repoSyncId','Required parameter requestParameters.repoSyncId was null or undefined when calling repoSyncEvents.');
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling repoSyncEvents.');
         }
 
         const queryParameters: any = {};
@@ -197,7 +197,7 @@ export class RepoSyncsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/accounts/{account_id}/repo_syncs/{repo_sync_id}/events`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"repo_sync_id"}}`, encodeURIComponent(String(requestParameters.repoSyncId))),
+            path: `/accounts/{account_id}/repo_syncs/{id}/events`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -224,8 +224,8 @@ export class RepoSyncsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling repoSyncExport.');
         }
 
-        if (requestParameters.repoSyncId === null || requestParameters.repoSyncId === undefined) {
-            throw new runtime.RequiredError('repoSyncId','Required parameter requestParameters.repoSyncId was null or undefined when calling repoSyncExport.');
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling repoSyncExport.');
         }
 
         const queryParameters: any = {};
@@ -244,7 +244,7 @@ export class RepoSyncsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/accounts/{account_id}/repo_syncs/{repo_sync_id}/export`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"repo_sync_id"}}`, encodeURIComponent(String(requestParameters.repoSyncId))),
+            path: `/accounts/{account_id}/repo_syncs/{id}/export`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -271,8 +271,8 @@ export class RepoSyncsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling repoSyncImport.');
         }
 
-        if (requestParameters.repoSyncId === null || requestParameters.repoSyncId === undefined) {
-            throw new runtime.RequiredError('repoSyncId','Required parameter requestParameters.repoSyncId was null or undefined when calling repoSyncImport.');
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling repoSyncImport.');
         }
 
         const queryParameters: any = {};
@@ -291,7 +291,7 @@ export class RepoSyncsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/accounts/{account_id}/repo_syncs/{repo_sync_id}/import`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"repo_sync_id"}}`, encodeURIComponent(String(requestParameters.repoSyncId))),
+            path: `/accounts/{account_id}/repo_syncs/{id}/import`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -361,8 +361,8 @@ export class RepoSyncsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling repoSyncShow.');
         }
 
-        if (requestParameters.repoSyncId === null || requestParameters.repoSyncId === undefined) {
-            throw new runtime.RequiredError('repoSyncId','Required parameter requestParameters.repoSyncId was null or undefined when calling repoSyncShow.');
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling repoSyncShow.');
         }
 
         const queryParameters: any = {};
@@ -381,7 +381,7 @@ export class RepoSyncsApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/accounts/{account_id}/repo_syncs/{repo_sync_id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"repo_sync_id"}}`, encodeURIComponent(String(requestParameters.repoSyncId))),
+            path: `/accounts/{account_id}/repo_syncs/{id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
