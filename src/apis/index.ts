@@ -35,6 +35,7 @@ export * from './OrganizationJobTemplateLocalesApi';
 export * from './OrganizationJobTemplatesApi';
 export * from './ProjectsApi';
 export * from './QualityPerformanceScoreApi';
+export * from './ReleaseTriggersApi';
 export * from './ReleasesApi';
 export * from './RepoSyncsApi';
 export * from './ReportsApi';

@@ -40,6 +40,7 @@ src/apis/OrganizationJobTemplateLocalesApi.ts
 src/apis/OrganizationJobTemplatesApi.ts
 src/apis/ProjectsApi.ts
 src/apis/QualityPerformanceScoreApi.ts
+src/apis/ReleaseTriggersApi.ts
 src/apis/ReleasesApi.ts
 src/apis/RepoSyncsApi.ts
 src/apis/ReportsApi.ts
@@ -207,8 +208,11 @@ src/models/ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInner.ts
 src/models/ProjectsQualityPerformanceScoreRequest.ts
 src/models/Release.ts
 src/models/ReleaseCreateParameters.ts
+src/models/ReleaseCreateParameters1.ts
 src/models/ReleasePreview.ts
+src/models/ReleaseTrigger.ts
 src/models/ReleaseUpdateParameters.ts
+src/models/ReleaseUpdateParameters1.ts
 src/models/RepliesListParameters.ts
 src/models/RepoSync.ts
 src/models/RepoSyncEvent.ts

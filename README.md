@@ -378,6 +378,11 @@ Class | Method | HTTP request | Description
 *ProjectsApi* | **projectUpdate** | **PATCH** /projects/{id} | Update a project
 *ProjectsApi* | **projectsList** | **GET** /projects | List projects
 *QualityPerformanceScoreApi* | **projectsQualityPerformanceScore** | **POST** /projects/{project_id}/quality_performance_score | Get Translation Quality
+*ReleaseTriggersApi* | **releaseTriggersCreate** | **POST** /accounts/{account_id}/distributions/{distribution_id}/release_triggers | Create a release trigger
+*ReleaseTriggersApi* | **releaseTriggersDestroy** | **DELETE** /accounts/{account_id}/distributions/{distribution_id}/release_triggers/{id} | Delete a single release trigger
+*ReleaseTriggersApi* | **releaseTriggersList** | **GET** /accounts/{account_id}/distributions/{distribution_id}/release_triggers | List release triggers
+*ReleaseTriggersApi* | **releaseTriggersShow** | **GET** /accounts/{account_id}/distributions/{distribution_id}/release_triggers/{id} | Get a single release trigger
+*ReleaseTriggersApi* | **releaseTriggersUpdate** | **PATCH** /accounts/{account_id}/distributions/{distribution_id}/release_triggers/{id} | Update a release trigger
 *ReleasesApi* | **releaseCreate** | **POST** /accounts/{account_id}/distributions/{distribution_id}/releases | Create a release
 *ReleasesApi* | **releaseDelete** | **DELETE** /accounts/{account_id}/distributions/{distribution_id}/releases/{id} | Delete a release
 *ReleasesApi* | **releasePublish** | **POST** /accounts/{account_id}/distributions/{distribution_id}/releases/{id}/publish | Publish a release
