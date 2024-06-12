@@ -1,6 +1,6 @@
 {
   "name": "phrase-js",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "OpenAPI client for Phrase Strings",
   "author": "OpenAPI-Generator",
   "license" : "MIT",
