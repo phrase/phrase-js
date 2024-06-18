@@ -43,6 +43,18 @@ export interface ReleaseCreateParameters {
      */
     tags?: Array<string>;
     /**
+     * Minimum version of the app that the release supports in semver format
+     * @type {string}
+     * @memberof ReleaseCreateParameters
+     */
+    appMinVersion?: string;
+    /**
+     * Maximum version of the app that the release supports in semver format
+     * @type {string}
+     * @memberof ReleaseCreateParameters
+     */
+    appMaxVersion?: string;
+    /**
      * Branch used for release
      * @type {string}
      * @memberof ReleaseCreateParameters
@@ -64,6 +76,8 @@ export function ReleaseCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'platforms': !exists(json, 'platforms') ? undefined : json['platforms'],
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
+        'appMinVersion': !exists(json, 'app_min_version') ? undefined : json['app_min_version'],
+        'appMaxVersion': !exists(json, 'app_max_version') ? undefined : json['app_max_version'],
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
     };
 }
@@ -81,6 +95,8 @@ export function ReleaseCreateParametersToJSON(value?: ReleaseCreateParameters | 
         'platforms': value.platforms,
         'locale_ids': value.localeIds,
         'tags': value.tags,
+        'app_min_version': value.appMinVersion,
+        'app_max_version': value.appMaxVersion,
         'branch': value.branch,
     };
 }

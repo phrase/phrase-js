@@ -31,6 +31,18 @@ export interface ReleaseUpdateParameters {
      */
     platforms?: Array<string>;
     /**
+     * Minimum version of the app that the release supports in semver format
+     * @type {string}
+     * @memberof ReleaseUpdateParameters
+     */
+    appMinVersion?: string;
+    /**
+     * Maximum version of the app that the release supports in semver format
+     * @type {string}
+     * @memberof ReleaseUpdateParameters
+     */
+    appMaxVersion?: string;
+    /**
      * Branch used for release
      * @type {string}
      * @memberof ReleaseUpdateParameters
@@ -50,6 +62,8 @@ export function ReleaseUpdateParametersFromJSONTyped(json: any, ignoreDiscrimina
         
         'description': !exists(json, 'description') ? undefined : json['description'],
         'platforms': !exists(json, 'platforms') ? undefined : json['platforms'],
+        'appMinVersion': !exists(json, 'app_min_version') ? undefined : json['app_min_version'],
+        'appMaxVersion': !exists(json, 'app_max_version') ? undefined : json['app_max_version'],
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
     };
 }
@@ -65,6 +79,8 @@ export function ReleaseUpdateParametersToJSON(value?: ReleaseUpdateParameters | 
         
         'description': value.description,
         'platforms': value.platforms,
+        'app_min_version': value.appMinVersion,
+        'app_max_version': value.appMaxVersion,
         'branch': value.branch,
     };
 }
