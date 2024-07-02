@@ -30,6 +30,12 @@ export interface RepoSyncEvent {
      * @type {string}
      * @memberof RepoSyncEvent
      */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RepoSyncEvent
+     */
     eventType?: RepoSyncEventEventTypeEnum;
     /**
      * 
@@ -73,6 +79,7 @@ export function RepoSyncEventFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
         
+        'id': !exists(json, 'id') ? undefined : json['id'],
         'eventType': !exists(json, 'event_type') ? undefined : json['event_type'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'status': !exists(json, 'status') ? undefined : json['status'],
@@ -91,6 +98,7 @@ export function RepoSyncEventToJSON(value?: RepoSyncEvent | null): any {
     }
     return {
         
+        'id': value.id,
         'event_type': value.eventType,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'status': value.status,

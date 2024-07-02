@@ -20,12 +20,6 @@ import {
     RepoSyncEvent,
     RepoSyncEventFromJSON,
     RepoSyncEventToJSON,
-    RepoSyncExport,
-    RepoSyncExportFromJSON,
-    RepoSyncExportToJSON,
-    RepoSyncImport,
-    RepoSyncImportFromJSON,
-    RepoSyncImportToJSON,
 } from '../models';
 
 export interface RepoSyncActivateRequest {
@@ -36,6 +30,13 @@ export interface RepoSyncActivateRequest {
 
 export interface RepoSyncDeactivateRequest {
     accountId: string;
+    id: string;
+    xPhraseAppOTP?: string;
+}
+
+export interface RepoSyncEventShowRequest {
+    accountId: string;
+    repoSyncId: string;
     id: string;
     xPhraseAppOTP?: string;
 }
@@ -169,6 +170,57 @@ export class RepoSyncsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Shows a single Repo Sync event.
+     * Get a single Repo Sync Event
+     */
+    async repoSyncEventShowRaw(requestParameters: RepoSyncEventShowRequest): Promise<runtime.ApiResponse<RepoSyncEvent>> {
+        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
+            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling repoSyncEventShow.');
+        }
+
+        if (requestParameters.repoSyncId === null || requestParameters.repoSyncId === undefined) {
+            throw new runtime.RequiredError('repoSyncId','Required parameter requestParameters.repoSyncId was null or undefined when calling repoSyncEventShow.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling repoSyncEventShow.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/accounts/{account_id}/repo_syncs/{repo_sync_id}/events/{id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"repo_sync_id"}}`, encodeURIComponent(String(requestParameters.repoSyncId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => RepoSyncEventFromJSON(jsonValue));
+    }
+
+    /**
+     * Shows a single Repo Sync event.
+     * Get a single Repo Sync Event
+     */
+    async repoSyncEventShow(requestParameters: RepoSyncEventShowRequest): Promise<RepoSyncEvent> {
+        const response = await this.repoSyncEventShowRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
      * Get the history of a single Repo Sync. The history includes all imports and exports performed by the Repo Sync.
      * Repository Syncs History
      */
@@ -219,7 +271,7 @@ export class RepoSyncsApi extends runtime.BaseAPI {
      * > Beta: this feature will change in the future.  Export translations from Phrase Strings to repository provider according to the .phrase.yml file within the code repository.  *Export is done asynchronously and may take several seconds depending on the project size.*
      * Export to code repository
      */
-    async repoSyncExportRaw(requestParameters: RepoSyncExportRequest): Promise<runtime.ApiResponse<RepoSyncExport>> {
+    async repoSyncExportRaw(requestParameters: RepoSyncExportRequest): Promise<runtime.ApiResponse<RepoSyncEvent>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling repoSyncExport.');
         }
@@ -250,14 +302,14 @@ export class RepoSyncsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => RepoSyncExportFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => RepoSyncEventFromJSON(jsonValue));
     }
 
     /**
      * > Beta: this feature will change in the future.  Export translations from Phrase Strings to repository provider according to the .phrase.yml file within the code repository.  *Export is done asynchronously and may take several seconds depending on the project size.*
      * Export to code repository
      */
-    async repoSyncExport(requestParameters: RepoSyncExportRequest): Promise<RepoSyncExport> {
+    async repoSyncExport(requestParameters: RepoSyncExportRequest): Promise<RepoSyncEvent> {
         const response = await this.repoSyncExportRaw(requestParameters);
         return await response.value();
     }
@@ -266,7 +318,7 @@ export class RepoSyncsApi extends runtime.BaseAPI {
      * > Beta: this feature will change in the future.  Import translations from repository provider to Phrase Strings according to the .phrase.yml file within the code repository.  _Import is done asynchronously and may take several seconds depending on the project size._
      * Import from code repository
      */
-    async repoSyncImportRaw(requestParameters: RepoSyncImportRequest): Promise<runtime.ApiResponse<RepoSyncImport>> {
+    async repoSyncImportRaw(requestParameters: RepoSyncImportRequest): Promise<runtime.ApiResponse<RepoSyncEvent>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling repoSyncImport.');
         }
@@ -297,14 +349,14 @@ export class RepoSyncsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => RepoSyncImportFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => RepoSyncEventFromJSON(jsonValue));
     }
 
     /**
      * > Beta: this feature will change in the future.  Import translations from repository provider to Phrase Strings according to the .phrase.yml file within the code repository.  _Import is done asynchronously and may take several seconds depending on the project size._
      * Import from code repository
      */
-    async repoSyncImport(requestParameters: RepoSyncImportRequest): Promise<RepoSyncImport> {
+    async repoSyncImport(requestParameters: RepoSyncImportRequest): Promise<RepoSyncEvent> {
         const response = await this.repoSyncImportRaw(requestParameters);
         return await response.value();
     }

@@ -159,8 +159,6 @@ export * from './RepliesListParameters';
 export * from './RepoSync';
 export * from './RepoSyncEvent';
 export * from './RepoSyncEventErrorsInner';
-export * from './RepoSyncExport';
-export * from './RepoSyncImport';
 export * from './Screenshot';
 export * from './ScreenshotMarker';
 export * from './ScreenshotMarkerCreateParameters';
