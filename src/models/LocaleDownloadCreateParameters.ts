@@ -85,6 +85,12 @@ export interface LocaleDownloadCreateParameters {
      */
     useLastReviewedVersion?: boolean;
     /**
+     * Locale IDs or locale names
+     * @type {Array<string>}
+     * @memberof LocaleDownloadCreateParameters
+     */
+    localeIds?: Array<string>;
+    /**
      * If a key has no translation in the locale being downloaded the translation in the fallback locale will be used. Provide the ID of the locale that should be used as the fallback. Requires include_empty_translations to be set to <code>true</code>.
      * @type {string}
      * @memberof LocaleDownloadCreateParameters
@@ -125,6 +131,7 @@ export function LocaleDownloadCreateParametersFromJSONTyped(json: any, ignoreDis
         'encoding': !exists(json, 'encoding') ? undefined : json['encoding'],
         'includeUnverifiedTranslations': !exists(json, 'include_unverified_translations') ? undefined : json['include_unverified_translations'],
         'useLastReviewedVersion': !exists(json, 'use_last_reviewed_version') ? undefined : json['use_last_reviewed_version'],
+        'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'fallbackLocaleId': !exists(json, 'fallback_locale_id') ? undefined : json['fallback_locale_id'],
         'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
         'customMetadataFilters': !exists(json, 'custom_metadata_filters') ? undefined : json['custom_metadata_filters'],
@@ -151,6 +158,7 @@ export function LocaleDownloadCreateParametersToJSON(value?: LocaleDownloadCreat
         'encoding': value.encoding,
         'include_unverified_translations': value.includeUnverifiedTranslations,
         'use_last_reviewed_version': value.useLastReviewedVersion,
+        'locale_ids': value.localeIds,
         'fallback_locale_id': value.fallbackLocaleId,
         'source_locale_id': value.sourceLocaleId,
         'custom_metadata_filters': value.customMetadataFilters,
