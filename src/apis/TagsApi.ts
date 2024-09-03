@@ -50,6 +50,7 @@ export interface TagsListRequest {
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
+    excludeSystemTags?: boolean;
     branch?: string;
 }
 
@@ -227,6 +228,10 @@ export class TagsApi extends runtime.BaseAPI {
 
         if (requestParameters.perPage !== undefined) {
             queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        if (requestParameters.excludeSystemTags !== undefined) {
+            queryParameters['exclude_system_tags'] = requestParameters.excludeSystemTags;
         }
 
         if (requestParameters.branch !== undefined) {
