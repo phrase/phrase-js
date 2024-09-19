@@ -79,7 +79,7 @@ export interface ProjectCreateParameters {
      */
     workflow?: string;
     /**
-     * (Optional) Enable machine translation support in the project. Required for Autopilot and Smart Suggest
+     * (Optional) Enable machine translation support in the project. Required for Pre-Translation
      * @type {boolean}
      * @memberof ProjectCreateParameters
      */
@@ -156,24 +156,6 @@ export interface ProjectCreateParameters {
      * @memberof ProjectCreateParameters
      */
     autotranslateUseTranslationMemory?: boolean;
-    /**
-     * (Optional) Smart Suggest, requires machine_translation_enabled
-     * @type {boolean}
-     * @memberof ProjectCreateParameters
-     */
-    smartSuggestEnabled?: boolean;
-    /**
-     * (Optional) Requires smart_suggest_enabled to be true
-     * @type {boolean}
-     * @memberof ProjectCreateParameters
-     */
-    smartSuggestUseGlossary?: boolean;
-    /**
-     * (Optional) Requires smart_suggest_enabled to be true
-     * @type {boolean}
-     * @memberof ProjectCreateParameters
-     */
-    smartSuggestUseMachineTranslation?: boolean;
 }
 
 export function ProjectCreateParametersFromJSON(json: any): ProjectCreateParameters {
@@ -209,9 +191,6 @@ export function ProjectCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'autotranslateMarkAsUnverified': !exists(json, 'autotranslate_mark_as_unverified') ? undefined : json['autotranslate_mark_as_unverified'],
         'autotranslateUseMachineTranslation': !exists(json, 'autotranslate_use_machine_translation') ? undefined : json['autotranslate_use_machine_translation'],
         'autotranslateUseTranslationMemory': !exists(json, 'autotranslate_use_translation_memory') ? undefined : json['autotranslate_use_translation_memory'],
-        'smartSuggestEnabled': !exists(json, 'smart_suggest_enabled') ? undefined : json['smart_suggest_enabled'],
-        'smartSuggestUseGlossary': !exists(json, 'smart_suggest_use_glossary') ? undefined : json['smart_suggest_use_glossary'],
-        'smartSuggestUseMachineTranslation': !exists(json, 'smart_suggest_use_machine_translation') ? undefined : json['smart_suggest_use_machine_translation'],
     };
 }
 
@@ -247,9 +226,6 @@ export function ProjectCreateParametersToJSON(value?: ProjectCreateParameters | 
         'autotranslate_mark_as_unverified': value.autotranslateMarkAsUnverified,
         'autotranslate_use_machine_translation': value.autotranslateUseMachineTranslation,
         'autotranslate_use_translation_memory': value.autotranslateUseTranslationMemory,
-        'smart_suggest_enabled': value.smartSuggestEnabled,
-        'smart_suggest_use_glossary': value.smartSuggestUseGlossary,
-        'smart_suggest_use_machine_translation': value.smartSuggestUseMachineTranslation,
     };
 }
 
