@@ -40,6 +40,7 @@ export interface UploadCreateRequest {
     autotranslate?: boolean;
     markReviewed?: boolean;
     tagOnlyAffectedKeys?: boolean;
+    translationKeyPrefix?: string;
 }
 
 export interface UploadShowRequest {
@@ -192,6 +193,10 @@ export class UploadsApi extends runtime.BaseAPI {
 
         if (requestParameters.tagOnlyAffectedKeys !== undefined) {
             formParams.append('tag_only_affected_keys', requestParameters.tagOnlyAffectedKeys as any);
+        }
+
+        if (requestParameters.translationKeyPrefix !== undefined) {
+            formParams.append('translation_key_prefix', requestParameters.translationKeyPrefix as any);
         }
 
         const response = await this.request({

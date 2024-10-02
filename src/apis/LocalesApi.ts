@@ -73,6 +73,8 @@ export interface LocaleDownloadRequest {
     useLastReviewedVersion?: boolean;
     fallbackLocaleId?: string;
     sourceLocaleId?: string;
+    translationKeyPrefix?: string;
+    filterByPrefix?: boolean;
     customMetadataFilters?: object;
 }
 
@@ -333,6 +335,14 @@ export class LocalesApi extends runtime.BaseAPI {
 
         if (requestParameters.sourceLocaleId !== undefined) {
             queryParameters['source_locale_id'] = requestParameters.sourceLocaleId;
+        }
+
+        if (requestParameters.translationKeyPrefix !== undefined) {
+            queryParameters['translation_key_prefix'] = requestParameters.translationKeyPrefix;
+        }
+
+        if (requestParameters.filterByPrefix !== undefined) {
+            queryParameters['filter_by_prefix'] = requestParameters.filterByPrefix;
         }
 
         if (requestParameters.customMetadataFilters !== undefined) {
