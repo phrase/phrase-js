@@ -91,6 +91,12 @@ export interface KeyCreateParameters {
      */
     defaultTranslationContent?: string;
     /**
+     * Indicates whether the key should be autotranslated to other locales based on the copy provided in `default_translation_content`.
+     * @type {boolean}
+     * @memberof KeyCreateParameters
+     */
+    autotranslate?: boolean;
+    /**
      * Indicates whether the key should be exported with \"xml:space=preserve\". Supported by several XML-based formats.
      * @type {boolean}
      * @memberof KeyCreateParameters
@@ -144,6 +150,7 @@ export function KeyCreateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'removeScreenshot': !exists(json, 'remove_screenshot') ? undefined : json['remove_screenshot'],
         'unformatted': !exists(json, 'unformatted') ? undefined : json['unformatted'],
         'defaultTranslationContent': !exists(json, 'default_translation_content') ? undefined : json['default_translation_content'],
+        'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
         'xmlSpacePreserve': !exists(json, 'xml_space_preserve') ? undefined : json['xml_space_preserve'],
         'originalFile': !exists(json, 'original_file') ? undefined : json['original_file'],
         'localizedFormatString': !exists(json, 'localized_format_string') ? undefined : json['localized_format_string'],
@@ -173,6 +180,7 @@ export function KeyCreateParametersToJSON(value?: KeyCreateParameters | null): a
         'remove_screenshot': value.removeScreenshot,
         'unformatted': value.unformatted,
         'default_translation_content': value.defaultTranslationContent,
+        'autotranslate': value.autotranslate,
         'xml_space_preserve': value.xmlSpacePreserve,
         'original_file': value.originalFile,
         'localized_format_string': value.localizedFormatString,
