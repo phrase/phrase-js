@@ -15,34 +15,28 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface CommentCreateParameters
+ * @interface CommentCreateParameters1
  */
-export interface CommentCreateParameters {
+export interface CommentCreateParameters1 {
     /**
-     * Comment message
+     * Reply message body
      * @type {string}
-     * @memberof CommentCreateParameters
+     * @memberof CommentCreateParameters1
      */
     message: string;
     /**
-     * specify the branch to use
+     * Specify the branch to use
      * @type {string}
-     * @memberof CommentCreateParameters
+     * @memberof CommentCreateParameters1
      */
     branch?: string;
-    /**
-     * specify the locales for the comment
-     * @type {Array<string>}
-     * @memberof CommentCreateParameters
-     */
-    localeIds?: Array<string>;
 }
 
-export function CommentCreateParametersFromJSON(json: any): CommentCreateParameters {
-    return CommentCreateParametersFromJSONTyped(json, false);
+export function CommentCreateParameters1FromJSON(json: any): CommentCreateParameters1 {
+    return CommentCreateParameters1FromJSONTyped(json, false);
 }
 
-export function CommentCreateParametersFromJSONTyped(json: any, ignoreDiscriminator: boolean): CommentCreateParameters {
+export function CommentCreateParameters1FromJSONTyped(json: any, ignoreDiscriminator: boolean): CommentCreateParameters1 {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -50,11 +44,10 @@ export function CommentCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
         
         'message': json['message'],
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
-        'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
     };
 }
 
-export function CommentCreateParametersToJSON(value?: CommentCreateParameters | null): any {
+export function CommentCreateParameters1ToJSON(value?: CommentCreateParameters1 | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -65,7 +58,6 @@ export function CommentCreateParametersToJSON(value?: CommentCreateParameters | 
         
         'message': value.message,
         'branch': value.branch,
-        'locale_ids': value.localeIds,
     };
 }
 

@@ -17,6 +17,9 @@ import {
     Comment,
     CommentFromJSON,
     CommentToJSON,
+    CommentCreateParameters1,
+    CommentCreateParameters1FromJSON,
+    CommentCreateParameters1ToJSON,
     RepliesListParameters,
     RepliesListParametersFromJSON,
     RepliesListParametersToJSON,
@@ -40,9 +43,8 @@ export interface ReplyCreateRequest {
     projectId: string;
     keyId: string;
     commentId: string;
+    commentCreateParameters1: CommentCreateParameters1;
     xPhraseAppOTP?: string;
-    branch?: string;
-    message?: string;
 }
 
 export interface ReplyDeleteRequest {
@@ -185,17 +187,15 @@ export class CommentRepliesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('commentId','Required parameter requestParameters.commentId was null or undefined when calling replyCreate.');
         }
 
+        if (requestParameters.commentCreateParameters1 === null || requestParameters.commentCreateParameters1 === undefined) {
+            throw new runtime.RequiredError('commentCreateParameters1','Required parameter requestParameters.commentCreateParameters1 was null or undefined when calling replyCreate.');
+        }
+
         const queryParameters: any = {};
 
-        if (requestParameters.branch !== undefined) {
-            queryParameters['branch'] = requestParameters.branch;
-        }
-
-        if (requestParameters.message !== undefined) {
-            queryParameters['message'] = requestParameters.message;
-        }
-
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
             headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
@@ -213,6 +213,7 @@ export class CommentRepliesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CommentCreateParameters1ToJSON(requestParameters.commentCreateParameters1),
         });
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CommentFromJSON(jsonValue));

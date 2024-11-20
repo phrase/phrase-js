@@ -21,6 +21,7 @@ export * from './BranchName';
 export * from './BranchUpdateParameters';
 export * from './Comment';
 export * from './CommentCreateParameters';
+export * from './CommentCreateParameters1';
 export * from './CommentMarkReadParameters';
 export * from './CommentReaction';
 export * from './CommentUpdateParameters';

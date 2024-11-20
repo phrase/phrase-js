@@ -84,6 +84,7 @@ src/models/BranchName.ts
 src/models/BranchUpdateParameters.ts
 src/models/Comment.ts
 src/models/CommentCreateParameters.ts
+src/models/CommentCreateParameters1.ts
 src/models/CommentMarkReadParameters.ts
 src/models/CommentReaction.ts
 src/models/CommentUpdateParameters.ts
