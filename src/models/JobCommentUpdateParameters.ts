@@ -24,6 +24,12 @@ export interface JobCommentUpdateParameters {
      * @memberof JobCommentUpdateParameters
      */
     message?: string;
+    /**
+     * Branch name for the job
+     * @type {string}
+     * @memberof JobCommentUpdateParameters
+     */
+    branch?: string;
 }
 
 export function JobCommentUpdateParametersFromJSON(json: any): JobCommentUpdateParameters {
@@ -37,6 +43,7 @@ export function JobCommentUpdateParametersFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'message': !exists(json, 'message') ? undefined : json['message'],
+        'branch': !exists(json, 'branch') ? undefined : json['branch'],
     };
 }
 
@@ -50,6 +57,7 @@ export function JobCommentUpdateParametersToJSON(value?: JobCommentUpdateParamet
     return {
         
         'message': value.message,
+        'branch': value.branch,
     };
 }
 
