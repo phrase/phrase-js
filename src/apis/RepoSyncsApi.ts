@@ -268,7 +268,7 @@ export class RepoSyncsApi extends runtime.BaseAPI {
     }
 
     /**
-     * > Beta: this feature will change in the future.  Export translations from Phrase Strings to repository provider according to the .phrase.yml file within the code repository.  *Export is done asynchronously and may take several seconds depending on the project size.*
+     * Export translations from Phrase Strings to repository provider according to the .phrase.yml file within the code repository.  *Export is done asynchronously and may take several seconds depending on the project size.*
      * Export to code repository
      */
     async repoSyncExportRaw(requestParameters: RepoSyncExportRequest): Promise<runtime.ApiResponse<RepoSyncEvent>> {
@@ -306,7 +306,7 @@ export class RepoSyncsApi extends runtime.BaseAPI {
     }
 
     /**
-     * > Beta: this feature will change in the future.  Export translations from Phrase Strings to repository provider according to the .phrase.yml file within the code repository.  *Export is done asynchronously and may take several seconds depending on the project size.*
+     * Export translations from Phrase Strings to repository provider according to the .phrase.yml file within the code repository.  *Export is done asynchronously and may take several seconds depending on the project size.*
      * Export to code repository
      */
     async repoSyncExport(requestParameters: RepoSyncExportRequest): Promise<RepoSyncEvent> {
@@ -315,7 +315,7 @@ export class RepoSyncsApi extends runtime.BaseAPI {
     }
 
     /**
-     * > Beta: this feature will change in the future.  Import translations from repository provider to Phrase Strings according to the .phrase.yml file within the code repository.  _Import is done asynchronously and may take several seconds depending on the project size._
+     * Import translations from repository provider to Phrase Strings according to the .phrase.yml file within the code repository.  _Import is done asynchronously and may take several seconds depending on the project size._
      * Import from code repository
      */
     async repoSyncImportRaw(requestParameters: RepoSyncImportRequest): Promise<runtime.ApiResponse<RepoSyncEvent>> {
@@ -353,7 +353,7 @@ export class RepoSyncsApi extends runtime.BaseAPI {
     }
 
     /**
-     * > Beta: this feature will change in the future.  Import translations from repository provider to Phrase Strings according to the .phrase.yml file within the code repository.  _Import is done asynchronously and may take several seconds depending on the project size._
+     * Import translations from repository provider to Phrase Strings according to the .phrase.yml file within the code repository.  _Import is done asynchronously and may take several seconds depending on the project size._
      * Import from code repository
      */
     async repoSyncImport(requestParameters: RepoSyncImportRequest): Promise<RepoSyncEvent> {
