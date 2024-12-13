@@ -150,6 +150,12 @@ export interface ProjectUpdateParameters {
      * @memberof ProjectUpdateParameters
      */
     autotranslateUseTranslationMemory?: boolean;
+    /**
+     * (Optional) Sets the default encoding for Uploads. If you leave it empty, we will try to guess it automatically for you when you Upload a file. You can still override this value by setting the <a href=\'#post-/projects/-project_id-/uploads\'>`file_encoding`</a> parameter for Uploads.
+     * @type {string}
+     * @memberof ProjectUpdateParameters
+     */
+    defaultEncoding?: ProjectUpdateParametersDefaultEncodingEnum;
 }
 
 export function ProjectUpdateParametersFromJSON(json: any): ProjectUpdateParameters {
@@ -184,6 +190,7 @@ export function ProjectUpdateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'autotranslateMarkAsUnverified': !exists(json, 'autotranslate_mark_as_unverified') ? undefined : json['autotranslate_mark_as_unverified'],
         'autotranslateUseMachineTranslation': !exists(json, 'autotranslate_use_machine_translation') ? undefined : json['autotranslate_use_machine_translation'],
         'autotranslateUseTranslationMemory': !exists(json, 'autotranslate_use_translation_memory') ? undefined : json['autotranslate_use_translation_memory'],
+        'defaultEncoding': !exists(json, 'default_encoding') ? undefined : json['default_encoding'],
     };
 }
 
@@ -218,7 +225,20 @@ export function ProjectUpdateParametersToJSON(value?: ProjectUpdateParameters | 
         'autotranslate_mark_as_unverified': value.autotranslateMarkAsUnverified,
         'autotranslate_use_machine_translation': value.autotranslateUseMachineTranslation,
         'autotranslate_use_translation_memory': value.autotranslateUseTranslationMemory,
+        'default_encoding': value.defaultEncoding,
     };
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum ProjectUpdateParametersDefaultEncodingEnum {
+    Utf8 = 'UTF-8',
+    Utf16 = 'UTF-16',
+    Utf16Be = 'UTF-16BE',
+    Utf16Le = 'UTF-16LE',
+    Iso88591 = 'ISO-8859-1'
 }
 
 
