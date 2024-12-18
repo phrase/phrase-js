@@ -1,6 +1,5 @@
 export * from './AccountsApi';
 export * from './AuthorizationsApi';
-export * from './BitbucketSyncApi';
 export * from './BlacklistedKeysApi';
 export * from './BranchesApi';
 export * from './CommentReactionsApi';
@@ -11,8 +10,6 @@ export * from './DistributionsApi';
 export * from './DocumentsApi';
 export * from './FigmaAttachmentsApi';
 export * from './FormatsApi';
-export * from './GitHubSyncApi';
-export * from './GitLabSyncApi';
 export * from './GlossariesApi';
 export * from './GlossaryTermTranslationsApi';
 export * from './GlossaryTermsApi';

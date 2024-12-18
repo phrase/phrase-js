@@ -205,9 +205,6 @@ Class | Method | HTTP request | Description
 *AuthorizationsApi* | **authorizationShow** | **GET** /authorizations/{id} | Get a single authorization
 *AuthorizationsApi* | **authorizationUpdate** | **PATCH** /authorizations/{id} | Update an authorization
 *AuthorizationsApi* | **authorizationsList** | **GET** /authorizations | List authorizations
-*BitbucketSyncApi* | **bitbucketSyncExport** | **POST** /bitbucket_syncs/{id}/export | Export from Phrase Strings to Bitbucket
-*BitbucketSyncApi* | **bitbucketSyncImport** | **POST** /bitbucket_syncs/{id}/import | Import to Phrase Strings from Bitbucket
-*BitbucketSyncApi* | **bitbucketSyncsList** | **GET** /bitbucket_syncs | List Bitbucket syncs
 *BlacklistedKeysApi* | **blacklistedKeyCreate** | **POST** /projects/{project_id}/blacklisted_keys | Create a blocked key
 *BlacklistedKeysApi* | **blacklistedKeyDelete** | **DELETE** /projects/{project_id}/blacklisted_keys/{id} | Delete a blocked key
 *BlacklistedKeysApi* | **blacklistedKeyShow** | **GET** /projects/{project_id}/blacklisted_keys/{id} | Get a single blocked key
@@ -256,15 +253,6 @@ Class | Method | HTTP request | Description
 *FigmaAttachmentsApi* | **figmaAttachmentUpdate** | **PATCH** /projects/{project_id}/figma_attachments/{id} | Update a Figma attachment
 *FigmaAttachmentsApi* | **figmaAttachmentsList** | **GET** /projects/{project_id}/figma_attachments | List Figma attachments
 *FormatsApi* | **formatsList** | **GET** /formats | List formats
-*GitHubSyncApi* | **githubSyncExport** | **POST** /github_syncs/export | Export from Phrase Strings to GitHub
-*GitHubSyncApi* | **githubSyncImport** | **POST** /github_syncs/import | Import to Phrase Strings from GitHub
-*GitLabSyncApi* | **gitlabSyncDelete** | **DELETE** /gitlab_syncs/{id} | Delete single Sync Setting
-*GitLabSyncApi* | **gitlabSyncExport** | **POST** /gitlab_syncs/{gitlab_sync_id}/export | Export from Phrase Strings to GitLab
-*GitLabSyncApi* | **gitlabSyncHistory** | **GET** /gitlab_syncs/{gitlab_sync_id}/history | History of single Sync Setting
-*GitLabSyncApi* | **gitlabSyncImport** | **POST** /gitlab_syncs/{gitlab_sync_id}/import | Import from GitLab to Phrase
-*GitLabSyncApi* | **gitlabSyncList** | **GET** /gitlab_syncs | List GitLab syncs
-*GitLabSyncApi* | **gitlabSyncShow** | **GET** /gitlab_syncs/{id} | Get single Sync Setting
-*GitLabSyncApi* | **gitlabSyncUpdate** | **PUT** /gitlab_syncs/{id} | Update single Sync Setting
 *GlossariesApi* | **glossariesList** | **GET** /accounts/{account_id}/glossaries | List term bases
 *GlossariesApi* | **glossaryCreate** | **POST** /accounts/{account_id}/glossaries | Create a term base
 *GlossariesApi* | **glossaryDelete** | **DELETE** /accounts/{account_id}/glossaries/{id} | Delete a term base
