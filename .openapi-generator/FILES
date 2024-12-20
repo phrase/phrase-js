@@ -208,7 +208,6 @@ src/models/ReleaseUpdateParameters1.ts
 src/models/RepliesListParameters.ts
 src/models/RepoSync.ts
 src/models/RepoSyncEvent.ts
-src/models/RepoSyncEventErrorsInner.ts
 src/models/Screenshot.ts
 src/models/ScreenshotMarker.ts
 src/models/ScreenshotMarkerCreateParameters.ts

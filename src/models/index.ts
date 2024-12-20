@@ -147,7 +147,6 @@ export * from './ReleaseUpdateParameters1';
 export * from './RepliesListParameters';
 export * from './RepoSync';
 export * from './RepoSyncEvent';
-export * from './RepoSyncEventErrorsInner';
 export * from './Screenshot';
 export * from './ScreenshotMarker';
 export * from './ScreenshotMarkerCreateParameters';

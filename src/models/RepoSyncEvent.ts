@@ -12,13 +12,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    RepoSyncEventErrorsInner,
-    RepoSyncEventErrorsInnerFromJSON,
-    RepoSyncEventErrorsInnerFromJSONTyped,
-    RepoSyncEventErrorsInnerToJSON,
-} from './';
-
 /**
  * 
  * @export
@@ -63,10 +56,10 @@ export interface RepoSyncEvent {
     autoImport?: boolean;
     /**
      * List of error messages, in case of failure
-     * @type {Array<RepoSyncEventErrorsInner>}
+     * @type {Array<string>}
      * @memberof RepoSyncEvent
      */
-    errors?: Array<RepoSyncEventErrorsInner>;
+    errors?: Array<string>;
 }
 
 export function RepoSyncEventFromJSON(json: any): RepoSyncEvent {
@@ -85,7 +78,7 @@ export function RepoSyncEventFromJSONTyped(json: any, ignoreDiscriminator: boole
         'status': !exists(json, 'status') ? undefined : json['status'],
         'pullRequestUrl': !exists(json, 'pull_request_url') ? undefined : json['pull_request_url'],
         'autoImport': !exists(json, 'auto_import') ? undefined : json['auto_import'],
-        'errors': !exists(json, 'errors') ? undefined : ((json['errors'] as Array<any>).map(RepoSyncEventErrorsInnerFromJSON)),
+        'errors': !exists(json, 'errors') ? undefined : json['errors'],
     };
 }
 
@@ -104,7 +97,7 @@ export function RepoSyncEventToJSON(value?: RepoSyncEvent | null): any {
         'status': value.status,
         'pull_request_url': value.pullRequestUrl,
         'auto_import': value.autoImport,
-        'errors': value.errors === undefined ? undefined : ((value.errors as Array<any>).map(RepoSyncEventErrorsInnerToJSON)),
+        'errors': value.errors,
     };
 }
 
