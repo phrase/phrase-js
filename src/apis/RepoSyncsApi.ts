@@ -34,19 +34,6 @@ export interface RepoSyncDeactivateRequest {
     xPhraseAppOTP?: string;
 }
 
-export interface RepoSyncEventShowRequest {
-    accountId: string;
-    repoSyncId: string;
-    id: string;
-    xPhraseAppOTP?: string;
-}
-
-export interface RepoSyncEventsRequest {
-    accountId: string;
-    id: string;
-    xPhraseAppOTP?: string;
-}
-
 export interface RepoSyncExportRequest {
     accountId: string;
     id: string;
@@ -166,104 +153,6 @@ export class RepoSyncsApi extends runtime.BaseAPI {
      */
     async repoSyncDeactivate(requestParameters: RepoSyncDeactivateRequest): Promise<RepoSync> {
         const response = await this.repoSyncDeactivateRaw(requestParameters);
-        return await response.value();
-    }
-
-    /**
-     * Shows a single Repo Sync event.
-     * Get a single Repo Sync Event
-     */
-    async repoSyncEventShowRaw(requestParameters: RepoSyncEventShowRequest): Promise<runtime.ApiResponse<RepoSyncEvent>> {
-        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
-            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling repoSyncEventShow.');
-        }
-
-        if (requestParameters.repoSyncId === null || requestParameters.repoSyncId === undefined) {
-            throw new runtime.RequiredError('repoSyncId','Required parameter requestParameters.repoSyncId was null or undefined when calling repoSyncEventShow.');
-        }
-
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling repoSyncEventShow.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
-            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
-        }
-
-        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
-            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
-        }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
-        }
-
-        const response = await this.request({
-            path: `/accounts/{account_id}/repo_syncs/{repo_sync_id}/events/{id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"repo_sync_id"}}`, encodeURIComponent(String(requestParameters.repoSyncId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        });
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => RepoSyncEventFromJSON(jsonValue));
-    }
-
-    /**
-     * Shows a single Repo Sync event.
-     * Get a single Repo Sync Event
-     */
-    async repoSyncEventShow(requestParameters: RepoSyncEventShowRequest): Promise<RepoSyncEvent> {
-        const response = await this.repoSyncEventShowRaw(requestParameters);
-        return await response.value();
-    }
-
-    /**
-     * Get the history of a single Repo Sync. The history includes all imports and exports performed by the Repo Sync.
-     * Repository Syncs History
-     */
-    async repoSyncEventsRaw(requestParameters: RepoSyncEventsRequest): Promise<runtime.ApiResponse<Array<RepoSyncEvent>>> {
-        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
-            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling repoSyncEvents.');
-        }
-
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling repoSyncEvents.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
-            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
-        }
-
-        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
-            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
-        }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
-        }
-
-        const response = await this.request({
-            path: `/accounts/{account_id}/repo_syncs/{id}/events`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        });
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(RepoSyncEventFromJSON));
-    }
-
-    /**
-     * Get the history of a single Repo Sync. The history includes all imports and exports performed by the Repo Sync.
-     * Repository Syncs History
-     */
-    async repoSyncEvents(requestParameters: RepoSyncEventsRequest): Promise<Array<RepoSyncEvent>> {
-        const response = await this.repoSyncEventsRaw(requestParameters);
         return await response.value();
     }
 

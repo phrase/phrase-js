@@ -35,6 +35,7 @@ export * from './ProjectsApi';
 export * from './QualityPerformanceScoreApi';
 export * from './ReleaseTriggersApi';
 export * from './ReleasesApi';
+export * from './RepoSyncEventsApi';
 export * from './RepoSyncsApi';
 export * from './ReportsApi';
 export * from './ScreenshotMarkersApi';

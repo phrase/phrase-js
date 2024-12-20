@@ -40,6 +40,7 @@ src/apis/ProjectsApi.ts
 src/apis/QualityPerformanceScoreApi.ts
 src/apis/ReleaseTriggersApi.ts
 src/apis/ReleasesApi.ts
+src/apis/RepoSyncEventsApi.ts
 src/apis/RepoSyncsApi.ts
 src/apis/ReportsApi.ts
 src/apis/ScreenshotMarkersApi.ts

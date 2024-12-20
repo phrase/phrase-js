@@ -36,7 +36,7 @@ export interface RepoSyncEvent {
      * @type {string}
      * @memberof RepoSyncEvent
      */
-    eventType?: RepoSyncEventEventTypeEnum;
+    type?: RepoSyncEventTypeEnum;
     /**
      * 
      * @type {Date}
@@ -80,7 +80,7 @@ export function RepoSyncEventFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'id': !exists(json, 'id') ? undefined : json['id'],
-        'eventType': !exists(json, 'event_type') ? undefined : json['event_type'],
+        'type': !exists(json, 'type') ? undefined : json['type'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'status': !exists(json, 'status') ? undefined : json['status'],
         'pullRequestUrl': !exists(json, 'pull_request_url') ? undefined : json['pull_request_url'],
@@ -99,7 +99,7 @@ export function RepoSyncEventToJSON(value?: RepoSyncEvent | null): any {
     return {
         
         'id': value.id,
-        'event_type': value.eventType,
+        'type': value.type,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'status': value.status,
         'pull_request_url': value.pullRequestUrl,
@@ -112,7 +112,7 @@ export function RepoSyncEventToJSON(value?: RepoSyncEvent | null): any {
 * @export
 * @enum {string}
 */
-export enum RepoSyncEventEventTypeEnum {
+export enum RepoSyncEventTypeEnum {
     Import = 'import',
     Export = 'export'
 }

@@ -379,10 +379,10 @@ Class | Method | HTTP request | Description
 *ReleasesApi* | **releaseShow** | **GET** /accounts/{account_id}/distributions/{distribution_id}/releases/{id} | Get a single release
 *ReleasesApi* | **releaseUpdate** | **PATCH** /accounts/{account_id}/distributions/{distribution_id}/releases/{id} | Update a release
 *ReleasesApi* | **releasesList** | **GET** /accounts/{account_id}/distributions/{distribution_id}/releases | List releases
+*RepoSyncEventsApi* | **repoSyncEventList** | **GET** /accounts/{account_id}/repo_syncs/{id}/events | Repository Syncs History
+*RepoSyncEventsApi* | **repoSyncEventShow** | **GET** /accounts/{account_id}/repo_syncs/{repo_sync_id}/events/{id} | Get a single Repo Sync Event
 *RepoSyncsApi* | **repoSyncActivate** | **POST** /accounts/{account_id}/repo_syncs/{id}/activate | Activate a Repo Sync
 *RepoSyncsApi* | **repoSyncDeactivate** | **POST** /accounts/{account_id}/repo_syncs/{id}/deactivate | Deactivate a Repo Sync
-*RepoSyncsApi* | **repoSyncEventShow** | **GET** /accounts/{account_id}/repo_syncs/{repo_sync_id}/events/{id} | Get a single Repo Sync Event
-*RepoSyncsApi* | **repoSyncEvents** | **GET** /accounts/{account_id}/repo_syncs/{id}/events | Repository Syncs History
 *RepoSyncsApi* | **repoSyncExport** | **POST** /accounts/{account_id}/repo_syncs/{id}/export | Export to code repository
 *RepoSyncsApi* | **repoSyncImport** | **POST** /accounts/{account_id}/repo_syncs/{id}/import | Import from code repository
 *RepoSyncsApi* | **repoSyncList** | **GET** /accounts/{account_id}/repo_syncs | Get Repo Syncs
