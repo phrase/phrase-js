@@ -15,34 +15,34 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInner
+ * @interface QualityPerformanceScoreList200ResponseAnyOfErrorsInner
  */
-export interface ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInner {
+export interface QualityPerformanceScoreList200ResponseAnyOfErrorsInner {
     /**
      * 
      * @type {string}
-     * @memberof ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInner
+     * @memberof QualityPerformanceScoreList200ResponseAnyOfErrorsInner
      */
     message?: string;
     /**
      * 
      * @type {string}
-     * @memberof ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInner
+     * @memberof QualityPerformanceScoreList200ResponseAnyOfErrorsInner
      */
     code?: string;
     /**
      * One of the translation ids passed in arguments
      * @type {string}
-     * @memberof ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInner
+     * @memberof QualityPerformanceScoreList200ResponseAnyOfErrorsInner
      */
     id?: string;
 }
 
-export function ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInnerFromJSON(json: any): ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInner {
-    return ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInnerFromJSONTyped(json, false);
+export function QualityPerformanceScoreList200ResponseAnyOfErrorsInnerFromJSON(json: any): QualityPerformanceScoreList200ResponseAnyOfErrorsInner {
+    return QualityPerformanceScoreList200ResponseAnyOfErrorsInnerFromJSONTyped(json, false);
 }
 
-export function ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInner {
+export function QualityPerformanceScoreList200ResponseAnyOfErrorsInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): QualityPerformanceScoreList200ResponseAnyOfErrorsInner {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -54,7 +54,7 @@ export function ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInnerFromJS
     };
 }
 
-export function ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInnerToJSON(value?: ProjectsQualityPerformanceScore200ResponseAnyOfErrorsInner | null): any {
+export function QualityPerformanceScoreList200ResponseAnyOfErrorsInnerToJSON(value?: QualityPerformanceScoreList200ResponseAnyOfErrorsInner | null): any {
     if (value === undefined) {
         return undefined;
     }

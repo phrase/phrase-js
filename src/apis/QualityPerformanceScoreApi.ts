@@ -17,17 +17,17 @@ import {
     CustomMetadataPropertyCreate422Response,
     CustomMetadataPropertyCreate422ResponseFromJSON,
     CustomMetadataPropertyCreate422ResponseToJSON,
-    ProjectsQualityPerformanceScore200Response,
-    ProjectsQualityPerformanceScore200ResponseFromJSON,
-    ProjectsQualityPerformanceScore200ResponseToJSON,
-    ProjectsQualityPerformanceScoreRequest,
-    ProjectsQualityPerformanceScoreRequestFromJSON,
-    ProjectsQualityPerformanceScoreRequestToJSON,
+    QualityPerformanceScoreList200Response,
+    QualityPerformanceScoreList200ResponseFromJSON,
+    QualityPerformanceScoreList200ResponseToJSON,
+    QualityPerformanceScoreListRequest,
+    QualityPerformanceScoreListRequestFromJSON,
+    QualityPerformanceScoreListRequestToJSON,
 } from '../models';
 
-export interface ProjectsQualityPerformanceScoreOperationRequest {
+export interface QualityPerformanceScoreListOperationRequest {
     projectId: string;
-    projectsQualityPerformanceScoreRequest: ProjectsQualityPerformanceScoreRequest;
+    qualityPerformanceScoreListRequest: QualityPerformanceScoreListRequest;
     xPhraseAppOTP?: string;
 }
 
@@ -40,13 +40,13 @@ export class QualityPerformanceScoreApi extends runtime.BaseAPI {
      * Retrieves the quality scores for your Strings translations. Returns a score, measured by Phrase QPS
      * Get Translation Quality
      */
-    async projectsQualityPerformanceScoreRaw(requestParameters: ProjectsQualityPerformanceScoreOperationRequest): Promise<runtime.ApiResponse<ProjectsQualityPerformanceScore200Response>> {
+    async qualityPerformanceScoreListRaw(requestParameters: QualityPerformanceScoreListOperationRequest): Promise<runtime.ApiResponse<QualityPerformanceScoreList200Response>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
-            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling projectsQualityPerformanceScore.');
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling qualityPerformanceScoreList.');
         }
 
-        if (requestParameters.projectsQualityPerformanceScoreRequest === null || requestParameters.projectsQualityPerformanceScoreRequest === undefined) {
-            throw new runtime.RequiredError('projectsQualityPerformanceScoreRequest','Required parameter requestParameters.projectsQualityPerformanceScoreRequest was null or undefined when calling projectsQualityPerformanceScore.');
+        if (requestParameters.qualityPerformanceScoreListRequest === null || requestParameters.qualityPerformanceScoreListRequest === undefined) {
+            throw new runtime.RequiredError('qualityPerformanceScoreListRequest','Required parameter requestParameters.qualityPerformanceScoreListRequest was null or undefined when calling qualityPerformanceScoreList.');
         }
 
         const queryParameters: any = {};
@@ -71,18 +71,18 @@ export class QualityPerformanceScoreApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ProjectsQualityPerformanceScoreRequestToJSON(requestParameters.projectsQualityPerformanceScoreRequest),
+            body: QualityPerformanceScoreListRequestToJSON(requestParameters.qualityPerformanceScoreListRequest),
         });
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectsQualityPerformanceScore200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => QualityPerformanceScoreList200ResponseFromJSON(jsonValue));
     }
 
     /**
      * Retrieves the quality scores for your Strings translations. Returns a score, measured by Phrase QPS
      * Get Translation Quality
      */
-    async projectsQualityPerformanceScore(requestParameters: ProjectsQualityPerformanceScoreOperationRequest): Promise<ProjectsQualityPerformanceScore200Response> {
-        const response = await this.projectsQualityPerformanceScoreRaw(requestParameters);
+    async qualityPerformanceScoreList(requestParameters: QualityPerformanceScoreListOperationRequest): Promise<QualityPerformanceScoreList200Response> {
+        const response = await this.qualityPerformanceScoreListRaw(requestParameters);
         return await response.value();
     }
 

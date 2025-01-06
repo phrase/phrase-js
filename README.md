@@ -367,7 +367,7 @@ Class | Method | HTTP request | Description
 *ProjectsApi* | **projectShow** | **GET** /projects/{id} | Get a single project
 *ProjectsApi* | **projectUpdate** | **PATCH** /projects/{id} | Update a project
 *ProjectsApi* | **projectsList** | **GET** /projects | List projects
-*QualityPerformanceScoreApi* | **projectsQualityPerformanceScore** | **POST** /projects/{project_id}/quality_performance_score | Get Translation Quality
+*QualityPerformanceScoreApi* | **qualityPerformanceScoreList** | **POST** /projects/{project_id}/quality_performance_score | Get Translation Quality
 *ReleaseTriggersApi* | **releaseTriggersCreate** | **POST** /accounts/{account_id}/distributions/{distribution_id}/release_triggers | Create a release trigger
 *ReleaseTriggersApi* | **releaseTriggersDestroy** | **DELETE** /accounts/{account_id}/distributions/{distribution_id}/release_triggers/{id} | Delete a single release trigger
 *ReleaseTriggersApi* | **releaseTriggersList** | **GET** /accounts/{account_id}/distributions/{distribution_id}/release_triggers | List release triggers

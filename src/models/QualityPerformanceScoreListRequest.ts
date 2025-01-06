@@ -15,22 +15,22 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface ProjectsQualityPerformanceScoreRequest
+ * @interface QualityPerformanceScoreListRequest
  */
-export interface ProjectsQualityPerformanceScoreRequest {
+export interface QualityPerformanceScoreListRequest {
     /**
      * Translation ids you want to get the quality performance score for
      * @type {Array<string>}
-     * @memberof ProjectsQualityPerformanceScoreRequest
+     * @memberof QualityPerformanceScoreListRequest
      */
     translationIds?: Array<string>;
 }
 
-export function ProjectsQualityPerformanceScoreRequestFromJSON(json: any): ProjectsQualityPerformanceScoreRequest {
-    return ProjectsQualityPerformanceScoreRequestFromJSONTyped(json, false);
+export function QualityPerformanceScoreListRequestFromJSON(json: any): QualityPerformanceScoreListRequest {
+    return QualityPerformanceScoreListRequestFromJSONTyped(json, false);
 }
 
-export function ProjectsQualityPerformanceScoreRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProjectsQualityPerformanceScoreRequest {
+export function QualityPerformanceScoreListRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): QualityPerformanceScoreListRequest {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -40,7 +40,7 @@ export function ProjectsQualityPerformanceScoreRequestFromJSONTyped(json: any, i
     };
 }
 
-export function ProjectsQualityPerformanceScoreRequestToJSON(value?: ProjectsQualityPerformanceScoreRequest | null): any {
+export function QualityPerformanceScoreListRequestToJSON(value?: QualityPerformanceScoreListRequest | null): any {
     if (value === undefined) {
         return undefined;
     }
