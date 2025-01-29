@@ -29,6 +29,9 @@ import {
     JobKeysCreateParameters,
     JobKeysCreateParametersFromJSON,
     JobKeysCreateParametersToJSON,
+    JobKeysDeleteParameters,
+    JobKeysDeleteParametersFromJSON,
+    JobKeysDeleteParametersToJSON,
     JobReopenParameters,
     JobReopenParametersFromJSON,
     JobReopenParametersToJSON,
@@ -70,9 +73,8 @@ export interface JobKeysCreateRequest {
 export interface JobKeysDeleteRequest {
     projectId: string;
     id: string;
+    jobKeysDeleteParameters: JobKeysDeleteParameters;
     xPhraseAppOTP?: string;
-    branch?: string;
-    translationKeyIds?: Array<string>;
 }
 
 export interface JobLockRequest {
@@ -365,17 +367,15 @@ export class JobsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling jobKeysDelete.');
         }
 
+        if (requestParameters.jobKeysDeleteParameters === null || requestParameters.jobKeysDeleteParameters === undefined) {
+            throw new runtime.RequiredError('jobKeysDeleteParameters','Required parameter requestParameters.jobKeysDeleteParameters was null or undefined when calling jobKeysDelete.');
+        }
+
         const queryParameters: any = {};
 
-        if (requestParameters.branch !== undefined) {
-            queryParameters['branch'] = requestParameters.branch;
-        }
-
-        if (requestParameters.translationKeyIds) {
-            queryParameters['translation_key_ids'] = requestParameters.translationKeyIds;
-        }
-
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
             headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
@@ -393,6 +393,7 @@ export class JobsApi extends runtime.BaseAPI {
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
+            body: JobKeysDeleteParametersToJSON(requestParameters.jobKeysDeleteParameters),
         });
 
         return new runtime.TextApiResponse(response) as any;

@@ -62,6 +62,7 @@ export * from './JobCompleteParameters';
 export * from './JobCreateParameters';
 export * from './JobDetails';
 export * from './JobKeysCreateParameters';
+export * from './JobKeysDeleteParameters';
 export * from './JobLocale';
 export * from './JobLocaleCompleteParameters';
 export * from './JobLocaleCompleteReviewParameters';

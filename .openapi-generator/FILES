@@ -123,6 +123,7 @@ src/models/JobCompleteParameters.ts
 src/models/JobCreateParameters.ts
 src/models/JobDetails.ts
 src/models/JobKeysCreateParameters.ts
+src/models/JobKeysDeleteParameters.ts
 src/models/JobLocale.ts
 src/models/JobLocaleCompleteParameters.ts
 src/models/JobLocaleCompleteReviewParameters.ts
