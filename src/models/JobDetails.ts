@@ -115,6 +115,12 @@ export interface JobDetails {
     jobTagName?: string;
     /**
      * 
+     * @type {Date}
+     * @memberof JobDetails
+     */
+    sourceTranslationsUpdatedAt?: Date;
+    /**
+     * 
      * @type {LocalePreview}
      * @memberof JobDetails
      */
@@ -155,6 +161,7 @@ export function JobDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'owner': !exists(json, 'owner') ? undefined : UserPreviewFromJSON(json['owner']),
         'jobTagName': !exists(json, 'job_tag_name') ? undefined : json['job_tag_name'],
+        'sourceTranslationsUpdatedAt': !exists(json, 'source_translations_updated_at') ? undefined : (new Date(json['source_translations_updated_at'])),
         'sourceLocale': !exists(json, 'source_locale') ? undefined : LocalePreviewFromJSON(json['source_locale']),
         'locales': !exists(json, 'locales') ? undefined : ((json['locales'] as Array<any>).map(LocalePreviewFromJSON)),
         'keys': !exists(json, 'keys') ? undefined : ((json['keys'] as Array<any>).map(KeyPreviewFromJSON)),
@@ -182,6 +189,7 @@ export function JobDetailsToJSON(value?: JobDetails | null): any {
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'owner': UserPreviewToJSON(value.owner),
         'job_tag_name': value.jobTagName,
+        'source_translations_updated_at': value.sourceTranslationsUpdatedAt === undefined ? undefined : (value.sourceTranslationsUpdatedAt.toISOString()),
         'source_locale': LocalePreviewToJSON(value.sourceLocale),
         'locales': value.locales === undefined ? undefined : ((value.locales as Array<any>).map(LocalePreviewToJSON)),
         'keys': value.keys === undefined ? undefined : ((value.keys as Array<any>).map(KeyPreviewToJSON)),
