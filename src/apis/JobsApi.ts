@@ -127,6 +127,7 @@ export interface JobsByAccountRequest {
     ownedBy?: string;
     assignedTo?: string;
     state?: string;
+    updatedSince?: string;
 }
 
 export interface JobsListRequest {
@@ -138,6 +139,7 @@ export interface JobsListRequest {
     ownedBy?: string;
     assignedTo?: string;
     state?: string;
+    updatedSince?: string;
 }
 
 /**
@@ -754,6 +756,10 @@ export class JobsApi extends runtime.BaseAPI {
             queryParameters['state'] = requestParameters.state;
         }
 
+        if (requestParameters.updatedSince !== undefined) {
+            queryParameters['updated_since'] = requestParameters.updatedSince;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
@@ -819,6 +825,10 @@ export class JobsApi extends runtime.BaseAPI {
 
         if (requestParameters.state !== undefined) {
             queryParameters['state'] = requestParameters.state;
+        }
+
+        if (requestParameters.updatedSince !== undefined) {
+            queryParameters['updated_since'] = requestParameters.updatedSince;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
