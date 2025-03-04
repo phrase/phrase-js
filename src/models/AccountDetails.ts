@@ -73,6 +73,12 @@ export interface AccountDetails {
      * @memberof AccountDetails
      */
     subscription?: Subscription;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof AccountDetails
+     */
+    roles?: Array<string>;
 }
 
 export function AccountDetailsFromJSON(json: any): AccountDetails {
@@ -93,6 +99,7 @@ export function AccountDetailsFromJSONTyped(json: any, ignoreDiscriminator: bool
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'companyLogoUrl': !exists(json, 'company_logo_url') ? undefined : json['company_logo_url'],
         'subscription': !exists(json, 'subscription') ? undefined : SubscriptionFromJSON(json['subscription']),
+        'roles': !exists(json, 'roles') ? undefined : json['roles'],
     };
 }
 
@@ -113,6 +120,7 @@ export function AccountDetailsToJSON(value?: AccountDetails | null): any {
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'company_logo_url': value.companyLogoUrl,
         'subscription': SubscriptionToJSON(value.subscription),
+        'roles': value.roles,
     };
 }
 
