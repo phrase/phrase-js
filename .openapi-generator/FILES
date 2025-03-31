@@ -82,7 +82,6 @@ src/models/CommentCreateParameters1.ts
 src/models/CommentMarkReadParameters.ts
 src/models/CommentReaction.ts
 src/models/CommentUpdateParameters.ts
-src/models/CommentsListParameters.ts
 src/models/CurrentUser.ts
 src/models/CustomMetadataDataType.ts
 src/models/CustomMetadataPropertiesCreateParameters.ts
@@ -206,7 +205,6 @@ src/models/ReleasePreview.ts
 src/models/ReleaseTrigger.ts
 src/models/ReleaseUpdateParameters.ts
 src/models/ReleaseUpdateParameters1.ts
-src/models/RepliesListParameters.ts
 src/models/RepoSync.ts
 src/models/RepoSyncEvent.ts
 src/models/Screenshot.ts
