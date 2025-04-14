@@ -66,6 +66,18 @@ export interface UploadSummary {
      * @memberof UploadSummary
      */
     translationKeysIgnored?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof UploadSummary
+     */
+    processedTranslations?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof UploadSummary
+     */
+    uploadTotalTranslations?: number;
 }
 
 export function UploadSummaryFromJSON(json: any): UploadSummary {
@@ -86,6 +98,8 @@ export function UploadSummaryFromJSONTyped(json: any, ignoreDiscriminator: boole
         'translationsUpdated': !exists(json, 'translations_updated') ? undefined : json['translations_updated'],
         'tagsCreated': !exists(json, 'tags_created') ? undefined : json['tags_created'],
         'translationKeysIgnored': !exists(json, 'translation_keys_ignored') ? undefined : json['translation_keys_ignored'],
+        'processedTranslations': !exists(json, 'processed_translations') ? undefined : json['processed_translations'],
+        'uploadTotalTranslations': !exists(json, 'upload_total_translations') ? undefined : json['upload_total_translations'],
     };
 }
 
@@ -106,6 +120,8 @@ export function UploadSummaryToJSON(value?: UploadSummary | null): any {
         'translations_updated': value.translationsUpdated,
         'tags_created': value.tagsCreated,
         'translation_keys_ignored': value.translationKeysIgnored,
+        'processed_translations': value.processedTranslations,
+        'upload_total_translations': value.uploadTotalTranslations,
     };
 }
 
