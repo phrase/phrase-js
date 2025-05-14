@@ -38,6 +38,7 @@ export interface UploadCreateRequest {
     localeMapping?: object;
     formatOptions?: object;
     autotranslate?: boolean;
+    verifyMentionedTranslations?: boolean;
     markReviewed?: boolean;
     tagOnlyAffectedKeys?: boolean;
     translationKeyPrefix?: string;
@@ -185,6 +186,10 @@ export class UploadsApi extends runtime.BaseAPI {
 
         if (requestParameters.autotranslate !== undefined) {
             formParams.append('autotranslate', requestParameters.autotranslate as any);
+        }
+
+        if (requestParameters.verifyMentionedTranslations !== undefined) {
+            formParams.append('verify_mentioned_translations', requestParameters.verifyMentionedTranslations as any);
         }
 
         if (requestParameters.markReviewed !== undefined) {
