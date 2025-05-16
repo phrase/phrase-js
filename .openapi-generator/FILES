@@ -247,6 +247,7 @@ src/models/TranslationKeyDetails.ts
 src/models/TranslationOrder.ts
 src/models/TranslationParent.ts
 src/models/TranslationReviewParameters.ts
+src/models/TranslationUnreviewParameters.ts
 src/models/TranslationUnverifyParameters.ts
 src/models/TranslationUpdateParameters.ts
 src/models/TranslationVerifyParameters.ts
@@ -256,6 +257,7 @@ src/models/TranslationsExcludeParameters.ts
 src/models/TranslationsIncludeParameters.ts
 src/models/TranslationsReviewParameters.ts
 src/models/TranslationsSearchParameters.ts
+src/models/TranslationsUnreviewParameters.ts
 src/models/TranslationsUnverifyParameters.ts
 src/models/TranslationsVerifyParameters.ts
 src/models/Upload.ts

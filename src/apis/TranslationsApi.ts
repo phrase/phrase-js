@@ -35,6 +35,9 @@ import {
     TranslationReviewParameters,
     TranslationReviewParametersFromJSON,
     TranslationReviewParametersToJSON,
+    TranslationUnreviewParameters,
+    TranslationUnreviewParametersFromJSON,
+    TranslationUnreviewParametersToJSON,
     TranslationUnverifyParameters,
     TranslationUnverifyParametersFromJSON,
     TranslationUnverifyParametersToJSON,
@@ -56,6 +59,9 @@ import {
     TranslationsSearchParameters,
     TranslationsSearchParametersFromJSON,
     TranslationsSearchParametersToJSON,
+    TranslationsUnreviewParameters,
+    TranslationsUnreviewParametersFromJSON,
+    TranslationsUnreviewParametersToJSON,
     TranslationsUnverifyParameters,
     TranslationsUnverifyParametersFromJSON,
     TranslationsUnverifyParametersToJSON,
@@ -96,6 +102,13 @@ export interface TranslationShowRequest {
     id: string;
     xPhraseAppOTP?: string;
     branch?: string;
+}
+
+export interface TranslationUnreviewRequest {
+    projectId: string;
+    id: string;
+    translationUnreviewParameters: TranslationUnreviewParameters;
+    xPhraseAppOTP?: string;
 }
 
 export interface TranslationUnverifyRequest {
@@ -180,6 +193,12 @@ export interface TranslationsSearchRequest {
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
+}
+
+export interface TranslationsUnreviewCollectionRequest {
+    projectId: string;
+    translationsUnreviewParameters: TranslationsUnreviewParameters;
+    xPhraseAppOTP?: string;
 }
 
 export interface TranslationsUnverifyCollectionRequest {
@@ -459,6 +478,60 @@ export class TranslationsApi extends runtime.BaseAPI {
      */
     async translationShow(requestParameters: TranslationShowRequest): Promise<TranslationDetails> {
         const response = await this.translationShowRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Mark a reviewed translation as translated.
+     * Unreview a translation
+     */
+    async translationUnreviewRaw(requestParameters: TranslationUnreviewRequest): Promise<runtime.ApiResponse<TranslationDetails>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling translationUnreview.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling translationUnreview.');
+        }
+
+        if (requestParameters.translationUnreviewParameters === null || requestParameters.translationUnreviewParameters === undefined) {
+            throw new runtime.RequiredError('translationUnreviewParameters','Required parameter requestParameters.translationUnreviewParameters was null or undefined when calling translationUnreview.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/projects/{project_id}/translations/{id}/unreview`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: TranslationUnreviewParametersToJSON(requestParameters.translationUnreviewParameters),
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TranslationDetailsFromJSON(jsonValue));
+    }
+
+    /**
+     * Mark a reviewed translation as translated.
+     * Unreview a translation
+     */
+    async translationUnreview(requestParameters: TranslationUnreviewRequest): Promise<TranslationDetails> {
+        const response = await this.translationUnreviewRaw(requestParameters);
         return await response.value();
     }
 
@@ -1046,6 +1119,56 @@ export class TranslationsApi extends runtime.BaseAPI {
      */
     async translationsSearch(requestParameters: TranslationsSearchRequest): Promise<Array<Translation>> {
         const response = await this.translationsSearchRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Unreview translations matching query.
+     * Unreview translations selected by query
+     */
+    async translationsUnreviewCollectionRaw(requestParameters: TranslationsUnreviewCollectionRequest): Promise<runtime.ApiResponse<AffectedCount>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling translationsUnreviewCollection.');
+        }
+
+        if (requestParameters.translationsUnreviewParameters === null || requestParameters.translationsUnreviewParameters === undefined) {
+            throw new runtime.RequiredError('translationsUnreviewParameters','Required parameter requestParameters.translationsUnreviewParameters was null or undefined when calling translationsUnreviewCollection.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/projects/{project_id}/translations/unreview`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: TranslationsUnreviewParametersToJSON(requestParameters.translationsUnreviewParameters),
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AffectedCountFromJSON(jsonValue));
+    }
+
+    /**
+     * Unreview translations matching query.
+     * Unreview translations selected by query
+     */
+    async translationsUnreviewCollection(requestParameters: TranslationsUnreviewCollectionRequest): Promise<AffectedCount> {
+        const response = await this.translationsUnreviewCollectionRaw(requestParameters);
         return await response.value();
     }
 

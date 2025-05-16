@@ -433,6 +433,7 @@ Class | Method | HTTP request | Description
 *TranslationsApi* | **translationInclude** | **PATCH** /projects/{project_id}/translations/{id}/include | Include a translation
 *TranslationsApi* | **translationReview** | **PATCH** /projects/{project_id}/translations/{id}/review | Review a translation
 *TranslationsApi* | **translationShow** | **GET** /projects/{project_id}/translations/{id} | Get a single translation
+*TranslationsApi* | **translationUnreview** | **PATCH** /projects/{project_id}/translations/{id}/unreview | Unreview a translation
 *TranslationsApi* | **translationUnverify** | **PATCH** /projects/{project_id}/translations/{id}/unverify | Mark a translation as unverified
 *TranslationsApi* | **translationUpdate** | **PATCH** /projects/{project_id}/translations/{id} | Update a translation
 *TranslationsApi* | **translationVerify** | **PATCH** /projects/{project_id}/translations/{id}/verify | Verify a translation
@@ -443,6 +444,7 @@ Class | Method | HTTP request | Description
 *TranslationsApi* | **translationsList** | **GET** /projects/{project_id}/translations | List all translations
 *TranslationsApi* | **translationsReviewCollection** | **PATCH** /projects/{project_id}/translations/review | Review translations selected by query
 *TranslationsApi* | **translationsSearch** | **POST** /projects/{project_id}/translations/search | Search translations
+*TranslationsApi* | **translationsUnreviewCollection** | **PATCH** /projects/{project_id}/translations/unreview | Unreview translations selected by query
 *TranslationsApi* | **translationsUnverifyCollection** | **PATCH** /projects/{project_id}/translations/unverify | Unverify translations by query
 *TranslationsApi* | **translationsVerifyCollection** | **PATCH** /projects/{project_id}/translations/verify | Verify translations by query
 *UploadsApi* | **uploadCreate** | **POST** /projects/{project_id}/uploads | Upload a new file
