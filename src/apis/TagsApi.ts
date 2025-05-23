@@ -42,6 +42,7 @@ export interface TagShowRequest {
     projectId: string;
     name: string;
     xPhraseAppOTP?: string;
+    omitStatistics?: boolean;
     branch?: string;
 }
 
@@ -174,6 +175,10 @@ export class TagsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.omitStatistics !== undefined) {
+            queryParameters['omit_statistics'] = requestParameters.omitStatistics;
+        }
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
