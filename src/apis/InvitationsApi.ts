@@ -82,7 +82,7 @@ export interface InvitationsListRequest {
 export class InvitationsApi extends runtime.BaseAPI {
 
     /**
-     * Invite a person to an account. Developers and translators need <code>project_ids</code> and <code>locale_ids</code> assigned to access them. Access token scope must include <code>team.manage</code>.
+     * Invite a person to an account. Developers and translators need `project_ids` and `locale_ids` assigned to access them. Access token scope must include `team.manage`.
      * Create a new invitation
      */
     async invitationCreateRaw(requestParameters: InvitationCreateRequest): Promise<runtime.ApiResponse<Invitation>> {
@@ -123,7 +123,7 @@ export class InvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Invite a person to an account. Developers and translators need <code>project_ids</code> and <code>locale_ids</code> assigned to access them. Access token scope must include <code>team.manage</code>.
+     * Invite a person to an account. Developers and translators need `project_ids` and `locale_ids` assigned to access them. Access token scope must include `team.manage`.
      * Create a new invitation
      */
     async invitationCreate(requestParameters: InvitationCreateRequest): Promise<Invitation> {
@@ -132,7 +132,7 @@ export class InvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing invitation (must not be accepted yet). Access token scope must include <code>team.manage</code>.
+     * Delete an existing invitation (must not be accepted yet). Access token scope must include `team.manage`.
      * Delete an invitation
      */
     async invitationDeleteRaw(requestParameters: InvitationDeleteRequest): Promise<runtime.ApiResponse<any>> {
@@ -170,7 +170,7 @@ export class InvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing invitation (must not be accepted yet). Access token scope must include <code>team.manage</code>.
+     * Delete an existing invitation (must not be accepted yet). Access token scope must include `team.manage`.
      * Delete an invitation
      */
     async invitationDelete(requestParameters: InvitationDeleteRequest): Promise<any> {
@@ -179,7 +179,7 @@ export class InvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Resend the invitation email (must not be accepted yet). Access token scope must include <code>team.manage</code>.
+     * Resend the invitation email (must not be accepted yet). Access token scope must include `team.manage`.
      * Resend an invitation
      */
     async invitationResendRaw(requestParameters: InvitationResendRequest): Promise<runtime.ApiResponse<Invitation>> {
@@ -217,7 +217,7 @@ export class InvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Resend the invitation email (must not be accepted yet). Access token scope must include <code>team.manage</code>.
+     * Resend the invitation email (must not be accepted yet). Access token scope must include `team.manage`.
      * Resend an invitation
      */
     async invitationResend(requestParameters: InvitationResendRequest): Promise<Invitation> {
@@ -226,7 +226,7 @@ export class InvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details on a single invitation. Access token scope must include <code>team.manage</code>.
+     * Get details on a single invitation. Access token scope must include `team.manage`.
      * Get a single invitation
      */
     async invitationShowRaw(requestParameters: InvitationShowRequest): Promise<runtime.ApiResponse<Invitation>> {
@@ -264,7 +264,7 @@ export class InvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details on a single invitation. Access token scope must include <code>team.manage</code>.
+     * Get details on a single invitation. Access token scope must include `team.manage`.
      * Get a single invitation
      */
     async invitationShow(requestParameters: InvitationShowRequest): Promise<Invitation> {
@@ -273,7 +273,7 @@ export class InvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing invitation (must not be accepted yet). The <code>email</code> cannot be updated. Developers and translators need <code>project_ids</code> and <code>locale_ids</code> assigned to access them. Access token scope must include <code>team.manage</code>.
+     * Update an existing invitation (must not be accepted yet). The `email` cannot be updated. Developers and translators need `project_ids` and `locale_ids` assigned to access them. Access token scope must include `team.manage`.
      * Update an invitation
      */
     async invitationUpdateRaw(requestParameters: InvitationUpdateRequest): Promise<runtime.ApiResponse<Invitation>> {
@@ -318,7 +318,7 @@ export class InvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing invitation (must not be accepted yet). The <code>email</code> cannot be updated. Developers and translators need <code>project_ids</code> and <code>locale_ids</code> assigned to access them. Access token scope must include <code>team.manage</code>.
+     * Update an existing invitation (must not be accepted yet). The `email` cannot be updated. Developers and translators need `project_ids` and `locale_ids` assigned to access them. Access token scope must include `team.manage`.
      * Update an invitation
      */
     async invitationUpdate(requestParameters: InvitationUpdateRequest): Promise<Invitation> {
@@ -327,7 +327,7 @@ export class InvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update member\'s settings in the invitations. Access token scope must include <code>team.manage</code>.
+     * Update member\'s settings in the invitations. Access token scope must include `team.manage`.
      * Update a member\'s invitation access
      */
     async invitationUpdateSettingsRaw(requestParameters: InvitationUpdateSettingsRequest): Promise<runtime.ApiResponse<Invitation>> {
@@ -372,7 +372,7 @@ export class InvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update member\'s settings in the invitations. Access token scope must include <code>team.manage</code>.
+     * Update member\'s settings in the invitations. Access token scope must include `team.manage`.
      * Update a member\'s invitation access
      */
     async invitationUpdateSettings(requestParameters: InvitationUpdateSettingsRequest): Promise<Invitation> {
@@ -381,7 +381,7 @@ export class InvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List invitations for an account. It will also list the accessible resources like projects and locales the invited user has access to. In case nothing is shown the default access from the role is used. Access token scope must include <code>team.manage</code>.
+     * List invitations for an account. It will also list the accessible resources like projects and locales the invited user has access to. In case nothing is shown the default access from the role is used. Access token scope must include `team.manage`.
      * List invitations
      */
     async invitationsListRaw(requestParameters: InvitationsListRequest): Promise<runtime.ApiResponse<Array<Invitation>>> {
@@ -423,7 +423,7 @@ export class InvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List invitations for an account. It will also list the accessible resources like projects and locales the invited user has access to. In case nothing is shown the default access from the role is used. Access token scope must include <code>team.manage</code>.
+     * List invitations for an account. It will also list the accessible resources like projects and locales the invited user has access to. In case nothing is shown the default access from the role is used. Access token scope must include `team.manage`.
      * List invitations
      */
     async invitationsList(requestParameters: InvitationsListRequest): Promise<Array<Invitation>> {

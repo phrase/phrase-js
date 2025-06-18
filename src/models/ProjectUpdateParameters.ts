@@ -37,7 +37,7 @@ export interface ProjectUpdateParameters {
      */
     pointOfContact?: string;
     /**
-     * (Optional) Main file format specified by its API Extension name. Used for locale downloads if no format is specified. For API Extension names of available file formats see <a href=\"https://support.phrase.com/hc/en-us/sections/6111343326364\">Format Guide</a> or our <a href=\"#formats\">Formats API Endpoint</a>.
+     * (Optional) Main file format specified by its API Extension name. Used for locale downloads if no format is specified. For API Extension names of available file formats see [Format Guide](https://support.phrase.com/hc/en-us/sections/6111343326364) or our [Formats API Endpoint](#formats).
      * @type {string}
      * @memberof ProjectUpdateParameters
      */
@@ -67,7 +67,7 @@ export interface ProjectUpdateParameters {
      */
     removeProjectImage?: boolean;
     /**
-     * (Optional) Review Workflow. \"simple\" / \"review\". <a href=\"https://support.phrase.com/hc/en-us/articles/5784094755484\">Read more</a>
+     * (Optional) Review Workflow. \"simple\" / \"review\". [Read more](https://support.phrase.com/hc/en-us/articles/5784094755484)
      * @type {string}
      * @memberof ProjectUpdateParameters
      */
@@ -97,7 +97,7 @@ export interface ProjectUpdateParameters {
      */
     enableAllDataTypeTranslationKeysForTranslators?: boolean;
     /**
-     * (Optional) We can validate and highlight your ICU messages. <a href=\"https://support.phrase.com/hc/en-us/articles/5822319545116\">Read more</a>
+     * (Optional) We can validate and highlight your ICU messages. [Read more](https://support.phrase.com/hc/en-us/articles/5822319545116)
      * @type {boolean}
      * @memberof ProjectUpdateParameters
      */
@@ -109,7 +109,7 @@ export interface ProjectUpdateParameters {
      */
     zeroPluralFormEnabled?: boolean;
     /**
-     * (Optional) Autopilot, requires machine_translation_enabled. <a href=\"https://support.phrase.com/hc/en-us/articles/5822187934364\">Read more</a>
+     * (Optional) Autopilot, requires machine_translation_enabled. [Read more](https://support.phrase.com/hc/en-us/articles/5822187934364)
      * @type {boolean}
      * @memberof ProjectUpdateParameters
      */
@@ -151,7 +151,7 @@ export interface ProjectUpdateParameters {
      */
     autotranslateUseTranslationMemory?: boolean;
     /**
-     * (Optional) Sets the default encoding for Uploads. If you leave it empty, we will try to guess it automatically for you when you Upload a file. You can still override this value by setting the <a href=\'#post-/projects/-project_id-/uploads\'>`file_encoding`</a> parameter for Uploads.
+     * (Optional) Sets the default encoding for Uploads. If you leave it empty, we will try to guess it automatically for you when you Upload a file. You can still override this value by setting the [`file_encoding`](/en/api/strings/uploads/upload-a-new-file) parameter for Uploads.
      * @type {string}
      * @memberof ProjectUpdateParameters
      */

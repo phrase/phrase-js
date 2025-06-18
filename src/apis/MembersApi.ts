@@ -67,7 +67,7 @@ export interface MembersListRequest {
 export class MembersApi extends runtime.BaseAPI {
 
     /**
-     * Remove a user from the account. The user will be removed from the account but not deleted from Phrase. Access token scope must include <code>team.manage</code>.
+     * Remove a user from the account. The user will be removed from the account but not deleted from Phrase. Access token scope must include `team.manage`.
      * Remove a user from the account
      */
     async memberDeleteRaw(requestParameters: MemberDeleteRequest): Promise<runtime.ApiResponse<any>> {
@@ -105,7 +105,7 @@ export class MembersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Remove a user from the account. The user will be removed from the account but not deleted from Phrase. Access token scope must include <code>team.manage</code>.
+     * Remove a user from the account. The user will be removed from the account but not deleted from Phrase. Access token scope must include `team.manage`.
      * Remove a user from the account
      */
     async memberDelete(requestParameters: MemberDeleteRequest): Promise<any> {
@@ -114,7 +114,7 @@ export class MembersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details on a single user in the account. Access token scope must include <code>team.manage</code>.
+     * Get details on a single user in the account. Access token scope must include `team.manage`.
      * Get single member
      */
     async memberShowRaw(requestParameters: MemberShowRequest): Promise<runtime.ApiResponse<Member>> {
@@ -152,7 +152,7 @@ export class MembersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details on a single user in the account. Access token scope must include <code>team.manage</code>.
+     * Get details on a single user in the account. Access token scope must include `team.manage`.
      * Get single member
      */
     async memberShow(requestParameters: MemberShowRequest): Promise<Member> {
@@ -161,7 +161,7 @@ export class MembersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update user permissions in the account. Developers and translators need <code>project_ids</code> and <code>locale_ids</code> assigned to access them. Access token scope must include <code>team.manage</code>.
+     * Update user permissions in the account. Developers and translators need `project_ids` and `locale_ids` assigned to access them. Access token scope must include `team.manage`.
      * Update a member
      */
     async memberUpdateRaw(requestParameters: MemberUpdateRequest): Promise<runtime.ApiResponse<Member>> {
@@ -206,7 +206,7 @@ export class MembersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update user permissions in the account. Developers and translators need <code>project_ids</code> and <code>locale_ids</code> assigned to access them. Access token scope must include <code>team.manage</code>.
+     * Update user permissions in the account. Developers and translators need `project_ids` and `locale_ids` assigned to access them. Access token scope must include `team.manage`.
      * Update a member
      */
     async memberUpdate(requestParameters: MemberUpdateRequest): Promise<Member> {
@@ -215,7 +215,7 @@ export class MembersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update user settings in the project. Access token scope must include <code>team.manage</code>.
+     * Update user settings in the project. Access token scope must include `team.manage`.
      * Update a member\'s project settings
      */
     async memberUpdateSettingsRaw(requestParameters: MemberUpdateSettingsRequest): Promise<runtime.ApiResponse<MemberProjectDetail>> {
@@ -260,7 +260,7 @@ export class MembersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update user settings in the project. Access token scope must include <code>team.manage</code>.
+     * Update user settings in the project. Access token scope must include `team.manage`.
      * Update a member\'s project settings
      */
     async memberUpdateSettings(requestParameters: MemberUpdateSettingsRequest): Promise<MemberProjectDetail> {
@@ -269,7 +269,7 @@ export class MembersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get all users active in the account. It also lists resources like projects and locales the member has access to. In case nothing is shown the default access from the role is used. Access token scope must include <code>team.manage</code>.
+     * Get all users active in the account. It also lists resources like projects and locales the member has access to. In case nothing is shown the default access from the role is used. Access token scope must include `team.manage`.
      * List members
      */
     async membersListRaw(requestParameters: MembersListRequest): Promise<runtime.ApiResponse<Array<Member>>> {
@@ -311,7 +311,7 @@ export class MembersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get all users active in the account. It also lists resources like projects and locales the member has access to. In case nothing is shown the default access from the role is used. Access token scope must include <code>team.manage</code>.
+     * Get all users active in the account. It also lists resources like projects and locales the member has access to. In case nothing is shown the default access from the role is used. Access token scope must include `team.manage`.
      * List members
      */
     async membersList(requestParameters: MembersListRequest): Promise<Array<Member>> {

@@ -769,7 +769,7 @@ export class TranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List translations for a specific locale. If you want to download all translations for one locale we recommend to use the <code>locales#download</code> endpoint.
+     * List translations for a specific locale. If you want to download all translations for one locale we recommend to use the `locales#download` endpoint. 
      * List translations by locale
      */
     async translationsByLocaleRaw(requestParameters: TranslationsByLocaleRequest): Promise<runtime.ApiResponse<Array<Translation>>> {
@@ -831,7 +831,7 @@ export class TranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List translations for a specific locale. If you want to download all translations for one locale we recommend to use the <code>locales#download</code> endpoint.
+     * List translations for a specific locale. If you want to download all translations for one locale we recommend to use the `locales#download` endpoint. 
      * List translations by locale
      */
     async translationsByLocale(requestParameters: TranslationsByLocaleRequest): Promise<Array<Translation>> {
@@ -940,7 +940,7 @@ export class TranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List translations for the given project. If you want to download all translations for one locale we recommend to use the <code>locales#download</code> endpoint.
+     * List translations for the given project. If you want to download all translations for one locale we recommend to use the `locales#download` endpoint. 
      * List all translations
      */
     async translationsListRaw(requestParameters: TranslationsListRequest): Promise<runtime.ApiResponse<Array<Translation>>> {
@@ -1006,7 +1006,7 @@ export class TranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List translations for the given project. If you want to download all translations for one locale we recommend to use the <code>locales#download</code> endpoint.
+     * List translations for the given project. If you want to download all translations for one locale we recommend to use the `locales#download` endpoint. 
      * List all translations
      */
     async translationsList(requestParameters: TranslationsListRequest): Promise<Array<Translation>> {
@@ -1065,7 +1065,7 @@ export class TranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Search translations for the given project. Provides the same search interface as <code>translations#index</code> but allows POST requests to avoid limitations imposed by GET requests. If you want to download all translations for one locale we recommend to use the <code>locales#download</code> endpoint.
+     * Search translations for the given project. Provides the same search interface as `translations#index` but allows POST requests to avoid limitations imposed by GET requests. If you want to download all translations for one locale we recommend to use the `locales#download` endpoint.
      * Search translations
      */
     async translationsSearchRaw(requestParameters: TranslationsSearchRequest): Promise<runtime.ApiResponse<Array<Translation>>> {
@@ -1114,7 +1114,7 @@ export class TranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Search translations for the given project. Provides the same search interface as <code>translations#index</code> but allows POST requests to avoid limitations imposed by GET requests. If you want to download all translations for one locale we recommend to use the <code>locales#download</code> endpoint.
+     * Search translations for the given project. Provides the same search interface as `translations#index` but allows POST requests to avoid limitations imposed by GET requests. If you want to download all translations for one locale we recommend to use the `locales#download` endpoint.
      * Search translations
      */
     async translationsSearch(requestParameters: TranslationsSearchRequest): Promise<Array<Translation>> {

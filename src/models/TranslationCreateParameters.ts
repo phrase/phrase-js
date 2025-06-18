@@ -49,7 +49,7 @@ export interface TranslationCreateParameters {
      */
     pluralSuffix?: string;
     /**
-     * Indicates whether translation is unverified. Part of the <a href=\"https://support.phrase.com/hc/en-us/articles/5784094755484\" target=\"_blank\">Advanced Workflows</a> feature.
+     * Indicates whether translation is unverified. Part of the [Advanced Workflows](https://support.phrase.com/hc/en-us/articles/5784094755484) feature.
      * @type {boolean}
      * @memberof TranslationCreateParameters
      */

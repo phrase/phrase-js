@@ -19,7 +19,7 @@ import { exists, mapValues } from '../runtime';
  */
 export interface InvitationCreateParameters {
     /**
-     * The email of the invited user. The <code>email</code> can not be updated once created. Create a new invitation for each unique email.
+     * The email of the invited user. The `email` can not be updated once created. Create a new invitation for each unique email.
      * @type {string}
      * @memberof InvitationCreateParameters
      */
@@ -61,7 +61,7 @@ export interface InvitationCreateParameters {
      */
     defaultLocaleCodes?: Array<string>;
     /**
-     * Additional permissions depending on invitation role. Available permissions are <code>create_upload</code> and <code>review_translations</code>
+     * Additional permissions depending on invitation role. Available permissions are `create_upload` and `review_translations`
      * @type {{ [key: string]: string; }}
      * @memberof InvitationCreateParameters
      */

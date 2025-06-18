@@ -43,7 +43,7 @@ export interface DistributionCreateParameters {
      */
     localeIds?: Array<string>;
     /**
-     * Additional formatting and render options. Only <code>enclose_in_cdata</code> is available for platform <code>android</code>.
+     * Additional formatting and render options. Only `enclose_in_cdata` is available for platform `android`. 
      * @type {{ [key: string]: string; }}
      * @memberof DistributionCreateParameters
      */

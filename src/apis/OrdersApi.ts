@@ -120,7 +120,7 @@ export class OrdersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new order. Access token scope must include <code>orders.create</code>.
+     * Create a new order. Access token scope must include `orders.create`.
      * Create a new order
      */
     async orderCreateRaw(requestParameters: OrderCreateRequest): Promise<runtime.ApiResponse<TranslationOrder>> {
@@ -161,7 +161,7 @@ export class OrdersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new order. Access token scope must include <code>orders.create</code>.
+     * Create a new order. Access token scope must include `orders.create`.
      * Create a new order
      */
     async orderCreate(requestParameters: OrderCreateRequest): Promise<TranslationOrder> {

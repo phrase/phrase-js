@@ -19,7 +19,7 @@ import { exists, mapValues } from '../runtime';
  */
 export interface LocaleDownloadCreateParameters {
     /**
-     * File format name. See the <a href=\"https://support.phrase.com/hc/en-us/sections/6111343326364\">format guide</a> for all supported file formats.
+     * File format name. See the [format guide](https://support.phrase.com/hc/en-us/sections/6111343326364) for all supported file formats.
      * @type {string}
      * @memberof LocaleDownloadCreateParameters
      */
@@ -61,7 +61,7 @@ export interface LocaleDownloadCreateParameters {
      */
     keepNotranslateTags?: boolean;
     /**
-     * Additional formatting and render options. See the <a href=\"https://support.phrase.com/hc/en-us/sections/6111343326364\">format guide</a> for a list of options available for each format. Specify format options like this: <code>...&format_options[foo]=bar</code>
+     * Additional formatting and render options. See the [format guide](https://support.phrase.com/hc/en-us/sections/6111343326364) for a list of options available for each format. Specify format options like this: `...&format_options[foo]=bar`
      * @type {object}
      * @memberof LocaleDownloadCreateParameters
      */
@@ -91,13 +91,13 @@ export interface LocaleDownloadCreateParameters {
      */
     localeIds?: Array<string>;
     /**
-     * If a key has no translation in the locale being downloaded the translation in the fallback locale will be used. Provide the ID of the locale that should be used as the fallback. Requires include_empty_translations to be set to <code>true</code>.
+     * If a key has no translation in the locale being downloaded the translation in the fallback locale will be used. Provide the ID of the locale that should be used as the fallback. Requires include_empty_translations to be set to `true`.
      * @type {string}
      * @memberof LocaleDownloadCreateParameters
      */
     fallbackLocaleId?: string;
     /**
-     * Provides the source language of a corresponding job as the source language of the generated locale file. This parameter will be ignored unless used in combination with a <code>tag</code> parameter indicating a specific job.
+     * Provides the source language of a corresponding job as the source language of the generated locale file. This parameter will be ignored unless used in combination with a `tag` parameter indicating a specific job.
      * @type {string}
      * @memberof LocaleDownloadCreateParameters
      */

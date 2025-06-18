@@ -171,7 +171,7 @@ export class ReleaseTriggersApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all release triggers for the given distribution.<br> Note: Currently only one release trigger can exist per distribution. 
+     * List all release triggers for the given distribution.  Note: Currently only one release trigger can exist per distribution. 
      * List release triggers
      */
     async releaseTriggersListRaw(requestParameters: ReleaseTriggersListRequest): Promise<runtime.ApiResponse<Array<ReleaseTrigger>>> {
@@ -209,7 +209,7 @@ export class ReleaseTriggersApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all release triggers for the given distribution.<br> Note: Currently only one release trigger can exist per distribution. 
+     * List all release triggers for the given distribution.  Note: Currently only one release trigger can exist per distribution. 
      * List release triggers
      */
     async releaseTriggersList(requestParameters: ReleaseTriggersListRequest): Promise<Array<ReleaseTrigger>> {

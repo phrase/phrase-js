@@ -25,7 +25,7 @@ export interface ProjectCreateParameters {
      */
     name: string;
     /**
-     * Main file format specified by its API Extension name. Used for locale downloads if no format is specified. For API Extension names of available file formats see <a href=\"https://support.phrase.com/hc/en-us/sections/6111343326364\">Format Guide</a> or our <a href=\"#formats\">Formats API Endpoint</a>.
+     * Main file format specified by its API Extension name. Used for locale downloads if no format is specified. For API Extension names of available file formats see [Format Guide](https://support.phrase.com/hc/en-us/sections/6111343326364) or our [Formats API Endpoint](/en/api/strings/formats/list-formats).
      * @type {string}
      * @memberof ProjectCreateParameters
      */
@@ -73,7 +73,7 @@ export interface ProjectCreateParameters {
      */
     sourceProjectId?: string;
     /**
-     * (Optional) Review Workflow. \"simple\" / \"review\". <a href=\"https://support.phrase.com/hc/en-us/articles/5784094755484\">Read more</a>
+     * (Optional) Review Workflow. \"simple\" / \"review\". [Read more](https://support.phrase.com/hc/en-us/articles/5784094755484)
      * @type {string}
      * @memberof ProjectCreateParameters
      */
@@ -103,7 +103,7 @@ export interface ProjectCreateParameters {
      */
     enableAllDataTypeTranslationKeysForTranslators?: boolean;
     /**
-     * (Optional) We can validate and highlight your ICU messages. <a href=\"https://support.phrase.com/hc/en-us/articles/5822319545116\">Read more</a>
+     * (Optional) We can validate and highlight your ICU messages. [Read more](https://support.phrase.com/hc/en-us/articles/5822319545116)
      * @type {boolean}
      * @memberof ProjectCreateParameters
      */
@@ -115,7 +115,7 @@ export interface ProjectCreateParameters {
      */
     zeroPluralFormEnabled?: boolean;
     /**
-     * (Optional) Autopilot, requires machine_translation_enabled. <a href=\"https://support.phrase.com/hc/en-us/articles/5822187934364\">Read more</a>
+     * (Optional) Autopilot, requires machine_translation_enabled. [Read more](https://support.phrase.com/hc/en-us/articles/5822187934364)
      * @type {boolean}
      * @memberof ProjectCreateParameters
      */

@@ -55,7 +55,7 @@ export interface MemberUpdateParameters {
      */
     spaceIds?: Array<string>;
     /**
-     * Additional permissions depending on member role. Available permissions are <code>create_upload</code> and <code>review_translations</code>
+     * Additional permissions depending on member role. Available permissions are `create_upload` and `review_translations`
      * @type {{ [key: string]: string; }}
      * @memberof MemberUpdateParameters
      */
