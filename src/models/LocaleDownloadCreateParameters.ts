@@ -108,6 +108,12 @@ export interface LocaleDownloadCreateParameters {
      * @memberof LocaleDownloadCreateParameters
      */
     customMetadataFilters?: object;
+    /**
+     * Only include keys that have been updated since the given date. The date must be in ISO 8601 format (e.g., `2023-01-01T00:00:00Z`). 
+     * @type {string}
+     * @memberof LocaleDownloadCreateParameters
+     */
+    updatedSince?: string;
 }
 
 export function LocaleDownloadCreateParametersFromJSON(json: any): LocaleDownloadCreateParameters {
@@ -135,6 +141,7 @@ export function LocaleDownloadCreateParametersFromJSONTyped(json: any, ignoreDis
         'fallbackLocaleId': !exists(json, 'fallback_locale_id') ? undefined : json['fallback_locale_id'],
         'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
         'customMetadataFilters': !exists(json, 'custom_metadata_filters') ? undefined : json['custom_metadata_filters'],
+        'updatedSince': !exists(json, 'updated_since') ? undefined : json['updated_since'],
     };
 }
 
@@ -162,6 +169,7 @@ export function LocaleDownloadCreateParametersToJSON(value?: LocaleDownloadCreat
         'fallback_locale_id': value.fallbackLocaleId,
         'source_locale_id': value.sourceLocaleId,
         'custom_metadata_filters': value.customMetadataFilters,
+        'updated_since': value.updatedSince,
     };
 }
 

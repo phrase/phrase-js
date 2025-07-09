@@ -77,6 +77,7 @@ export interface LocaleDownloadRequest {
     filterByPrefix?: boolean;
     customMetadataFilters?: object;
     localeIds?: Array<string>;
+    updatedSince?: string;
 }
 
 export interface LocaleShowRequest {
@@ -352,6 +353,10 @@ export class LocalesApi extends runtime.BaseAPI {
 
         if (requestParameters.localeIds) {
             queryParameters['locale_ids'] = requestParameters.localeIds;
+        }
+
+        if (requestParameters.updatedSince !== undefined) {
+            queryParameters['updated_since'] = requestParameters.updatedSince;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
