@@ -57,6 +57,12 @@ export interface TranslationKeyDetails {
     plural?: boolean;
     /**
      * 
+     * @type {boolean}
+     * @memberof TranslationKeyDetails
+     */
+    useOrdinalRules?: boolean;
+    /**
+     * 
      * @type {Array<string>}
      * @memberof TranslationKeyDetails
      */
@@ -156,6 +162,7 @@ export function TranslationKeyDetailsFromJSONTyped(json: any, ignoreDiscriminato
         'description': !exists(json, 'description') ? undefined : json['description'],
         'nameHash': !exists(json, 'name_hash') ? undefined : json['name_hash'],
         'plural': !exists(json, 'plural') ? undefined : json['plural'],
+        'useOrdinalRules': !exists(json, 'use_ordinal_rules') ? undefined : json['use_ordinal_rules'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'dataType': !exists(json, 'data_type') ? undefined : json['data_type'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
@@ -187,6 +194,7 @@ export function TranslationKeyDetailsToJSON(value?: TranslationKeyDetails | null
         'description': value.description,
         'name_hash': value.nameHash,
         'plural': value.plural,
+        'use_ordinal_rules': value.useOrdinalRules,
         'tags': value.tags,
         'data_type': value.dataType,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),

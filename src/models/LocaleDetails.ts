@@ -73,6 +73,12 @@ export interface LocaleDetails {
     pluralForms?: Array<string>;
     /**
      * 
+     * @type {Array<string>}
+     * @memberof LocaleDetails
+     */
+    ordinalPluralForms?: Array<string>;
+    /**
+     * 
      * @type {LocalePreview}
      * @memberof LocaleDetails
      */
@@ -120,6 +126,7 @@ export function LocaleDetailsFromJSONTyped(json: any, ignoreDiscriminator: boole
         'main': !exists(json, 'main') ? undefined : json['main'],
         'rtl': !exists(json, 'rtl') ? undefined : json['rtl'],
         'pluralForms': !exists(json, 'plural_forms') ? undefined : json['plural_forms'],
+        'ordinalPluralForms': !exists(json, 'ordinal_plural_forms') ? undefined : json['ordinal_plural_forms'],
         'sourceLocale': !exists(json, 'source_locale') ? undefined : LocalePreviewFromJSON(json['source_locale']),
         'fallbackLocale': !exists(json, 'fallback_locale') ? undefined : LocalePreviewFromJSON(json['fallback_locale']),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
@@ -144,6 +151,7 @@ export function LocaleDetailsToJSON(value?: LocaleDetails | null): any {
         'main': value.main,
         'rtl': value.rtl,
         'plural_forms': value.pluralForms,
+        'ordinal_plural_forms': value.ordinalPluralForms,
         'source_locale': LocalePreviewToJSON(value.sourceLocale),
         'fallback_locale': LocalePreviewToJSON(value.fallbackLocale),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
