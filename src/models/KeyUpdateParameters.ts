@@ -43,6 +43,12 @@ export interface KeyUpdateParameters {
      */
     plural?: boolean;
     /**
+     * Indicates whether key uses ordinal rules for pluralization
+     * @type {boolean}
+     * @memberof KeyUpdateParameters
+     */
+    useOrdinalRules?: boolean;
+    /**
      * Plural name for the key (used in some file formats, e.g. Gettext)
      * @type {string}
      * @memberof KeyUpdateParameters
@@ -130,6 +136,7 @@ export function KeyUpdateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'name': !exists(json, 'name') ? undefined : json['name'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'plural': !exists(json, 'plural') ? undefined : json['plural'],
+        'useOrdinalRules': !exists(json, 'use_ordinal_rules') ? undefined : json['use_ordinal_rules'],
         'namePlural': !exists(json, 'name_plural') ? undefined : json['name_plural'],
         'dataType': !exists(json, 'data_type') ? undefined : json['data_type'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
@@ -158,6 +165,7 @@ export function KeyUpdateParametersToJSON(value?: KeyUpdateParameters | null): a
         'name': value.name,
         'description': value.description,
         'plural': value.plural,
+        'use_ordinal_rules': value.useOrdinalRules,
         'name_plural': value.namePlural,
         'data_type': value.dataType,
         'tags': value.tags,

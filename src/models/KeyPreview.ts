@@ -36,6 +36,12 @@ export interface KeyPreview {
      * @memberof KeyPreview
      */
     plural?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof KeyPreview
+     */
+    useOrdinalRules?: boolean;
 }
 
 export function KeyPreviewFromJSON(json: any): KeyPreview {
@@ -51,6 +57,7 @@ export function KeyPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'plural': !exists(json, 'plural') ? undefined : json['plural'],
+        'useOrdinalRules': !exists(json, 'use_ordinal_rules') ? undefined : json['use_ordinal_rules'],
     };
 }
 
@@ -66,6 +73,7 @@ export function KeyPreviewToJSON(value?: KeyPreview | null): any {
         'id': value.id,
         'name': value.name,
         'plural': value.plural,
+        'use_ordinal_rules': value.useOrdinalRules,
     };
 }
 
