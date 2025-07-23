@@ -20,6 +20,7 @@ src/apis/GlossaryTermTranslationsApi.ts
 src/apis/GlossaryTermsApi.ts
 src/apis/ICUApi.ts
 src/apis/InvitationsApi.ts
+src/apis/JobAnnotationsApi.ts
 src/apis/JobCommentsApi.ts
 src/apis/JobLocalesApi.ts
 src/apis/JobTemplateLocalesApi.ts
@@ -115,6 +116,9 @@ src/models/InvitationCreateParameters.ts
 src/models/InvitationUpdateParameters.ts
 src/models/InvitationUpdateSettingsParameters.ts
 src/models/Job.ts
+src/models/JobAnnotation.ts
+src/models/JobAnnotationShort.ts
+src/models/JobAnnotationUpdateParameters.ts
 src/models/JobComment.ts
 src/models/JobCommentCreateParameters.ts
 src/models/JobCommentUpdateParameters.ts

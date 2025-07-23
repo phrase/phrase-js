@@ -274,6 +274,12 @@ Class | Method | HTTP request | Description
 *InvitationsApi* | **invitationUpdate** | **PATCH** /accounts/{account_id}/invitations/{id} | Update an invitation
 *InvitationsApi* | **invitationUpdateSettings** | **PATCH** /projects/{project_id}/invitations/{id} | Update a member\&#39;s invitation access
 *InvitationsApi* | **invitationsList** | **GET** /accounts/{account_id}/invitations | List invitations
+*JobAnnotationsApi* | **jobAnnotationDelete** | **DELETE** /projects/{project_id}/jobs/{job_id}/annotations/{id} | Delete a job annotation
+*JobAnnotationsApi* | **jobAnnotationUpdate** | **PATCH** /projects/{project_id}/jobs/{job_id}/annotations/{id} | Create/Update a job annotation
+*JobAnnotationsApi* | **jobAnnotationsList** | **GET** /projects/{project_id}/jobs/{job_id}/annotations | List job annotations
+*JobAnnotationsApi* | **jobLocaleAnnotationDelete** | **DELETE** /projects/{project_id}/jobs/{job_id}/locales/{job_locale_id}/annotations/{id} | Delete a job locale annotation
+*JobAnnotationsApi* | **jobLocaleAnnotationUpdate** | **PATCH** /projects/{project_id}/jobs/{job_id}/locales/{job_locale_id}/annotations/{id} | Create/Update a job locale annotation
+*JobAnnotationsApi* | **jobLocaleAnnotationsList** | **GET** /projects/{project_id}/jobs/{job_id}/locales/{job_locale_id}/annotations | List job locale annotations
 *JobCommentsApi* | **jobCommentCreate** | **POST** /projects/{project_id}/jobs/{job_id}/comments | Create a job comment
 *JobCommentsApi* | **jobCommentDelete** | **DELETE** /projects/{project_id}/jobs/{job_id}/comments/{id} | Delete a job comment
 *JobCommentsApi* | **jobCommentShow** | **GET** /projects/{project_id}/jobs/{job_id}/comments/{id} | Get a single job comment

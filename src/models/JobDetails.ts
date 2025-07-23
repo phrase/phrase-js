@@ -17,6 +17,10 @@ import {
     BranchNameFromJSON,
     BranchNameFromJSONTyped,
     BranchNameToJSON,
+    JobAnnotationShort,
+    JobAnnotationShortFromJSON,
+    JobAnnotationShortFromJSONTyped,
+    JobAnnotationShortToJSON,
     KeyPreview,
     KeyPreviewFromJSON,
     KeyPreviewFromJSONTyped,
@@ -137,6 +141,12 @@ export interface JobDetails {
      * @memberof JobDetails
      */
     keys?: Array<KeyPreview>;
+    /**
+     * 
+     * @type {Array<JobAnnotationShort>}
+     * @memberof JobDetails
+     */
+    annotations?: Array<JobAnnotationShort>;
 }
 
 export function JobDetailsFromJSON(json: any): JobDetails {
@@ -165,6 +175,7 @@ export function JobDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'sourceLocale': !exists(json, 'source_locale') ? undefined : LocalePreviewFromJSON(json['source_locale']),
         'locales': !exists(json, 'locales') ? undefined : ((json['locales'] as Array<any>).map(LocalePreviewFromJSON)),
         'keys': !exists(json, 'keys') ? undefined : ((json['keys'] as Array<any>).map(KeyPreviewFromJSON)),
+        'annotations': !exists(json, 'annotations') ? undefined : ((json['annotations'] as Array<any>).map(JobAnnotationShortFromJSON)),
     };
 }
 
@@ -193,6 +204,7 @@ export function JobDetailsToJSON(value?: JobDetails | null): any {
         'source_locale': LocalePreviewToJSON(value.sourceLocale),
         'locales': value.locales === undefined ? undefined : ((value.locales as Array<any>).map(LocalePreviewToJSON)),
         'keys': value.keys === undefined ? undefined : ((value.keys as Array<any>).map(KeyPreviewToJSON)),
+        'annotations': value.annotations === undefined ? undefined : ((value.annotations as Array<any>).map(JobAnnotationShortToJSON)),
     };
 }
 

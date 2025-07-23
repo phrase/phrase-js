@@ -72,6 +72,7 @@ export interface JobLocaleShowRequest {
     id: string;
     xPhraseAppOTP?: string;
     branch?: string;
+    includeAnnotations?: boolean;
 }
 
 export interface JobLocaleUpdateRequest {
@@ -96,6 +97,7 @@ export interface JobLocalesListRequest {
     page?: number;
     perPage?: number;
     branch?: string;
+    includeAnnotations?: boolean;
 }
 
 /**
@@ -355,6 +357,10 @@ export class JobLocalesApi extends runtime.BaseAPI {
             queryParameters['branch'] = requestParameters.branch;
         }
 
+        if (requestParameters.includeAnnotations !== undefined) {
+            queryParameters['include_annotations'] = requestParameters.includeAnnotations;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
@@ -524,6 +530,10 @@ export class JobLocalesApi extends runtime.BaseAPI {
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
+        }
+
+        if (requestParameters.includeAnnotations !== undefined) {
+            queryParameters['include_annotations'] = requestParameters.includeAnnotations;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

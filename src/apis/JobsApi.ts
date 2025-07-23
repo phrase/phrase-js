@@ -96,6 +96,7 @@ export interface JobShowRequest {
     id: string;
     xPhraseAppOTP?: string;
     branch?: string;
+    includeAnnotations?: boolean;
 }
 
 export interface JobStartRequest {
@@ -532,6 +533,10 @@ export class JobsApi extends runtime.BaseAPI {
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
+        }
+
+        if (requestParameters.includeAnnotations !== undefined) {
+            queryParameters['include_annotations'] = requestParameters.includeAnnotations;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

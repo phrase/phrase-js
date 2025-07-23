@@ -13,6 +13,10 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    JobAnnotationShort,
+    JobAnnotationShortFromJSON,
+    JobAnnotationShortFromJSONTyped,
+    JobAnnotationShortToJSON,
     JobPreview,
     JobPreviewFromJSON,
     JobPreviewFromJSONTyped,
@@ -85,6 +89,12 @@ export interface JobLocale {
      * @memberof JobLocale
      */
     reviewCompletedAt?: Date;
+    /**
+     * 
+     * @type {Array<JobAnnotationShort>}
+     * @memberof JobLocale
+     */
+    annotations?: Array<JobAnnotationShort>;
 }
 
 export function JobLocaleFromJSON(json: any): JobLocale {
@@ -105,6 +115,7 @@ export function JobLocaleFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'completed': !exists(json, 'completed') ? undefined : json['completed'],
         'translationCompletedAt': !exists(json, 'translation_completed_at') ? undefined : (new Date(json['translation_completed_at'])),
         'reviewCompletedAt': !exists(json, 'review_completed_at') ? undefined : (new Date(json['review_completed_at'])),
+        'annotations': !exists(json, 'annotations') ? undefined : ((json['annotations'] as Array<any>).map(JobAnnotationShortFromJSON)),
     };
 }
 
@@ -125,6 +136,7 @@ export function JobLocaleToJSON(value?: JobLocale | null): any {
         'completed': value.completed,
         'translation_completed_at': value.translationCompletedAt === undefined ? undefined : (value.translationCompletedAt.toISOString()),
         'review_completed_at': value.reviewCompletedAt === undefined ? undefined : (value.reviewCompletedAt.toISOString()),
+        'annotations': value.annotations === undefined ? undefined : ((value.annotations as Array<any>).map(JobAnnotationShortToJSON)),
     };
 }
 
