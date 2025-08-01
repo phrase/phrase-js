@@ -28,6 +28,7 @@ export interface UploadCreateRequest {
     branch?: string;
     tags?: string;
     updateTranslations?: boolean;
+    updateCustomMetadata?: boolean;
     updateTranslationKeys?: boolean;
     updateTranslationsOnSourceMatch?: boolean;
     updateDescriptions?: boolean;
@@ -138,6 +139,10 @@ export class UploadsApi extends runtime.BaseAPI {
 
         if (requestParameters.updateTranslations !== undefined) {
             formParams.append('update_translations', requestParameters.updateTranslations as any);
+        }
+
+        if (requestParameters.updateCustomMetadata !== undefined) {
+            formParams.append('update_custom_metadata', requestParameters.updateCustomMetadata as any);
         }
 
         if (requestParameters.updateTranslationKeys !== undefined) {
