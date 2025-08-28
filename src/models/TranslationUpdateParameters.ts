@@ -54,6 +54,12 @@ export interface TranslationUpdateParameters {
      * @memberof TranslationUpdateParameters
      */
     autotranslate?: boolean;
+    /**
+     * When set to `true`, the translation will be marked as reviewed.
+     * @type {boolean}
+     * @memberof TranslationUpdateParameters
+     */
+    reviewed?: boolean;
 }
 
 export function TranslationUpdateParametersFromJSON(json: any): TranslationUpdateParameters {
@@ -72,6 +78,7 @@ export function TranslationUpdateParametersFromJSONTyped(json: any, ignoreDiscri
         'unverified': !exists(json, 'unverified') ? undefined : json['unverified'],
         'excluded': !exists(json, 'excluded') ? undefined : json['excluded'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
+        'reviewed': !exists(json, 'reviewed') ? undefined : json['reviewed'],
     };
 }
 
@@ -90,6 +97,7 @@ export function TranslationUpdateParametersToJSON(value?: TranslationUpdateParam
         'unverified': value.unverified,
         'excluded': value.excluded,
         'autotranslate': value.autotranslate,
+        'reviewed': value.reviewed,
     };
 }
 
