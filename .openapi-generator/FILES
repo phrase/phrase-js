@@ -5,6 +5,7 @@ README.md
 package.json
 src/apis/AccountsApi.ts
 src/apis/AuthorizationsApi.ts
+src/apis/AutomationsApi.ts
 src/apis/BlacklistedKeysApi.ts
 src/apis/BranchesApi.ts
 src/apis/CommentReactionsApi.ts
@@ -69,6 +70,9 @@ src/models/Authorization.ts
 src/models/AuthorizationCreateParameters.ts
 src/models/AuthorizationUpdateParameters.ts
 src/models/AuthorizationWithToken.ts
+src/models/Automation.ts
+src/models/AutomationsCreateParameters.ts
+src/models/AutomationsCreateParameters1.ts
 src/models/BlacklistedKey.ts
 src/models/BlacklistedKeyCreateParameters.ts
 src/models/BlacklistedKeyUpdateParameters.ts

@@ -205,6 +205,13 @@ Class | Method | HTTP request | Description
 *AuthorizationsApi* | **authorizationShow** | **GET** /authorizations/{id} | Get a single authorization
 *AuthorizationsApi* | **authorizationUpdate** | **PATCH** /authorizations/{id} | Update an authorization
 *AuthorizationsApi* | **authorizationsList** | **GET** /authorizations | List authorizations
+*AutomationsApi* | **automationActivate** | **POST** /accounts/{account_id}/automations/{automation_id}/activate | Activate an automation
+*AutomationsApi* | **automationCreate** | **POST** /accounts/{account_id}/automations | Create an automation
+*AutomationsApi* | **automationDeactivate** | **POST** /accounts/{account_id}/automations/{automation_id}/deactivate | Deactivate an automation
+*AutomationsApi* | **automationDelete** | **DELETE** /accounts/{account_id}/automations/{automation_id} | Destroy automation
+*AutomationsApi* | **automationShow** | **GET** /accounts/{account_id}/automations/{automation_id} | Get a single automation
+*AutomationsApi* | **automationUpdate** | **PATCH** /accounts/{account_id}/automations/{automation_id} | Update an automation
+*AutomationsApi* | **automationsList** | **GET** /accounts/{account_id}/automations | List automations
 *BlacklistedKeysApi* | **blacklistedKeyCreate** | **POST** /projects/{project_id}/blacklisted_keys | Create a blocked key
 *BlacklistedKeysApi* | **blacklistedKeyDelete** | **DELETE** /projects/{project_id}/blacklisted_keys/{id} | Delete a blocked key
 *BlacklistedKeysApi* | **blacklistedKeyShow** | **GET** /projects/{project_id}/blacklisted_keys/{id} | Get a single blocked key
