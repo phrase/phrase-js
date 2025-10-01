@@ -23,6 +23,9 @@ import {
     BranchMergeParameters,
     BranchMergeParametersFromJSON,
     BranchMergeParametersToJSON,
+    BranchSyncParameters,
+    BranchSyncParametersFromJSON,
+    BranchSyncParametersToJSON,
     BranchUpdateParameters,
     BranchUpdateParametersFromJSON,
     BranchUpdateParametersToJSON,
@@ -56,6 +59,13 @@ export interface BranchMergeRequest {
 export interface BranchShowRequest {
     projectId: string;
     name: string;
+    xPhraseAppOTP?: string;
+}
+
+export interface BranchSyncRequest {
+    projectId: string;
+    name: string;
+    branchSyncParameters: BranchSyncParameters;
     xPhraseAppOTP?: string;
 }
 
@@ -223,7 +233,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Merge an existing branch.   *Note: Merging a branch may take several minutes depending on diff size.* 
+     * Merge an existing branch.  *Note: Merging a branch may take several minutes depending on diff size.* 
      * Merge a branch
      */
     async branchMergeRaw(requestParameters: BranchMergeRequest): Promise<runtime.ApiResponse<any>> {
@@ -268,7 +278,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Merge an existing branch.   *Note: Merging a branch may take several minutes depending on diff size.* 
+     * Merge an existing branch.  *Note: Merging a branch may take several minutes depending on diff size.* 
      * Merge a branch
      */
     async branchMerge(requestParameters: BranchMergeRequest): Promise<any> {
@@ -320,6 +330,60 @@ export class BranchesApi extends runtime.BaseAPI {
      */
     async branchShow(requestParameters: BranchShowRequest): Promise<Branch> {
         const response = await this.branchShowRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Sync an existing branch.  *Note: Only available for branches created with new branching. New branching is currently in private beta* 
+     * Sync a branch
+     */
+    async branchSyncRaw(requestParameters: BranchSyncRequest): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling branchSync.');
+        }
+
+        if (requestParameters.name === null || requestParameters.name === undefined) {
+            throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling branchSync.');
+        }
+
+        if (requestParameters.branchSyncParameters === null || requestParameters.branchSyncParameters === undefined) {
+            throw new runtime.RequiredError('branchSyncParameters','Required parameter requestParameters.branchSyncParameters was null or undefined when calling branchSync.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/projects/{project_id}/branches/{name}/sync`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters.name))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: BranchSyncParametersToJSON(requestParameters.branchSyncParameters),
+        });
+
+        return new runtime.TextApiResponse(response) as any;
+    }
+
+    /**
+     * Sync an existing branch.  *Note: Only available for branches created with new branching. New branching is currently in private beta* 
+     * Sync a branch
+     */
+    async branchSync(requestParameters: BranchSyncRequest): Promise<any> {
+        const response = await this.branchSyncRaw(requestParameters);
         return await response.value();
     }
 

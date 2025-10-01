@@ -17,6 +17,7 @@ export * from './Branch';
 export * from './BranchCreateParameters';
 export * from './BranchMergeParameters';
 export * from './BranchName';
+export * from './BranchSyncParameters';
 export * from './BranchUpdateParameters';
 export * from './Comment';
 export * from './CommentCreateParameters';

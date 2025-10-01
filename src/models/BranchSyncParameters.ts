@@ -15,22 +15,22 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface BranchMergeParameters
+ * @interface BranchSyncParameters
  */
-export interface BranchMergeParameters {
+export interface BranchSyncParameters {
     /**
-     * strategy used for merge conflicts, use_main or use_branch
+     * strategy used for conflicts, use_main or use_branch
      * @type {string}
-     * @memberof BranchMergeParameters
+     * @memberof BranchSyncParameters
      */
     strategy?: string;
 }
 
-export function BranchMergeParametersFromJSON(json: any): BranchMergeParameters {
-    return BranchMergeParametersFromJSONTyped(json, false);
+export function BranchSyncParametersFromJSON(json: any): BranchSyncParameters {
+    return BranchSyncParametersFromJSONTyped(json, false);
 }
 
-export function BranchMergeParametersFromJSONTyped(json: any, ignoreDiscriminator: boolean): BranchMergeParameters {
+export function BranchSyncParametersFromJSONTyped(json: any, ignoreDiscriminator: boolean): BranchSyncParameters {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -40,7 +40,7 @@ export function BranchMergeParametersFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function BranchMergeParametersToJSON(value?: BranchMergeParameters | null): any {
+export function BranchSyncParametersToJSON(value?: BranchSyncParameters | null): any {
     if (value === undefined) {
         return undefined;
     }

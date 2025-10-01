@@ -222,6 +222,7 @@ Class | Method | HTTP request | Description
 *BranchesApi* | **branchDelete** | **DELETE** /projects/{project_id}/branches/{name} | Delete a branch
 *BranchesApi* | **branchMerge** | **PATCH** /projects/{project_id}/branches/{name}/merge | Merge a branch
 *BranchesApi* | **branchShow** | **GET** /projects/{project_id}/branches/{name} | Get a single branch
+*BranchesApi* | **branchSync** | **PATCH** /projects/{project_id}/branches/{name}/sync | Sync a branch
 *BranchesApi* | **branchUpdate** | **PATCH** /projects/{project_id}/branches/{name} | Update a branch
 *BranchesApi* | **branchesList** | **GET** /projects/{project_id}/branches | List branches
 *CommentReactionsApi* | **reactionCreate** | **POST** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/reactions | Create a reaction

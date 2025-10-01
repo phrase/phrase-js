@@ -80,6 +80,7 @@ src/models/Branch.ts
 src/models/BranchCreateParameters.ts
 src/models/BranchMergeParameters.ts
 src/models/BranchName.ts
+src/models/BranchSyncParameters.ts
 src/models/BranchUpdateParameters.ts
 src/models/Comment.ts
 src/models/CommentCreateParameters.ts
