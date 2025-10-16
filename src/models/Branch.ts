@@ -79,6 +79,12 @@ export interface Branch {
      * @memberof Branch
      */
     state?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof Branch
+     */
+    childBranches?: Array<string>;
 }
 
 export function BranchFromJSON(json: any): Branch {
@@ -100,6 +106,7 @@ export function BranchFromJSONTyped(json: any, ignoreDiscriminator: boolean): Br
         'mergedBy': !exists(json, 'merged_by') ? undefined : UserPreviewFromJSON(json['merged_by']),
         'createdBy': !exists(json, 'created_by') ? undefined : UserPreviewFromJSON(json['created_by']),
         'state': !exists(json, 'state') ? undefined : json['state'],
+        'childBranches': !exists(json, 'child_branches') ? undefined : json['child_branches'],
     };
 }
 
@@ -121,6 +128,7 @@ export function BranchToJSON(value?: Branch | null): any {
         'merged_by': UserPreviewToJSON(value.mergedBy),
         'created_by': UserPreviewToJSON(value.createdBy),
         'state': value.state,
+        'child_branches': value.childBranches,
     };
 }
 
