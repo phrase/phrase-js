@@ -31,6 +31,7 @@ export interface UploadCreateRequest {
     updateCustomMetadata?: boolean;
     updateTranslationKeys?: boolean;
     updateTranslationsOnSourceMatch?: boolean;
+    sourceLocaleId?: string;
     updateDescriptions?: boolean;
     convertEmoji?: boolean;
     skipUploadTags?: boolean;
@@ -151,6 +152,10 @@ export class UploadsApi extends runtime.BaseAPI {
 
         if (requestParameters.updateTranslationsOnSourceMatch !== undefined) {
             formParams.append('update_translations_on_source_match', requestParameters.updateTranslationsOnSourceMatch as any);
+        }
+
+        if (requestParameters.sourceLocaleId !== undefined) {
+            formParams.append('source_locale_id', requestParameters.sourceLocaleId as any);
         }
 
         if (requestParameters.updateDescriptions !== undefined) {
