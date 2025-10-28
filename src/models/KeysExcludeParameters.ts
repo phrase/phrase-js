@@ -31,7 +31,7 @@ export interface KeysExcludeParameters {
      */
     q?: string;
     /**
-     * Locale used to exlcude or include keys.
+     * Exclude translations in locale
      * @type {string}
      * @memberof KeysExcludeParameters
      */
