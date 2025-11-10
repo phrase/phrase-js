@@ -97,6 +97,7 @@ export interface JobShowRequest {
     xPhraseAppOTP?: string;
     branch?: string;
     includeAnnotations?: boolean;
+    omitTranslationKeys?: boolean;
 }
 
 export interface JobStartRequest {
@@ -537,6 +538,10 @@ export class JobsApi extends runtime.BaseAPI {
 
         if (requestParameters.includeAnnotations !== undefined) {
             queryParameters['include_annotations'] = requestParameters.includeAnnotations;
+        }
+
+        if (requestParameters.omitTranslationKeys !== undefined) {
+            queryParameters['omit_translation_keys'] = requestParameters.omitTranslationKeys;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
