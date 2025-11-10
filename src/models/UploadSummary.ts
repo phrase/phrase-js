@@ -37,7 +37,7 @@ export interface UploadSummary {
      */
     translationKeysUpdated?: number;
     /**
-     * 
+     * The number of translation keys in the project that were not mentioned in the upload.  Note: this field is not calculated (and shows 0) if the upload contains more than 10,000 keys. 
      * @type {number}
      * @memberof UploadSummary
      */

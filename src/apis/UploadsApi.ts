@@ -67,7 +67,7 @@ export interface UploadsListRequest {
 export class UploadsApi extends runtime.BaseAPI {
 
     /**
-     * Upload a new language file. Creates necessary resources in your project.
+     * Upload a new language file. Creates necessary resources in your project.  Note: be aware of [upload limits](https://support.phrase.com/hc/en-us/articles/8548271212188-Phrase-Strings-Limits#file-size-upload-limits-0-0). 
      * Upload a new file
      */
     async uploadCreateRaw(requestParameters: UploadCreateRequest): Promise<runtime.ApiResponse<Upload>> {
@@ -226,7 +226,7 @@ export class UploadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Upload a new language file. Creates necessary resources in your project.
+     * Upload a new language file. Creates necessary resources in your project.  Note: be aware of [upload limits](https://support.phrase.com/hc/en-us/articles/8548271212188-Phrase-Strings-Limits#file-size-upload-limits-0-0). 
      * Upload a new file
      */
     async uploadCreate(requestParameters: UploadCreateRequest): Promise<Upload> {
