@@ -210,6 +210,7 @@ Class | Method | HTTP request | Description
 *AutomationsApi* | **automationDeactivate** | **POST** /accounts/{account_id}/automations/{automation_id}/deactivate | Deactivate an automation
 *AutomationsApi* | **automationDelete** | **DELETE** /accounts/{account_id}/automations/{automation_id} | Destroy automation
 *AutomationsApi* | **automationShow** | **GET** /accounts/{account_id}/automations/{automation_id} | Get a single automation
+*AutomationsApi* | **automationTrigger** | **POST** /accounts/{account_id}/automations/{automation_id}/trigger | Trigger an automation
 *AutomationsApi* | **automationUpdate** | **PATCH** /accounts/{account_id}/automations/{automation_id} | Update an automation
 *AutomationsApi* | **automationsList** | **GET** /accounts/{account_id}/automations | List automations
 *BlacklistedKeysApi* | **blacklistedKeyCreate** | **POST** /projects/{project_id}/blacklisted_keys | Create a blocked key

@@ -58,6 +58,12 @@ export interface AutomationShowRequest {
     xPhraseAppOTP?: string;
 }
 
+export interface AutomationTriggerRequest {
+    accountId: string;
+    id: string;
+    xPhraseAppOTP?: string;
+}
+
 export interface AutomationUpdateRequest {
     accountId: string;
     id: string;
@@ -312,6 +318,53 @@ export class AutomationsApi extends runtime.BaseAPI {
      */
     async automationShow(requestParameters: AutomationShowRequest): Promise<Automation> {
         const response = await this.automationShowRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Trigger an automation. 
+     * Trigger an automation
+     */
+    async automationTriggerRaw(requestParameters: AutomationTriggerRequest): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
+            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling automationTrigger.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling automationTrigger.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/accounts/{account_id}/automations/{automation_id}/trigger`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        });
+
+        return new runtime.TextApiResponse(response) as any;
+    }
+
+    /**
+     * Trigger an automation. 
+     * Trigger an automation
+     */
+    async automationTrigger(requestParameters: AutomationTriggerRequest): Promise<any> {
+        const response = await this.automationTriggerRaw(requestParameters);
         return await response.value();
     }
 
