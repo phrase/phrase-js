@@ -72,6 +72,7 @@ export interface LocaleDownloadRequest {
     includeUnverifiedTranslations?: boolean;
     useLastReviewedVersion?: boolean;
     fallbackLocaleId?: string;
+    useLocaleFallback?: boolean;
     sourceLocaleId?: string;
     translationKeyPrefix?: string;
     filterByPrefix?: boolean;
@@ -333,6 +334,10 @@ export class LocalesApi extends runtime.BaseAPI {
 
         if (requestParameters.fallbackLocaleId !== undefined) {
             queryParameters['fallback_locale_id'] = requestParameters.fallbackLocaleId;
+        }
+
+        if (requestParameters.useLocaleFallback !== undefined) {
+            queryParameters['use_locale_fallback'] = requestParameters.useLocaleFallback;
         }
 
         if (requestParameters.sourceLocaleId !== undefined) {

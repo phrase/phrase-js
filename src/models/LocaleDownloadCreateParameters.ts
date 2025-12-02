@@ -91,11 +91,17 @@ export interface LocaleDownloadCreateParameters {
      */
     localeIds?: Array<string>;
     /**
-     * If a key has no translation in the locale being downloaded the translation in the fallback locale will be used. Provide the ID of the locale that should be used as the fallback. Requires include_empty_translations to be set to `true`.
+     * If a key has no translation in the locale being downloaded, the translation in the fallback locale will be used. Provide the ID of the locale that should be used as the fallback. Requires `include_empty_translations` to be set to `true`. Mutually exclusive with `use_locale_fallback`. 
      * @type {string}
      * @memberof LocaleDownloadCreateParameters
      */
     fallbackLocaleId?: string;
+    /**
+     * If a key has no translation in the locale being downloaded, the translation in the fallback locale will be used. Fallback locale is defined in [locale\'s settings](/en/api/strings/locales/update-a-locale#body-fallback-locale-id). Requires `include_empty_translations` to be set to `true`. Mutually exclusive with `fallback_locale_id`. 
+     * @type {boolean}
+     * @memberof LocaleDownloadCreateParameters
+     */
+    useLocaleFallback?: boolean;
     /**
      * Provides the source language of a corresponding job as the source language of the generated locale file. This parameter will be ignored unless used in combination with a `tag` parameter indicating a specific job.
      * @type {string}
@@ -139,6 +145,7 @@ export function LocaleDownloadCreateParametersFromJSONTyped(json: any, ignoreDis
         'useLastReviewedVersion': !exists(json, 'use_last_reviewed_version') ? undefined : json['use_last_reviewed_version'],
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'fallbackLocaleId': !exists(json, 'fallback_locale_id') ? undefined : json['fallback_locale_id'],
+        'useLocaleFallback': !exists(json, 'use_locale_fallback') ? undefined : json['use_locale_fallback'],
         'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
         'customMetadataFilters': !exists(json, 'custom_metadata_filters') ? undefined : json['custom_metadata_filters'],
         'updatedSince': !exists(json, 'updated_since') ? undefined : json['updated_since'],
@@ -167,6 +174,7 @@ export function LocaleDownloadCreateParametersToJSON(value?: LocaleDownloadCreat
         'use_last_reviewed_version': value.useLastReviewedVersion,
         'locale_ids': value.localeIds,
         'fallback_locale_id': value.fallbackLocaleId,
+        'use_locale_fallback': value.useLocaleFallback,
         'source_locale_id': value.sourceLocaleId,
         'custom_metadata_filters': value.customMetadataFilters,
         'updated_since': value.updatedSince,
