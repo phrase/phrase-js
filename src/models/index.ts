@@ -14,6 +14,7 @@ export * from './BlacklistedKey';
 export * from './BlacklistedKeyCreateParameters';
 export * from './BlacklistedKeyUpdateParameters';
 export * from './Branch';
+export * from './BranchCreateComparisonParameters';
 export * from './BranchCreateParameters';
 export * from './BranchMergeParameters';
 export * from './BranchName';

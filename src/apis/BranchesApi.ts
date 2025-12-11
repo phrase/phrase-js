@@ -17,6 +17,9 @@ import {
     Branch,
     BranchFromJSON,
     BranchToJSON,
+    BranchCreateComparisonParameters,
+    BranchCreateComparisonParametersFromJSON,
+    BranchCreateComparisonParametersToJSON,
     BranchCreateParameters,
     BranchCreateParametersFromJSON,
     BranchCreateParametersToJSON,
@@ -34,6 +37,13 @@ import {
 export interface BranchCompareRequest {
     projectId: string;
     name: string;
+    xPhraseAppOTP?: string;
+}
+
+export interface BranchComparisonCreateRequest {
+    projectId: string;
+    name: string;
+    branchCreateComparisonParameters: BranchCreateComparisonParameters;
     xPhraseAppOTP?: string;
 }
 
@@ -89,7 +99,7 @@ export interface BranchesListRequest {
 export class BranchesApi extends runtime.BaseAPI {
 
     /**
-     * Compare branch with main branch.   *Note: Comparing a branch may take several minutes depending on the project size.* 
+     * Compare branch with main branch.  *Note: Comparing a branch may take several minutes depending on the project size. Consider using the `POST /compare` endpoint for creating comparison asynchronously.* 
      * Compare branches
      */
     async branchCompareRaw(requestParameters: BranchCompareRequest): Promise<runtime.ApiResponse<any>> {
@@ -127,11 +137,65 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Compare branch with main branch.   *Note: Comparing a branch may take several minutes depending on the project size.* 
+     * Compare branch with main branch.  *Note: Comparing a branch may take several minutes depending on the project size. Consider using the `POST /compare` endpoint for creating comparison asynchronously.* 
      * Compare branches
      */
     async branchCompare(requestParameters: BranchCompareRequest): Promise<any> {
         const response = await this.branchCompareRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Create a branch comparison asynchronously. 
+     * Create comparison (async.)
+     */
+    async branchComparisonCreateRaw(requestParameters: BranchComparisonCreateRequest): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling branchComparisonCreate.');
+        }
+
+        if (requestParameters.name === null || requestParameters.name === undefined) {
+            throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling branchComparisonCreate.');
+        }
+
+        if (requestParameters.branchCreateComparisonParameters === null || requestParameters.branchCreateComparisonParameters === undefined) {
+            throw new runtime.RequiredError('branchCreateComparisonParameters','Required parameter requestParameters.branchCreateComparisonParameters was null or undefined when calling branchComparisonCreate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/projects/{project_id}/branches/{name}/compare`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters.name))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: BranchCreateComparisonParametersToJSON(requestParameters.branchCreateComparisonParameters),
+        });
+
+        return new runtime.TextApiResponse(response) as any;
+    }
+
+    /**
+     * Create a branch comparison asynchronously. 
+     * Create comparison (async.)
+     */
+    async branchComparisonCreate(requestParameters: BranchComparisonCreateRequest): Promise<any> {
+        const response = await this.branchComparisonCreateRaw(requestParameters);
         return await response.value();
     }
 
@@ -334,7 +398,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Sync an existing branch.  *Note: Only available for branches created with new branching. New branching is currently in private beta* 
+     * Sync an existing branch.  *Note: Only available for branches created with new branching.* 
      * Sync a branch
      */
     async branchSyncRaw(requestParameters: BranchSyncRequest): Promise<runtime.ApiResponse<any>> {
@@ -379,7 +443,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Sync an existing branch.  *Note: Only available for branches created with new branching. New branching is currently in private beta* 
+     * Sync an existing branch.  *Note: Only available for branches created with new branching.* 
      * Sync a branch
      */
     async branchSync(requestParameters: BranchSyncRequest): Promise<any> {

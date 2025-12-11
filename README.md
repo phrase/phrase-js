@@ -219,6 +219,7 @@ Class | Method | HTTP request | Description
 *BlacklistedKeysApi* | **blacklistedKeyUpdate** | **PATCH** /projects/{project_id}/blacklisted_keys/{id} | Update a blocked key
 *BlacklistedKeysApi* | **blacklistedKeysList** | **GET** /projects/{project_id}/blacklisted_keys | List blocked keys
 *BranchesApi* | **branchCompare** | **GET** /projects/{project_id}/branches/{name}/compare | Compare branches
+*BranchesApi* | **branchComparisonCreate** | **POST** /projects/{project_id}/branches/{name}/compare | Create comparison (async.)
 *BranchesApi* | **branchCreate** | **POST** /projects/{project_id}/branches | Create a branch
 *BranchesApi* | **branchDelete** | **DELETE** /projects/{project_id}/branches/{name} | Delete a branch
 *BranchesApi* | **branchMerge** | **PATCH** /projects/{project_id}/branches/{name}/merge | Merge a branch
