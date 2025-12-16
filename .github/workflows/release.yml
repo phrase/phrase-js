@@ -4,9 +4,6 @@ on:
   push:
     tags:
       - '*'
-permissions:
-  id-token: write
-  contents: read
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -22,3 +19,5 @@ jobs:
         registry-url: 'https://registry.npmjs.org/'
     - run: npm install
     - run: npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
