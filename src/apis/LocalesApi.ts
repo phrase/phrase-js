@@ -34,8 +34,6 @@ import {
 export interface AccountLocalesRequest {
     id: string;
     xPhraseAppOTP?: string;
-    page?: number;
-    perPage?: number;
 }
 
 export interface LocaleCreateRequest {
@@ -119,14 +117,6 @@ export class LocalesApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.page !== undefined) {
-            queryParameters['page'] = requestParameters.page;
-        }
-
-        if (requestParameters.perPage !== undefined) {
-            queryParameters['per_page'] = requestParameters.perPage;
-        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 

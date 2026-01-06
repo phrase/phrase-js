@@ -30,12 +30,6 @@ export interface LocalePreview1 {
      * @type {string}
      * @memberof LocalePreview1
      */
-    id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof LocalePreview1
-     */
     name?: string;
     /**
      * 
@@ -61,7 +55,6 @@ export function LocalePreview1FromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'code': !exists(json, 'code') ? undefined : json['code'],
         'project': !exists(json, 'project') ? undefined : ProjectShortFromJSON(json['project']),
@@ -77,7 +70,6 @@ export function LocalePreview1ToJSON(value?: LocalePreview1 | null): any {
     }
     return {
         
-        'id': value.id,
         'name': value.name,
         'code': value.code,
         'project': ProjectShortToJSON(value.project),
