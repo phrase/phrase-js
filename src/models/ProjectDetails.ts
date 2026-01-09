@@ -105,6 +105,90 @@ export interface ProjectDetails {
      * @memberof ProjectDetails
      */
     sharesTranslationMemory?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    machineTranslationEnabled?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    zeroPluralFormEnabled?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    enableAllDataTypeTranslationKeysForTranslators?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    enableIcuMessageFormat?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    enableBranching?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    protectMasterBranch?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    autotranslateEnabled?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    autotranslateCheckNewTranslationKeys?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    autotranslateCheckNewUploads?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    autotranslateCheckNewLocales?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    autotranslateMarkAsUnverified?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    autotranslateUseMachineTranslation?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    autotranslateUseTranslationMemory?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProjectDetails
+     */
+    defaultEncoding?: string;
 }
 
 export function ProjectDetailsFromJSON(json: any): ProjectDetails {
@@ -129,6 +213,20 @@ export function ProjectDetailsFromJSONTyped(json: any, ignoreDiscriminator: bool
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'sharesTranslationMemory': !exists(json, 'shares_translation_memory') ? undefined : json['shares_translation_memory'],
+        'machineTranslationEnabled': !exists(json, 'machine_translation_enabled') ? undefined : json['machine_translation_enabled'],
+        'zeroPluralFormEnabled': !exists(json, 'zero_plural_form_enabled') ? undefined : json['zero_plural_form_enabled'],
+        'enableAllDataTypeTranslationKeysForTranslators': !exists(json, 'enable_all_data_type_translation_keys_for_translators') ? undefined : json['enable_all_data_type_translation_keys_for_translators'],
+        'enableIcuMessageFormat': !exists(json, 'enable_icu_message_format') ? undefined : json['enable_icu_message_format'],
+        'enableBranching': !exists(json, 'enable_branching') ? undefined : json['enable_branching'],
+        'protectMasterBranch': !exists(json, 'protect_master_branch') ? undefined : json['protect_master_branch'],
+        'autotranslateEnabled': !exists(json, 'autotranslate_enabled') ? undefined : json['autotranslate_enabled'],
+        'autotranslateCheckNewTranslationKeys': !exists(json, 'autotranslate_check_new_translation_keys') ? undefined : json['autotranslate_check_new_translation_keys'],
+        'autotranslateCheckNewUploads': !exists(json, 'autotranslate_check_new_uploads') ? undefined : json['autotranslate_check_new_uploads'],
+        'autotranslateCheckNewLocales': !exists(json, 'autotranslate_check_new_locales') ? undefined : json['autotranslate_check_new_locales'],
+        'autotranslateMarkAsUnverified': !exists(json, 'autotranslate_mark_as_unverified') ? undefined : json['autotranslate_mark_as_unverified'],
+        'autotranslateUseMachineTranslation': !exists(json, 'autotranslate_use_machine_translation') ? undefined : json['autotranslate_use_machine_translation'],
+        'autotranslateUseTranslationMemory': !exists(json, 'autotranslate_use_translation_memory') ? undefined : json['autotranslate_use_translation_memory'],
+        'defaultEncoding': !exists(json, 'default_encoding') ? undefined : json['default_encoding'],
     };
 }
 
@@ -153,6 +251,20 @@ export function ProjectDetailsToJSON(value?: ProjectDetails | null): any {
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'shares_translation_memory': value.sharesTranslationMemory,
+        'machine_translation_enabled': value.machineTranslationEnabled,
+        'zero_plural_form_enabled': value.zeroPluralFormEnabled,
+        'enable_all_data_type_translation_keys_for_translators': value.enableAllDataTypeTranslationKeysForTranslators,
+        'enable_icu_message_format': value.enableIcuMessageFormat,
+        'enable_branching': value.enableBranching,
+        'protect_master_branch': value.protectMasterBranch,
+        'autotranslate_enabled': value.autotranslateEnabled,
+        'autotranslate_check_new_translation_keys': value.autotranslateCheckNewTranslationKeys,
+        'autotranslate_check_new_uploads': value.autotranslateCheckNewUploads,
+        'autotranslate_check_new_locales': value.autotranslateCheckNewLocales,
+        'autotranslate_mark_as_unverified': value.autotranslateMarkAsUnverified,
+        'autotranslate_use_machine_translation': value.autotranslateUseMachineTranslation,
+        'autotranslate_use_translation_memory': value.autotranslateUseTranslationMemory,
+        'default_encoding': value.defaultEncoding,
     };
 }
 
