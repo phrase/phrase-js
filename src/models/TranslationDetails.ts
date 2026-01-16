@@ -105,6 +105,12 @@ export interface TranslationDetails {
     updatedAt?: Date;
     /**
      * 
+     * @type {TranslationParent}
+     * @memberof TranslationDetails
+     */
+    linkedTranslation?: TranslationParent;
+    /**
+     * 
      * @type {UserPreview}
      * @memberof TranslationDetails
      */
@@ -115,12 +121,6 @@ export interface TranslationDetails {
      * @memberof TranslationDetails
      */
     wordCount?: number;
-    /**
-     * 
-     * @type {TranslationParent}
-     * @memberof TranslationDetails
-     */
-    linkedTranslation?: TranslationParent;
 }
 
 export function TranslationDetailsFromJSON(json: any): TranslationDetails {
@@ -144,9 +144,9 @@ export function TranslationDetailsFromJSONTyped(json: any, ignoreDiscriminator: 
         'state': !exists(json, 'state') ? undefined : json['state'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
+        'linkedTranslation': !exists(json, 'linked_translation') ? undefined : TranslationParentFromJSON(json['linked_translation']),
         'user': !exists(json, 'user') ? undefined : UserPreviewFromJSON(json['user']),
         'wordCount': !exists(json, 'word_count') ? undefined : json['word_count'],
-        'linkedTranslation': !exists(json, 'linked_translation') ? undefined : TranslationParentFromJSON(json['linked_translation']),
     };
 }
 
@@ -170,9 +170,9 @@ export function TranslationDetailsToJSON(value?: TranslationDetails | null): any
         'state': value.state,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
+        'linked_translation': TranslationParentToJSON(value.linkedTranslation),
         'user': UserPreviewToJSON(value.user),
         'word_count': value.wordCount,
-        'linked_translation': TranslationParentToJSON(value.linkedTranslation),
     };
 }
 

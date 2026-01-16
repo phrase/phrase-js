@@ -21,6 +21,10 @@ import {
     LocalePreviewFromJSON,
     LocalePreviewFromJSONTyped,
     LocalePreviewToJSON,
+    TranslationParent,
+    TranslationParentFromJSON,
+    TranslationParentFromJSONTyped,
+    TranslationParentToJSON,
 } from './';
 
 /**
@@ -95,6 +99,12 @@ export interface Translation {
      * @memberof Translation
      */
     updatedAt?: Date;
+    /**
+     * 
+     * @type {TranslationParent}
+     * @memberof Translation
+     */
+    linkedTranslation?: TranslationParent;
 }
 
 export function TranslationFromJSON(json: any): Translation {
@@ -118,6 +128,7 @@ export function TranslationFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'state': !exists(json, 'state') ? undefined : json['state'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
+        'linkedTranslation': !exists(json, 'linked_translation') ? undefined : TranslationParentFromJSON(json['linked_translation']),
     };
 }
 
@@ -141,6 +152,7 @@ export function TranslationToJSON(value?: Translation | null): any {
         'state': value.state,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
+        'linked_translation': TranslationParentToJSON(value.linkedTranslation),
     };
 }
 
