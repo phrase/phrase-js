@@ -12,13 +12,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    ProjectShort,
-    ProjectShortFromJSON,
-    ProjectShortFromJSONTyped,
-    ProjectShortToJSON,
-} from './';
-
 /**
  * 
  * @export
@@ -37,12 +30,6 @@ export interface LocalePreview1 {
      * @memberof LocalePreview1
      */
     code?: string;
-    /**
-     * 
-     * @type {ProjectShort}
-     * @memberof LocalePreview1
-     */
-    project?: ProjectShort;
 }
 
 export function LocalePreview1FromJSON(json: any): LocalePreview1 {
@@ -57,7 +44,6 @@ export function LocalePreview1FromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'name': !exists(json, 'name') ? undefined : json['name'],
         'code': !exists(json, 'code') ? undefined : json['code'],
-        'project': !exists(json, 'project') ? undefined : ProjectShortFromJSON(json['project']),
     };
 }
 
@@ -72,7 +58,6 @@ export function LocalePreview1ToJSON(value?: LocalePreview1 | null): any {
         
         'name': value.name,
         'code': value.code,
-        'project': ProjectShortToJSON(value.project),
     };
 }
 
