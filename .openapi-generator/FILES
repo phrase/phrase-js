@@ -53,6 +53,7 @@ src/apis/StyleGuidesApi.ts
 src/apis/TagsApi.ts
 src/apis/TeamsApi.ts
 src/apis/TranslationsApi.ts
+src/apis/UploadBatchesApi.ts
 src/apis/UploadsApi.ts
 src/apis/UsersApi.ts
 src/apis/VariablesApi.ts
@@ -272,6 +273,8 @@ src/models/TranslationsUnreviewParameters.ts
 src/models/TranslationsUnverifyParameters.ts
 src/models/TranslationsVerifyParameters.ts
 src/models/Upload.ts
+src/models/UploadBatch.ts
+src/models/UploadBatchesCreateParameters.ts
 src/models/UploadSummary.ts
 src/models/User.ts
 src/models/UserPreview.ts

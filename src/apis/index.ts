@@ -48,6 +48,7 @@ export * from './StyleGuidesApi';
 export * from './TagsApi';
 export * from './TeamsApi';
 export * from './TranslationsApi';
+export * from './UploadBatchesApi';
 export * from './UploadsApi';
 export * from './UsersApi';
 export * from './VariablesApi';

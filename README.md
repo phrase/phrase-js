@@ -463,6 +463,7 @@ Class | Method | HTTP request | Description
 *TranslationsApi* | **translationsUnreviewCollection** | **PATCH** /projects/{project_id}/translations/unreview | Unreview translations selected by query
 *TranslationsApi* | **translationsUnverifyCollection** | **PATCH** /projects/{project_id}/translations/unverify | Unverify translations by query
 *TranslationsApi* | **translationsVerifyCollection** | **PATCH** /projects/{project_id}/translations/verify | Verify translations by query
+*UploadBatchesApi* | **uploadBatchesCreate** | **POST** /projects/{project_id}/upload_batches | Create upload batch
 *UploadsApi* | **uploadCreate** | **POST** /projects/{project_id}/uploads | Upload a new file
 *UploadsApi* | **uploadShow** | **GET** /projects/{project_id}/uploads/{id} | Get a single upload
 *UploadsApi* | **uploadsList** | **GET** /projects/{project_id}/uploads | List uploads

@@ -209,6 +209,8 @@ export * from './TranslationsUnreviewParameters';
 export * from './TranslationsUnverifyParameters';
 export * from './TranslationsVerifyParameters';
 export * from './Upload';
+export * from './UploadBatch';
+export * from './UploadBatchesCreateParameters';
 export * from './UploadSummary';
 export * from './User';
 export * from './UserPreview';
