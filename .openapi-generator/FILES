@@ -217,6 +217,7 @@ src/models/ReleaseUpdateParameters.ts
 src/models/ReleaseUpdateParameters1.ts
 src/models/RepoSync.ts
 src/models/RepoSyncEvent.ts
+src/models/RepoSyncImportParameters.ts
 src/models/Screenshot.ts
 src/models/ScreenshotMarker.ts
 src/models/ScreenshotMarkerCreateParameters.ts
