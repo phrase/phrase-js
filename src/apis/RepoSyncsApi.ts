@@ -47,6 +47,7 @@ export interface RepoSyncImportRequest {
     accountId: string;
     id: string;
     xPhraseAppOTP?: string;
+    branch?: string;
     repoSyncImportParameters?: RepoSyncImportParameters;
 }
 
@@ -221,6 +222,10 @@ export class RepoSyncsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.branch !== undefined) {
+            queryParameters['branch'] = requestParameters.branch;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
