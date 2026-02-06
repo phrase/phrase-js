@@ -154,6 +154,7 @@ export * from './ReleaseUpdateParameters';
 export * from './ReleaseUpdateParameters1';
 export * from './RepoSync';
 export * from './RepoSyncEvent';
+export * from './RepoSyncExportParameters';
 export * from './RepoSyncImportParameters';
 export * from './Screenshot';
 export * from './ScreenshotMarker';

@@ -20,6 +20,9 @@ import {
     RepoSyncEvent,
     RepoSyncEventFromJSON,
     RepoSyncEventToJSON,
+    RepoSyncExportParameters,
+    RepoSyncExportParametersFromJSON,
+    RepoSyncExportParametersToJSON,
     RepoSyncImportParameters,
     RepoSyncImportParametersFromJSON,
     RepoSyncImportParametersToJSON,
@@ -41,6 +44,7 @@ export interface RepoSyncExportRequest {
     accountId: string;
     id: string;
     xPhraseAppOTP?: string;
+    repoSyncExportParameters?: RepoSyncExportParameters;
 }
 
 export interface RepoSyncImportRequest {
@@ -178,6 +182,8 @@ export class RepoSyncsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
             headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
         }
@@ -194,6 +200,7 @@ export class RepoSyncsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: RepoSyncExportParametersToJSON(requestParameters.repoSyncExportParameters),
         });
 
         return new runtime.JSONApiResponse(response, (jsonValue) => RepoSyncEventFromJSON(jsonValue));
