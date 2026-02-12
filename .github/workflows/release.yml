@@ -15,7 +15,7 @@ jobs:
     - name: Create GitHub Release
       uses: ncipollo/release-action@6c75be85e571768fa31b40abf38de58ba0397db5 # pin@v1.13.0
       with:
-        tag: ${{ github.ref_name }}
+        tag: ${{github.event.release.tag_name}}
     - uses: actions/setup-node@v4
       with:
         node-version: '22.14.0'
