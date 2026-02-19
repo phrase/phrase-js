@@ -61,7 +61,7 @@ export interface LocaleDownloadCreateParameters {
      */
     keepNotranslateTags?: boolean;
     /**
-     * Additional formatting and render options. See the [format guide](https://support.phrase.com/hc/en-us/sections/6111343326364) for a list of options available for each format. Specify format options like this: `...&format_options[foo]=bar`
+     * Additional formatting and render options. See the [format guide](https://support.phrase.com/hc/en-us/sections/6111343326364) for a list of options available for each format. Pass format options as a JSON object with key-value pairs corresponding to the option name and value. For example, to include comments in a Gettext file, pass `{\"include_comments\": true}`. 
      * @type {object}
      * @memberof LocaleDownloadCreateParameters
      */
