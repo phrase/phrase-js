@@ -14,9 +14,6 @@
 
 import * as runtime from '../runtime';
 import {
-    TranslationVersion,
-    TranslationVersionFromJSON,
-    TranslationVersionToJSON,
     TranslationVersionWithUser,
     TranslationVersionWithUserFromJSON,
     TranslationVersionWithUserToJSON,
@@ -37,6 +34,7 @@ export interface VersionsListRequest {
     page?: number;
     perPage?: number;
     branch?: string;
+    onlyContentUpdates?: boolean;
 }
 
 /**
@@ -103,7 +101,7 @@ export class VersionsHistoryApi extends runtime.BaseAPI {
      * List all changes done to a given translation.
      * List all versions
      */
-    async versionsListRaw(requestParameters: VersionsListRequest): Promise<runtime.ApiResponse<Array<TranslationVersion>>> {
+    async versionsListRaw(requestParameters: VersionsListRequest): Promise<runtime.ApiResponse<Array<TranslationVersionWithUser>>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling versionsList.');
         }
@@ -126,6 +124,10 @@ export class VersionsHistoryApi extends runtime.BaseAPI {
             queryParameters['branch'] = requestParameters.branch;
         }
 
+        if (requestParameters.onlyContentUpdates !== undefined) {
+            queryParameters['only_content_updates'] = requestParameters.onlyContentUpdates;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
@@ -146,14 +148,14 @@ export class VersionsHistoryApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TranslationVersionFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TranslationVersionWithUserFromJSON));
     }
 
     /**
      * List all changes done to a given translation.
      * List all versions
      */
-    async versionsList(requestParameters: VersionsListRequest): Promise<Array<TranslationVersion>> {
+    async versionsList(requestParameters: VersionsListRequest): Promise<Array<TranslationVersionWithUser>> {
         const response = await this.versionsListRaw(requestParameters);
         return await response.value();
     }
