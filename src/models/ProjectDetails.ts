@@ -189,6 +189,24 @@ export interface ProjectDetails {
      * @memberof ProjectDetails
      */
     defaultEncoding?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProjectDetails
+     */
+    cldrVersion?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    jobLockingEnabled?: boolean;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ProjectDetails
+     */
+    placeholderStyles?: Array<string>;
 }
 
 export function ProjectDetailsFromJSON(json: any): ProjectDetails {
@@ -227,6 +245,9 @@ export function ProjectDetailsFromJSONTyped(json: any, ignoreDiscriminator: bool
         'autotranslateUseMachineTranslation': !exists(json, 'autotranslate_use_machine_translation') ? undefined : json['autotranslate_use_machine_translation'],
         'autotranslateUseTranslationMemory': !exists(json, 'autotranslate_use_translation_memory') ? undefined : json['autotranslate_use_translation_memory'],
         'defaultEncoding': !exists(json, 'default_encoding') ? undefined : json['default_encoding'],
+        'cldrVersion': !exists(json, 'cldr_version') ? undefined : json['cldr_version'],
+        'jobLockingEnabled': !exists(json, 'job_locking_enabled') ? undefined : json['job_locking_enabled'],
+        'placeholderStyles': !exists(json, 'placeholder_styles') ? undefined : json['placeholder_styles'],
     };
 }
 
@@ -265,6 +286,9 @@ export function ProjectDetailsToJSON(value?: ProjectDetails | null): any {
         'autotranslate_use_machine_translation': value.autotranslateUseMachineTranslation,
         'autotranslate_use_translation_memory': value.autotranslateUseTranslationMemory,
         'default_encoding': value.defaultEncoding,
+        'cldr_version': value.cldrVersion,
+        'job_locking_enabled': value.jobLockingEnabled,
+        'placeholder_styles': value.placeholderStyles,
     };
 }
 

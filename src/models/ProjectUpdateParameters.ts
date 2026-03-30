@@ -156,6 +156,12 @@ export interface ProjectUpdateParameters {
      * @memberof ProjectUpdateParameters
      */
     defaultEncoding?: ProjectUpdateParametersDefaultEncodingEnum;
+    /**
+     * (Optional) List of placeholder styles enabled for the project.
+     * @type {Array<string>}
+     * @memberof ProjectUpdateParameters
+     */
+    placeholderStyles?: Array<string>;
 }
 
 export function ProjectUpdateParametersFromJSON(json: any): ProjectUpdateParameters {
@@ -191,6 +197,7 @@ export function ProjectUpdateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'autotranslateUseMachineTranslation': !exists(json, 'autotranslate_use_machine_translation') ? undefined : json['autotranslate_use_machine_translation'],
         'autotranslateUseTranslationMemory': !exists(json, 'autotranslate_use_translation_memory') ? undefined : json['autotranslate_use_translation_memory'],
         'defaultEncoding': !exists(json, 'default_encoding') ? undefined : json['default_encoding'],
+        'placeholderStyles': !exists(json, 'placeholder_styles') ? undefined : json['placeholder_styles'],
     };
 }
 
@@ -226,6 +233,7 @@ export function ProjectUpdateParametersToJSON(value?: ProjectUpdateParameters | 
         'autotranslate_use_machine_translation': value.autotranslateUseMachineTranslation,
         'autotranslate_use_translation_memory': value.autotranslateUseTranslationMemory,
         'default_encoding': value.defaultEncoding,
+        'placeholder_styles': value.placeholderStyles,
     };
 }
 

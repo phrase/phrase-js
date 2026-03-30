@@ -156,6 +156,12 @@ export interface ProjectCreateParameters {
      * @memberof ProjectCreateParameters
      */
     autotranslateUseTranslationMemory?: boolean;
+    /**
+     * (Optional) List of placeholder styles enabled for the project.
+     * @type {Array<string>}
+     * @memberof ProjectCreateParameters
+     */
+    placeholderStyles?: Array<string>;
 }
 
 export function ProjectCreateParametersFromJSON(json: any): ProjectCreateParameters {
@@ -191,6 +197,7 @@ export function ProjectCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'autotranslateMarkAsUnverified': !exists(json, 'autotranslate_mark_as_unverified') ? undefined : json['autotranslate_mark_as_unverified'],
         'autotranslateUseMachineTranslation': !exists(json, 'autotranslate_use_machine_translation') ? undefined : json['autotranslate_use_machine_translation'],
         'autotranslateUseTranslationMemory': !exists(json, 'autotranslate_use_translation_memory') ? undefined : json['autotranslate_use_translation_memory'],
+        'placeholderStyles': !exists(json, 'placeholder_styles') ? undefined : json['placeholder_styles'],
     };
 }
 
@@ -226,6 +233,7 @@ export function ProjectCreateParametersToJSON(value?: ProjectCreateParameters | 
         'autotranslate_mark_as_unverified': value.autotranslateMarkAsUnverified,
         'autotranslate_use_machine_translation': value.autotranslateUseMachineTranslation,
         'autotranslate_use_translation_memory': value.autotranslateUseTranslationMemory,
+        'placeholder_styles': value.placeholderStyles,
     };
 }
 
