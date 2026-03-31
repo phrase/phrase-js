@@ -24,6 +24,12 @@ export interface RepoSyncImportParameters {
      * @memberof RepoSyncImportParameters
      */
     repositoryBranch?: string;
+    /**
+     * Strings branch to import to
+     * @type {string}
+     * @memberof RepoSyncImportParameters
+     */
+    branch?: string;
 }
 
 export function RepoSyncImportParametersFromJSON(json: any): RepoSyncImportParameters {
@@ -37,6 +43,7 @@ export function RepoSyncImportParametersFromJSONTyped(json: any, ignoreDiscrimin
     return {
         
         'repositoryBranch': !exists(json, 'repository_branch') ? undefined : json['repository_branch'],
+        'branch': !exists(json, 'branch') ? undefined : json['branch'],
     };
 }
 
@@ -50,6 +57,7 @@ export function RepoSyncImportParametersToJSON(value?: RepoSyncImportParameters 
     return {
         
         'repository_branch': value.repositoryBranch,
+        'branch': value.branch,
     };
 }
 

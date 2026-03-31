@@ -24,6 +24,12 @@ export interface RepoSyncExportParameters {
      * @memberof RepoSyncExportParameters
      */
     prBranch?: string;
+    /**
+     * Strings branch to export from
+     * @type {string}
+     * @memberof RepoSyncExportParameters
+     */
+    branch?: string;
 }
 
 export function RepoSyncExportParametersFromJSON(json: any): RepoSyncExportParameters {
@@ -37,6 +43,7 @@ export function RepoSyncExportParametersFromJSONTyped(json: any, ignoreDiscrimin
     return {
         
         'prBranch': !exists(json, 'pr_branch') ? undefined : json['pr_branch'],
+        'branch': !exists(json, 'branch') ? undefined : json['branch'],
     };
 }
 
@@ -50,6 +57,7 @@ export function RepoSyncExportParametersToJSON(value?: RepoSyncExportParameters 
     return {
         
         'pr_branch': value.prBranch,
+        'branch': value.branch,
     };
 }
 
