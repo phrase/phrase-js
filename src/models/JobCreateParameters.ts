@@ -72,6 +72,12 @@ export interface JobCreateParameters {
      * @memberof JobCreateParameters
      */
     jobTemplateId?: string;
+    /**
+     * Automatically translate the job using machine translation.
+     * @type {boolean}
+     * @memberof JobCreateParameters
+     */
+    autotranslate?: boolean;
 }
 
 export function JobCreateParametersFromJSON(json: any): JobCreateParameters {
@@ -93,6 +99,7 @@ export function JobCreateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'translationKeyIds': !exists(json, 'translation_key_ids') ? undefined : json['translation_key_ids'],
         'jobTemplateId': !exists(json, 'job_template_id') ? undefined : json['job_template_id'],
+        'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
     };
 }
 
@@ -114,6 +121,7 @@ export function JobCreateParametersToJSON(value?: JobCreateParameters | null): a
         'tags': value.tags,
         'translation_key_ids': value.translationKeyIds,
         'job_template_id': value.jobTemplateId,
+        'autotranslate': value.autotranslate,
     };
 }
 

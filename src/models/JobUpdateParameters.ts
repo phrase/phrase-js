@@ -48,6 +48,12 @@ export interface JobUpdateParameters {
      * @memberof JobUpdateParameters
      */
     ticketUrl?: string;
+    /**
+     * Automatically translate the job using machine translation
+     * @type {boolean}
+     * @memberof JobUpdateParameters
+     */
+    autotranslate?: boolean;
 }
 
 export function JobUpdateParametersFromJSON(json: any): JobUpdateParameters {
@@ -65,6 +71,7 @@ export function JobUpdateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'dueDate': !exists(json, 'due_date') ? undefined : (json['due_date'] === null ? null : new Date(json['due_date'])),
         'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
+        'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
     };
 }
 
@@ -82,6 +89,7 @@ export function JobUpdateParametersToJSON(value?: JobUpdateParameters | null): a
         'briefing': value.briefing,
         'due_date': value.dueDate === undefined ? undefined : (value.dueDate === null ? null : value.dueDate.toISOString()),
         'ticket_url': value.ticketUrl,
+        'autotranslate': value.autotranslate,
     };
 }
 

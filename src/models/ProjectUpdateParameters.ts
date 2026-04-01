@@ -151,6 +151,12 @@ export interface ProjectUpdateParameters {
      */
     autotranslateUseTranslationMemory?: boolean;
     /**
+     * (Optional) Requires autotranslate_enabled to be true
+     * @type {boolean}
+     * @memberof ProjectUpdateParameters
+     */
+    autotranslateOverwriteUnverifiedTranslations?: boolean;
+    /**
      * (Optional) Sets the default encoding for Uploads. If you leave it empty, we will try to guess it automatically for you when you Upload a file. You can still override this value by setting the [`file_encoding`](/en/api/strings/uploads/upload-a-new-file) parameter for Uploads.
      * @type {string}
      * @memberof ProjectUpdateParameters
@@ -196,6 +202,7 @@ export function ProjectUpdateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'autotranslateMarkAsUnverified': !exists(json, 'autotranslate_mark_as_unverified') ? undefined : json['autotranslate_mark_as_unverified'],
         'autotranslateUseMachineTranslation': !exists(json, 'autotranslate_use_machine_translation') ? undefined : json['autotranslate_use_machine_translation'],
         'autotranslateUseTranslationMemory': !exists(json, 'autotranslate_use_translation_memory') ? undefined : json['autotranslate_use_translation_memory'],
+        'autotranslateOverwriteUnverifiedTranslations': !exists(json, 'autotranslate_overwrite_unverified_translations') ? undefined : json['autotranslate_overwrite_unverified_translations'],
         'defaultEncoding': !exists(json, 'default_encoding') ? undefined : json['default_encoding'],
         'placeholderStyles': !exists(json, 'placeholder_styles') ? undefined : json['placeholder_styles'],
     };
@@ -232,6 +239,7 @@ export function ProjectUpdateParametersToJSON(value?: ProjectUpdateParameters | 
         'autotranslate_mark_as_unverified': value.autotranslateMarkAsUnverified,
         'autotranslate_use_machine_translation': value.autotranslateUseMachineTranslation,
         'autotranslate_use_translation_memory': value.autotranslateUseTranslationMemory,
+        'autotranslate_overwrite_unverified_translations': value.autotranslateOverwriteUnverifiedTranslations,
         'default_encoding': value.defaultEncoding,
         'placeholder_styles': value.placeholderStyles,
     };

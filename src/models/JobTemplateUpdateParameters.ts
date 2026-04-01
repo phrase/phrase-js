@@ -36,6 +36,12 @@ export interface JobTemplateUpdateParameters {
      * @memberof JobTemplateUpdateParameters
      */
     briefing?: string;
+    /**
+     * Automatically translate the job using machine translation.
+     * @type {boolean}
+     * @memberof JobTemplateUpdateParameters
+     */
+    autotranslate?: boolean;
 }
 
 export function JobTemplateUpdateParametersFromJSON(json: any): JobTemplateUpdateParameters {
@@ -51,6 +57,7 @@ export function JobTemplateUpdateParametersFromJSONTyped(json: any, ignoreDiscri
         'branch': !exists(json, 'branch') ? undefined : json['branch'],
         'name': json['name'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
+        'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
     };
 }
 
@@ -66,6 +73,7 @@ export function JobTemplateUpdateParametersToJSON(value?: JobTemplateUpdateParam
         'branch': value.branch,
         'name': value.name,
         'briefing': value.briefing,
+        'autotranslate': value.autotranslate,
     };
 }
 

@@ -30,6 +30,12 @@ export interface OrganizationJobTemplateUpdateParameters {
      * @memberof OrganizationJobTemplateUpdateParameters
      */
     briefing?: string;
+    /**
+     * Automatically translate the job using machine translation.
+     * @type {boolean}
+     * @memberof OrganizationJobTemplateUpdateParameters
+     */
+    autotranslate?: boolean;
 }
 
 export function OrganizationJobTemplateUpdateParametersFromJSON(json: any): OrganizationJobTemplateUpdateParameters {
@@ -44,6 +50,7 @@ export function OrganizationJobTemplateUpdateParametersFromJSONTyped(json: any, 
         
         'name': json['name'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
+        'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
     };
 }
 
@@ -58,6 +65,7 @@ export function OrganizationJobTemplateUpdateParametersToJSON(value?: Organizati
         
         'name': value.name,
         'briefing': value.briefing,
+        'autotranslate': value.autotranslate,
     };
 }
 
