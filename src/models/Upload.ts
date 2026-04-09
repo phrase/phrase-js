@@ -17,6 +17,10 @@ import {
     UploadSummaryFromJSON,
     UploadSummaryFromJSONTyped,
     UploadSummaryToJSON,
+    UserPreview,
+    UserPreviewFromJSON,
+    UserPreviewFromJSONTyped,
+    UserPreviewToJSON,
 } from './';
 
 /**
@@ -69,6 +73,12 @@ export interface Upload {
     url?: string;
     /**
      * 
+     * @type {UserPreview}
+     * @memberof Upload
+     */
+    user?: UserPreview;
+    /**
+     * 
      * @type {UploadSummary}
      * @memberof Upload
      */
@@ -104,6 +114,7 @@ export function UploadFromJSONTyped(json: any, ignoreDiscriminator: boolean): Up
         'tag': !exists(json, 'tag') ? undefined : json['tag'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'url': !exists(json, 'url') ? undefined : json['url'],
+        'user': !exists(json, 'user') ? undefined : json['user'],
         'summary': !exists(json, 'summary') ? undefined : UploadSummaryFromJSON(json['summary']),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
@@ -126,6 +137,7 @@ export function UploadToJSON(value?: Upload | null): any {
         'tag': value.tag,
         'tags': value.tags,
         'url': value.url,
+        'user': value.user,
         'summary': UploadSummaryToJSON(value.summary),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
