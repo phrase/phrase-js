@@ -42,6 +42,12 @@ export interface JobTemplateCreateParameters {
      * @memberof JobTemplateCreateParameters
      */
     autotranslate?: boolean;
+    /**
+     * The API id of the source language. This locale will be set as source locale for the job template. If not provided, the project default locale will be used.
+     * @type {string}
+     * @memberof JobTemplateCreateParameters
+     */
+    sourceLocaleId?: string;
 }
 
 export function JobTemplateCreateParametersFromJSON(json: any): JobTemplateCreateParameters {
@@ -58,6 +64,7 @@ export function JobTemplateCreateParametersFromJSONTyped(json: any, ignoreDiscri
         'name': json['name'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
+        'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
     };
 }
 
@@ -74,6 +81,7 @@ export function JobTemplateCreateParametersToJSON(value?: JobTemplateCreateParam
         'name': value.name,
         'briefing': value.briefing,
         'autotranslate': value.autotranslate,
+        'source_locale_id': value.sourceLocaleId,
     };
 }
 
