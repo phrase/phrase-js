@@ -14,9 +14,15 @@
 
 import * as runtime from '../runtime';
 import {
+    CustomMetadataPropertyCreate422Response,
+    CustomMetadataPropertyCreate422ResponseFromJSON,
+    CustomMetadataPropertyCreate422ResponseToJSON,
     RepoSync,
     RepoSyncFromJSON,
     RepoSyncToJSON,
+    RepoSyncCreateParameters,
+    RepoSyncCreateParametersFromJSON,
+    RepoSyncCreateParametersToJSON,
     RepoSyncEvent,
     RepoSyncEventFromJSON,
     RepoSyncEventToJSON,
@@ -31,6 +37,12 @@ import {
 export interface RepoSyncActivateRequest {
     accountId: string;
     id: string;
+    xPhraseAppOTP?: string;
+}
+
+export interface RepoSyncCreateRequest {
+    accountId: string;
+    repoSyncCreateParameters: RepoSyncCreateParameters;
     xPhraseAppOTP?: string;
 }
 
@@ -114,6 +126,56 @@ export class RepoSyncsApi extends runtime.BaseAPI {
      */
     async repoSyncActivate(requestParameters: RepoSyncActivateRequest): Promise<RepoSync> {
         const response = await this.repoSyncActivateRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Create a new Repo Sync.
+     * Create a Repo Sync
+     */
+    async repoSyncCreateRaw(requestParameters: RepoSyncCreateRequest): Promise<runtime.ApiResponse<RepoSync>> {
+        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
+            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling repoSyncCreate.');
+        }
+
+        if (requestParameters.repoSyncCreateParameters === null || requestParameters.repoSyncCreateParameters === undefined) {
+            throw new runtime.RequiredError('repoSyncCreateParameters','Required parameter requestParameters.repoSyncCreateParameters was null or undefined when calling repoSyncCreate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/accounts/{account_id}/repo_syncs`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: RepoSyncCreateParametersToJSON(requestParameters.repoSyncCreateParameters),
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => RepoSyncFromJSON(jsonValue));
+    }
+
+    /**
+     * Create a new Repo Sync.
+     * Create a Repo Sync
+     */
+    async repoSyncCreate(requestParameters: RepoSyncCreateRequest): Promise<RepoSync> {
+        const response = await this.repoSyncCreateRaw(requestParameters);
         return await response.value();
     }
 

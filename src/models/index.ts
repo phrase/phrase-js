@@ -153,6 +153,7 @@ export * from './ReleaseTrigger';
 export * from './ReleaseUpdateParameters';
 export * from './ReleaseUpdateParameters1';
 export * from './RepoSync';
+export * from './RepoSyncCreateParameters';
 export * from './RepoSyncEvent';
 export * from './RepoSyncExportParameters';
 export * from './RepoSyncImportParameters';
