@@ -67,7 +67,13 @@ export interface JobCreateParameters {
      */
     translationKeyIds?: Array<string>;
     /**
-     * id of a job template you would like to model the created job after. Any manually added parameters will take preference over template attributes.
+     * List of target locales for the job. Mutually exclusive with `job_template_id`.
+     * @type {Array<string>}
+     * @memberof JobCreateParameters
+     */
+    targetLocaleIds?: Array<string>;
+    /**
+     * id of a job template you would like to model the created job after. Any manually added parameters will take preference over template attributes. Mutually exclusive with `target_locale_ids`.
      * @type {string}
      * @memberof JobCreateParameters
      */
@@ -98,6 +104,7 @@ export function JobCreateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'translationKeyIds': !exists(json, 'translation_key_ids') ? undefined : json['translation_key_ids'],
+        'targetLocaleIds': !exists(json, 'target_locale_ids') ? undefined : json['target_locale_ids'],
         'jobTemplateId': !exists(json, 'job_template_id') ? undefined : json['job_template_id'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
     };
@@ -120,6 +127,7 @@ export function JobCreateParametersToJSON(value?: JobCreateParameters | null): a
         'ticket_url': value.ticketUrl,
         'tags': value.tags,
         'translation_key_ids': value.translationKeyIds,
+        'target_locale_ids': value.targetLocaleIds,
         'job_template_id': value.jobTemplateId,
         'autotranslate': value.autotranslate,
     };
