@@ -53,6 +53,7 @@ export interface TagsListRequest {
     perPage?: number;
     excludeSystemTags?: boolean;
     branch?: string;
+    q?: string;
 }
 
 /**
@@ -241,6 +242,10 @@ export class TagsApi extends runtime.BaseAPI {
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
