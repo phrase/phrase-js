@@ -100,6 +100,7 @@ export interface LocalesListRequest {
     perPage?: number;
     sortBy?: string;
     branch?: string;
+    q?: string;
 }
 
 /**
@@ -524,6 +525,10 @@ export class LocalesApi extends runtime.BaseAPI {
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
