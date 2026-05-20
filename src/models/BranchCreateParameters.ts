@@ -24,6 +24,12 @@ export interface BranchCreateParameters {
      * @memberof BranchCreateParameters
      */
     name: string;
+    /**
+     * Name of an existing branch to use as the base for the new branch.
+     * @type {string}
+     * @memberof BranchCreateParameters
+     */
+    base?: string;
 }
 
 export function BranchCreateParametersFromJSON(json: any): BranchCreateParameters {
@@ -37,6 +43,7 @@ export function BranchCreateParametersFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'name': json['name'],
+        'base': !exists(json, 'base') ? undefined : json['base'],
     };
 }
 
@@ -50,6 +57,7 @@ export function BranchCreateParametersToJSON(value?: BranchCreateParameters | nu
     return {
         
         'name': value.name,
+        'base': value.base,
     };
 }
 

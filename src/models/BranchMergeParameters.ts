@@ -19,11 +19,11 @@ import { exists, mapValues } from '../runtime';
  */
 export interface BranchMergeParameters {
     /**
-     * strategy used for merge conflicts, use_main or use_branch
+     * Conflict resolution strategy applied when the branch and its base have diverged. `use_main` keeps the values from the base branch; `use_branch` keeps the values from the branch being merged. 
      * @type {string}
      * @memberof BranchMergeParameters
      */
-    strategy?: string;
+    strategy?: BranchMergeParametersStrategyEnum;
 }
 
 export function BranchMergeParametersFromJSON(json: any): BranchMergeParameters {
@@ -51,6 +51,15 @@ export function BranchMergeParametersToJSON(value?: BranchMergeParameters | null
         
         'strategy': value.strategy,
     };
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum BranchMergeParametersStrategyEnum {
+    Main = 'use_main',
+    Branch = 'use_branch'
 }
 
 

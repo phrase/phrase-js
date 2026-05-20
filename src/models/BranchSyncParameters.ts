@@ -19,11 +19,11 @@ import { exists, mapValues } from '../runtime';
  */
 export interface BranchSyncParameters {
     /**
-     * strategy used for conflicts, use_main or use_branch
+     * Conflict resolution strategy applied when the branch and its base have diverged. `use_main` keeps the values from the base branch; `use_branch` keeps the values from this branch. 
      * @type {string}
      * @memberof BranchSyncParameters
      */
-    strategy?: string;
+    strategy?: BranchSyncParametersStrategyEnum;
 }
 
 export function BranchSyncParametersFromJSON(json: any): BranchSyncParameters {
@@ -51,6 +51,15 @@ export function BranchSyncParametersToJSON(value?: BranchSyncParameters | null):
         
         'strategy': value.strategy,
     };
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum BranchSyncParametersStrategyEnum {
+    Main = 'use_main',
+    Branch = 'use_branch'
 }
 
 

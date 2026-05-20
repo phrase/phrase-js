@@ -44,6 +44,12 @@ export interface Branch {
      */
     name?: string;
     /**
+     * Name of the base branch this branch was created from. Only present for branches created with the newer branching system.
+     * @type {string}
+     * @memberof Branch
+     */
+    base?: string | null;
+    /**
      * 
      * @type {Date}
      * @memberof Branch
@@ -78,7 +84,7 @@ export interface Branch {
      * @type {string}
      * @memberof Branch
      */
-    state?: string;
+    state?: BranchStateEnum;
     /**
      * 
      * @type {Array<string>}
@@ -100,6 +106,7 @@ export function BranchFromJSONTyped(json: any, ignoreDiscriminator: boolean): Br
         'baseProjectId': !exists(json, 'base_project_id') ? undefined : json['base_project_id'],
         'branchProjectId': !exists(json, 'branch_project_id') ? undefined : json['branch_project_id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
+        'base': !exists(json, 'base') ? undefined : json['base'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'mergedAt': !exists(json, 'merged_at') ? undefined : (new Date(json['merged_at'])),
@@ -122,6 +129,7 @@ export function BranchToJSON(value?: Branch | null): any {
         'base_project_id': value.baseProjectId,
         'branch_project_id': value.branchProjectId,
         'name': value.name,
+        'base': value.base,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'merged_at': value.mergedAt === undefined ? undefined : (value.mergedAt.toISOString()),
@@ -130,6 +138,20 @@ export function BranchToJSON(value?: Branch | null): any {
         'state': value.state,
         'child_branches': value.childBranches,
     };
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum BranchStateEnum {
+    CreatingBranch = 'creating_branch',
+    MergingBranch = 'merging_branch',
+    SyncingBranch = 'syncing_branch',
+    Merged = 'merged',
+    Success = 'success',
+    BranchError = 'branch_error',
+    MergeConflict = 'merge_conflict'
 }
 
 

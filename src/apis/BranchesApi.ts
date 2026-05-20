@@ -32,6 +32,9 @@ import {
     BranchUpdateParameters,
     BranchUpdateParametersFromJSON,
     BranchUpdateParametersToJSON,
+    CustomMetadataPropertyCreate422Response,
+    CustomMetadataPropertyCreate422ResponseFromJSON,
+    CustomMetadataPropertyCreate422ResponseToJSON,
 } from '../models';
 
 export interface BranchCompareRequest {
@@ -200,7 +203,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new branch.  *Note: Creating a new branch may take several minutes depending on the project size.* 
+     * Create a new branch.  Branch project provisioning runs asynchronously, so the newly created branch is returned in a transitional state (typically `creating_branch`) and only reaches `success` once the underlying project has been set up. Poll the branch resource until its `state` becomes `success` before performing further operations on it.  Requires the Branching feature to be enabled on the account.  *Note: Creating a new branch may take several minutes depending on the project size.* 
      * Create a branch
      */
     async branchCreateRaw(requestParameters: BranchCreateRequest): Promise<runtime.ApiResponse<Branch>> {
@@ -241,7 +244,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new branch.  *Note: Creating a new branch may take several minutes depending on the project size.* 
+     * Create a new branch.  Branch project provisioning runs asynchronously, so the newly created branch is returned in a transitional state (typically `creating_branch`) and only reaches `success` once the underlying project has been set up. Poll the branch resource until its `state` becomes `success` before performing further operations on it.  Requires the Branching feature to be enabled on the account.  *Note: Creating a new branch may take several minutes depending on the project size.* 
      * Create a branch
      */
     async branchCreate(requestParameters: BranchCreateRequest): Promise<Branch> {
@@ -250,7 +253,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing branch.
+     * Delete an existing branch.  A branch cannot be deleted while it still has open jobs or open translation orders attached to its branch project — in that case the request is rejected with `409 Conflict`. A branch whose current `state` does not allow deletion (for example, while a merge or sync is in progress) is rejected with `422 Unprocessable Entity`.  Requires the Branching feature to be enabled on the account. 
      * Delete a branch
      */
     async branchDeleteRaw(requestParameters: BranchDeleteRequest): Promise<runtime.ApiResponse<any>> {
@@ -288,7 +291,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing branch.
+     * Delete an existing branch.  A branch cannot be deleted while it still has open jobs or open translation orders attached to its branch project — in that case the request is rejected with `409 Conflict`. A branch whose current `state` does not allow deletion (for example, while a merge or sync is in progress) is rejected with `422 Unprocessable Entity`.  Requires the Branching feature to be enabled on the account. 
      * Delete a branch
      */
     async branchDelete(requestParameters: BranchDeleteRequest): Promise<any> {
@@ -297,7 +300,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Merge an existing branch.  *Note: Merging a branch may take several minutes depending on diff size.* 
+     * Merge an existing branch back into its base branch.  The merge runs asynchronously. The branch transitions to `merging_branch` and settles in `merged`, `merge_error`, or `merge_conflict` once the background job completes; the response body for this request is empty. Poll the branch resource to observe the final state.  A branch cannot be merged while it still has open jobs or open translation orders attached to its branch project — in that case the request is rejected with `409 Conflict`. A branch whose current `state` does not allow a merge is rejected with `422 Unprocessable Entity`.  Requires the Branching feature to be enabled on the account.  *Note: Merging a branch may take several minutes depending on diff size.* 
      * Merge a branch
      */
     async branchMergeRaw(requestParameters: BranchMergeRequest): Promise<runtime.ApiResponse<any>> {
@@ -342,7 +345,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Merge an existing branch.  *Note: Merging a branch may take several minutes depending on diff size.* 
+     * Merge an existing branch back into its base branch.  The merge runs asynchronously. The branch transitions to `merging_branch` and settles in `merged`, `merge_error`, or `merge_conflict` once the background job completes; the response body for this request is empty. Poll the branch resource to observe the final state.  A branch cannot be merged while it still has open jobs or open translation orders attached to its branch project — in that case the request is rejected with `409 Conflict`. A branch whose current `state` does not allow a merge is rejected with `422 Unprocessable Entity`.  Requires the Branching feature to be enabled on the account.  *Note: Merging a branch may take several minutes depending on diff size.* 
      * Merge a branch
      */
     async branchMerge(requestParameters: BranchMergeRequest): Promise<any> {
@@ -351,7 +354,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details on a single branch for a given project.
+     * Get details on a single branch for a given project.  Requires the Branching feature to be enabled on the account. 
      * Get a single branch
      */
     async branchShowRaw(requestParameters: BranchShowRequest): Promise<runtime.ApiResponse<Branch>> {
@@ -389,7 +392,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details on a single branch for a given project.
+     * Get details on a single branch for a given project.  Requires the Branching feature to be enabled on the account. 
      * Get a single branch
      */
     async branchShow(requestParameters: BranchShowRequest): Promise<Branch> {
@@ -398,7 +401,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Sync an existing branch.  *Note: Only available for branches created with new branching.* 
+     * Pull changes from the base branch into this branch, applying the chosen conflict-resolution strategy.  The sync runs asynchronously. The branch transitions to `syncing_branch` and settles back into `success` (or `merge_conflict` / `branch_error`) once the background job completes; the response body for this request is empty. Poll the branch resource to observe the final state.  Only branches created with the newer branching system can be synced. Requests against branches from the older system, or against branches whose current state does not allow a sync, are rejected with `422 Unprocessable Entity` and an empty body.  Requires the Branching feature to be enabled on the account. 
      * Sync a branch
      */
     async branchSyncRaw(requestParameters: BranchSyncRequest): Promise<runtime.ApiResponse<any>> {
@@ -443,7 +446,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Sync an existing branch.  *Note: Only available for branches created with new branching.* 
+     * Pull changes from the base branch into this branch, applying the chosen conflict-resolution strategy.  The sync runs asynchronously. The branch transitions to `syncing_branch` and settles back into `success` (or `merge_conflict` / `branch_error`) once the background job completes; the response body for this request is empty. Poll the branch resource to observe the final state.  Only branches created with the newer branching system can be synced. Requests against branches from the older system, or against branches whose current state does not allow a sync, are rejected with `422 Unprocessable Entity` and an empty body.  Requires the Branching feature to be enabled on the account. 
      * Sync a branch
      */
     async branchSync(requestParameters: BranchSyncRequest): Promise<any> {
@@ -452,7 +455,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing branch.
+     * Update an existing branch. Only the branch name can be changed.  Requires the Branching feature to be enabled on the account. 
      * Update a branch
      */
     async branchUpdateRaw(requestParameters: BranchUpdateRequest): Promise<runtime.ApiResponse<Branch>> {
@@ -497,7 +500,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing branch.
+     * Update an existing branch. Only the branch name can be changed.  Requires the Branching feature to be enabled on the account. 
      * Update a branch
      */
     async branchUpdate(requestParameters: BranchUpdateRequest): Promise<Branch> {
@@ -506,7 +509,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all branches the of the current project.
+     * List all branches of the current project.  Requires the Branching feature to be enabled on the account. 
      * List branches
      */
     async branchesListRaw(requestParameters: BranchesListRequest): Promise<runtime.ApiResponse<Array<Branch>>> {
@@ -548,7 +551,7 @@ export class BranchesApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all branches the of the current project.
+     * List all branches of the current project.  Requires the Branching feature to be enabled on the account. 
      * List branches
      */
     async branchesList(requestParameters: BranchesListRequest): Promise<Array<Branch>> {
