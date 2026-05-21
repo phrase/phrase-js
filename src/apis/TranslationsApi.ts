@@ -17,6 +17,9 @@ import {
     AffectedCount,
     AffectedCountFromJSON,
     AffectedCountToJSON,
+    DocumentDelete422Response,
+    DocumentDelete422ResponseFromJSON,
+    DocumentDelete422ResponseToJSON,
     Translation,
     TranslationFromJSON,
     TranslationToJSON,
@@ -176,6 +179,8 @@ export interface TranslationsListRequest {
     page?: number;
     perPage?: number;
     branch?: string;
+    keyId?: string;
+    localeId?: string;
     sort?: string;
     order?: string;
     q?: string;
@@ -960,6 +965,14 @@ export class TranslationsApi extends runtime.BaseAPI {
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
+        }
+
+        if (requestParameters.keyId !== undefined) {
+            queryParameters['key_id'] = requestParameters.keyId;
+        }
+
+        if (requestParameters.localeId !== undefined) {
+            queryParameters['locale_id'] = requestParameters.localeId;
         }
 
         if (requestParameters.sort !== undefined) {

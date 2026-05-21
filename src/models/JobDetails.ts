@@ -142,11 +142,17 @@ export interface JobDetails {
      */
     keys?: Array<KeyPreview>;
     /**
-     * 
+     * Returned only when `include_annotations=true` is supplied on the request.
      * @type {Array<JobAnnotationShort>}
      * @memberof JobDetails
      */
     annotations?: Array<JobAnnotationShort>;
+    /**
+     * `true` if the job has been locked by the project\'s job-locking workflow (translations attached to the job are read-only until the job advances). 
+     * @type {boolean}
+     * @memberof JobDetails
+     */
+    locked?: boolean;
 }
 
 export function JobDetailsFromJSON(json: any): JobDetails {
@@ -176,6 +182,7 @@ export function JobDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'locales': !exists(json, 'locales') ? undefined : ((json['locales'] as Array<any>).map(LocalePreviewFromJSON)),
         'keys': !exists(json, 'keys') ? undefined : ((json['keys'] as Array<any>).map(KeyPreviewFromJSON)),
         'annotations': !exists(json, 'annotations') ? undefined : ((json['annotations'] as Array<any>).map(JobAnnotationShortFromJSON)),
+        'locked': !exists(json, 'locked') ? undefined : json['locked'],
     };
 }
 
@@ -205,6 +212,7 @@ export function JobDetailsToJSON(value?: JobDetails | null): any {
         'locales': value.locales === undefined ? undefined : ((value.locales as Array<any>).map(LocalePreviewToJSON)),
         'keys': value.keys === undefined ? undefined : ((value.keys as Array<any>).map(KeyPreviewToJSON)),
         'annotations': value.annotations === undefined ? undefined : ((value.annotations as Array<any>).map(JobAnnotationShortToJSON)),
+        'locked': value.locked,
     };
 }
 

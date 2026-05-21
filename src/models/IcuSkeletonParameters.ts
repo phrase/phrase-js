@@ -19,11 +19,17 @@ import { exists, mapValues } from '../runtime';
  */
 export interface IcuSkeletonParameters {
     /**
-     * Source content
+     * Source content to derive skeletons from. Mutually exclusive with `id`; exactly one of the two must be provided. 
      * @type {string}
      * @memberof IcuSkeletonParameters
      */
     content?: string;
+    /**
+     * Translation code to source content from. Mutually exclusive with `content`; exactly one of the two must be provided. 
+     * @type {string}
+     * @memberof IcuSkeletonParameters
+     */
+    id?: string;
     /**
      * Locale codes
      * @type {Array<string>}
@@ -61,6 +67,7 @@ export function IcuSkeletonParametersFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'content': !exists(json, 'content') ? undefined : json['content'],
+        'id': !exists(json, 'id') ? undefined : json['id'],
         'localeCodes': !exists(json, 'locale_codes') ? undefined : json['locale_codes'],
         'keepContent': !exists(json, 'keep_content') ? undefined : json['keep_content'],
         'zeroFormEnabled': !exists(json, 'zero_form_enabled') ? undefined : json['zero_form_enabled'],
@@ -78,6 +85,7 @@ export function IcuSkeletonParametersToJSON(value?: IcuSkeletonParameters | null
     return {
         
         'content': value.content,
+        'id': value.id,
         'locale_codes': value.localeCodes,
         'keep_content': value.keepContent,
         'zero_form_enabled': value.zeroFormEnabled,

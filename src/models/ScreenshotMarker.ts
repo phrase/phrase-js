@@ -13,6 +13,10 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    ScreenshotMarkerPresentation,
+    ScreenshotMarkerPresentationFromJSON,
+    ScreenshotMarkerPresentationFromJSONTyped,
+    ScreenshotMarkerPresentationToJSON,
     TranslationKey,
     TranslationKeyFromJSON,
     TranslationKeyFromJSONTyped,
@@ -33,12 +37,12 @@ export interface ScreenshotMarker {
     id?: string;
     /**
      * 
-     * @type {string}
+     * @type {ScreenshotMarkerPresentation}
      * @memberof ScreenshotMarker
      */
-    presentation?: string;
+    presentation?: ScreenshotMarkerPresentation;
     /**
-     * 
+     * Marker presentation style. The default value is `default`. 
      * @type {string}
      * @memberof ScreenshotMarker
      */
@@ -74,7 +78,7 @@ export function ScreenshotMarkerFromJSONTyped(json: any, ignoreDiscriminator: bo
     return {
         
         'id': !exists(json, 'id') ? undefined : json['id'],
-        'presentation': !exists(json, 'presentation') ? undefined : json['presentation'],
+        'presentation': !exists(json, 'presentation') ? undefined : ScreenshotMarkerPresentationFromJSON(json['presentation']),
         'presentationType': !exists(json, 'presentation_type') ? undefined : json['presentation_type'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
@@ -92,7 +96,7 @@ export function ScreenshotMarkerToJSON(value?: ScreenshotMarker | null): any {
     return {
         
         'id': value.id,
-        'presentation': value.presentation,
+        'presentation': ScreenshotMarkerPresentationToJSON(value.presentation),
         'presentation_type': value.presentationType,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),

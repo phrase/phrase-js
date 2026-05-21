@@ -38,13 +38,19 @@ export interface UploadBatch {
      * @type {string}
      * @memberof UploadBatch
      */
-    state?: UploadBatchStateEnum;
+    status?: UploadBatchStatusEnum;
     /**
      * Indicates whether unmentioned keys will be deleted after processing all uploads in the batch
      * @type {boolean}
      * @memberof UploadBatch
      */
     deleteUnmentionedKeys?: boolean;
+    /**
+     * Number of uploads attached to this batch.
+     * @type {number}
+     * @memberof UploadBatch
+     */
+    uploadsCount?: number;
     /**
      * 
      * @type {Date}
@@ -87,8 +93,9 @@ export function UploadBatchFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
-        'state': !exists(json, 'state') ? undefined : json['state'],
+        'status': !exists(json, 'status') ? undefined : json['status'],
         'deleteUnmentionedKeys': !exists(json, 'delete_unmentioned_keys') ? undefined : json['delete_unmentioned_keys'],
+        'uploadsCount': !exists(json, 'uploads_count') ? undefined : json['uploads_count'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'project': !exists(json, 'project') ? undefined : json['project'],
@@ -106,8 +113,9 @@ export function UploadBatchToJSON(value?: UploadBatch | null): any {
     }
     return {
         
-        'state': value.state,
+        'status': value.status,
         'delete_unmentioned_keys': value.deleteUnmentionedKeys,
+        'uploads_count': value.uploadsCount,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'project': value.project,
@@ -120,7 +128,7 @@ export function UploadBatchToJSON(value?: UploadBatch | null): any {
 * @export
 * @enum {string}
 */
-export enum UploadBatchStateEnum {
+export enum UploadBatchStatusEnum {
     Started = 'started',
     Done = 'done'
 }

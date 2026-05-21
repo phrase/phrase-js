@@ -163,6 +163,54 @@ export interface ProjectCreateParameters {
      */
     autotranslateOverwriteUnverifiedTranslations?: boolean;
     /**
+     * (Optional) Enable autocomplete-job behavior so that newly created keys and locales are automatically added to in-progress jobs.
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    autocompleteJobEnabled?: boolean;
+    /**
+     * (Optional) When enabled, translations are locked once a job moves into review.
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    jobLockingEnabled?: boolean;
+    /**
+     * (Optional) Enable Smart Suggest for the project. Defaults to `true` when omitted.
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    smartSuggestEnabled?: boolean;
+    /**
+     * (Optional) Allow Smart Suggest to source suggestions from the project glossary. Defaults to `true` when omitted.
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    smartSuggestUseGlossary?: boolean;
+    /**
+     * (Optional) Allow Smart Suggest to source suggestions from machine translation. Defaults to `true` when omitted.
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    smartSuggestUseMachineTranslation?: boolean;
+    /**
+     * (Optional) Collation used when sorting translation keys alphabetically. Defaults to `unicode_ci` when omitted.
+     * @type {string}
+     * @memberof ProjectCreateParameters
+     */
+    translationKeysSortCollation?: string;
+    /**
+     * (Optional) Sets the default encoding for Uploads. If you leave it empty, we will try to guess it automatically for you when you Upload a file. You can still override this value by setting the [`file_encoding`](/en/api/strings/uploads/upload-a-new-file) parameter for Uploads.
+     * @type {string}
+     * @memberof ProjectCreateParameters
+     */
+    defaultEncoding?: ProjectCreateParametersDefaultEncodingEnum;
+    /**
+     * (Optional) CLDR plural-rule version used by the project.
+     * @type {string}
+     * @memberof ProjectCreateParameters
+     */
+    cldrVersion?: string;
+    /**
      * (Optional) List of placeholder styles enabled for the project.
      * @type {Array<string>}
      * @memberof ProjectCreateParameters
@@ -204,6 +252,14 @@ export function ProjectCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'autotranslateUseMachineTranslation': !exists(json, 'autotranslate_use_machine_translation') ? undefined : json['autotranslate_use_machine_translation'],
         'autotranslateUseTranslationMemory': !exists(json, 'autotranslate_use_translation_memory') ? undefined : json['autotranslate_use_translation_memory'],
         'autotranslateOverwriteUnverifiedTranslations': !exists(json, 'autotranslate_overwrite_unverified_translations') ? undefined : json['autotranslate_overwrite_unverified_translations'],
+        'autocompleteJobEnabled': !exists(json, 'autocomplete_job_enabled') ? undefined : json['autocomplete_job_enabled'],
+        'jobLockingEnabled': !exists(json, 'job_locking_enabled') ? undefined : json['job_locking_enabled'],
+        'smartSuggestEnabled': !exists(json, 'smart_suggest_enabled') ? undefined : json['smart_suggest_enabled'],
+        'smartSuggestUseGlossary': !exists(json, 'smart_suggest_use_glossary') ? undefined : json['smart_suggest_use_glossary'],
+        'smartSuggestUseMachineTranslation': !exists(json, 'smart_suggest_use_machine_translation') ? undefined : json['smart_suggest_use_machine_translation'],
+        'translationKeysSortCollation': !exists(json, 'translation_keys_sort_collation') ? undefined : json['translation_keys_sort_collation'],
+        'defaultEncoding': !exists(json, 'default_encoding') ? undefined : json['default_encoding'],
+        'cldrVersion': !exists(json, 'cldr_version') ? undefined : json['cldr_version'],
         'placeholderStyles': !exists(json, 'placeholder_styles') ? undefined : json['placeholder_styles'],
     };
 }
@@ -241,8 +297,28 @@ export function ProjectCreateParametersToJSON(value?: ProjectCreateParameters | 
         'autotranslate_use_machine_translation': value.autotranslateUseMachineTranslation,
         'autotranslate_use_translation_memory': value.autotranslateUseTranslationMemory,
         'autotranslate_overwrite_unverified_translations': value.autotranslateOverwriteUnverifiedTranslations,
+        'autocomplete_job_enabled': value.autocompleteJobEnabled,
+        'job_locking_enabled': value.jobLockingEnabled,
+        'smart_suggest_enabled': value.smartSuggestEnabled,
+        'smart_suggest_use_glossary': value.smartSuggestUseGlossary,
+        'smart_suggest_use_machine_translation': value.smartSuggestUseMachineTranslation,
+        'translation_keys_sort_collation': value.translationKeysSortCollation,
+        'default_encoding': value.defaultEncoding,
+        'cldr_version': value.cldrVersion,
         'placeholder_styles': value.placeholderStyles,
     };
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum ProjectCreateParametersDefaultEncodingEnum {
+    Utf8 = 'UTF-8',
+    Utf16 = 'UTF-16',
+    Utf16Be = 'UTF-16BE',
+    Utf16Le = 'UTF-16LE',
+    Iso88591 = 'ISO-8859-1'
 }
 
 

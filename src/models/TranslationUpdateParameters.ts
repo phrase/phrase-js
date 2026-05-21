@@ -60,6 +60,12 @@ export interface TranslationUpdateParameters {
      * @memberof TranslationUpdateParameters
      */
     reviewed?: boolean;
+    /**
+     * When `true`, the update is treated as a minor edit and does not trigger downstream re-verification on the linked locales\' translations. 
+     * @type {boolean}
+     * @memberof TranslationUpdateParameters
+     */
+    minorChange?: boolean;
 }
 
 export function TranslationUpdateParametersFromJSON(json: any): TranslationUpdateParameters {
@@ -79,6 +85,7 @@ export function TranslationUpdateParametersFromJSONTyped(json: any, ignoreDiscri
         'excluded': !exists(json, 'excluded') ? undefined : json['excluded'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
         'reviewed': !exists(json, 'reviewed') ? undefined : json['reviewed'],
+        'minorChange': !exists(json, 'minor_change') ? undefined : json['minor_change'],
     };
 }
 
@@ -98,6 +105,7 @@ export function TranslationUpdateParametersToJSON(value?: TranslationUpdateParam
         'excluded': value.excluded,
         'autotranslate': value.autotranslate,
         'reviewed': value.reviewed,
+        'minor_change': value.minorChange,
     };
 }
 

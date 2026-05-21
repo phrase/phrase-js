@@ -17,6 +17,9 @@ import {
     Document,
     DocumentFromJSON,
     DocumentToJSON,
+    DocumentDelete422Response,
+    DocumentDelete422ResponseFromJSON,
+    DocumentDelete422ResponseToJSON,
 } from '../models';
 
 export interface DocumentDeleteRequest {
@@ -30,6 +33,7 @@ export interface DocumentsListRequest {
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
+    q?: string;
 }
 
 /**
@@ -101,6 +105,10 @@ export class DocumentsApi extends runtime.BaseAPI {
 
         if (requestParameters.perPage !== undefined) {
             queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

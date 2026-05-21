@@ -17,6 +17,10 @@ import {
     AccountFromJSON,
     AccountFromJSONTyped,
     AccountToJSON,
+    Branch,
+    BranchFromJSON,
+    BranchFromJSONTyped,
+    BranchToJSON,
     Space1,
     Space1FromJSON,
     Space1FromJSONTyped,
@@ -185,6 +189,18 @@ export interface ProjectDetails {
     autotranslateUseTranslationMemory?: boolean;
     /**
      * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    autotranslateOverwriteUnverifiedTranslations?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProjectDetails
+     */
+    autocompleteJobEnabled?: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof ProjectDetails
      */
@@ -207,6 +223,12 @@ export interface ProjectDetails {
      * @memberof ProjectDetails
      */
     placeholderStyles?: Array<string>;
+    /**
+     * 
+     * @type {Branch}
+     * @memberof ProjectDetails
+     */
+    branch?: Branch;
 }
 
 export function ProjectDetailsFromJSON(json: any): ProjectDetails {
@@ -244,10 +266,13 @@ export function ProjectDetailsFromJSONTyped(json: any, ignoreDiscriminator: bool
         'autotranslateMarkAsUnverified': !exists(json, 'autotranslate_mark_as_unverified') ? undefined : json['autotranslate_mark_as_unverified'],
         'autotranslateUseMachineTranslation': !exists(json, 'autotranslate_use_machine_translation') ? undefined : json['autotranslate_use_machine_translation'],
         'autotranslateUseTranslationMemory': !exists(json, 'autotranslate_use_translation_memory') ? undefined : json['autotranslate_use_translation_memory'],
+        'autotranslateOverwriteUnverifiedTranslations': !exists(json, 'autotranslate_overwrite_unverified_translations') ? undefined : json['autotranslate_overwrite_unverified_translations'],
+        'autocompleteJobEnabled': !exists(json, 'autocomplete_job_enabled') ? undefined : json['autocomplete_job_enabled'],
         'defaultEncoding': !exists(json, 'default_encoding') ? undefined : json['default_encoding'],
         'cldrVersion': !exists(json, 'cldr_version') ? undefined : json['cldr_version'],
         'jobLockingEnabled': !exists(json, 'job_locking_enabled') ? undefined : json['job_locking_enabled'],
         'placeholderStyles': !exists(json, 'placeholder_styles') ? undefined : json['placeholder_styles'],
+        'branch': !exists(json, 'branch') ? undefined : BranchFromJSON(json['branch']),
     };
 }
 
@@ -285,10 +310,13 @@ export function ProjectDetailsToJSON(value?: ProjectDetails | null): any {
         'autotranslate_mark_as_unverified': value.autotranslateMarkAsUnverified,
         'autotranslate_use_machine_translation': value.autotranslateUseMachineTranslation,
         'autotranslate_use_translation_memory': value.autotranslateUseTranslationMemory,
+        'autotranslate_overwrite_unverified_translations': value.autotranslateOverwriteUnverifiedTranslations,
+        'autocomplete_job_enabled': value.autocompleteJobEnabled,
         'default_encoding': value.defaultEncoding,
         'cldr_version': value.cldrVersion,
         'job_locking_enabled': value.jobLockingEnabled,
         'placeholder_styles': value.placeholderStyles,
+        'branch': BranchToJSON(value.branch),
     };
 }
 

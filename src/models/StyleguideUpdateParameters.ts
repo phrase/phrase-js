@@ -31,23 +31,23 @@ export interface StyleguideUpdateParameters {
      */
     audience?: string;
     /**
-     * Can be one of: not_specified, children, teenager, young_adults, adults, old_adults.
+     * Target audience for the translations.
      * @type {string}
      * @memberof StyleguideUpdateParameters
      */
-    targetAudience?: string;
+    targetAudience?: StyleguideUpdateParametersTargetAudienceEnum;
     /**
-     * Can be one of: not_specified, first_person_singular, second_person_singular, third_person_singular_masculine, third_person_singular_feminine, third_person_singular_neuter, first_person_plural, second_person_plural, third_person_plural.
+     * Preferred grammatical person.
      * @type {string}
      * @memberof StyleguideUpdateParameters
      */
-    grammaticalPerson?: string;
+    grammaticalPerson?: StyleguideUpdateParametersGrammaticalPersonEnum;
     /**
-     * Can be one of: not_specified, popular, technical, fictional.
+     * Vocabulary register the translations should use.
      * @type {string}
      * @memberof StyleguideUpdateParameters
      */
-    vocabularyType?: string;
+    vocabularyType?: StyleguideUpdateParametersVocabularyTypeEnum;
     /**
      * Description of the business
      * @type {string}
@@ -147,6 +147,44 @@ export function StyleguideUpdateParametersToJSON(value?: StyleguideUpdateParamet
         'overall_tone': value.overallTone,
         'samples': value.samples,
     };
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum StyleguideUpdateParametersTargetAudienceEnum {
+    NotSpecified = 'not_specified',
+    Children = 'children',
+    Teenager = 'teenager',
+    YoungAdults = 'young_adults',
+    Adults = 'adults',
+    OldAdults = 'old_adults'
+}
+/**
+* @export
+* @enum {string}
+*/
+export enum StyleguideUpdateParametersGrammaticalPersonEnum {
+    NotSpecified = 'not_specified',
+    FirstPersonSingular = 'first_person_singular',
+    SecondPersonSingular = 'second_person_singular',
+    ThirdPersonSingularMasculine = 'third_person_singular_masculine',
+    ThirdPersonSingularFeminine = 'third_person_singular_feminine',
+    ThirdPersonSingularNeuter = 'third_person_singular_neuter',
+    FirstPersonPlural = 'first_person_plural',
+    SecondPersonPlural = 'second_person_plural',
+    ThirdPersonPlural = 'third_person_plural'
+}
+/**
+* @export
+* @enum {string}
+*/
+export enum StyleguideUpdateParametersVocabularyTypeEnum {
+    NotSpecified = 'not_specified',
+    Popular = 'popular',
+    Technical = 'technical',
+    Fictional = 'fictional'
 }
 
 

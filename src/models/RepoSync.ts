@@ -62,6 +62,12 @@ export interface RepoSync {
      */
     repoName?: string;
     /**
+     * Branch used as the source of exports/PRs. May be `null` when the sync is configured to push directly to `base_branch`. 
+     * @type {string}
+     * @memberof RepoSync
+     */
+    prBranch?: string | null;
+    /**
      * 
      * @type {Date}
      * @memberof RepoSync
@@ -97,6 +103,7 @@ export function RepoSyncFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'enabled': !exists(json, 'enabled') ? undefined : json['enabled'],
         'autoImport': !exists(json, 'auto_import') ? undefined : json['auto_import'],
         'repoName': !exists(json, 'repo_name') ? undefined : json['repo_name'],
+        'prBranch': !exists(json, 'pr_branch') ? undefined : json['pr_branch'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'lastImportAt': !exists(json, 'last_import_at') ? undefined : (new Date(json['last_import_at'])),
         'lastExportAt': !exists(json, 'last_export_at') ? undefined : (new Date(json['last_export_at'])),
@@ -118,6 +125,7 @@ export function RepoSyncToJSON(value?: RepoSync | null): any {
         'enabled': value.enabled,
         'auto_import': value.autoImport,
         'repo_name': value.repoName,
+        'pr_branch': value.prBranch,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'last_import_at': value.lastImportAt === undefined ? undefined : (value.lastImportAt.toISOString()),
         'last_export_at': value.lastExportAt === undefined ? undefined : (value.lastExportAt.toISOString()),

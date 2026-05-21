@@ -66,6 +66,18 @@ export interface TranslationCreateParameters {
      * @memberof TranslationCreateParameters
      */
     autotranslate?: boolean;
+    /**
+     * When `true`, the translation is marked as a minor edit and does not trigger downstream re-verification on the linked locales\' translations. 
+     * @type {boolean}
+     * @memberof TranslationCreateParameters
+     */
+    minorChange?: boolean;
+    /**
+     * When `true` and the project\'s review workflow is enabled, the translation is created in the `reviewed` state. 
+     * @type {boolean}
+     * @memberof TranslationCreateParameters
+     */
+    reviewed?: boolean;
 }
 
 export function TranslationCreateParametersFromJSON(json: any): TranslationCreateParameters {
@@ -86,6 +98,8 @@ export function TranslationCreateParametersFromJSONTyped(json: any, ignoreDiscri
         'unverified': !exists(json, 'unverified') ? undefined : json['unverified'],
         'excluded': !exists(json, 'excluded') ? undefined : json['excluded'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
+        'minorChange': !exists(json, 'minor_change') ? undefined : json['minor_change'],
+        'reviewed': !exists(json, 'reviewed') ? undefined : json['reviewed'],
     };
 }
 
@@ -106,6 +120,8 @@ export function TranslationCreateParametersToJSON(value?: TranslationCreateParam
         'unverified': value.unverified,
         'excluded': value.excluded,
         'autotranslate': value.autotranslate,
+        'minor_change': value.minorChange,
+        'reviewed': value.reviewed,
     };
 }
 

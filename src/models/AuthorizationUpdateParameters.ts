@@ -29,7 +29,7 @@ export interface AuthorizationUpdateParameters {
      * @type {Array<string>}
      * @memberof AuthorizationUpdateParameters
      */
-    scopes?: Array<string>;
+    scopes?: Array<AuthorizationUpdateParametersScopesEnum>;
     /**
      * Expiration date for the authorization token. Null means no expiration date (default).
      * @type {Date}
@@ -67,6 +67,17 @@ export function AuthorizationUpdateParametersToJSON(value?: AuthorizationUpdateP
         'scopes': value.scopes,
         'expires_at': value.expiresAt === undefined ? undefined : (value.expiresAt.toISOString()),
     };
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum AuthorizationUpdateParametersScopesEnum {
+    Read = 'read',
+    Write = 'write',
+    OrdersCreate = 'orders.create',
+    TeamManage = 'team.manage'
 }
 
 

@@ -14,6 +14,9 @@
 
 import * as runtime from '../runtime';
 import {
+    DocumentDelete422Response,
+    DocumentDelete422ResponseFromJSON,
+    DocumentDelete422ResponseToJSON,
     Project,
     ProjectFromJSON,
     ProjectToJSON,
@@ -54,8 +57,9 @@ export interface ProjectsListRequest {
     page?: number;
     perPage?: number;
     accountId?: string;
-    sortBy?: string;
-    filters?: Array<string>;
+    sortBy?: ProjectsListSortByEnum;
+    filters?: Array<ProjectsListFiltersEnum>;
+    q?: string;
 }
 
 /**
@@ -64,7 +68,7 @@ export interface ProjectsListRequest {
 export class ProjectsApi extends runtime.BaseAPI {
 
     /**
-     * Create a new project.
+     * Create a new project in the given account.  When `source_project_id` is supplied, the new project is created as a clone of that project. All locales, keys, and translations are copied asynchronously after the response is returned, so they may not be available immediately. Settings from the source project are inherited unless explicitly overridden in the request; in clone mode, the `shares_translation_memory` field is ignored and inherited from the source.  `shares_translation_memory` defaults to `true` when omitted on a non-clone create. 
      * Create a project
      */
     async projectCreateRaw(requestParameters: ProjectCreateRequest): Promise<runtime.ApiResponse<ProjectDetails>> {
@@ -101,7 +105,7 @@ export class ProjectsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new project.
+     * Create a new project in the given account.  When `source_project_id` is supplied, the new project is created as a clone of that project. All locales, keys, and translations are copied asynchronously after the response is returned, so they may not be available immediately. Settings from the source project are inherited unless explicitly overridden in the request; in clone mode, the `shares_translation_memory` field is ignored and inherited from the source.  `shares_translation_memory` defaults to `true` when omitted on a non-clone create. 
      * Create a project
      */
     async projectCreate(requestParameters: ProjectCreateRequest): Promise<ProjectDetails> {
@@ -110,7 +114,7 @@ export class ProjectsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing project.
+     * Delete an existing project. Associated repository syncs and OTA distributions are removed. A `project:delete` event is dispatched. 
      * Delete a project
      */
     async projectDeleteRaw(requestParameters: ProjectDeleteRequest): Promise<runtime.ApiResponse<any>> {
@@ -144,7 +148,7 @@ export class ProjectsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing project.
+     * Delete an existing project. Associated repository syncs and OTA distributions are removed. A `project:delete` event is dispatched. 
      * Delete a project
      */
     async projectDelete(requestParameters: ProjectDeleteRequest): Promise<any> {
@@ -246,7 +250,7 @@ export class ProjectsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all projects the current user has access to.
+     * List all projects the current user has access to.  When the `account_id` query parameter is omitted, the response includes projects across every account the user is a member of. Pass `account_id` to scope the results to a single account. 
      * List projects
      */
     async projectsListRaw(requestParameters: ProjectsListRequest): Promise<runtime.ApiResponse<Array<Project>>> {
@@ -270,6 +274,10 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         if (requestParameters.filters) {
             queryParameters['filters'] = requestParameters.filters;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -296,7 +304,7 @@ export class ProjectsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all projects the current user has access to.
+     * List all projects the current user has access to.  When the `account_id` query parameter is omitted, the response includes projects across every account the user is a member of. Pass `account_id` to scope the results to a single account. 
      * List projects
      */
     async projectsList(requestParameters: ProjectsListRequest): Promise<Array<Project>> {
@@ -304,4 +312,24 @@ export class ProjectsApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ProjectsListSortByEnum {
+    NameAsc = 'name_asc',
+    NameDesc = 'name_desc',
+    UpdatedAtAsc = 'updated_at_asc',
+    UpdatedAtDesc = 'updated_at_desc',
+    SpaceAsc = 'space_asc',
+    SpaceDesc = 'space_desc'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ProjectsListFiltersEnum {
+    Favorites = 'favorites'
 }

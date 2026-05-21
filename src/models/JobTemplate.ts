@@ -60,6 +60,12 @@ export interface JobTemplate {
      */
     branch?: Branch;
     /**
+     * When `true`, jobs created from this template are auto-translated on creation. 
+     * @type {boolean}
+     * @memberof JobTemplate
+     */
+    autotranslateEnabled?: boolean;
+    /**
      * 
      * @type {Date}
      * @memberof JobTemplate
@@ -88,6 +94,7 @@ export function JobTemplateFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'project': !exists(json, 'project') ? undefined : ProjectShortFromJSON(json['project']),
         'branch': !exists(json, 'branch') ? undefined : BranchFromJSON(json['branch']),
+        'autotranslateEnabled': !exists(json, 'autotranslate_enabled') ? undefined : json['autotranslate_enabled'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
     };
@@ -107,6 +114,7 @@ export function JobTemplateToJSON(value?: JobTemplate | null): any {
         'briefing': value.briefing,
         'project': ProjectShortToJSON(value.project),
         'branch': BranchToJSON(value.branch),
+        'autotranslate_enabled': value.autotranslateEnabled,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
     };

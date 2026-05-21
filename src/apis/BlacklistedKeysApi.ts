@@ -23,6 +23,9 @@ import {
     BlacklistedKeyUpdateParameters,
     BlacklistedKeyUpdateParametersFromJSON,
     BlacklistedKeyUpdateParametersToJSON,
+    DocumentDelete422Response,
+    DocumentDelete422ResponseFromJSON,
+    DocumentDelete422ResponseToJSON,
 } from '../models';
 
 export interface BlacklistedKeyCreateRequest {

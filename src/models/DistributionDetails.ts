@@ -13,10 +13,6 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    Branch,
-    BranchFromJSON,
-    BranchFromJSONTyped,
-    BranchToJSON,
     LocalePreview,
     LocalePreviewFromJSON,
     LocalePreviewFromJSONTyped,
@@ -25,91 +21,85 @@ import {
     ProjectShortFromJSON,
     ProjectShortFromJSONTyped,
     ProjectShortToJSON,
-    UserPreview,
-    UserPreviewFromJSON,
-    UserPreviewFromJSONTyped,
-    UserPreviewToJSON,
+    ReleasePreview,
+    ReleasePreviewFromJSON,
+    ReleasePreviewFromJSONTyped,
+    ReleasePreviewToJSON,
 } from './';
 
 /**
  * 
  * @export
- * @interface JobTemplateDetails
+ * @interface DistributionDetails
  */
-export interface JobTemplateDetails {
+export interface DistributionDetails {
     /**
      * 
      * @type {string}
-     * @memberof JobTemplateDetails
+     * @memberof DistributionDetails
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof JobTemplateDetails
+     * @memberof DistributionDetails
      */
     name?: string;
     /**
      * 
-     * @type {string}
-     * @memberof JobTemplateDetails
-     */
-    briefing?: string;
-    /**
-     * 
      * @type {ProjectShort}
-     * @memberof JobTemplateDetails
+     * @memberof DistributionDetails
      */
     project?: ProjectShort;
     /**
      * 
-     * @type {Branch}
-     * @memberof JobTemplateDetails
+     * @type {Array<string>}
+     * @memberof DistributionDetails
      */
-    branch?: Branch;
+    platforms?: Array<string>;
     /**
-     * When `true`, jobs created from this template are auto-translated on creation. 
-     * @type {boolean}
-     * @memberof JobTemplateDetails
+     * 
+     * @type {number}
+     * @memberof DistributionDetails
      */
-    autotranslateEnabled?: boolean;
+    releaseCount?: number;
     /**
      * 
      * @type {Date}
-     * @memberof JobTemplateDetails
+     * @memberof DistributionDetails
      */
     createdAt?: Date;
     /**
      * 
      * @type {Date}
-     * @memberof JobTemplateDetails
+     * @memberof DistributionDetails
      */
     updatedAt?: Date;
     /**
      * 
-     * @type {UserPreview}
-     * @memberof JobTemplateDetails
+     * @type {Date}
+     * @memberof DistributionDetails
      */
-    owner?: UserPreview;
-    /**
-     * 
-     * @type {UserPreview}
-     * @memberof JobTemplateDetails
-     */
-    creator?: UserPreview;
+    deletedAt?: Date | null;
     /**
      * 
      * @type {Array<LocalePreview>}
-     * @memberof JobTemplateDetails
+     * @memberof DistributionDetails
      */
     locales?: Array<LocalePreview>;
+    /**
+     * 
+     * @type {Array<ReleasePreview>}
+     * @memberof DistributionDetails
+     */
+    releases?: Array<ReleasePreview>;
 }
 
-export function JobTemplateDetailsFromJSON(json: any): JobTemplateDetails {
-    return JobTemplateDetailsFromJSONTyped(json, false);
+export function DistributionDetailsFromJSON(json: any): DistributionDetails {
+    return DistributionDetailsFromJSONTyped(json, false);
 }
 
-export function JobTemplateDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean): JobTemplateDetails {
+export function DistributionDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean): DistributionDetails {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -117,19 +107,18 @@ export function JobTemplateDetailsFromJSONTyped(json: any, ignoreDiscriminator: 
         
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
-        'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'project': !exists(json, 'project') ? undefined : ProjectShortFromJSON(json['project']),
-        'branch': !exists(json, 'branch') ? undefined : BranchFromJSON(json['branch']),
-        'autotranslateEnabled': !exists(json, 'autotranslate_enabled') ? undefined : json['autotranslate_enabled'],
+        'platforms': !exists(json, 'platforms') ? undefined : json['platforms'],
+        'releaseCount': !exists(json, 'release_count') ? undefined : json['release_count'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
-        'owner': !exists(json, 'owner') ? undefined : UserPreviewFromJSON(json['owner']),
-        'creator': !exists(json, 'creator') ? undefined : UserPreviewFromJSON(json['creator']),
+        'deletedAt': !exists(json, 'deleted_at') ? undefined : (json['deleted_at'] === null ? null : new Date(json['deleted_at'])),
         'locales': !exists(json, 'locales') ? undefined : ((json['locales'] as Array<any>).map(LocalePreviewFromJSON)),
+        'releases': !exists(json, 'releases') ? undefined : ((json['releases'] as Array<any>).map(ReleasePreviewFromJSON)),
     };
 }
 
-export function JobTemplateDetailsToJSON(value?: JobTemplateDetails | null): any {
+export function DistributionDetailsToJSON(value?: DistributionDetails | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -140,15 +129,14 @@ export function JobTemplateDetailsToJSON(value?: JobTemplateDetails | null): any
         
         'id': value.id,
         'name': value.name,
-        'briefing': value.briefing,
         'project': ProjectShortToJSON(value.project),
-        'branch': BranchToJSON(value.branch),
-        'autotranslate_enabled': value.autotranslateEnabled,
+        'platforms': value.platforms,
+        'release_count': value.releaseCount,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
-        'owner': UserPreviewToJSON(value.owner),
-        'creator': UserPreviewToJSON(value.creator),
+        'deleted_at': value.deletedAt === undefined ? undefined : (value.deletedAt === null ? null : value.deletedAt.toISOString()),
         'locales': value.locales === undefined ? undefined : ((value.locales as Array<any>).map(LocalePreviewToJSON)),
+        'releases': value.releases === undefined ? undefined : ((value.releases as Array<any>).map(ReleasePreviewToJSON)),
     };
 }
 

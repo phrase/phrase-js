@@ -19,7 +19,7 @@ import { exists, mapValues } from '../runtime';
  */
 export interface ProjectUpdateParameters {
     /**
-     * Required if the requesting user is a member of multiple accounts. Account ID to specify the actual account the project should be created in.
+     * (Optional) ID of an account the requesting user belongs to. Used only to disambiguate the request context; the project itself cannot be moved between accounts through this endpoint. 
      * @type {string}
      * @memberof ProjectUpdateParameters
      */
@@ -168,6 +168,48 @@ export interface ProjectUpdateParameters {
      * @memberof ProjectUpdateParameters
      */
     placeholderStyles?: Array<string>;
+    /**
+     * (Optional) Enable autocomplete-job behavior so that newly created keys and locales are automatically added to in-progress jobs.
+     * @type {boolean}
+     * @memberof ProjectUpdateParameters
+     */
+    autocompleteJobEnabled?: boolean;
+    /**
+     * (Optional) When enabled, translations are locked once a job moves into review.
+     * @type {boolean}
+     * @memberof ProjectUpdateParameters
+     */
+    jobLockingEnabled?: boolean;
+    /**
+     * (Optional) Enable Smart Suggest for the project.
+     * @type {boolean}
+     * @memberof ProjectUpdateParameters
+     */
+    smartSuggestEnabled?: boolean;
+    /**
+     * (Optional) Allow Smart Suggest to source suggestions from the project glossary.
+     * @type {boolean}
+     * @memberof ProjectUpdateParameters
+     */
+    smartSuggestUseGlossary?: boolean;
+    /**
+     * (Optional) Allow Smart Suggest to source suggestions from machine translation.
+     * @type {boolean}
+     * @memberof ProjectUpdateParameters
+     */
+    smartSuggestUseMachineTranslation?: boolean;
+    /**
+     * (Optional) Collation used when sorting translation keys alphabetically.
+     * @type {string}
+     * @memberof ProjectUpdateParameters
+     */
+    translationKeysSortCollation?: string;
+    /**
+     * (Optional) CLDR plural-rule version used by the project.
+     * @type {string}
+     * @memberof ProjectUpdateParameters
+     */
+    cldrVersion?: string;
 }
 
 export function ProjectUpdateParametersFromJSON(json: any): ProjectUpdateParameters {
@@ -205,6 +247,13 @@ export function ProjectUpdateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'autotranslateOverwriteUnverifiedTranslations': !exists(json, 'autotranslate_overwrite_unverified_translations') ? undefined : json['autotranslate_overwrite_unverified_translations'],
         'defaultEncoding': !exists(json, 'default_encoding') ? undefined : json['default_encoding'],
         'placeholderStyles': !exists(json, 'placeholder_styles') ? undefined : json['placeholder_styles'],
+        'autocompleteJobEnabled': !exists(json, 'autocomplete_job_enabled') ? undefined : json['autocomplete_job_enabled'],
+        'jobLockingEnabled': !exists(json, 'job_locking_enabled') ? undefined : json['job_locking_enabled'],
+        'smartSuggestEnabled': !exists(json, 'smart_suggest_enabled') ? undefined : json['smart_suggest_enabled'],
+        'smartSuggestUseGlossary': !exists(json, 'smart_suggest_use_glossary') ? undefined : json['smart_suggest_use_glossary'],
+        'smartSuggestUseMachineTranslation': !exists(json, 'smart_suggest_use_machine_translation') ? undefined : json['smart_suggest_use_machine_translation'],
+        'translationKeysSortCollation': !exists(json, 'translation_keys_sort_collation') ? undefined : json['translation_keys_sort_collation'],
+        'cldrVersion': !exists(json, 'cldr_version') ? undefined : json['cldr_version'],
     };
 }
 
@@ -242,6 +291,13 @@ export function ProjectUpdateParametersToJSON(value?: ProjectUpdateParameters | 
         'autotranslate_overwrite_unverified_translations': value.autotranslateOverwriteUnverifiedTranslations,
         'default_encoding': value.defaultEncoding,
         'placeholder_styles': value.placeholderStyles,
+        'autocomplete_job_enabled': value.autocompleteJobEnabled,
+        'job_locking_enabled': value.jobLockingEnabled,
+        'smart_suggest_enabled': value.smartSuggestEnabled,
+        'smart_suggest_use_glossary': value.smartSuggestUseGlossary,
+        'smart_suggest_use_machine_translation': value.smartSuggestUseMachineTranslation,
+        'translation_keys_sort_collation': value.translationKeysSortCollation,
+        'cldr_version': value.cldrVersion,
     };
 }
 

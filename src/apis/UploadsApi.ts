@@ -14,6 +14,9 @@
 
 import * as runtime from '../runtime';
 import {
+    DocumentDelete422Response,
+    DocumentDelete422ResponseFromJSON,
+    DocumentDelete422ResponseToJSON,
     Upload,
     UploadFromJSON,
     UploadToJSON,
@@ -44,6 +47,7 @@ export interface UploadCreateRequest {
     markReviewed?: boolean;
     tagOnlyAffectedKeys?: boolean;
     translationKeyPrefix?: string;
+    skipAutomatedJobCreation?: boolean;
 }
 
 export interface UploadShowRequest {
@@ -212,6 +216,10 @@ export class UploadsApi extends runtime.BaseAPI {
 
         if (requestParameters.translationKeyPrefix !== undefined) {
             formParams.append('translation_key_prefix', requestParameters.translationKeyPrefix as any);
+        }
+
+        if (requestParameters.skipAutomatedJobCreation !== undefined) {
+            formParams.append('skip_automated_job_creation', requestParameters.skipAutomatedJobCreation as any);
         }
 
         const response = await this.request({

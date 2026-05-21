@@ -26,9 +26,9 @@ import {
     CustomMetadataProperty,
     CustomMetadataPropertyFromJSON,
     CustomMetadataPropertyToJSON,
-    CustomMetadataPropertyCreate422Response,
-    CustomMetadataPropertyCreate422ResponseFromJSON,
-    CustomMetadataPropertyCreate422ResponseToJSON,
+    DocumentDelete422Response,
+    DocumentDelete422ResponseFromJSON,
+    DocumentDelete422ResponseToJSON,
 } from '../models';
 
 export interface CustomMetadataPropertiesDeleteRequest {

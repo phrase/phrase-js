@@ -20,12 +20,15 @@ import {
     DistributionCreateParameters,
     DistributionCreateParametersFromJSON,
     DistributionCreateParametersToJSON,
-    DistributionPreview,
-    DistributionPreviewFromJSON,
-    DistributionPreviewToJSON,
+    DistributionDetails,
+    DistributionDetailsFromJSON,
+    DistributionDetailsToJSON,
     DistributionUpdateParameters,
     DistributionUpdateParametersFromJSON,
     DistributionUpdateParametersToJSON,
+    DocumentDelete422Response,
+    DocumentDelete422ResponseFromJSON,
+    DocumentDelete422ResponseToJSON,
 } from '../models';
 
 export interface DistributionCreateRequest {
@@ -69,7 +72,7 @@ export class DistributionsApi extends runtime.BaseAPI {
      * Create a new distribution.
      * Create a distribution
      */
-    async distributionCreateRaw(requestParameters: DistributionCreateRequest): Promise<runtime.ApiResponse<Distribution>> {
+    async distributionCreateRaw(requestParameters: DistributionCreateRequest): Promise<runtime.ApiResponse<DistributionDetails>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling distributionCreate.');
         }
@@ -103,14 +106,14 @@ export class DistributionsApi extends runtime.BaseAPI {
             body: DistributionCreateParametersToJSON(requestParameters.distributionCreateParameters),
         });
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DistributionFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DistributionDetailsFromJSON(jsonValue));
     }
 
     /**
      * Create a new distribution.
      * Create a distribution
      */
-    async distributionCreate(requestParameters: DistributionCreateRequest): Promise<Distribution> {
+    async distributionCreate(requestParameters: DistributionCreateRequest): Promise<DistributionDetails> {
         const response = await this.distributionCreateRaw(requestParameters);
         return await response.value();
     }
@@ -166,7 +169,7 @@ export class DistributionsApi extends runtime.BaseAPI {
      * Get details on a single distribution.
      * Get a single distribution
      */
-    async distributionShowRaw(requestParameters: DistributionShowRequest): Promise<runtime.ApiResponse<Distribution>> {
+    async distributionShowRaw(requestParameters: DistributionShowRequest): Promise<runtime.ApiResponse<DistributionDetails>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling distributionShow.');
         }
@@ -197,14 +200,14 @@ export class DistributionsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DistributionFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DistributionDetailsFromJSON(jsonValue));
     }
 
     /**
      * Get details on a single distribution.
      * Get a single distribution
      */
-    async distributionShow(requestParameters: DistributionShowRequest): Promise<Distribution> {
+    async distributionShow(requestParameters: DistributionShowRequest): Promise<DistributionDetails> {
         const response = await this.distributionShowRaw(requestParameters);
         return await response.value();
     }
@@ -213,7 +216,7 @@ export class DistributionsApi extends runtime.BaseAPI {
      * Update an existing distribution.
      * Update a distribution
      */
-    async distributionUpdateRaw(requestParameters: DistributionUpdateRequest): Promise<runtime.ApiResponse<Distribution>> {
+    async distributionUpdateRaw(requestParameters: DistributionUpdateRequest): Promise<runtime.ApiResponse<DistributionDetails>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling distributionUpdate.');
         }
@@ -251,14 +254,14 @@ export class DistributionsApi extends runtime.BaseAPI {
             body: DistributionUpdateParametersToJSON(requestParameters.distributionUpdateParameters),
         });
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DistributionFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DistributionDetailsFromJSON(jsonValue));
     }
 
     /**
      * Update an existing distribution.
      * Update a distribution
      */
-    async distributionUpdate(requestParameters: DistributionUpdateRequest): Promise<Distribution> {
+    async distributionUpdate(requestParameters: DistributionUpdateRequest): Promise<DistributionDetails> {
         const response = await this.distributionUpdateRaw(requestParameters);
         return await response.value();
     }
@@ -267,7 +270,7 @@ export class DistributionsApi extends runtime.BaseAPI {
      * List all distributions for the given account.
      * List distributions
      */
-    async distributionsListRaw(requestParameters: DistributionsListRequest): Promise<runtime.ApiResponse<Array<DistributionPreview>>> {
+    async distributionsListRaw(requestParameters: DistributionsListRequest): Promise<runtime.ApiResponse<Array<Distribution>>> {
         if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
             throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling distributionsList.');
         }
@@ -302,14 +305,14 @@ export class DistributionsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(DistributionPreviewFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(DistributionFromJSON));
     }
 
     /**
      * List all distributions for the given account.
      * List distributions
      */
-    async distributionsList(requestParameters: DistributionsListRequest): Promise<Array<DistributionPreview>> {
+    async distributionsList(requestParameters: DistributionsListRequest): Promise<Array<Distribution>> {
         const response = await this.distributionsListRaw(requestParameters);
         return await response.value();
     }

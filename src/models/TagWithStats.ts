@@ -38,6 +38,12 @@ export interface TagWithStats {
      */
     keysCount?: number;
     /**
+     * `true` when the tag was created automatically by the system (e.g. for jobs, uploads, or Figma attachments) rather than by a user. 
+     * @type {boolean}
+     * @memberof TagWithStats
+     */
+    systemTag?: boolean;
+    /**
      * 
      * @type {Date}
      * @memberof TagWithStats
@@ -69,6 +75,7 @@ export function TagWithStatsFromJSONTyped(json: any, ignoreDiscriminator: boolea
         
         'name': !exists(json, 'name') ? undefined : json['name'],
         'keysCount': !exists(json, 'keys_count') ? undefined : json['keys_count'],
+        'systemTag': !exists(json, 'system_tag') ? undefined : json['system_tag'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'statistics': !exists(json, 'statistics') ? undefined : ((json['statistics'] as Array<any>).map(TagWithStats1Statistics1FromJSON)),
@@ -86,6 +93,7 @@ export function TagWithStatsToJSON(value?: TagWithStats | null): any {
         
         'name': value.name,
         'keys_count': value.keysCount,
+        'system_tag': value.systemTag,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'statistics': value.statistics === undefined ? undefined : ((value.statistics as Array<any>).map(TagWithStats1Statistics1ToJSON)),

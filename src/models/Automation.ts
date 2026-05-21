@@ -62,11 +62,29 @@ export interface Automation {
      */
     projectId?: string;
     /**
+     * All project IDs the automation applies to. Returned alongside the singular `project_id` for backwards compatibility.
+     * @type {Array<string>}
+     * @memberof Automation
+     */
+    projectIds?: Array<string>;
+    /**
      * 
      * @type {string}
      * @memberof Automation
      */
     jobTemplateId?: string;
+    /**
+     * User ID of the job owner that newly created jobs are assigned to.
+     * @type {string}
+     * @memberof Automation
+     */
+    jobOwnerId?: string | null;
+    /**
+     * When `true`, the automation only acts on locales that changed since its last run.
+     * @type {boolean}
+     * @memberof Automation
+     */
+    includeOnlyUpdatedLocales?: boolean;
     /**
      * 
      * @type {Array<string>}
@@ -121,7 +139,10 @@ export function AutomationFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'trigger': !exists(json, 'trigger') ? undefined : json['trigger'],
         'statusFilters': !exists(json, 'status_filters') ? undefined : json['status_filters'],
         'projectId': !exists(json, 'project_id') ? undefined : json['project_id'],
+        'projectIds': !exists(json, 'project_ids') ? undefined : json['project_ids'],
         'jobTemplateId': !exists(json, 'job_template_id') ? undefined : json['job_template_id'],
+        'jobOwnerId': !exists(json, 'job_owner_id') ? undefined : json['job_owner_id'],
+        'includeOnlyUpdatedLocales': !exists(json, 'include_only_updated_locales') ? undefined : json['include_only_updated_locales'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'cronSchedule': !exists(json, 'cron_schedule') ? undefined : json['cron_schedule'],
         'timeZone': !exists(json, 'time_zone') ? undefined : json['time_zone'],
@@ -146,7 +167,10 @@ export function AutomationToJSON(value?: Automation | null): any {
         'trigger': value.trigger,
         'status_filters': value.statusFilters,
         'project_id': value.projectId,
+        'project_ids': value.projectIds,
         'job_template_id': value.jobTemplateId,
+        'job_owner_id': value.jobOwnerId,
+        'include_only_updated_locales': value.includeOnlyUpdatedLocales,
         'tags': value.tags,
         'cron_schedule': value.cronSchedule,
         'time_zone': value.timeZone,

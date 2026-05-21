@@ -95,13 +95,13 @@ src/models/CustomMetadataDataType.ts
 src/models/CustomMetadataPropertiesCreateParameters.ts
 src/models/CustomMetadataPropertiesUpdateParameters.ts
 src/models/CustomMetadataProperty.ts
-src/models/CustomMetadataPropertyCreate422Response.ts
-src/models/CustomMetadataPropertyCreate422ResponseErrorsInner.ts
 src/models/Distribution.ts
 src/models/DistributionCreateParameters.ts
-src/models/DistributionPreview.ts
+src/models/DistributionDetails.ts
 src/models/DistributionUpdateParameters.ts
 src/models/Document.ts
+src/models/DocumentDelete422Response.ts
+src/models/DocumentDelete422ResponseErrorsInner.ts
 src/models/ErrorError.ts
 src/models/FigmaAttachment.ts
 src/models/FigmaAttachmentCreateParameters.ts
@@ -111,6 +111,7 @@ src/models/Glossary.ts
 src/models/GlossaryCreateParameters.ts
 src/models/GlossaryTerm.ts
 src/models/GlossaryTermCreateParameters.ts
+src/models/GlossaryTermGlossary.ts
 src/models/GlossaryTermTranslation.ts
 src/models/GlossaryTermTranslationCreateParameters.ts
 src/models/GlossaryTermTranslationUpdateParameters.ts
@@ -224,6 +225,7 @@ src/models/RepoSyncImportParameters.ts
 src/models/Screenshot.ts
 src/models/ScreenshotMarker.ts
 src/models/ScreenshotMarkerCreateParameters.ts
+src/models/ScreenshotMarkerPresentation.ts
 src/models/ScreenshotMarkerUpdateParameters.ts
 src/models/ScreenshotUpdateParameters.ts
 src/models/SearchInAccountParameters.ts

@@ -14,6 +14,9 @@
 
 import * as runtime from '../runtime';
 import {
+    DocumentDelete422Response,
+    DocumentDelete422ResponseFromJSON,
+    DocumentDelete422ResponseToJSON,
     Tag,
     TagFromJSON,
     TagToJSON,
@@ -52,6 +55,7 @@ export interface TagsListRequest {
     page?: number;
     perPage?: number;
     excludeSystemTags?: boolean;
+    onlySystemTags?: boolean;
     branch?: string;
     q?: string;
 }
@@ -238,6 +242,10 @@ export class TagsApi extends runtime.BaseAPI {
 
         if (requestParameters.excludeSystemTags !== undefined) {
             queryParameters['exclude_system_tags'] = requestParameters.excludeSystemTags;
+        }
+
+        if (requestParameters.onlySystemTags !== undefined) {
+            queryParameters['only_system_tags'] = requestParameters.onlySystemTags;
         }
 
         if (requestParameters.branch !== undefined) {

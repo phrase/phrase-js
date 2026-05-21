@@ -23,9 +23,9 @@ import {
     AutomationsCreateParameters1,
     AutomationsCreateParameters1FromJSON,
     AutomationsCreateParameters1ToJSON,
-    CustomMetadataPropertyCreate422Response,
-    CustomMetadataPropertyCreate422ResponseFromJSON,
-    CustomMetadataPropertyCreate422ResponseToJSON,
+    DocumentDelete422Response,
+    DocumentDelete422ResponseFromJSON,
+    DocumentDelete422ResponseToJSON,
 } from '../models';
 
 export interface AutomationActivateRequest {

@@ -14,6 +14,9 @@
 
 import * as runtime from '../runtime';
 import {
+    DocumentDelete422Response,
+    DocumentDelete422ResponseFromJSON,
+    DocumentDelete422ResponseToJSON,
     Job,
     JobFromJSON,
     JobToJSON,
@@ -141,6 +144,8 @@ export interface JobsListRequest {
     ownedBy?: string;
     assignedTo?: string;
     state?: string;
+    states?: Array<string>;
+    keyId?: string;
     updatedSince?: string;
 }
 
@@ -416,7 +421,7 @@ export class JobsApi extends runtime.BaseAPI {
      * If you are the job owner, you may lock a job using this API request.
      * Lock a job
      */
-    async jobLockRaw(requestParameters: JobLockRequest): Promise<runtime.ApiResponse<any>> {
+    async jobLockRaw(requestParameters: JobLockRequest): Promise<runtime.ApiResponse<JobDetails>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobLock.');
         }
@@ -451,14 +456,14 @@ export class JobsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.TextApiResponse(response) as any;
+        return new runtime.JSONApiResponse(response, (jsonValue) => JobDetailsFromJSON(jsonValue));
     }
 
     /**
      * If you are the job owner, you may lock a job using this API request.
      * Lock a job
      */
-    async jobLock(requestParameters: JobLockRequest): Promise<any> {
+    async jobLock(requestParameters: JobLockRequest): Promise<JobDetails> {
         const response = await this.jobLockRaw(requestParameters);
         return await response.value();
     }
@@ -634,7 +639,7 @@ export class JobsApi extends runtime.BaseAPI {
      * If you are the job owner, you may unlock a locked job using this API request.
      * Unlock a job
      */
-    async jobUnlockRaw(requestParameters: JobUnlockRequest): Promise<runtime.ApiResponse<any>> {
+    async jobUnlockRaw(requestParameters: JobUnlockRequest): Promise<runtime.ApiResponse<JobDetails>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling jobUnlock.');
         }
@@ -669,14 +674,14 @@ export class JobsApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.TextApiResponse(response) as any;
+        return new runtime.JSONApiResponse(response, (jsonValue) => JobDetailsFromJSON(jsonValue));
     }
 
     /**
      * If you are the job owner, you may unlock a locked job using this API request.
      * Unlock a job
      */
-    async jobUnlock(requestParameters: JobUnlockRequest): Promise<any> {
+    async jobUnlock(requestParameters: JobUnlockRequest): Promise<JobDetails> {
         const response = await this.jobUnlockRaw(requestParameters);
         return await response.value();
     }
@@ -835,6 +840,14 @@ export class JobsApi extends runtime.BaseAPI {
 
         if (requestParameters.state !== undefined) {
             queryParameters['state'] = requestParameters.state;
+        }
+
+        if (requestParameters.states) {
+            queryParameters['states'] = requestParameters.states;
+        }
+
+        if (requestParameters.keyId !== undefined) {
+            queryParameters['key_id'] = requestParameters.keyId;
         }
 
         if (requestParameters.updatedSince !== undefined) {

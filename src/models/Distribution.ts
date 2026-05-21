@@ -13,18 +13,10 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    LocalePreview,
-    LocalePreviewFromJSON,
-    LocalePreviewFromJSONTyped,
-    LocalePreviewToJSON,
     ProjectShort,
     ProjectShortFromJSON,
     ProjectShortFromJSONTyped,
     ProjectShortToJSON,
-    ReleasePreview,
-    ReleasePreviewFromJSON,
-    ReleasePreviewFromJSONTyped,
-    ReleasePreviewToJSON,
 } from './';
 
 /**
@@ -59,16 +51,10 @@ export interface Distribution {
     platforms?: Array<string>;
     /**
      * 
-     * @type {Array<LocalePreview>}
+     * @type {number}
      * @memberof Distribution
      */
-    locales?: Array<LocalePreview>;
-    /**
-     * 
-     * @type {Array<ReleasePreview>}
-     * @memberof Distribution
-     */
-    releases?: Array<ReleasePreview>;
+    releaseCount?: number;
     /**
      * 
      * @type {Date}
@@ -80,7 +66,13 @@ export interface Distribution {
      * @type {Date}
      * @memberof Distribution
      */
-    deletedAt?: Date;
+    updatedAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof Distribution
+     */
+    deletedAt?: Date | null;
 }
 
 export function DistributionFromJSON(json: any): Distribution {
@@ -97,10 +89,10 @@ export function DistributionFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'name': !exists(json, 'name') ? undefined : json['name'],
         'project': !exists(json, 'project') ? undefined : ProjectShortFromJSON(json['project']),
         'platforms': !exists(json, 'platforms') ? undefined : json['platforms'],
-        'locales': !exists(json, 'locales') ? undefined : ((json['locales'] as Array<any>).map(LocalePreviewFromJSON)),
-        'releases': !exists(json, 'releases') ? undefined : ((json['releases'] as Array<any>).map(ReleasePreviewFromJSON)),
+        'releaseCount': !exists(json, 'release_count') ? undefined : json['release_count'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
-        'deletedAt': !exists(json, 'deleted_at') ? undefined : (new Date(json['deleted_at'])),
+        'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
+        'deletedAt': !exists(json, 'deleted_at') ? undefined : (json['deleted_at'] === null ? null : new Date(json['deleted_at'])),
     };
 }
 
@@ -117,10 +109,10 @@ export function DistributionToJSON(value?: Distribution | null): any {
         'name': value.name,
         'project': ProjectShortToJSON(value.project),
         'platforms': value.platforms,
-        'locales': value.locales === undefined ? undefined : ((value.locales as Array<any>).map(LocalePreviewToJSON)),
-        'releases': value.releases === undefined ? undefined : ((value.releases as Array<any>).map(ReleasePreviewToJSON)),
+        'release_count': value.releaseCount,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
-        'deleted_at': value.deletedAt === undefined ? undefined : (value.deletedAt.toISOString()),
+        'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
+        'deleted_at': value.deletedAt === undefined ? undefined : (value.deletedAt === null ? null : value.deletedAt.toISOString()),
     };
 }
 

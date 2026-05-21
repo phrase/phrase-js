@@ -24,6 +24,7 @@ export interface NotificationsListRequest {
     page?: number;
     perPage?: number;
     unseen?: boolean;
+    lastDays?: number;
 }
 
 export interface NotificationsMarkAllAsReadRequest {
@@ -57,6 +58,10 @@ export class NotificationsApi extends runtime.BaseAPI {
 
         if (requestParameters.unseen !== undefined) {
             queryParameters['unseen'] = requestParameters.unseen;
+        }
+
+        if (requestParameters.lastDays !== undefined) {
+            queryParameters['last_days'] = requestParameters.lastDays;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

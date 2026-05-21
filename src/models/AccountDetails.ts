@@ -74,7 +74,7 @@ export interface AccountDetails {
      */
     subscription?: Subscription;
     /**
-     * 
+     * Roles the requesting user holds in the account. 
      * @type {Array<string>}
      * @memberof AccountDetails
      */

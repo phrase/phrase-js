@@ -42,6 +42,12 @@ export interface SearchInAccountParameters {
      * @memberof SearchInAccountParameters
      */
     perPage?: number;
+    /**
+     * Limit the search to the given project codes. When omitted, the search spans every project the user can access in this account. 
+     * @type {Array<string>}
+     * @memberof SearchInAccountParameters
+     */
+    projectIds?: Array<string>;
 }
 
 export function SearchInAccountParametersFromJSON(json: any): SearchInAccountParameters {
@@ -58,6 +64,7 @@ export function SearchInAccountParametersFromJSONTyped(json: any, ignoreDiscrimi
         'localeCode': !exists(json, 'locale_code') ? undefined : json['locale_code'],
         'page': !exists(json, 'page') ? undefined : json['page'],
         'perPage': !exists(json, 'per_page') ? undefined : json['per_page'],
+        'projectIds': !exists(json, 'project_ids') ? undefined : json['project_ids'],
     };
 }
 
@@ -74,6 +81,7 @@ export function SearchInAccountParametersToJSON(value?: SearchInAccountParameter
         'locale_code': value.localeCode,
         'page': value.page,
         'per_page': value.perPage,
+        'project_ids': value.projectIds,
     };
 }
 

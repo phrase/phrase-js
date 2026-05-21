@@ -26,6 +26,9 @@ import {
     CommentUpdateParameters,
     CommentUpdateParametersFromJSON,
     CommentUpdateParametersToJSON,
+    DocumentDelete422Response,
+    DocumentDelete422ResponseFromJSON,
+    DocumentDelete422ResponseToJSON,
 } from '../models';
 
 export interface CommentCreateRequest {
@@ -92,8 +95,8 @@ export interface CommentsListRequest {
     branch?: string;
     query?: string;
     localeIds?: Array<string>;
-    filters?: Array<string>;
-    order?: string;
+    filters?: Array<CommentsListFiltersEnum>;
+    order?: CommentsListOrderEnum;
 }
 
 /**
@@ -566,4 +569,21 @@ export class CommentsApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum CommentsListFiltersEnum {
+    Read = 'read',
+    Unread = 'unread'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum CommentsListOrderEnum {
+    Asc = 'asc',
+    Desc = 'desc'
 }

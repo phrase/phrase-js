@@ -66,6 +66,18 @@ export interface AutomationsCreateParameters {
      * @memberof AutomationsCreateParameters
      */
     timeZone?: string;
+    /**
+     * User ID of the job owner that newly created jobs are assigned to. 
+     * @type {string}
+     * @memberof AutomationsCreateParameters
+     */
+    jobOwnerId?: string;
+    /**
+     * When `true`, the automation only acts on locales that changed since its last run. Defaults to `false`. 
+     * @type {boolean}
+     * @memberof AutomationsCreateParameters
+     */
+    includeOnlyUpdatedLocales?: boolean;
 }
 
 export function AutomationsCreateParametersFromJSON(json: any): AutomationsCreateParameters {
@@ -86,6 +98,8 @@ export function AutomationsCreateParametersFromJSONTyped(json: any, ignoreDiscri
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'cronSchedule': !exists(json, 'cron_schedule') ? undefined : json['cron_schedule'],
         'timeZone': !exists(json, 'time_zone') ? undefined : json['time_zone'],
+        'jobOwnerId': !exists(json, 'job_owner_id') ? undefined : json['job_owner_id'],
+        'includeOnlyUpdatedLocales': !exists(json, 'include_only_updated_locales') ? undefined : json['include_only_updated_locales'],
     };
 }
 
@@ -106,6 +120,8 @@ export function AutomationsCreateParametersToJSON(value?: AutomationsCreateParam
         'tags': value.tags,
         'cron_schedule': value.cronSchedule,
         'time_zone': value.timeZone,
+        'job_owner_id': value.jobOwnerId,
+        'include_only_updated_locales': value.includeOnlyUpdatedLocales,
     };
 }
 

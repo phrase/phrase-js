@@ -96,11 +96,11 @@ export interface TranslationOrder {
      */
     targetLocales?: Array<LocalePreview>;
     /**
-     * 
+     * Name of the tag whose keys are included in the order.
      * @type {string}
      * @memberof TranslationOrder
      */
-    tag?: string;
+    tagName?: string;
     /**
      * 
      * @type {StyleguidePreview}
@@ -160,7 +160,7 @@ export function TranslationOrderFromJSONTyped(json: any, ignoreDiscriminator: bo
         'progressPercent': !exists(json, 'progress_percent') ? undefined : json['progress_percent'],
         'sourceLocale': !exists(json, 'source_locale') ? undefined : LocalePreviewFromJSON(json['source_locale']),
         'targetLocales': !exists(json, 'target_locales') ? undefined : ((json['target_locales'] as Array<any>).map(LocalePreviewFromJSON)),
-        'tag': !exists(json, 'tag') ? undefined : json['tag'],
+        'tagName': !exists(json, 'tag_name') ? undefined : json['tag_name'],
         'styleguide': !exists(json, 'styleguide') ? undefined : StyleguidePreviewFromJSON(json['styleguide']),
         'unverifyTranslationsUponDelivery': !exists(json, 'unverify_translations_upon_delivery') ? undefined : json['unverify_translations_upon_delivery'],
         'quality': !exists(json, 'quality') ? undefined : json['quality'],
@@ -190,7 +190,7 @@ export function TranslationOrderToJSON(value?: TranslationOrder | null): any {
         'progress_percent': value.progressPercent,
         'source_locale': LocalePreviewToJSON(value.sourceLocale),
         'target_locales': value.targetLocales === undefined ? undefined : ((value.targetLocales as Array<any>).map(LocalePreviewToJSON)),
-        'tag': value.tag,
+        'tag_name': value.tagName,
         'styleguide': StyleguidePreviewToJSON(value.styleguide),
         'unverify_translations_upon_delivery': value.unverifyTranslationsUponDelivery,
         'quality': value.quality,

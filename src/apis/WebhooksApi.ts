@@ -14,6 +14,9 @@
 
 import * as runtime from '../runtime';
 import {
+    DocumentDelete422Response,
+    DocumentDelete422ResponseFromJSON,
+    DocumentDelete422ResponseToJSON,
     Webhook,
     WebhookFromJSON,
     WebhookToJSON,
@@ -213,10 +216,10 @@ export class WebhooksApi extends runtime.BaseAPI {
     }
 
     /**
-     * Perform a test request for a webhook.
+     * Perform a test request for a webhook. Sends a synthetic `test:event` payload to the webhook\'s `callback_url` and returns the webhook resource. 
      * Test a webhook
      */
-    async webhookTestRaw(requestParameters: WebhookTestRequest): Promise<runtime.ApiResponse<any>> {
+    async webhookTestRaw(requestParameters: WebhookTestRequest): Promise<runtime.ApiResponse<Webhook>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling webhookTest.');
         }
@@ -247,14 +250,14 @@ export class WebhooksApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.TextApiResponse(response) as any;
+        return new runtime.JSONApiResponse(response, (jsonValue) => WebhookFromJSON(jsonValue));
     }
 
     /**
-     * Perform a test request for a webhook.
+     * Perform a test request for a webhook. Sends a synthetic `test:event` payload to the webhook\'s `callback_url` and returns the webhook resource. 
      * Test a webhook
      */
-    async webhookTest(requestParameters: WebhookTestRequest): Promise<any> {
+    async webhookTest(requestParameters: WebhookTestRequest): Promise<Webhook> {
         const response = await this.webhookTestRaw(requestParameters);
         return await response.value();
     }

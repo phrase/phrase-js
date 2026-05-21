@@ -120,6 +120,18 @@ export interface KeyUpdateParameters {
      * @memberof KeyUpdateParameters
      */
     customMetadata?: object;
+    /**
+     * Locales for which translations of this key are excluded from exports. Pass an empty array to clear exclusions. 
+     * @type {Array<string>}
+     * @memberof KeyUpdateParameters
+     */
+    excludedInLocales?: Array<string>;
+    /**
+     * Override of the value type for the key in the export. Most useful for formats like Android XML that distinguish string vs. plural resources. 
+     * @type {string}
+     * @memberof KeyUpdateParameters
+     */
+    formatValueType?: string;
 }
 
 export function KeyUpdateParametersFromJSON(json: any): KeyUpdateParameters {
@@ -149,6 +161,8 @@ export function KeyUpdateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'localizedFormatString': !exists(json, 'localized_format_string') ? undefined : json['localized_format_string'],
         'localizedFormatKey': !exists(json, 'localized_format_key') ? undefined : json['localized_format_key'],
         'customMetadata': !exists(json, 'custom_metadata') ? undefined : json['custom_metadata'],
+        'excludedInLocales': !exists(json, 'excluded_in_locales') ? undefined : json['excluded_in_locales'],
+        'formatValueType': !exists(json, 'format_value_type') ? undefined : json['format_value_type'],
     };
 }
 
@@ -178,6 +192,8 @@ export function KeyUpdateParametersToJSON(value?: KeyUpdateParameters | null): a
         'localized_format_string': value.localizedFormatString,
         'localized_format_key': value.localizedFormatKey,
         'custom_metadata': value.customMetadata,
+        'excluded_in_locales': value.excludedInLocales,
+        'format_value_type': value.formatValueType,
     };
 }
 

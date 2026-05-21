@@ -14,6 +14,9 @@
 
 import * as runtime from '../runtime';
 import {
+    DocumentDelete422Response,
+    DocumentDelete422ResponseFromJSON,
+    DocumentDelete422ResponseToJSON,
     FigmaAttachment,
     FigmaAttachmentFromJSON,
     FigmaAttachmentToJSON,

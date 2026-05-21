@@ -29,7 +29,7 @@ export interface AuthorizationCreateParameters {
      * @type {Array<string>}
      * @memberof AuthorizationCreateParameters
      */
-    scopes?: Array<string>;
+    scopes?: Array<AuthorizationCreateParametersScopesEnum>;
     /**
      * Expiration date for the authorization token. Null means no expiration date (default).
      * @type {Date}
@@ -67,6 +67,17 @@ export function AuthorizationCreateParametersToJSON(value?: AuthorizationCreateP
         'scopes': value.scopes,
         'expires_at': value.expiresAt === undefined ? undefined : (value.expiresAt.toISOString()),
     };
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum AuthorizationCreateParametersScopesEnum {
+    Read = 'read',
+    Write = 'write',
+    OrdersCreate = 'orders.create',
+    TeamManage = 'team.manage'
 }
 
 

@@ -126,11 +126,11 @@ export interface Invitation {
      */
     spaces?: Array<Space>;
     /**
-     * 
+     * Per-project roles assigned to the invitee. 
      * @type {Array<MemberProjectDetailProjectRolesInner>}
      * @memberof Invitation
      */
-    projectRole?: Array<MemberProjectDetailProjectRolesInner>;
+    projectRoles?: Array<MemberProjectDetailProjectRolesInner>;
 }
 
 export function InvitationFromJSON(json: any): Invitation {
@@ -157,7 +157,7 @@ export function InvitationFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'acceptedAt': !exists(json, 'accepted_at') ? undefined : (new Date(json['accepted_at'])),
         'spaces': !exists(json, 'spaces') ? undefined : ((json['spaces'] as Array<any>).map(SpaceFromJSON)),
-        'projectRole': !exists(json, 'project_role') ? undefined : ((json['project_role'] as Array<any>).map(MemberProjectDetailProjectRolesInnerFromJSON)),
+        'projectRoles': !exists(json, 'project_roles') ? undefined : ((json['project_roles'] as Array<any>).map(MemberProjectDetailProjectRolesInnerFromJSON)),
     };
 }
 
@@ -184,7 +184,7 @@ export function InvitationToJSON(value?: Invitation | null): any {
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'accepted_at': value.acceptedAt === undefined ? undefined : (value.acceptedAt.toISOString()),
         'spaces': value.spaces === undefined ? undefined : ((value.spaces as Array<any>).map(SpaceToJSON)),
-        'project_role': value.projectRole === undefined ? undefined : ((value.projectRole as Array<any>).map(MemberProjectDetailProjectRolesInnerToJSON)),
+        'project_roles': value.projectRoles === undefined ? undefined : ((value.projectRoles as Array<any>).map(MemberProjectDetailProjectRolesInnerToJSON)),
     };
 }
 

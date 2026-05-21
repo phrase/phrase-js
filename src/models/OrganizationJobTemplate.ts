@@ -37,6 +37,18 @@ export interface OrganizationJobTemplate {
      */
     briefing?: string;
     /**
+     * When `true`, jobs created from this template are auto-translated on creation. Maps to the `autotranslate` field on the request body. 
+     * @type {boolean}
+     * @memberof OrganizationJobTemplate
+     */
+    autotranslateEnabled?: boolean;
+    /**
+     * Optional. ID of the source locale used by jobs created from this template. When omitted, the project\'s default source locale is used. 
+     * @type {string}
+     * @memberof OrganizationJobTemplate
+     */
+    sourceLocaleId?: string | null;
+    /**
      * 
      * @type {Date}
      * @memberof OrganizationJobTemplate
@@ -63,6 +75,8 @@ export function OrganizationJobTemplateFromJSONTyped(json: any, ignoreDiscrimina
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
+        'autotranslateEnabled': !exists(json, 'autotranslate_enabled') ? undefined : json['autotranslate_enabled'],
+        'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
     };
@@ -80,6 +94,8 @@ export function OrganizationJobTemplateToJSON(value?: OrganizationJobTemplate | 
         'id': value.id,
         'name': value.name,
         'briefing': value.briefing,
+        'autotranslate_enabled': value.autotranslateEnabled,
+        'source_locale_id': value.sourceLocaleId,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
     };

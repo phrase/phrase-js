@@ -13,6 +13,10 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    GlossaryTermGlossary,
+    GlossaryTermGlossaryFromJSON,
+    GlossaryTermGlossaryFromJSONTyped,
+    GlossaryTermGlossaryToJSON,
     GlossaryTermTranslation,
     GlossaryTermTranslationFromJSON,
     GlossaryTermTranslationFromJSONTyped,
@@ -63,6 +67,12 @@ export interface GlossaryTerm {
     translations?: Array<GlossaryTermTranslation>;
     /**
      * 
+     * @type {GlossaryTermGlossary}
+     * @memberof GlossaryTerm
+     */
+    glossary?: GlossaryTermGlossary;
+    /**
+     * 
      * @type {Date}
      * @memberof GlossaryTerm
      */
@@ -91,6 +101,7 @@ export function GlossaryTermFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'translatable': !exists(json, 'translatable') ? undefined : json['translatable'],
         'caseSensitive': !exists(json, 'case_sensitive') ? undefined : json['case_sensitive'],
         'translations': !exists(json, 'translations') ? undefined : ((json['translations'] as Array<any>).map(GlossaryTermTranslationFromJSON)),
+        'glossary': !exists(json, 'glossary') ? undefined : GlossaryTermGlossaryFromJSON(json['glossary']),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
     };
@@ -111,6 +122,7 @@ export function GlossaryTermToJSON(value?: GlossaryTerm | null): any {
         'translatable': value.translatable,
         'case_sensitive': value.caseSensitive,
         'translations': value.translations === undefined ? undefined : ((value.translations as Array<any>).map(GlossaryTermTranslationToJSON)),
+        'glossary': GlossaryTermGlossaryToJSON(value.glossary),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
     };

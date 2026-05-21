@@ -14,6 +14,9 @@
 
 import * as runtime from '../runtime';
 import {
+    DocumentDelete422Response,
+    DocumentDelete422ResponseFromJSON,
+    DocumentDelete422ResponseToJSON,
     OrderConfirmParameters,
     OrderConfirmParametersFromJSON,
     OrderConfirmParametersToJSON,
@@ -58,6 +61,7 @@ export interface OrdersListRequest {
     page?: number;
     perPage?: number;
     branch?: string;
+    translationId?: string;
 }
 
 /**
@@ -292,6 +296,10 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (requestParameters.branch !== undefined) {
             queryParameters['branch'] = requestParameters.branch;
+        }
+
+        if (requestParameters.translationId !== undefined) {
+            queryParameters['translation_id'] = requestParameters.translationId;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

@@ -31,6 +31,12 @@ export interface Tag {
      */
     keysCount?: number;
     /**
+     * `true` when the tag was created automatically by the system (e.g. for jobs, uploads, or Figma attachments) rather than by a user. 
+     * @type {boolean}
+     * @memberof Tag
+     */
+    systemTag?: boolean;
+    /**
      * 
      * @type {Date}
      * @memberof Tag
@@ -56,6 +62,7 @@ export function TagFromJSONTyped(json: any, ignoreDiscriminator: boolean): Tag {
         
         'name': !exists(json, 'name') ? undefined : json['name'],
         'keysCount': !exists(json, 'keys_count') ? undefined : json['keys_count'],
+        'systemTag': !exists(json, 'system_tag') ? undefined : json['system_tag'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
     };
@@ -72,6 +79,7 @@ export function TagToJSON(value?: Tag | null): any {
         
         'name': value.name,
         'keys_count': value.keysCount,
+        'system_tag': value.systemTag,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
     };

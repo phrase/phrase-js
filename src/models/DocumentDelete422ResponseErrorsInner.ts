@@ -15,34 +15,34 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface CustomMetadataPropertyCreate422ResponseErrorsInner
+ * @interface DocumentDelete422ResponseErrorsInner
  */
-export interface CustomMetadataPropertyCreate422ResponseErrorsInner {
+export interface DocumentDelete422ResponseErrorsInner {
     /**
      * 
      * @type {string}
-     * @memberof CustomMetadataPropertyCreate422ResponseErrorsInner
+     * @memberof DocumentDelete422ResponseErrorsInner
      */
     resource?: string;
     /**
      * 
      * @type {string}
-     * @memberof CustomMetadataPropertyCreate422ResponseErrorsInner
+     * @memberof DocumentDelete422ResponseErrorsInner
      */
     field?: string;
     /**
      * 
      * @type {string}
-     * @memberof CustomMetadataPropertyCreate422ResponseErrorsInner
+     * @memberof DocumentDelete422ResponseErrorsInner
      */
     message?: string;
 }
 
-export function CustomMetadataPropertyCreate422ResponseErrorsInnerFromJSON(json: any): CustomMetadataPropertyCreate422ResponseErrorsInner {
-    return CustomMetadataPropertyCreate422ResponseErrorsInnerFromJSONTyped(json, false);
+export function DocumentDelete422ResponseErrorsInnerFromJSON(json: any): DocumentDelete422ResponseErrorsInner {
+    return DocumentDelete422ResponseErrorsInnerFromJSONTyped(json, false);
 }
 
-export function CustomMetadataPropertyCreate422ResponseErrorsInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): CustomMetadataPropertyCreate422ResponseErrorsInner {
+export function DocumentDelete422ResponseErrorsInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): DocumentDelete422ResponseErrorsInner {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -54,7 +54,7 @@ export function CustomMetadataPropertyCreate422ResponseErrorsInnerFromJSONTyped(
     };
 }
 
-export function CustomMetadataPropertyCreate422ResponseErrorsInnerToJSON(value?: CustomMetadataPropertyCreate422ResponseErrorsInner | null): any {
+export function DocumentDelete422ResponseErrorsInnerToJSON(value?: DocumentDelete422ResponseErrorsInner | null): any {
     if (value === undefined) {
         return undefined;
     }
