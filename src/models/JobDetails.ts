@@ -106,6 +106,18 @@ export interface JobDetails {
      */
     updatedAt?: Date;
     /**
+     * The ID of the automation that created this job, or null if the job was created manually.
+     * @type {string}
+     * @memberof JobDetails
+     */
+    automationId?: string | null;
+    /**
+     * The ID of the job template this job was created from, or null if no template was used.
+     * @type {string}
+     * @memberof JobDetails
+     */
+    jobTemplateId?: string | null;
+    /**
      * 
      * @type {UserPreview}
      * @memberof JobDetails
@@ -175,6 +187,8 @@ export function JobDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'branch': !exists(json, 'branch') ? undefined : BranchNameFromJSON(json['branch']),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
+        'automationId': !exists(json, 'automation_id') ? undefined : json['automation_id'],
+        'jobTemplateId': !exists(json, 'job_template_id') ? undefined : json['job_template_id'],
         'owner': !exists(json, 'owner') ? undefined : UserPreviewFromJSON(json['owner']),
         'jobTagName': !exists(json, 'job_tag_name') ? undefined : json['job_tag_name'],
         'sourceTranslationsUpdatedAt': !exists(json, 'source_translations_updated_at') ? undefined : (new Date(json['source_translations_updated_at'])),
@@ -205,6 +219,8 @@ export function JobDetailsToJSON(value?: JobDetails | null): any {
         'branch': BranchNameToJSON(value.branch),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
+        'automation_id': value.automationId,
+        'job_template_id': value.jobTemplateId,
         'owner': UserPreviewToJSON(value.owner),
         'job_tag_name': value.jobTagName,
         'source_translations_updated_at': value.sourceTranslationsUpdatedAt === undefined ? undefined : (value.sourceTranslationsUpdatedAt.toISOString()),
