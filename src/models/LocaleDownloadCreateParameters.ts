@@ -91,17 +91,23 @@ export interface LocaleDownloadCreateParameters {
      */
     localeIds?: Array<string>;
     /**
-     * If a key has no translation in the locale being downloaded, the translation in the fallback locale will be used. Provide the ID of the locale that should be used as the fallback. Requires `include_empty_translations` to be set to `true`. Mutually exclusive with `use_locale_fallback`. 
+     * If a key has no translation in the locale being downloaded, the translation in the fallback locale will be used. Provide the ID of the locale that should be used as the fallback. Requires `include_empty_translations` to be set to `true` unless `fallback_for_unverified_translations` is also set to `true`. Mutually exclusive with `use_locale_fallback`. 
      * @type {string}
      * @memberof LocaleDownloadCreateParameters
      */
     fallbackLocaleId?: string;
     /**
-     * If a key has no translation in the locale being downloaded, the translation in the fallback locale will be used. Fallback locale is defined in [locale\'s settings](/en/api/strings/locales/update-a-locale#body-fallback-locale-id). Requires `include_empty_translations` to be set to `true`. Mutually exclusive with `fallback_locale_id`. 
+     * If a key has no translation in the locale being downloaded, the translation in the fallback locale will be used. Fallback locale is defined in [locale\'s settings](/en/api/strings/locales/update-a-locale#body-fallback-locale-id). Requires `include_empty_translations` to be set to `true` unless `fallback_for_unverified_translations` is also set to `true`. Mutually exclusive with `fallback_locale_id`. 
      * @type {boolean}
      * @memberof LocaleDownloadCreateParameters
      */
     useLocaleFallback?: boolean;
+    /**
+     * If set to `true`, translations in a non-final state are replaced by the fallback locale\'s translation at export time. In the simple workflow, \"non-final\" means `unverified`. In the review workflow, it additionally includes `translated` (awaiting review). No stored translations are modified. Requires `fallback_locale_id` or `use_locale_fallback` to be set; a `422` validation error is returned otherwise. 
+     * @type {boolean}
+     * @memberof LocaleDownloadCreateParameters
+     */
+    fallbackForUnverifiedTranslations?: boolean;
     /**
      * Provides the source language of a corresponding job as the source language of the generated locale file. This parameter will be ignored unless used in combination with a `tag` parameter indicating a specific job.
      * @type {string}
@@ -146,6 +152,7 @@ export function LocaleDownloadCreateParametersFromJSONTyped(json: any, ignoreDis
         'localeIds': !exists(json, 'locale_ids') ? undefined : json['locale_ids'],
         'fallbackLocaleId': !exists(json, 'fallback_locale_id') ? undefined : json['fallback_locale_id'],
         'useLocaleFallback': !exists(json, 'use_locale_fallback') ? undefined : json['use_locale_fallback'],
+        'fallbackForUnverifiedTranslations': !exists(json, 'fallback_for_unverified_translations') ? undefined : json['fallback_for_unverified_translations'],
         'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
         'customMetadataFilters': !exists(json, 'custom_metadata_filters') ? undefined : json['custom_metadata_filters'],
         'updatedSince': !exists(json, 'updated_since') ? undefined : json['updated_since'],
@@ -175,6 +182,7 @@ export function LocaleDownloadCreateParametersToJSON(value?: LocaleDownloadCreat
         'locale_ids': value.localeIds,
         'fallback_locale_id': value.fallbackLocaleId,
         'use_locale_fallback': value.useLocaleFallback,
+        'fallback_for_unverified_translations': value.fallbackForUnverifiedTranslations,
         'source_locale_id': value.sourceLocaleId,
         'custom_metadata_filters': value.customMetadataFilters,
         'updated_since': value.updatedSince,
