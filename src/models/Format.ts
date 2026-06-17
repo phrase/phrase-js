@@ -19,65 +19,65 @@ import { exists, mapValues } from '../runtime';
  */
 export interface Format {
     /**
-     * 
+     * Human-readable display name of the format.
      * @type {string}
      * @memberof Format
      */
-    name?: string;
+    name: string;
     /**
-     * 
+     * Identifier used to reference this format in API requests, such as the file_format parameter on the uploads and downloads endpoints.
      * @type {string}
      * @memberof Format
      */
-    apiName?: string;
+    apiName: string;
     /**
-     * 
+     * Human-readable summary of the format and its typical use case.
      * @type {string}
      * @memberof Format
      */
-    description?: string;
+    description: string;
     /**
-     * 
+     * Default file extension associated with this format.
      * @type {string}
      * @memberof Format
      */
-    extension?: string;
+    extension: string;
     /**
-     * 
+     * Default character encoding used when reading or writing files in this format.
      * @type {string}
      * @memberof Format
      */
-    defaultEncoding?: string;
+    defaultEncoding: string;
     /**
-     * 
+     * Whether locale files can be imported using this format.
      * @type {boolean}
      * @memberof Format
      */
-    importable?: boolean;
+    importable: boolean;
     /**
-     * 
+     * Whether locale files can be exported using this format.
      * @type {boolean}
      * @memberof Format
      */
-    exportable?: boolean;
+    exportable: boolean;
     /**
-     * 
+     * Conventional file path pattern for this format. Contains locale_name as a placeholder for the locale identifier.
      * @type {string}
      * @memberof Format
      */
-    defaultFile?: string;
+    defaultFile: string;
     /**
-     * 
+     * When true, exported files contain the default locale\'s content for any key that has no translation in the target locale.
      * @type {boolean}
      * @memberof Format
      */
-    rendersDefaultLocale?: boolean;
+    rendersDefaultLocale: boolean;
     /**
-     * 
+     * When true, files in this format embed locale information so Phrase can detect the locale automatically on import.
      * @type {boolean}
      * @memberof Format
      */
-    includesLocaleInformation?: boolean;
+    includesLocaleInformation: boolean;
 }
 
 export function FormatFromJSON(json: any): Format {
@@ -90,16 +90,16 @@ export function FormatFromJSONTyped(json: any, ignoreDiscriminator: boolean): Fo
     }
     return {
         
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'apiName': !exists(json, 'api_name') ? undefined : json['api_name'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
-        'extension': !exists(json, 'extension') ? undefined : json['extension'],
-        'defaultEncoding': !exists(json, 'default_encoding') ? undefined : json['default_encoding'],
-        'importable': !exists(json, 'importable') ? undefined : json['importable'],
-        'exportable': !exists(json, 'exportable') ? undefined : json['exportable'],
-        'defaultFile': !exists(json, 'default_file') ? undefined : json['default_file'],
-        'rendersDefaultLocale': !exists(json, 'renders_default_locale') ? undefined : json['renders_default_locale'],
-        'includesLocaleInformation': !exists(json, 'includes_locale_information') ? undefined : json['includes_locale_information'],
+        'name': json['name'],
+        'apiName': json['api_name'],
+        'description': json['description'],
+        'extension': json['extension'],
+        'defaultEncoding': json['default_encoding'],
+        'importable': json['importable'],
+        'exportable': json['exportable'],
+        'defaultFile': json['default_file'],
+        'rendersDefaultLocale': json['renders_default_locale'],
+        'includesLocaleInformation': json['includes_locale_information'],
     };
 }
 
