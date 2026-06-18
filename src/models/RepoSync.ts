@@ -32,6 +32,12 @@ export interface RepoSync {
      */
     id?: string;
     /**
+     * Optional custom display name for this repo sync. When null or blank, the sync is displayed using the associated project name. 
+     * @type {string}
+     * @memberof RepoSync
+     */
+    name?: string | null;
+    /**
      * 
      * @type {ProjectShort}
      * @memberof RepoSync
@@ -78,13 +84,13 @@ export interface RepoSync {
      * @type {Date}
      * @memberof RepoSync
      */
-    lastImportAt?: Date;
+    lastImportAt?: Date | null;
     /**
      * 
      * @type {Date}
      * @memberof RepoSync
      */
-    lastExportAt?: Date;
+    lastExportAt?: Date | null;
 }
 
 export function RepoSyncFromJSON(json: any): RepoSync {
@@ -98,6 +104,7 @@ export function RepoSyncFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     return {
         
         'id': !exists(json, 'id') ? undefined : json['id'],
+        'name': !exists(json, 'name') ? undefined : json['name'],
         'project': !exists(json, 'project') ? undefined : ProjectShortFromJSON(json['project']),
         'provider': !exists(json, 'provider') ? undefined : json['provider'],
         'enabled': !exists(json, 'enabled') ? undefined : json['enabled'],
@@ -105,8 +112,8 @@ export function RepoSyncFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'repoName': !exists(json, 'repo_name') ? undefined : json['repo_name'],
         'prBranch': !exists(json, 'pr_branch') ? undefined : json['pr_branch'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
-        'lastImportAt': !exists(json, 'last_import_at') ? undefined : (new Date(json['last_import_at'])),
-        'lastExportAt': !exists(json, 'last_export_at') ? undefined : (new Date(json['last_export_at'])),
+        'lastImportAt': !exists(json, 'last_import_at') ? undefined : (json['last_import_at'] === null ? null : new Date(json['last_import_at'])),
+        'lastExportAt': !exists(json, 'last_export_at') ? undefined : (json['last_export_at'] === null ? null : new Date(json['last_export_at'])),
     };
 }
 
@@ -120,6 +127,7 @@ export function RepoSyncToJSON(value?: RepoSync | null): any {
     return {
         
         'id': value.id,
+        'name': value.name,
         'project': ProjectShortToJSON(value.project),
         'provider': value.provider,
         'enabled': value.enabled,
@@ -127,8 +135,8 @@ export function RepoSyncToJSON(value?: RepoSync | null): any {
         'repo_name': value.repoName,
         'pr_branch': value.prBranch,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
-        'last_import_at': value.lastImportAt === undefined ? undefined : (value.lastImportAt.toISOString()),
-        'last_export_at': value.lastExportAt === undefined ? undefined : (value.lastExportAt.toISOString()),
+        'last_import_at': value.lastImportAt === undefined ? undefined : (value.lastImportAt === null ? null : value.lastImportAt.toISOString()),
+        'last_export_at': value.lastExportAt === undefined ? undefined : (value.lastExportAt === null ? null : value.lastExportAt.toISOString()),
     };
 }
 

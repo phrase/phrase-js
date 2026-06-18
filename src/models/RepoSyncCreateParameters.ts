@@ -25,6 +25,12 @@ export interface RepoSyncCreateParameters {
      */
     projectId: string;
     /**
+     * Optional custom display name for this repo sync. Defaults to null; when null the project name is used as the display name. 
+     * @type {string}
+     * @memberof RepoSyncCreateParameters
+     */
+    name?: string | null;
+    /**
      * The Git provider to use.
      * @type {string}
      * @memberof RepoSyncCreateParameters
@@ -85,6 +91,7 @@ export function RepoSyncCreateParametersFromJSONTyped(json: any, ignoreDiscrimin
     return {
         
         'projectId': json['project_id'],
+        'name': !exists(json, 'name') ? undefined : json['name'],
         'gitProvider': !exists(json, 'git_provider') ? undefined : json['git_provider'],
         'connectionType': json['connection_type'],
         'repoName': json['repo_name'],
@@ -106,6 +113,7 @@ export function RepoSyncCreateParametersToJSON(value?: RepoSyncCreateParameters 
     return {
         
         'project_id': value.projectId,
+        'name': value.name,
         'git_provider': value.gitProvider,
         'connection_type': value.connectionType,
         'repo_name': value.repoName,
