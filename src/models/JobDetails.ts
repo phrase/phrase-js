@@ -118,6 +118,12 @@ export interface JobDetails {
      */
     jobTemplateId?: string | null;
     /**
+     * The review due date for this job. Returns `null` when the project does not have review workflow enabled.
+     * @type {Date}
+     * @memberof JobDetails
+     */
+    reviewDueDate?: Date | null;
+    /**
      * 
      * @type {UserPreview}
      * @memberof JobDetails
@@ -189,6 +195,7 @@ export function JobDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
         'automationId': !exists(json, 'automation_id') ? undefined : json['automation_id'],
         'jobTemplateId': !exists(json, 'job_template_id') ? undefined : json['job_template_id'],
+        'reviewDueDate': !exists(json, 'review_due_date') ? undefined : (json['review_due_date'] === null ? null : new Date(json['review_due_date'])),
         'owner': !exists(json, 'owner') ? undefined : UserPreviewFromJSON(json['owner']),
         'jobTagName': !exists(json, 'job_tag_name') ? undefined : json['job_tag_name'],
         'sourceTranslationsUpdatedAt': !exists(json, 'source_translations_updated_at') ? undefined : (new Date(json['source_translations_updated_at'])),
@@ -221,6 +228,7 @@ export function JobDetailsToJSON(value?: JobDetails | null): any {
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'automation_id': value.automationId,
         'job_template_id': value.jobTemplateId,
+        'review_due_date': value.reviewDueDate === undefined ? undefined : (value.reviewDueDate === null ? null : value.reviewDueDate.toISOString()),
         'owner': UserPreviewToJSON(value.owner),
         'job_tag_name': value.jobTagName,
         'source_translations_updated_at': value.sourceTranslationsUpdatedAt === undefined ? undefined : (value.sourceTranslationsUpdatedAt.toISOString()),
