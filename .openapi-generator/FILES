@@ -78,6 +78,10 @@ src/models/BlacklistedKey.ts
 src/models/BlacklistedKeyCreateParameters.ts
 src/models/BlacklistedKeyUpdateParameters.ts
 src/models/Branch.ts
+src/models/BranchComparison.ts
+src/models/BranchComparisonChange.ts
+src/models/BranchComparisonDiff.ts
+src/models/BranchComparisonDiffConflictsValue.ts
 src/models/BranchCreateComparisonParameters.ts
 src/models/BranchCreateParameters.ts
 src/models/BranchMergeParameters.ts

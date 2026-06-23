@@ -17,6 +17,9 @@ import {
     Branch,
     BranchFromJSON,
     BranchToJSON,
+    BranchComparison,
+    BranchComparisonFromJSON,
+    BranchComparisonToJSON,
     BranchCreateComparisonParameters,
     BranchCreateComparisonParametersFromJSON,
     BranchCreateComparisonParametersToJSON,
@@ -105,7 +108,7 @@ export class BranchesApi extends runtime.BaseAPI {
      * Compare branch with main branch.  *Note: Comparing a branch may take several minutes depending on the project size. Consider using the `POST /compare` endpoint for creating comparison asynchronously.* 
      * Compare branches
      */
-    async branchCompareRaw(requestParameters: BranchCompareRequest): Promise<runtime.ApiResponse<any>> {
+    async branchCompareRaw(requestParameters: BranchCompareRequest): Promise<runtime.ApiResponse<BranchComparison>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling branchCompare.');
         }
@@ -136,14 +139,14 @@ export class BranchesApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.TextApiResponse(response) as any;
+        return new runtime.JSONApiResponse(response, (jsonValue) => BranchComparisonFromJSON(jsonValue));
     }
 
     /**
      * Compare branch with main branch.  *Note: Comparing a branch may take several minutes depending on the project size. Consider using the `POST /compare` endpoint for creating comparison asynchronously.* 
      * Compare branches
      */
-    async branchCompare(requestParameters: BranchCompareRequest): Promise<any> {
+    async branchCompare(requestParameters: BranchCompareRequest): Promise<BranchComparison> {
         const response = await this.branchCompareRaw(requestParameters);
         return await response.value();
     }
