@@ -27,11 +27,11 @@ import {
 
 export interface ScreenshotCreateRequest {
     projectId: string;
+    filename: Blob;
     xPhraseAppOTP?: string;
     branch?: string;
     name?: string;
     description?: string;
-    filename?: Blob;
 }
 
 export interface ScreenshotDeleteRequest {
@@ -70,12 +70,16 @@ export interface ScreenshotsListRequest {
 export class ScreenshotsApi extends runtime.BaseAPI {
 
     /**
-     * Create a new screenshot.
+     * Creates a screenshot in a project to provide visual context for in-context translation. Attach translation keys to regions of the uploaded image so translators can see where each string appears in your UI.  This endpoint accepts a multipart/form-data request with a binary file upload, unlike most Phrase API endpoints that use JSON. Use a multipart form client or the -F flag in curl rather than a JSON body.  The screenshot name must be unique within the project (case-insensitive). When name is omitted, it is derived from the uploaded filename. The account must have the Screenshots feature enabled; requests to projects on accounts without it return 403. Creating a screenshot requires a token with the write scope and manage access to the project. 
      * Create a screenshot
      */
     async screenshotCreateRaw(requestParameters: ScreenshotCreateRequest): Promise<runtime.ApiResponse<Screenshot>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling screenshotCreate.');
+        }
+
+        if (requestParameters.filename === null || requestParameters.filename === undefined) {
+            throw new runtime.RequiredError('filename','Required parameter requestParameters.filename was null or undefined when calling screenshotCreate.');
         }
 
         const queryParameters: any = {};
@@ -137,7 +141,7 @@ export class ScreenshotsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new screenshot.
+     * Creates a screenshot in a project to provide visual context for in-context translation. Attach translation keys to regions of the uploaded image so translators can see where each string appears in your UI.  This endpoint accepts a multipart/form-data request with a binary file upload, unlike most Phrase API endpoints that use JSON. Use a multipart form client or the -F flag in curl rather than a JSON body.  The screenshot name must be unique within the project (case-insensitive). When name is omitted, it is derived from the uploaded filename. The account must have the Screenshots feature enabled; requests to projects on accounts without it return 403. Creating a screenshot requires a token with the write scope and manage access to the project. 
      * Create a screenshot
      */
     async screenshotCreate(requestParameters: ScreenshotCreateRequest): Promise<Screenshot> {
