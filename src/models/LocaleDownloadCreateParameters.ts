@@ -121,6 +121,18 @@ export interface LocaleDownloadCreateParameters {
      */
     customMetadataFilters?: object;
     /**
+     * Download all translation keys, and remove the specified prefix where possible. Warning: this may create duplicate key names if other keys share the same name after the prefix is removed.
+     * @type {string}
+     * @memberof LocaleDownloadCreateParameters
+     */
+    translationKeyPrefix?: string;
+    /**
+     * Only download translation keys containing the prefix specified by `translation_key_prefix`, and remove that prefix from the generated file. Requires `translation_key_prefix` to be set.
+     * @type {boolean}
+     * @memberof LocaleDownloadCreateParameters
+     */
+    filterByPrefix?: boolean;
+    /**
      * Only include translations and keys that have been updated since the given date. The date must be in ISO 8601 format (e.g., `2023-01-01T00:00:00Z`). 
      * @type {string}
      * @memberof LocaleDownloadCreateParameters
@@ -155,6 +167,8 @@ export function LocaleDownloadCreateParametersFromJSONTyped(json: any, ignoreDis
         'fallbackForUnverifiedTranslations': !exists(json, 'fallback_for_unverified_translations') ? undefined : json['fallback_for_unverified_translations'],
         'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
         'customMetadataFilters': !exists(json, 'custom_metadata_filters') ? undefined : json['custom_metadata_filters'],
+        'translationKeyPrefix': !exists(json, 'translation_key_prefix') ? undefined : json['translation_key_prefix'],
+        'filterByPrefix': !exists(json, 'filter_by_prefix') ? undefined : json['filter_by_prefix'],
         'updatedSince': !exists(json, 'updated_since') ? undefined : json['updated_since'],
     };
 }
@@ -185,6 +199,8 @@ export function LocaleDownloadCreateParametersToJSON(value?: LocaleDownloadCreat
         'fallback_for_unverified_translations': value.fallbackForUnverifiedTranslations,
         'source_locale_id': value.sourceLocaleId,
         'custom_metadata_filters': value.customMetadataFilters,
+        'translation_key_prefix': value.translationKeyPrefix,
+        'filter_by_prefix': value.filterByPrefix,
         'updated_since': value.updatedSince,
     };
 }
