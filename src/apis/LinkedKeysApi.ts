@@ -34,8 +34,8 @@ import {
 export interface KeyLinksBatchDestroyRequest {
     projectId: string;
     id: string;
-    keyLinksBatchDestroyParameters: KeyLinksBatchDestroyParameters;
     xPhraseAppOTP?: string;
+    keyLinksBatchDestroyParameters?: KeyLinksBatchDestroyParameters;
 }
 
 export interface KeyLinksCreateRequest {
@@ -64,20 +64,16 @@ export interface KeyLinksIndexRequest {
 export class LinkedKeysApi extends runtime.BaseAPI {
 
     /**
-     * Unlinks multiple child keys from a given parent key in a single operation.
+     * Removes one or more child keys from a parent key\'s linked-key group, or dissolves the entire group by setting unlink_parent to true.  Use this when you need to detach specific child keys from a shared translation source, or to fully break apart a linked-key group so each key manages its own translations independently. When child keys are unlinked, their translations are updated with a copy of the parent\'s current content (strategy keep_content, the default) or cleared (strategy remove_content).  This operation is only available on main projects. It returns 422 when a child key in `child_key_ids` is not currently linked to the parent, or when a translation update fails while unlinking. 
      * Batch unlink child keys from a parent key
      */
-    async keyLinksBatchDestroyRaw(requestParameters: KeyLinksBatchDestroyRequest): Promise<runtime.ApiResponse<any>> {
+    async keyLinksBatchDestroyRaw(requestParameters: KeyLinksBatchDestroyRequest): Promise<runtime.ApiResponse<KeyLink>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
             throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling keyLinksBatchDestroy.');
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling keyLinksBatchDestroy.');
-        }
-
-        if (requestParameters.keyLinksBatchDestroyParameters === null || requestParameters.keyLinksBatchDestroyParameters === undefined) {
-            throw new runtime.RequiredError('keyLinksBatchDestroyParameters','Required parameter requestParameters.keyLinksBatchDestroyParameters was null or undefined when calling keyLinksBatchDestroy.');
         }
 
         const queryParameters: any = {};
@@ -105,14 +101,14 @@ export class LinkedKeysApi extends runtime.BaseAPI {
             body: KeyLinksBatchDestroyParametersToJSON(requestParameters.keyLinksBatchDestroyParameters),
         });
 
-        return new runtime.TextApiResponse(response) as any;
+        return new runtime.JSONApiResponse(response, (jsonValue) => KeyLinkFromJSON(jsonValue));
     }
 
     /**
-     * Unlinks multiple child keys from a given parent key in a single operation.
+     * Removes one or more child keys from a parent key\'s linked-key group, or dissolves the entire group by setting unlink_parent to true.  Use this when you need to detach specific child keys from a shared translation source, or to fully break apart a linked-key group so each key manages its own translations independently. When child keys are unlinked, their translations are updated with a copy of the parent\'s current content (strategy keep_content, the default) or cleared (strategy remove_content).  This operation is only available on main projects. It returns 422 when a child key in `child_key_ids` is not currently linked to the parent, or when a translation update fails while unlinking. 
      * Batch unlink child keys from a parent key
      */
-    async keyLinksBatchDestroy(requestParameters: KeyLinksBatchDestroyRequest): Promise<any> {
+    async keyLinksBatchDestroy(requestParameters: KeyLinksBatchDestroyRequest): Promise<KeyLink> {
         const response = await this.keyLinksBatchDestroyRaw(requestParameters);
         return await response.value();
     }

@@ -19,17 +19,23 @@ import { exists, mapValues } from '../runtime';
  */
 export interface KeyLinksBatchDestroyParameters {
     /**
-     * The IDs of the child keys to unlink from the parent key.
+     * Codes of the child keys to unlink. Required when unlink_parent is false or omitted. Ignored when unlink_parent is true.
      * @type {Array<string>}
      * @memberof KeyLinksBatchDestroyParameters
      */
     childKeyIds: Array<string>;
     /**
-     * Whether to unlink the parent key as well and unmark it as linked-key.
+     * When true, dissolves the entire linked-key group by unlinking all children and removing the group. The child_key_ids field is ignored when this is set to true.
      * @type {boolean}
      * @memberof KeyLinksBatchDestroyParameters
      */
     unlinkParent?: boolean;
+    /**
+     * Controls what happens to child key translation content after unlinking. keep_content (default) copies the parent translation into each child; remove_content clears each child translation.
+     * @type {string}
+     * @memberof KeyLinksBatchDestroyParameters
+     */
+    strategy?: KeyLinksBatchDestroyParametersStrategyEnum;
 }
 
 export function KeyLinksBatchDestroyParametersFromJSON(json: any): KeyLinksBatchDestroyParameters {
@@ -44,6 +50,7 @@ export function KeyLinksBatchDestroyParametersFromJSONTyped(json: any, ignoreDis
         
         'childKeyIds': json['child_key_ids'],
         'unlinkParent': !exists(json, 'unlink_parent') ? undefined : json['unlink_parent'],
+        'strategy': !exists(json, 'strategy') ? undefined : json['strategy'],
     };
 }
 
@@ -58,7 +65,17 @@ export function KeyLinksBatchDestroyParametersToJSON(value?: KeyLinksBatchDestro
         
         'child_key_ids': value.childKeyIds,
         'unlink_parent': value.unlinkParent,
+        'strategy': value.strategy,
     };
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum KeyLinksBatchDestroyParametersStrategyEnum {
+    KeepContent = 'keep_content',
+    RemoveContent = 'remove_content'
 }
 
 
