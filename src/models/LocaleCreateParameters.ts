@@ -84,6 +84,12 @@ export interface LocaleCreateParameters {
      * @memberof LocaleCreateParameters
      */
     autotranslate?: boolean;
+    /**
+     * Identifier of the Language AI profile to use for this locale.
+     * @type {string}
+     * @memberof LocaleCreateParameters
+     */
+    languageAiProfile?: string;
 }
 
 export function LocaleCreateParametersFromJSON(json: any): LocaleCreateParameters {
@@ -107,6 +113,7 @@ export function LocaleCreateParametersFromJSONTyped(json: any, ignoreDiscriminat
         'unverifyNewTranslations': !exists(json, 'unverify_new_translations') ? undefined : json['unverify_new_translations'],
         'unverifyUpdatedTranslations': !exists(json, 'unverify_updated_translations') ? undefined : json['unverify_updated_translations'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
+        'languageAiProfile': !exists(json, 'language_ai_profile') ? undefined : json['language_ai_profile'],
     };
 }
 
@@ -130,6 +137,7 @@ export function LocaleCreateParametersToJSON(value?: LocaleCreateParameters | nu
         'unverify_new_translations': value.unverifyNewTranslations,
         'unverify_updated_translations': value.unverifyUpdatedTranslations,
         'autotranslate': value.autotranslate,
+        'language_ai_profile': value.languageAiProfile,
     };
 }
 
