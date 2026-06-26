@@ -19,7 +19,7 @@ import { exists, mapValues } from '../runtime';
  */
 export interface KeyLinksCreateParameters {
     /**
-     * The IDs of the child keys to link to the parent key. Can be left empty, to only mark the given translation-key as parent
+     * Codes of the keys to link as children. Pass an empty array to mark the parent key without linking any children.
      * @type {Array<string>}
      * @memberof KeyLinksCreateParameters
      */
