@@ -89,7 +89,7 @@ export class DocumentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all documents the current user has access to.
+     * Returns all documents in a project that the authenticated user has read access to. A Document is a source file — an HTML or DOCX file — that has been uploaded to Phrase Strings and whose content is segmented into translation keys for localization.  Use this endpoint to enumerate documents before downloading, previewing, or triggering translation workflows for individual files.  The q parameter performs a prefix match on the document name (case-insensitive). For example, passing q=invoice returns documents whose names begin with \"invoice\" but not documents containing \"invoice\" elsewhere in the name. 
      * List documents
      */
     async documentsListRaw(requestParameters: DocumentsListRequest): Promise<runtime.ApiResponse<Array<Document>>> {
@@ -135,7 +135,7 @@ export class DocumentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all documents the current user has access to.
+     * Returns all documents in a project that the authenticated user has read access to. A Document is a source file — an HTML or DOCX file — that has been uploaded to Phrase Strings and whose content is segmented into translation keys for localization.  Use this endpoint to enumerate documents before downloading, previewing, or triggering translation workflows for individual files.  The q parameter performs a prefix match on the document name (case-insensitive). For example, passing q=invoice returns documents whose names begin with \"invoice\" but not documents containing \"invoice\" elsewhere in the name. 
      * List documents
      */
     async documentsList(requestParameters: DocumentsListRequest): Promise<Array<Document>> {
