@@ -15,32 +15,32 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface KeyLinksIndex400Response
+ * @interface IcuSkeletonError
  */
-export interface KeyLinksIndex400Response {
+export interface IcuSkeletonError {
     /**
-     * 
+     * Human-readable description of the ICU message format parse failure.
      * @type {string}
-     * @memberof KeyLinksIndex400Response
+     * @memberof IcuSkeletonError
      */
-    message?: string;
+    error?: string;
 }
 
-export function KeyLinksIndex400ResponseFromJSON(json: any): KeyLinksIndex400Response {
-    return KeyLinksIndex400ResponseFromJSONTyped(json, false);
+export function IcuSkeletonErrorFromJSON(json: any): IcuSkeletonError {
+    return IcuSkeletonErrorFromJSONTyped(json, false);
 }
 
-export function KeyLinksIndex400ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): KeyLinksIndex400Response {
+export function IcuSkeletonErrorFromJSONTyped(json: any, ignoreDiscriminator: boolean): IcuSkeletonError {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'message': !exists(json, 'message') ? undefined : json['message'],
+        'error': !exists(json, 'error') ? undefined : json['error'],
     };
 }
 
-export function KeyLinksIndex400ResponseToJSON(value?: KeyLinksIndex400Response | null): any {
+export function IcuSkeletonErrorToJSON(value?: IcuSkeletonError | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -49,7 +49,7 @@ export function KeyLinksIndex400ResponseToJSON(value?: KeyLinksIndex400Response 
     }
     return {
         
-        'message': value.message,
+        'error': value.error,
     };
 }
 

@@ -122,6 +122,7 @@ src/models/GlossaryTermTranslationUpdateParameters.ts
 src/models/GlossaryTermUpdateParameters.ts
 src/models/GlossaryUpdateParameters.ts
 src/models/Icu.ts
+src/models/IcuSkeletonError.ts
 src/models/IcuSkeletonParameters.ts
 src/models/Invitation.ts
 src/models/InvitationCreateParameters.ts
@@ -161,7 +162,6 @@ src/models/KeyCreateParameters.ts
 src/models/KeyLink.ts
 src/models/KeyLinksBatchDestroyParameters.ts
 src/models/KeyLinksCreateParameters.ts
-src/models/KeyLinksIndex400Response.ts
 src/models/KeyPreview.ts
 src/models/KeyUpdateParameters.ts
 src/models/KeysExcludeParameters.ts
