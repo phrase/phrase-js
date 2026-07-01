@@ -42,7 +42,7 @@ export interface DocumentsListRequest {
 export class DocumentsApi extends runtime.BaseAPI {
 
     /**
-     * Delete an existing document.
+     * Permanently deletes a document and all of its associated translation segments from the project. Use this when you want to remove a document that is no longer needed; the deletion cannot be reversed and all associated segments will be lost. 
      * Delete document
      */
     async documentDeleteRaw(requestParameters: DocumentDeleteRequest): Promise<runtime.ApiResponse<any>> {
@@ -80,7 +80,7 @@ export class DocumentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete an existing document.
+     * Permanently deletes a document and all of its associated translation segments from the project. Use this when you want to remove a document that is no longer needed; the deletion cannot be reversed and all associated segments will be lost. 
      * Delete document
      */
     async documentDelete(requestParameters: DocumentDeleteRequest): Promise<any> {
