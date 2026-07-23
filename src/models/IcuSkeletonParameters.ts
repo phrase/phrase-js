@@ -49,11 +49,11 @@ export interface IcuSkeletonParameters {
      */
     zeroFormEnabled?: boolean;
     /**
-     * Pluralization rule set to apply when constructing skeletons. Accepted values are `legacy` and `cldr_41`. Defaults to `legacy` when omitted.
+     * Pluralization rule set to use when constructing skeletons. Pass `legacy` for pre-CLDR behaviour, or a CLDR version string such as `cldr48`. Defaults to the project\'s configured version when omitted.
      * @type {string}
      * @memberof IcuSkeletonParameters
      */
-    cldrVersion?: IcuSkeletonParametersCldrVersionEnum;
+    cldrVersion?: string;
 }
 
 export function IcuSkeletonParametersFromJSON(json: any): IcuSkeletonParameters {
