@@ -22,6 +22,7 @@ export * from './JobLocalesApi';
 export * from './JobTemplateLocalesApi';
 export * from './JobTemplatesApi';
 export * from './JobsApi';
+export * from './KeyFormatAnnotationsApi';
 export * from './KeysApi';
 export * from './KeysFigmaAttachmentsApi';
 export * from './LinkedKeysApi';

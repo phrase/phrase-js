@@ -95,6 +95,7 @@ export * from './JobTemplatePreview';
 export * from './JobTemplateUpdateParameters';
 export * from './JobUpdateParameters';
 export * from './KeyCreateParameters';
+export * from './KeyFormatAnnotationsList200ResponseInner';
 export * from './KeyLink';
 export * from './KeyLinksBatchDestroyParameters';
 export * from './KeyLinksCreateParameters';

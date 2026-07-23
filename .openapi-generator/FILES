@@ -27,6 +27,7 @@ src/apis/JobLocalesApi.ts
 src/apis/JobTemplateLocalesApi.ts
 src/apis/JobTemplatesApi.ts
 src/apis/JobsApi.ts
+src/apis/KeyFormatAnnotationsApi.ts
 src/apis/KeysApi.ts
 src/apis/KeysFigmaAttachmentsApi.ts
 src/apis/LinkedKeysApi.ts
@@ -159,6 +160,7 @@ src/models/JobTemplatePreview.ts
 src/models/JobTemplateUpdateParameters.ts
 src/models/JobUpdateParameters.ts
 src/models/KeyCreateParameters.ts
+src/models/KeyFormatAnnotationsList200ResponseInner.ts
 src/models/KeyLink.ts
 src/models/KeyLinksBatchDestroyParameters.ts
 src/models/KeyLinksCreateParameters.ts

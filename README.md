@@ -326,6 +326,7 @@ Class | Method | HTTP request | Description
 *JobsApi* | **jobUpdate** | **PATCH** /projects/{project_id}/jobs/{id} | Update a job
 *JobsApi* | **jobsByAccount** | **GET** /accounts/{account_id}/jobs | List account jobs
 *JobsApi* | **jobsList** | **GET** /projects/{project_id}/jobs | List jobs
+*KeyFormatAnnotationsApi* | **keyFormatAnnotationsList** | **GET** /projects/{project_id}/keys/{id}/format_annotations | List format annotations for a key
 *KeysApi* | **keyCreate** | **POST** /projects/{project_id}/keys | Create a key
 *KeysApi* | **keyDelete** | **DELETE** /projects/{project_id}/keys/{id} | Delete a key
 *KeysApi* | **keyShow** | **GET** /projects/{project_id}/keys/{id} | Get a single key
