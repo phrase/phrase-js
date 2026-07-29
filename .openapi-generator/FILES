@@ -39,6 +39,7 @@ src/apis/NotificationsApi.ts
 src/apis/OrdersApi.ts
 src/apis/OrganizationJobTemplateLocalesApi.ts
 src/apis/OrganizationJobTemplatesApi.ts
+src/apis/PreTranslationsApi.ts
 src/apis/ProjectsApi.ts
 src/apis/QualityPerformanceScoreApi.ts
 src/apis/ReleaseTriggersApi.ts
@@ -203,6 +204,8 @@ src/models/OrganizationJobTemplateDetails.ts
 src/models/OrganizationJobTemplateLocaleUpdateParameters.ts
 src/models/OrganizationJobTemplateLocalesCreateParameters.ts
 src/models/OrganizationJobTemplateUpdateParameters.ts
+src/models/PreTranslation.ts
+src/models/PreTranslationCreateParameters.ts
 src/models/Project.ts
 src/models/ProjectCreateParameters.ts
 src/models/ProjectDetails.ts

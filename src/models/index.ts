@@ -138,6 +138,8 @@ export * from './OrganizationJobTemplateDetails';
 export * from './OrganizationJobTemplateLocaleUpdateParameters';
 export * from './OrganizationJobTemplateLocalesCreateParameters';
 export * from './OrganizationJobTemplateUpdateParameters';
+export * from './PreTranslation';
+export * from './PreTranslationCreateParameters';
 export * from './Project';
 export * from './ProjectCreateParameters';
 export * from './ProjectDetails';

@@ -379,6 +379,9 @@ Class | Method | HTTP request | Description
 *OrganizationJobTemplatesApi* | **organizationJobTemplateUpdate** | **PATCH** /accounts/{account_id}/job_templates/{id} | Update an organization job template
 *OrganizationJobTemplatesApi* | **organizationJobTemplatesList** | **GET** /accounts/{account_id}/job_templates | List organization job templates
 *OrganizationJobTemplatesApi* | **organizationJobTemplatesShow** | **GET** /accounts/{account_id}/job_templates/{id} | Get a single organization job template
+*PreTranslationsApi* | **preTranslationCreate** | **POST** /projects/{project_id}/pre_translations | Create a pre-translation job
+*PreTranslationsApi* | **preTranslationShow** | **GET** /projects/{project_id}/pre_translations/{id} | Get a single pre-translation job
+*PreTranslationsApi* | **preTranslationsList** | **GET** /projects/{project_id}/pre_translations | List pre-translation jobs
 *ProjectsApi* | **projectCreate** | **POST** /projects | Create a project
 *ProjectsApi* | **projectDelete** | **DELETE** /projects/{id} | Delete a project
 *ProjectsApi* | **projectShow** | **GET** /projects/{id} | Get a single project
