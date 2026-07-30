@@ -8,6 +8,8 @@ export * from './AuthorizationCreateParameters';
 export * from './AuthorizationUpdateParameters';
 export * from './AuthorizationWithToken';
 export * from './Automation';
+export * from './AutomationEvent';
+export * from './AutomationEventProject';
 export * from './AutomationsCreateParameters';
 export * from './AutomationsCreateParameters1';
 export * from './BlacklistedKey';

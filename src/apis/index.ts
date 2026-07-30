@@ -1,5 +1,6 @@
 export * from './AccountsApi';
 export * from './AuthorizationsApi';
+export * from './AutomationEventsApi';
 export * from './AutomationsApi';
 export * from './BlacklistedKeysApi';
 export * from './BranchesApi';

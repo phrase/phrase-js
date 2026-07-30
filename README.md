@@ -205,6 +205,8 @@ Class | Method | HTTP request | Description
 *AuthorizationsApi* | **authorizationShow** | **GET** /authorizations/{id} | Get a single authorization
 *AuthorizationsApi* | **authorizationUpdate** | **PATCH** /authorizations/{id} | Update an authorization
 *AuthorizationsApi* | **authorizationsList** | **GET** /authorizations | List authorizations
+*AutomationEventsApi* | **accountAutomationEventsList** | **GET** /accounts/{account_id}/automation_events | List automation events for an account
+*AutomationEventsApi* | **automationEventsList** | **GET** /accounts/{account_id}/automations/{automation_id}/events | List events for an automation
 *AutomationsApi* | **automationActivate** | **POST** /accounts/{account_id}/automations/{automation_id}/activate | Activate an automation
 *AutomationsApi* | **automationCreate** | **POST** /accounts/{account_id}/automations | Create an automation
 *AutomationsApi* | **automationDeactivate** | **POST** /accounts/{account_id}/automations/{automation_id}/deactivate | Deactivate an automation
