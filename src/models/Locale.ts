@@ -92,6 +92,24 @@ export interface Locale {
      */
     languageAiProfile?: string;
     /**
+     * Indicates that new translations for this locale are marked as unverified. Only applies to locales using the basic verification workflow. Part of the [Advanced Workflows](https://support.phrase.com/hc/en-us/articles/5784094755484) feature.
+     * @type {boolean}
+     * @memberof Locale
+     */
+    unverifyNewTranslations?: boolean;
+    /**
+     * Indicates that updated translations for this locale are marked as unverified. Only applies to locales using the basic verification workflow. Part of the [Advanced Workflows](https://support.phrase.com/hc/en-us/articles/5784094755484) feature.
+     * @type {boolean}
+     * @memberof Locale
+     */
+    unverifyUpdatedTranslations?: boolean;
+    /**
+     * Indicates that translations for this locale are marked as unverified when the source language has been changed.
+     * @type {boolean}
+     * @memberof Locale
+     */
+    unverifyOnSourceChanges?: boolean;
+    /**
      * 
      * @type {Date}
      * @memberof Locale
@@ -126,6 +144,9 @@ export function LocaleFromJSONTyped(json: any, ignoreDiscriminator: boolean): Lo
         'sourceLocale': !exists(json, 'source_locale') ? undefined : LocalePreviewFromJSON(json['source_locale']),
         'fallbackLocale': !exists(json, 'fallback_locale') ? undefined : LocalePreviewFromJSON(json['fallback_locale']),
         'languageAiProfile': !exists(json, 'language_ai_profile') ? undefined : json['language_ai_profile'],
+        'unverifyNewTranslations': !exists(json, 'unverify_new_translations') ? undefined : json['unverify_new_translations'],
+        'unverifyUpdatedTranslations': !exists(json, 'unverify_updated_translations') ? undefined : json['unverify_updated_translations'],
+        'unverifyOnSourceChanges': !exists(json, 'unverify_on_source_changes') ? undefined : json['unverify_on_source_changes'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
     };
@@ -151,6 +172,9 @@ export function LocaleToJSON(value?: Locale | null): any {
         'source_locale': LocalePreviewToJSON(value.sourceLocale),
         'fallback_locale': LocalePreviewToJSON(value.fallbackLocale),
         'language_ai_profile': value.languageAiProfile,
+        'unverify_new_translations': value.unverifyNewTranslations,
+        'unverify_updated_translations': value.unverifyUpdatedTranslations,
+        'unverify_on_source_changes': value.unverifyOnSourceChanges,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
     };

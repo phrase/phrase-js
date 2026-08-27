@@ -79,6 +79,12 @@ export interface LocaleUpdateParameters {
      */
     unverifyUpdatedTranslations?: boolean;
     /**
+     * Indicates that translations for this locale should be marked as unverified when the source language has been changed.
+     * @type {boolean}
+     * @memberof LocaleUpdateParameters
+     */
+    unverifyOnSourceChanges?: boolean;
+    /**
      * If set, translations for this locale will be fetched automatically, right after creation.
      * @type {boolean}
      * @memberof LocaleUpdateParameters
@@ -112,6 +118,7 @@ export function LocaleUpdateParametersFromJSONTyped(json: any, ignoreDiscriminat
         'fallbackLocaleId': !exists(json, 'fallback_locale_id') ? undefined : json['fallback_locale_id'],
         'unverifyNewTranslations': !exists(json, 'unverify_new_translations') ? undefined : json['unverify_new_translations'],
         'unverifyUpdatedTranslations': !exists(json, 'unverify_updated_translations') ? undefined : json['unverify_updated_translations'],
+        'unverifyOnSourceChanges': !exists(json, 'unverify_on_source_changes') ? undefined : json['unverify_on_source_changes'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
         'languageAiProfile': !exists(json, 'language_ai_profile') ? undefined : json['language_ai_profile'],
     };
@@ -136,6 +143,7 @@ export function LocaleUpdateParametersToJSON(value?: LocaleUpdateParameters | nu
         'fallback_locale_id': value.fallbackLocaleId,
         'unverify_new_translations': value.unverifyNewTranslations,
         'unverify_updated_translations': value.unverifyUpdatedTranslations,
+        'unverify_on_source_changes': value.unverifyOnSourceChanges,
         'autotranslate': value.autotranslate,
         'language_ai_profile': value.languageAiProfile,
     };
