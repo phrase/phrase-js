@@ -55,6 +55,18 @@ export interface ProjectUpdateParameters {
      */
     sharesTranslationMemory?: boolean;
     /**
+     * List of TMS translation memory IDs, used to provide reference translations for the AI translation agent.
+     * @type {Array<string>}
+     * @memberof ProjectUpdateParameters
+     */
+    tmIds?: Array<string>;
+    /**
+     * List of TMS term base IDs, used to ensure consistent terminology for the AI translation agent.
+     * @type {Array<string>}
+     * @memberof ProjectUpdateParameters
+     */
+    termBaseIds?: Array<string>;
+    /**
      * (Optional) Image to identify the project
      * @type {Blob}
      * @memberof ProjectUpdateParameters
@@ -228,6 +240,8 @@ export function ProjectUpdateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'mainFormat': !exists(json, 'main_format') ? undefined : json['main_format'],
         'media': !exists(json, 'media') ? undefined : json['media'],
         'sharesTranslationMemory': !exists(json, 'shares_translation_memory') ? undefined : json['shares_translation_memory'],
+        'tmIds': !exists(json, 'tm_ids') ? undefined : json['tm_ids'],
+        'termBaseIds': !exists(json, 'term_base_ids') ? undefined : json['term_base_ids'],
         'projectImage': !exists(json, 'project_image') ? undefined : json['project_image'],
         'removeProjectImage': !exists(json, 'remove_project_image') ? undefined : json['remove_project_image'],
         'workflow': !exists(json, 'workflow') ? undefined : json['workflow'],
@@ -272,6 +286,8 @@ export function ProjectUpdateParametersToJSON(value?: ProjectUpdateParameters | 
         'main_format': value.mainFormat,
         'media': value.media,
         'shares_translation_memory': value.sharesTranslationMemory,
+        'tm_ids': value.tmIds,
+        'term_base_ids': value.termBaseIds,
         'project_image': value.projectImage,
         'remove_project_image': value.removeProjectImage,
         'workflow': value.workflow,
