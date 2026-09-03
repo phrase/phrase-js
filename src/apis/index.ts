@@ -4,6 +4,7 @@ export * from './AutomationEventsApi';
 export * from './AutomationsApi';
 export * from './BlacklistedKeysApi';
 export * from './BranchesApi';
+export * from './ChecksApi';
 export * from './CommentReactionsApi';
 export * from './CommentRepliesApi';
 export * from './CommentsApi';

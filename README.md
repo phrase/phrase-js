@@ -229,6 +229,8 @@ Class | Method | HTTP request | Description
 *BranchesApi* | **branchSync** | **PATCH** /projects/{project_id}/branches/{name}/sync | Sync a branch
 *BranchesApi* | **branchUpdate** | **PATCH** /projects/{project_id}/branches/{name} | Update a branch
 *BranchesApi* | **branchesList** | **GET** /projects/{project_id}/branches | List branches
+*ChecksApi* | **checkIssueDismiss** | **PATCH** /projects/{project_id}/checks/issues/{id}/dismiss | Dismiss a check issue
+*ChecksApi* | **checkIssuesList** | **GET** /projects/{project_id}/checks/issues | List check issues
 *CommentReactionsApi* | **reactionCreate** | **POST** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/reactions | Create a reaction
 *CommentReactionsApi* | **reactionDelete** | **DELETE** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/reactions/{id} | Delete a reaction
 *CommentReactionsApi* | **reactionShow** | **GET** /projects/{project_id}/keys/{key_id}/comments/{comment_id}/reactions/{id} | Get a single reaction
