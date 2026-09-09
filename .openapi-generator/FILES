@@ -35,6 +35,7 @@ src/apis/KeysFigmaAttachmentsApi.ts
 src/apis/LinkedKeysApi.ts
 src/apis/LocaleDownloadsApi.ts
 src/apis/LocalesApi.ts
+src/apis/MachineTranslationApi.ts
 src/apis/MembersApi.ts
 src/apis/NotificationGroupsApi.ts
 src/apis/NotificationsApi.ts
@@ -191,6 +192,10 @@ src/models/LocaleStatistics.ts
 src/models/LocaleTeamPreview.ts
 src/models/LocaleUpdateParameters.ts
 src/models/LocaleUserPreview.ts
+src/models/MachineTranslationLocaleProviderMapping.ts
+src/models/MachineTranslationLocaleProviderMappingsCreateParameters.ts
+src/models/MachineTranslationSettings.ts
+src/models/MachineTranslationSettingsUpdateParameters.ts
 src/models/Member.ts
 src/models/MemberProjectDetail.ts
 src/models/MemberProjectDetailProjectRolesInner.ts

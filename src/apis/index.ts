@@ -30,6 +30,7 @@ export * from './KeysFigmaAttachmentsApi';
 export * from './LinkedKeysApi';
 export * from './LocaleDownloadsApi';
 export * from './LocalesApi';
+export * from './MachineTranslationApi';
 export * from './MembersApi';
 export * from './NotificationGroupsApi';
 export * from './NotificationsApi';

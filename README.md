@@ -357,6 +357,10 @@ Class | Method | HTTP request | Description
 *LocalesApi* | **localeShow** | **GET** /projects/{project_id}/locales/{id} | Get a single locale
 *LocalesApi* | **localeUpdate** | **PATCH** /projects/{project_id}/locales/{id} | Update a locale
 *LocalesApi* | **localesList** | **GET** /projects/{project_id}/locales | List locales
+*MachineTranslationApi* | **machineTranslationLocaleProviderMappingsCreate** | **POST** /accounts/{account_id}/machine_translation_locale_provider_mappings | Create a locale provider mapping
+*MachineTranslationApi* | **machineTranslationLocaleProviderMappingsDestroy** | **DELETE** /accounts/{account_id}/machine_translation_locale_provider_mappings | Delete a locale provider mapping
+*MachineTranslationApi* | **machineTranslationSettingsShow** | **GET** /accounts/{account_id}/machine_translation_settings | Get machine translation settings
+*MachineTranslationApi* | **machineTranslationSettingsUpdate** | **PATCH** /accounts/{account_id}/machine_translation_settings | Update machine translation settings
 *MembersApi* | **memberDelete** | **DELETE** /accounts/{account_id}/members/{id} | Remove a user from the account
 *MembersApi* | **memberShow** | **GET** /accounts/{account_id}/members/{id} | Get single member
 *MembersApi* | **memberUpdate** | **PATCH** /accounts/{account_id}/members/{id} | Update a member
