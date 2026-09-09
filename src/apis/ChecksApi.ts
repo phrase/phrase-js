@@ -36,6 +36,7 @@ export interface CheckIssuesListRequest {
     state?: CheckIssuesListStateEnum;
     localeIds?: Array<string>;
     checkNames?: Array<CheckIssuesListCheckNamesEnum>;
+    createdSince?: string;
 }
 
 /**
@@ -119,6 +120,10 @@ export class ChecksApi extends runtime.BaseAPI {
 
         if (requestParameters.checkNames) {
             queryParameters['check_names'] = requestParameters.checkNames;
+        }
+
+        if (requestParameters.createdSince !== undefined) {
+            queryParameters['created_since'] = requestParameters.createdSince;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
