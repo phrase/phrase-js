@@ -175,6 +175,12 @@ export interface ProjectCreateParameters {
      */
     autotranslateOverwriteUnverifiedTranslations?: boolean;
     /**
+     * (Optional) When enabled, the fallback locale\'s translation is used on export for unverified translations in addition to empty ones. Requires a fallback locale to be configured on the locale.
+     * @type {boolean}
+     * @memberof ProjectCreateParameters
+     */
+    fallbackForUnverifiedTranslations?: boolean;
+    /**
      * (Optional) Enable autocomplete-job behavior so that newly created keys and locales are automatically added to in-progress jobs.
      * @type {boolean}
      * @memberof ProjectCreateParameters
@@ -266,6 +272,7 @@ export function ProjectCreateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'autotranslateUseMachineTranslation': !exists(json, 'autotranslate_use_machine_translation') ? undefined : json['autotranslate_use_machine_translation'],
         'autotranslateUseTranslationMemory': !exists(json, 'autotranslate_use_translation_memory') ? undefined : json['autotranslate_use_translation_memory'],
         'autotranslateOverwriteUnverifiedTranslations': !exists(json, 'autotranslate_overwrite_unverified_translations') ? undefined : json['autotranslate_overwrite_unverified_translations'],
+        'fallbackForUnverifiedTranslations': !exists(json, 'fallback_for_unverified_translations') ? undefined : json['fallback_for_unverified_translations'],
         'autocompleteJobEnabled': !exists(json, 'autocomplete_job_enabled') ? undefined : json['autocomplete_job_enabled'],
         'jobLockingEnabled': !exists(json, 'job_locking_enabled') ? undefined : json['job_locking_enabled'],
         'smartSuggestEnabled': !exists(json, 'smart_suggest_enabled') ? undefined : json['smart_suggest_enabled'],
@@ -313,6 +320,7 @@ export function ProjectCreateParametersToJSON(value?: ProjectCreateParameters | 
         'autotranslate_use_machine_translation': value.autotranslateUseMachineTranslation,
         'autotranslate_use_translation_memory': value.autotranslateUseTranslationMemory,
         'autotranslate_overwrite_unverified_translations': value.autotranslateOverwriteUnverifiedTranslations,
+        'fallback_for_unverified_translations': value.fallbackForUnverifiedTranslations,
         'autocomplete_job_enabled': value.autocompleteJobEnabled,
         'job_locking_enabled': value.jobLockingEnabled,
         'smart_suggest_enabled': value.smartSuggestEnabled,

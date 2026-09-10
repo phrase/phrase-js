@@ -169,6 +169,12 @@ export interface ProjectUpdateParameters {
      */
     autotranslateOverwriteUnverifiedTranslations?: boolean;
     /**
+     * (Optional) When enabled, the fallback locale\'s translation is used on export for unverified translations in addition to empty ones. Requires a fallback locale to be configured on the locale.
+     * @type {boolean}
+     * @memberof ProjectUpdateParameters
+     */
+    fallbackForUnverifiedTranslations?: boolean;
+    /**
      * (Optional) Sets the default encoding for Uploads. If you leave it empty, we will try to guess it automatically for you when you Upload a file. You can still override this value by setting the [`file_encoding`](/en/api/strings/uploads/upload-a-new-file) parameter for Uploads.
      * @type {string}
      * @memberof ProjectUpdateParameters
@@ -259,6 +265,7 @@ export function ProjectUpdateParametersFromJSONTyped(json: any, ignoreDiscrimina
         'autotranslateUseMachineTranslation': !exists(json, 'autotranslate_use_machine_translation') ? undefined : json['autotranslate_use_machine_translation'],
         'autotranslateUseTranslationMemory': !exists(json, 'autotranslate_use_translation_memory') ? undefined : json['autotranslate_use_translation_memory'],
         'autotranslateOverwriteUnverifiedTranslations': !exists(json, 'autotranslate_overwrite_unverified_translations') ? undefined : json['autotranslate_overwrite_unverified_translations'],
+        'fallbackForUnverifiedTranslations': !exists(json, 'fallback_for_unverified_translations') ? undefined : json['fallback_for_unverified_translations'],
         'defaultEncoding': !exists(json, 'default_encoding') ? undefined : json['default_encoding'],
         'placeholderStyles': !exists(json, 'placeholder_styles') ? undefined : json['placeholder_styles'],
         'autocompleteJobEnabled': !exists(json, 'autocomplete_job_enabled') ? undefined : json['autocomplete_job_enabled'],
@@ -305,6 +312,7 @@ export function ProjectUpdateParametersToJSON(value?: ProjectUpdateParameters | 
         'autotranslate_use_machine_translation': value.autotranslateUseMachineTranslation,
         'autotranslate_use_translation_memory': value.autotranslateUseTranslationMemory,
         'autotranslate_overwrite_unverified_translations': value.autotranslateOverwriteUnverifiedTranslations,
+        'fallback_for_unverified_translations': value.fallbackForUnverifiedTranslations,
         'default_encoding': value.defaultEncoding,
         'placeholder_styles': value.placeholderStyles,
         'autocomplete_job_enabled': value.autocompleteJobEnabled,
