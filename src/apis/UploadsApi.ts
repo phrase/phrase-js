@@ -71,7 +71,7 @@ export interface UploadsListRequest {
 export class UploadsApi extends runtime.BaseAPI {
 
     /**
-     * Upload a new language file. Creates necessary resources in your project.  Note: be aware of [upload limits](https://support.phrase.com/hc/en-us/articles/8548271212188-Phrase-Strings-Limits#file-size-upload-limits-0-0). 
+     * Upload a new language file. Creates necessary resources in your project.  The upload is processed asynchronously: this endpoint returns `201 Created` once the file has been accepted and enqueued, not once processing has finished. Poll `GET /projects/{project_id}/uploads/{id}` and check the `state` field — `error` means processing failed (for example, an unparseable file or a `file_format` that doesn\'t match the file\'s actual content).  Note: be aware of [upload limits](https://support.phrase.com/hc/en-us/articles/8548271212188-Phrase-Strings-Limits#file-size-upload-limits-0-0). 
      * Upload a new file
      */
     async uploadCreateRaw(requestParameters: UploadCreateRequest): Promise<runtime.ApiResponse<Upload>> {
@@ -234,7 +234,7 @@ export class UploadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Upload a new language file. Creates necessary resources in your project.  Note: be aware of [upload limits](https://support.phrase.com/hc/en-us/articles/8548271212188-Phrase-Strings-Limits#file-size-upload-limits-0-0). 
+     * Upload a new language file. Creates necessary resources in your project.  The upload is processed asynchronously: this endpoint returns `201 Created` once the file has been accepted and enqueued, not once processing has finished. Poll `GET /projects/{project_id}/uploads/{id}` and check the `state` field — `error` means processing failed (for example, an unparseable file or a `file_format` that doesn\'t match the file\'s actual content).  Note: be aware of [upload limits](https://support.phrase.com/hc/en-us/articles/8548271212188-Phrase-Strings-Limits#file-size-upload-limits-0-0). 
      * Upload a new file
      */
     async uploadCreate(requestParameters: UploadCreateRequest): Promise<Upload> {
@@ -243,7 +243,7 @@ export class UploadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * View details and summary for a single upload.
+     * View details and summary for a single upload. Use this endpoint to poll for the outcome of an upload created via `POST /projects/{project_id}/uploads` — check the `state` field. 
      * Get a single upload
      */
     async uploadShowRaw(requestParameters: UploadShowRequest): Promise<runtime.ApiResponse<Upload>> {
@@ -285,7 +285,7 @@ export class UploadsApi extends runtime.BaseAPI {
     }
 
     /**
-     * View details and summary for a single upload.
+     * View details and summary for a single upload. Use this endpoint to poll for the outcome of an upload created via `POST /projects/{project_id}/uploads` — check the `state` field. 
      * Get a single upload
      */
     async uploadShow(requestParameters: UploadShowRequest): Promise<Upload> {

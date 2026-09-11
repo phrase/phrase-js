@@ -48,7 +48,7 @@ export interface Upload {
      */
     format?: string;
     /**
-     * 
+     * Processing state of the upload: `initialized`, `processing`, `success`, or `error`. `error` means processing failed — for example the file could not be parsed, or a provided `file_format` didn\'t match the file\'s actual content. Poll this field until it leaves `initialized`/`processing` to get the final outcome. 
      * @type {string}
      * @memberof Upload
      */
