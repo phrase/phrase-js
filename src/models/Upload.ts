@@ -54,6 +54,12 @@ export interface Upload {
      */
     state?: string;
     /**
+     * A user-facing message explaining why the upload failed, or `null` if the upload did not fail.  This message is intended for display only. Its wording may change at any time and it should not be parsed or relied upon programmatically. 
+     * @type {string}
+     * @memberof Upload
+     */
+    errorMessage?: string | null;
+    /**
      * Unique tag of the upload 
      * @type {string}
      * @memberof Upload
@@ -111,6 +117,7 @@ export function UploadFromJSONTyped(json: any, ignoreDiscriminator: boolean): Up
         'filename': !exists(json, 'filename') ? undefined : json['filename'],
         'format': !exists(json, 'format') ? undefined : json['format'],
         'state': !exists(json, 'state') ? undefined : json['state'],
+        'errorMessage': !exists(json, 'error_message') ? undefined : json['error_message'],
         'tag': !exists(json, 'tag') ? undefined : json['tag'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'url': !exists(json, 'url') ? undefined : json['url'],
@@ -134,6 +141,7 @@ export function UploadToJSON(value?: Upload | null): any {
         'filename': value.filename,
         'format': value.format,
         'state': value.state,
+        'error_message': value.errorMessage,
         'tag': value.tag,
         'tags': value.tags,
         'url': value.url,
