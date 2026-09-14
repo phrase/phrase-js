@@ -200,7 +200,7 @@ export class ProjectsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing project.
+     * Update an existing project, including its review workflow, pre-translation/autotranslate rules, and machine-translation configuration (see workflow, machine_translation_enabled, and the autotranslate_* fields below).
      * Update a project
      */
     async projectUpdateRaw(requestParameters: ProjectUpdateRequest): Promise<runtime.ApiResponse<ProjectDetails>> {
@@ -241,7 +241,7 @@ export class ProjectsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update an existing project.
+     * Update an existing project, including its review workflow, pre-translation/autotranslate rules, and machine-translation configuration (see workflow, machine_translation_enabled, and the autotranslate_* fields below).
      * Update a project
      */
     async projectUpdate(requestParameters: ProjectUpdateRequest): Promise<ProjectDetails> {
