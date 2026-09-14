@@ -164,7 +164,7 @@ export class MembersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update user permissions in the account. Developers and translators need `project_ids` and `locale_ids` assigned to access them. Access token scope must include `team.manage`.
+     * Update user permissions in the account. Developers and translators need `project_ids` and `locale_ids` assigned to access them. To grant account-wide language access instead of access scoped to specific projects, use `default_locale_codes`. Access token scope must include `team.manage`.
      * Update a member
      */
     async memberUpdateRaw(requestParameters: MemberUpdateRequest): Promise<runtime.ApiResponse<Member>> {
@@ -209,7 +209,7 @@ export class MembersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update user permissions in the account. Developers and translators need `project_ids` and `locale_ids` assigned to access them. Access token scope must include `team.manage`.
+     * Update user permissions in the account. Developers and translators need `project_ids` and `locale_ids` assigned to access them. To grant account-wide language access instead of access scoped to specific projects, use `default_locale_codes`. Access token scope must include `team.manage`.
      * Update a member
      */
     async memberUpdate(requestParameters: MemberUpdateRequest): Promise<Member> {
