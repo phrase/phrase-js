@@ -61,6 +61,7 @@ export interface SpacesListRequest {
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
+    q?: string;
 }
 
 export interface SpacesProjectsCreateRequest {
@@ -305,6 +306,10 @@ export class SpacesApi extends runtime.BaseAPI {
 
         if (requestParameters.perPage !== undefined) {
             queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
