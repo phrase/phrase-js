@@ -219,6 +219,12 @@ export interface ProjectDetails {
     cldrVersion?: string;
     /**
      * 
+     * @type {string}
+     * @memberof ProjectDetails
+     */
+    translationKeysSortCollation?: ProjectDetailsTranslationKeysSortCollationEnum;
+    /**
+     * 
      * @type {boolean}
      * @memberof ProjectDetails
      */
@@ -277,6 +283,7 @@ export function ProjectDetailsFromJSONTyped(json: any, ignoreDiscriminator: bool
         'autocompleteJobEnabled': !exists(json, 'autocomplete_job_enabled') ? undefined : json['autocomplete_job_enabled'],
         'defaultEncoding': !exists(json, 'default_encoding') ? undefined : json['default_encoding'],
         'cldrVersion': !exists(json, 'cldr_version') ? undefined : json['cldr_version'],
+        'translationKeysSortCollation': !exists(json, 'translation_keys_sort_collation') ? undefined : json['translation_keys_sort_collation'],
         'jobLockingEnabled': !exists(json, 'job_locking_enabled') ? undefined : json['job_locking_enabled'],
         'placeholderStyles': !exists(json, 'placeholder_styles') ? undefined : json['placeholder_styles'],
         'branch': !exists(json, 'branch') ? undefined : BranchFromJSON(json['branch']),
@@ -322,10 +329,20 @@ export function ProjectDetailsToJSON(value?: ProjectDetails | null): any {
         'autocomplete_job_enabled': value.autocompleteJobEnabled,
         'default_encoding': value.defaultEncoding,
         'cldr_version': value.cldrVersion,
+        'translation_keys_sort_collation': value.translationKeysSortCollation,
         'job_locking_enabled': value.jobLockingEnabled,
         'placeholder_styles': value.placeholderStyles,
         'branch': BranchToJSON(value.branch),
     };
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum ProjectDetailsTranslationKeysSortCollationEnum {
+    GeneralCi = 'general_ci',
+    UnicodeCi = 'unicode_ci'
 }
 
 

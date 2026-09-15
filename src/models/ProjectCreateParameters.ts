@@ -215,7 +215,7 @@ export interface ProjectCreateParameters {
      * @type {string}
      * @memberof ProjectCreateParameters
      */
-    translationKeysSortCollation?: string;
+    translationKeysSortCollation?: ProjectCreateParametersTranslationKeysSortCollationEnum;
     /**
      * (Optional) Sets the default encoding for Uploads. If you leave it empty, we will try to guess it automatically for you when you Upload a file. You can still override this value by setting the [`file_encoding`](/en/api/strings/uploads/upload-a-new-file) parameter for Uploads.
      * @type {string}
@@ -333,6 +333,14 @@ export function ProjectCreateParametersToJSON(value?: ProjectCreateParameters | 
     };
 }
 
+/**
+* @export
+* @enum {string}
+*/
+export enum ProjectCreateParametersTranslationKeysSortCollationEnum {
+    GeneralCi = 'general_ci',
+    UnicodeCi = 'unicode_ci'
+}
 /**
 * @export
 * @enum {string}

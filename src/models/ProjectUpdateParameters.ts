@@ -221,7 +221,7 @@ export interface ProjectUpdateParameters {
      * @type {string}
      * @memberof ProjectUpdateParameters
      */
-    translationKeysSortCollation?: string;
+    translationKeysSortCollation?: ProjectUpdateParametersTranslationKeysSortCollationEnum;
     /**
      * (Optional) CLDR plural-rule version used by the project. Pass `legacy` for pre-CLDR pluralization behaviour, or a CLDR version string such as `cldr48`. Also used as the default version for the ICU skeleton endpoint (`POST /icu/skeleton`) when its own `cldr_version` parameter is omitted.
      * @type {string}
@@ -335,6 +335,14 @@ export enum ProjectUpdateParametersDefaultEncodingEnum {
     Utf16Be = 'UTF-16BE',
     Utf16Le = 'UTF-16LE',
     Iso88591 = 'ISO-8859-1'
+}
+/**
+* @export
+* @enum {string}
+*/
+export enum ProjectUpdateParametersTranslationKeysSortCollationEnum {
+    GeneralCi = 'general_ci',
+    UnicodeCi = 'unicode_ci'
 }
 
 
