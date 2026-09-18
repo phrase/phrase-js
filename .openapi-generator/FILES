@@ -220,6 +220,7 @@ src/models/Project.ts
 src/models/ProjectCreateParameters.ts
 src/models/ProjectDetails.ts
 src/models/ProjectLocales.ts
+src/models/ProjectMember.ts
 src/models/ProjectReport.ts
 src/models/ProjectShort.ts
 src/models/ProjectUpdateParameters.ts

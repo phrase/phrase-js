@@ -365,6 +365,7 @@ Class | Method | HTTP request | Description
 *MembersApi* | **memberShow** | **GET** /accounts/{account_id}/members/{id} | Get single member
 *MembersApi* | **memberUpdate** | **PATCH** /accounts/{account_id}/members/{id} | Update a member
 *MembersApi* | **memberUpdateSettings** | **PATCH** /projects/{project_id}/members/{id} | Update a member\&#39;s project settings
+*MembersApi* | **membersByProject** | **GET** /projects/{project_id}/members | List project members
 *MembersApi* | **membersList** | **GET** /accounts/{account_id}/members | List members
 *NotificationGroupsApi* | **notificationGroupsList** | **GET** /notification_groups | List notification groups
 *NotificationGroupsApi* | **notificationGroupsMarkAllAsRead** | **PATCH** /notification_groups/mark_all_as_read | Mark all notification groups as read

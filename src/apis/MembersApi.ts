@@ -29,6 +29,9 @@ import {
     MemberUpdateSettingsParameters,
     MemberUpdateSettingsParametersFromJSON,
     MemberUpdateSettingsParametersToJSON,
+    ProjectMember,
+    ProjectMemberFromJSON,
+    ProjectMemberToJSON,
 } from '../models';
 
 export interface MemberDeleteRequest {
@@ -55,6 +58,15 @@ export interface MemberUpdateSettingsRequest {
     id: string;
     memberUpdateSettingsParameters: MemberUpdateSettingsParameters;
     xPhraseAppOTP?: string;
+}
+
+export interface MembersByProjectRequest {
+    projectId: string;
+    xPhraseAppOTP?: string;
+    q?: string;
+    jobId?: string;
+    page?: number;
+    perPage?: number;
 }
 
 export interface MembersListRequest {
@@ -268,6 +280,65 @@ export class MembersApi extends runtime.BaseAPI {
      */
     async memberUpdateSettings(requestParameters: MemberUpdateSettingsRequest): Promise<MemberProjectDetail> {
         const response = await this.memberUpdateSettingsRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Get all members active in the project. Access token scope must include `read`.
+     * List project members
+     */
+    async membersByProjectRaw(requestParameters: MembersByProjectRequest): Promise<runtime.ApiResponse<Array<ProjectMember>>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling membersByProject.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.jobId !== undefined) {
+            queryParameters['job_id'] = requestParameters.jobId;
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.perPage !== undefined) {
+            queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/projects/{project_id}/members`.replace(`{${"project_id"}}`, encodeURIComponent(String(requestParameters.projectId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ProjectMemberFromJSON));
+    }
+
+    /**
+     * Get all members active in the project. Access token scope must include `read`.
+     * List project members
+     */
+    async membersByProject(requestParameters: MembersByProjectRequest): Promise<Array<ProjectMember>> {
+        const response = await this.membersByProjectRaw(requestParameters);
         return await response.value();
     }
 

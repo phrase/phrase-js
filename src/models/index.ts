@@ -151,6 +151,7 @@ export * from './Project';
 export * from './ProjectCreateParameters';
 export * from './ProjectDetails';
 export * from './ProjectLocales';
+export * from './ProjectMember';
 export * from './ProjectReport';
 export * from './ProjectShort';
 export * from './ProjectUpdateParameters';
