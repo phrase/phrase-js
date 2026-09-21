@@ -55,6 +55,7 @@ src/apis/ScreenshotsApi.ts
 src/apis/SearchApi.ts
 src/apis/SpacesApi.ts
 src/apis/StyleGuidesApi.ts
+src/apis/SupportedLanguagesApi.ts
 src/apis/TagsApi.ts
 src/apis/TeamsApi.ts
 src/apis/TranslationsApi.ts

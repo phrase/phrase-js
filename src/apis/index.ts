@@ -50,6 +50,7 @@ export * from './ScreenshotsApi';
 export * from './SearchApi';
 export * from './SpacesApi';
 export * from './StyleGuidesApi';
+export * from './SupportedLanguagesApi';
 export * from './TagsApi';
 export * from './TeamsApi';
 export * from './TranslationsApi';

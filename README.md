@@ -443,6 +443,7 @@ Class | Method | HTTP request | Description
 *StyleGuidesApi* | **styleguideShow** | **GET** /projects/{project_id}/styleguides/{id} | Get a single style guide
 *StyleGuidesApi* | **styleguideUpdate** | **PATCH** /projects/{project_id}/styleguides/{id} | Update a style guide
 *StyleGuidesApi* | **styleguidesList** | **GET** /projects/{project_id}/styleguides | List style guides
+*SupportedLanguagesApi* | **languagesList** | **GET** /languages | List supported languages
 *TagsApi* | **tagCreate** | **POST** /projects/{project_id}/tags | Create a tag
 *TagsApi* | **tagDelete** | **DELETE** /projects/{project_id}/tags/{name} | Delete a tag
 *TagsApi* | **tagShow** | **GET** /projects/{project_id}/tags/{name} | Get a single tag
