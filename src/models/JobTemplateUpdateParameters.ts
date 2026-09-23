@@ -48,6 +48,12 @@ export interface JobTemplateUpdateParameters {
      * @memberof JobTemplateUpdateParameters
      */
     sourceLocaleId?: string;
+    /**
+     * Code of the account member to set as the job template owner. The referenced user must also be a member of the project; passing the code of an account member who is not a project member returns a 404. Pass an empty string to clear a previously set owner; when blank, jobs created from this template will default to assigning the job creator as owner. 
+     * @type {string}
+     * @memberof JobTemplateUpdateParameters
+     */
+    ownerId?: string;
 }
 
 export function JobTemplateUpdateParametersFromJSON(json: any): JobTemplateUpdateParameters {
@@ -65,6 +71,7 @@ export function JobTemplateUpdateParametersFromJSONTyped(json: any, ignoreDiscri
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
         'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
+        'ownerId': !exists(json, 'owner_id') ? undefined : json['owner_id'],
     };
 }
 
@@ -82,6 +89,7 @@ export function JobTemplateUpdateParametersToJSON(value?: JobTemplateUpdateParam
         'briefing': value.briefing,
         'autotranslate': value.autotranslate,
         'source_locale_id': value.sourceLocaleId,
+        'owner_id': value.ownerId,
     };
 }
 

@@ -36,6 +36,12 @@ export interface OrganizationJobTemplateCreateParameters {
      * @memberof OrganizationJobTemplateCreateParameters
      */
     autotranslate?: boolean;
+    /**
+     * Code of the account member to set as the job template owner. When omitted or blank, no owner is pre-set; the user who creates a job from this template is assigned as its owner at job-creation time. 
+     * @type {string}
+     * @memberof OrganizationJobTemplateCreateParameters
+     */
+    ownerId?: string;
 }
 
 export function OrganizationJobTemplateCreateParametersFromJSON(json: any): OrganizationJobTemplateCreateParameters {
@@ -51,6 +57,7 @@ export function OrganizationJobTemplateCreateParametersFromJSONTyped(json: any, 
         'name': json['name'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
+        'ownerId': !exists(json, 'owner_id') ? undefined : json['owner_id'],
     };
 }
 
@@ -66,6 +73,7 @@ export function OrganizationJobTemplateCreateParametersToJSON(value?: Organizati
         'name': value.name,
         'briefing': value.briefing,
         'autotranslate': value.autotranslate,
+        'owner_id': value.ownerId,
     };
 }
 
