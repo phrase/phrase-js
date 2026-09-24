@@ -69,6 +69,8 @@ export interface RepoSyncImportRequest {
 export interface RepoSyncListRequest {
     accountId: string;
     xPhraseAppOTP?: string;
+    page?: number;
+    perPage?: number;
 }
 
 export interface RepoSyncShowRequest {
@@ -336,6 +338,14 @@ export class RepoSyncsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.perPage !== undefined) {
+            queryParameters['per_page'] = requestParameters.perPage;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
