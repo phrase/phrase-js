@@ -44,8 +44,8 @@ export interface ReportShowRequest {
 export class ReportsApi extends runtime.BaseAPI {
 
     /**
-     * List all locale reports for the given project
-     * List Locale Reports
+     * List all locale reports for the given project. Each report includes translation statistics per locale, including word count and character count fields (`source_word_count`, `word_count`, `word_count_unverified`, `word_count_missing`) as well as translation completion statistics (`keys_count`, `completed_translations_count`, `untranslated_keys_count`, `unverified_translations_count`, `reviewed_translations_count`, and their percentages). Use the `tag` parameter to scope the report to a specific job (e.g. its job tag) to get job-scoped word count statistics.
+     * List Locale Reports (word count, character count, translation statistics)
      */
     async reportLocalesListRaw(requestParameters: ReportLocalesListRequest): Promise<runtime.ApiResponse<Array<LocaleReport>>> {
         if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
@@ -98,8 +98,8 @@ export class ReportsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List all locale reports for the given project
-     * List Locale Reports
+     * List all locale reports for the given project. Each report includes translation statistics per locale, including word count and character count fields (`source_word_count`, `word_count`, `word_count_unverified`, `word_count_missing`) as well as translation completion statistics (`keys_count`, `completed_translations_count`, `untranslated_keys_count`, `unverified_translations_count`, `reviewed_translations_count`, and their percentages). Use the `tag` parameter to scope the report to a specific job (e.g. its job tag) to get job-scoped word count statistics.
+     * List Locale Reports (word count, character count, translation statistics)
      */
     async reportLocalesList(requestParameters: ReportLocalesListRequest): Promise<Array<LocaleReport>> {
         const response = await this.reportLocalesListRaw(requestParameters);
