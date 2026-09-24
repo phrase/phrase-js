@@ -25,13 +25,13 @@ export interface LocaleCreateParameters {
      */
     branch?: string;
     /**
-     * Locale name
+     * Locale name. Must be unique per project.
      * @type {string}
      * @memberof LocaleCreateParameters
      */
     name: string;
     /**
-     * Locale ISO code
+     * Locale ISO code. Unlike `name`, `code` is not required to be unique per project - creating a locale whose `code` duplicates an existing locale\'s `code` in the same project will succeed rather than error, resulting in two locales that share the same code.
      * @type {string}
      * @memberof LocaleCreateParameters
      */
