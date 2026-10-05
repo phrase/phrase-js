@@ -122,6 +122,7 @@ export interface JobUpdateRequest {
     id: string;
     jobUpdateParameters: JobUpdateParameters;
     xPhraseAppOTP?: string;
+    branch?: string;
 }
 
 export interface JobsByAccountRequest {
@@ -704,6 +705,10 @@ export class JobsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.branch !== undefined) {
+            queryParameters['branch'] = requestParameters.branch;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 

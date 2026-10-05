@@ -19,12 +19,6 @@ import { exists, mapValues } from '../runtime';
  */
 export interface JobUpdateParameters {
     /**
-     * specify the branch to use
-     * @type {string}
-     * @memberof JobUpdateParameters
-     */
-    branch?: string;
-    /**
      * Job name
      * @type {string}
      * @memberof JobUpdateParameters
@@ -72,7 +66,6 @@ export function JobUpdateParametersFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'branch': !exists(json, 'branch') ? undefined : json['branch'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'dueDate': !exists(json, 'due_date') ? undefined : (json['due_date'] === null ? null : new Date(json['due_date'])),
@@ -91,7 +84,6 @@ export function JobUpdateParametersToJSON(value?: JobUpdateParameters | null): a
     }
     return {
         
-        'branch': value.branch,
         'name': value.name,
         'briefing': value.briefing,
         'due_date': value.dueDate === undefined ? undefined : (value.dueDate === null ? null : value.dueDate.toISOString()),
