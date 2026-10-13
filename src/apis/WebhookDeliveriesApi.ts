@@ -24,6 +24,7 @@ export interface WebhookDeliveriesListRequest {
     webhookId: string;
     xPhraseAppOTP?: string;
     responseStatusCodes?: string;
+    status?: WebhookDeliveriesListStatusEnum;
 }
 
 export interface WebhookDeliveriesRedeliverRequest {
@@ -62,6 +63,10 @@ export class WebhookDeliveriesApi extends runtime.BaseAPI {
 
         if (requestParameters.responseStatusCodes !== undefined) {
             queryParameters['response_status_codes'] = requestParameters.responseStatusCodes;
+        }
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -198,4 +203,13 @@ export class WebhookDeliveriesApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum WebhookDeliveriesListStatusEnum {
+    Success = 'success',
+    Failed = 'failed'
 }
