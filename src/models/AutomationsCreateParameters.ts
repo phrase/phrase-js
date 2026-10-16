@@ -78,6 +78,12 @@ export interface AutomationsCreateParameters {
      * @memberof AutomationsCreateParameters
      */
     includeOnlyUpdatedLocales?: boolean;
+    /**
+     * When true, the automation also runs against branches of the configured projects. The designated job owner must have permission to create jobs in branches for every configured project; otherwise the request is rejected with 403. 
+     * @type {boolean}
+     * @memberof AutomationsCreateParameters
+     */
+    includeBranches?: boolean;
 }
 
 export function AutomationsCreateParametersFromJSON(json: any): AutomationsCreateParameters {
@@ -100,6 +106,7 @@ export function AutomationsCreateParametersFromJSONTyped(json: any, ignoreDiscri
         'timeZone': !exists(json, 'time_zone') ? undefined : json['time_zone'],
         'jobOwnerId': !exists(json, 'job_owner_id') ? undefined : json['job_owner_id'],
         'includeOnlyUpdatedLocales': !exists(json, 'include_only_updated_locales') ? undefined : json['include_only_updated_locales'],
+        'includeBranches': !exists(json, 'include_branches') ? undefined : json['include_branches'],
     };
 }
 
@@ -122,6 +129,7 @@ export function AutomationsCreateParametersToJSON(value?: AutomationsCreateParam
         'time_zone': value.timeZone,
         'job_owner_id': value.jobOwnerId,
         'include_only_updated_locales': value.includeOnlyUpdatedLocales,
+        'include_branches': value.includeBranches,
     };
 }
 

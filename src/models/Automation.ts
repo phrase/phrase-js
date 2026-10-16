@@ -86,6 +86,12 @@ export interface Automation {
      */
     includeOnlyUpdatedLocales?: boolean;
     /**
+     * When true, the automation targets branches of the configured projects in addition to the main project. Requires the designated job owner to have permission to create jobs in branches for every configured project. 
+     * @type {boolean}
+     * @memberof Automation
+     */
+    includeBranches?: boolean;
+    /**
      * 
      * @type {Array<string>}
      * @memberof Automation
@@ -143,6 +149,7 @@ export function AutomationFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'jobTemplateId': !exists(json, 'job_template_id') ? undefined : json['job_template_id'],
         'jobOwnerId': !exists(json, 'job_owner_id') ? undefined : json['job_owner_id'],
         'includeOnlyUpdatedLocales': !exists(json, 'include_only_updated_locales') ? undefined : json['include_only_updated_locales'],
+        'includeBranches': !exists(json, 'include_branches') ? undefined : json['include_branches'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'cronSchedule': !exists(json, 'cron_schedule') ? undefined : json['cron_schedule'],
         'timeZone': !exists(json, 'time_zone') ? undefined : json['time_zone'],
@@ -171,6 +178,7 @@ export function AutomationToJSON(value?: Automation | null): any {
         'job_template_id': value.jobTemplateId,
         'job_owner_id': value.jobOwnerId,
         'include_only_updated_locales': value.includeOnlyUpdatedLocales,
+        'include_branches': value.includeBranches,
         'tags': value.tags,
         'cron_schedule': value.cronSchedule,
         'time_zone': value.timeZone,
