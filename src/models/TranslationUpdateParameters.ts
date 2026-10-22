@@ -25,11 +25,11 @@ export interface TranslationUpdateParameters {
      */
     branch?: string;
     /**
-     * Translation content
+     * Translation content. Send an empty string or `null` to clear the translation\'s content; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof TranslationUpdateParameters
      */
-    content?: string;
+    content?: string | null;
     /**
      * Plural suffix. Can be one of: zero, one, two, few, many, other. Must be specified if the key associated to the translation is pluralized.
      * @type {string}

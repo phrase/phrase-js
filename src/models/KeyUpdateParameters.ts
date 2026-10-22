@@ -31,11 +31,11 @@ export interface KeyUpdateParameters {
      */
     name?: string;
     /**
-     * Key description (usually includes contextual information for translators)
+     * Key description (usually includes contextual information for translators). Send an empty string or `null` to clear the description; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof KeyUpdateParameters
      */
-    description?: string;
+    description?: string | null;
     /**
      * Indicates whether key supports pluralization
      * @type {boolean}

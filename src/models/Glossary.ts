@@ -42,6 +42,12 @@ export interface Glossary {
      */
     name?: string;
     /**
+     * Number of terms in the glossary.
+     * @type {number}
+     * @memberof Glossary
+     */
+    termsCount?: number;
+    /**
      * 
      * @type {Array<ProjectShort>}
      * @memberof Glossary
@@ -79,6 +85,7 @@ export function GlossaryFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
+        'termsCount': !exists(json, 'terms_count') ? undefined : json['terms_count'],
         'projects': !exists(json, 'projects') ? undefined : ((json['projects'] as Array<any>).map(ProjectShortFromJSON)),
         'spaces': !exists(json, 'spaces') ? undefined : ((json['spaces'] as Array<any>).map(SpaceFromJSON)),
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
@@ -97,6 +104,7 @@ export function GlossaryToJSON(value?: Glossary | null): any {
         
         'id': value.id,
         'name': value.name,
+        'terms_count': value.termsCount,
         'projects': value.projects === undefined ? undefined : ((value.projects as Array<any>).map(ProjectShortToJSON)),
         'spaces': value.spaces === undefined ? undefined : ((value.spaces as Array<any>).map(SpaceToJSON)),
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
