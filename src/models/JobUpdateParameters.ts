@@ -37,6 +37,12 @@ export interface JobUpdateParameters {
      */
     dueDate?: Date | null;
     /**
+     * Date the review of the job should be finished. Must not be before `due_date`.
+     * @type {Date}
+     * @memberof JobUpdateParameters
+     */
+    reviewDueDate?: Date;
+    /**
      * URL to a ticket for this job (e.g. Jira, Trello)
      * @type {string}
      * @memberof JobUpdateParameters
@@ -69,6 +75,7 @@ export function JobUpdateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'name': !exists(json, 'name') ? undefined : json['name'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'dueDate': !exists(json, 'due_date') ? undefined : (json['due_date'] === null ? null : new Date(json['due_date'])),
+        'reviewDueDate': !exists(json, 'review_due_date') ? undefined : (new Date(json['review_due_date'])),
         'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
         'targetLocaleIds': !exists(json, 'target_locale_ids') ? undefined : json['target_locale_ids'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
@@ -87,6 +94,7 @@ export function JobUpdateParametersToJSON(value?: JobUpdateParameters | null): a
         'name': value.name,
         'briefing': value.briefing,
         'due_date': value.dueDate === undefined ? undefined : (value.dueDate === null ? null : value.dueDate.toISOString()),
+        'review_due_date': value.reviewDueDate === undefined ? undefined : (value.reviewDueDate.toISOString()),
         'ticket_url': value.ticketUrl,
         'target_locale_ids': value.targetLocaleIds,
         'autotranslate': value.autotranslate,
