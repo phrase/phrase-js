@@ -171,6 +171,7 @@ export * from './ReleaseUpdateParameters1';
 export * from './RepoSync';
 export * from './RepoSyncCreateParameters';
 export * from './RepoSyncEvent';
+export * from './RepoSyncEventUploadsInner';
 export * from './RepoSyncExportParameters';
 export * from './RepoSyncImportParameters';
 export * from './Screenshot';

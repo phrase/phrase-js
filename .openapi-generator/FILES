@@ -241,6 +241,7 @@ src/models/ReleaseUpdateParameters1.ts
 src/models/RepoSync.ts
 src/models/RepoSyncCreateParameters.ts
 src/models/RepoSyncEvent.ts
+src/models/RepoSyncEventUploadsInner.ts
 src/models/RepoSyncExportParameters.ts
 src/models/RepoSyncImportParameters.ts
 src/models/Screenshot.ts

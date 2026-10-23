@@ -12,6 +12,13 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    RepoSyncEventUploadsInner,
+    RepoSyncEventUploadsInnerFromJSON,
+    RepoSyncEventUploadsInnerFromJSONTyped,
+    RepoSyncEventUploadsInnerToJSON,
+} from './';
+
 /**
  * 
  * @export
@@ -60,6 +67,12 @@ export interface RepoSyncEvent {
      * @memberof RepoSyncEvent
      */
     errors?: Array<string>;
+    /**
+     * The uploads associated with this import event, or `null` if no upload batch has been created yet. Each entry identifies a single file upload by its public code (`id`) and its current public state (`state`). Present on show responses only; absent from list responses. Possible `state` values: `initialized`, `waiting_for_preview`, `processing`, `success`, `error`. 
+     * @type {Array<RepoSyncEventUploadsInner>}
+     * @memberof RepoSyncEvent
+     */
+    uploads?: Array<RepoSyncEventUploadsInner> | null;
 }
 
 export function RepoSyncEventFromJSON(json: any): RepoSyncEvent {
@@ -79,6 +92,7 @@ export function RepoSyncEventFromJSONTyped(json: any, ignoreDiscriminator: boole
         'pullRequestUrl': !exists(json, 'pull_request_url') ? undefined : json['pull_request_url'],
         'autoImport': !exists(json, 'auto_import') ? undefined : json['auto_import'],
         'errors': !exists(json, 'errors') ? undefined : json['errors'],
+        'uploads': !exists(json, 'uploads') ? undefined : (json['uploads'] === null ? null : (json['uploads'] as Array<any>).map(RepoSyncEventUploadsInnerFromJSON)),
     };
 }
 
@@ -98,6 +112,7 @@ export function RepoSyncEventToJSON(value?: RepoSyncEvent | null): any {
         'pull_request_url': value.pullRequestUrl,
         'auto_import': value.autoImport,
         'errors': value.errors,
+        'uploads': value.uploads === undefined ? undefined : (value.uploads === null ? null : (value.uploads as Array<any>).map(RepoSyncEventUploadsInnerToJSON)),
     };
 }
 
