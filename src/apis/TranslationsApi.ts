@@ -1186,7 +1186,7 @@ export class TranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Mark translations matching query as unverified.
+     * Mark translations matching query as unverified.  To unverify the translations of specific keys, filter by key id (and optionally locale) directly, for example `key.id:KEY_ID_1,KEY_ID_2 locale.id:LOCALE_ID`. There is no need to look up translation ids first. 
      * Unverify translations by query
      */
     async translationsUnverifyCollectionRaw(requestParameters: TranslationsUnverifyCollectionRequest): Promise<runtime.ApiResponse<AffectedCount>> {
@@ -1227,7 +1227,7 @@ export class TranslationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Mark translations matching query as unverified.
+     * Mark translations matching query as unverified.  To unverify the translations of specific keys, filter by key id (and optionally locale) directly, for example `key.id:KEY_ID_1,KEY_ID_2 locale.id:LOCALE_ID`. There is no need to look up translation ids first. 
      * Unverify translations by query
      */
     async translationsUnverifyCollection(requestParameters: TranslationsUnverifyCollectionRequest): Promise<AffectedCount> {
