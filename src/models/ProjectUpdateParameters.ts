@@ -31,11 +31,11 @@ export interface ProjectUpdateParameters {
      */
     name?: string;
     /**
-     * (Optional) User ID of the point of contact for the project. Pass `null` to unset.
+     * (Optional) User ID of the point of contact for the project. Pass `null` or an empty string to unset. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof ProjectUpdateParameters
      */
-    pointOfContact?: string;
+    pointOfContact?: string | null;
     /**
      * (Optional) Main file format specified by its API Extension name. Used for locale downloads if no format is specified. For API Extension names of available file formats see [Format Guide](https://support.phrase.com/hc/en-us/sections/6111343326364) or our [Formats API Endpoint](#formats).
      * @type {string}

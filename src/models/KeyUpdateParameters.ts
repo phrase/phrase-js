@@ -49,11 +49,11 @@ export interface KeyUpdateParameters {
      */
     useOrdinalRules?: boolean;
     /**
-     * Plural name for the key (used in some file formats, e.g. Gettext)
+     * Plural name for the key (used in some file formats, e.g. Gettext) Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof KeyUpdateParameters
      */
-    namePlural?: string;
+    namePlural?: string | null;
     /**
      * Type of the key. Can be one of the following: string, number, boolean, array, markdown.
      * @type {string}
@@ -97,23 +97,23 @@ export interface KeyUpdateParameters {
      */
     xmlSpacePreserve?: boolean;
     /**
-     * Original file attribute. Used in some formats, e.g. XLIFF.
+     * Original file attribute. Used in some formats, e.g. XLIFF. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof KeyUpdateParameters
      */
-    originalFile?: string;
+    originalFile?: string | null;
     /**
-     * NSStringLocalizedFormatKey attribute. Used in .stringsdict format.
+     * NSStringLocalizedFormatKey attribute. Used in .stringsdict format. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof KeyUpdateParameters
      */
-    localizedFormatString?: string;
+    localizedFormatString?: string | null;
     /**
-     * NSStringLocalizedFormatKey attribute. Used in .stringsdict format.
+     * NSStringLocalizedFormatKey attribute. Used in .stringsdict format. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof KeyUpdateParameters
      */
-    localizedFormatKey?: string;
+    localizedFormatKey?: string | null;
     /**
      * Updates/Creates custom metadata property name and value pairs to be associated with key. If you want to delete a custom metadata property, you can set its value to null. If you want to update a custom metadata property, you can set its value to the new value.
      * @type {object}

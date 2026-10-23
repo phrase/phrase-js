@@ -19,11 +19,11 @@ import { exists, mapValues } from '../runtime';
  */
 export interface ReleaseUpdateParameters {
     /**
-     * Description of the release
+     * Description of the release. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof ReleaseUpdateParameters
      */
-    description?: string;
+    description?: string | null;
     /**
      * List of platforms the release should support.
      * @type {Array<string>}
@@ -31,17 +31,17 @@ export interface ReleaseUpdateParameters {
      */
     platforms?: Array<string>;
     /**
-     * Minimum version of the app that the release supports in semver format
+     * Minimum version of the app that the release supports in semver format. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof ReleaseUpdateParameters
      */
-    appMinVersion?: string;
+    appMinVersion?: string | null;
     /**
-     * Maximum version of the app that the release supports in semver format
+     * Maximum version of the app that the release supports in semver format. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof ReleaseUpdateParameters
      */
-    appMaxVersion?: string;
+    appMaxVersion?: string | null;
     /**
      * Branch used for release
      * @type {string}

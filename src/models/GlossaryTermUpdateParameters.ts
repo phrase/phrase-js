@@ -25,11 +25,11 @@ export interface GlossaryTermUpdateParameters {
      */
     term?: string;
     /**
-     * Description of term
+     * Description of term. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof GlossaryTermUpdateParameters
      */
-    description?: string;
+    description?: string | null;
     /**
      * Indicates whether the term should be used for all languages or can be translated
      * @type {boolean}

@@ -25,11 +25,11 @@ export interface JobUpdateParameters {
      */
     name?: string;
     /**
-     * Briefing for the translators
+     * Briefing for the translators. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof JobUpdateParameters
      */
-    briefing?: string;
+    briefing?: string | null;
     /**
      * Date the job should be finished
      * @type {Date}
@@ -43,11 +43,11 @@ export interface JobUpdateParameters {
      */
     reviewDueDate?: Date;
     /**
-     * URL to a ticket for this job (e.g. Jira, Trello)
+     * URL to a ticket for this job (e.g. Jira, Trello) Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof JobUpdateParameters
      */
-    ticketUrl?: string;
+    ticketUrl?: string | null;
     /**
      * List of target locales for the job.
      * @type {Array<string>}

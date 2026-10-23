@@ -61,11 +61,11 @@ export interface LocaleUpdateParameters {
      */
     sourceLocaleId?: string;
     /**
-     * Fallback locale for empty translations. Can be a locale name or id.
+     * Fallback locale for empty translations. Can be a locale name or id. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof LocaleUpdateParameters
      */
-    fallbackLocaleId?: string;
+    fallbackLocaleId?: string | null;
     /**
      * Indicates that new translations for this locale should be marked as unverified. Part of the [Advanced Workflows](https://support.phrase.com/hc/en-us/articles/5784094755484) feature.
      * @type {boolean}
@@ -91,11 +91,11 @@ export interface LocaleUpdateParameters {
      */
     autotranslate?: boolean;
     /**
-     * Identifier of the Language AI profile to use for this locale.
+     * Identifier of the Language AI profile to use for this locale. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof LocaleUpdateParameters
      */
-    languageAiProfile?: string;
+    languageAiProfile?: string | null;
 }
 
 export function LocaleUpdateParametersFromJSON(json: any): LocaleUpdateParameters {

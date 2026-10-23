@@ -25,11 +25,11 @@ export interface StyleguideUpdateParameters {
      */
     title?: string;
     /**
-     * Audience description
+     * Audience description. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof StyleguideUpdateParameters
      */
-    audience?: string;
+    audience?: string | null;
     /**
      * Target audience for the translations.
      * @type {string}
@@ -49,53 +49,53 @@ export interface StyleguideUpdateParameters {
      */
     vocabularyType?: StyleguideUpdateParametersVocabularyTypeEnum;
     /**
-     * Description of the business
+     * Description of the business. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof StyleguideUpdateParameters
      */
-    business?: string;
+    business?: string | null;
     /**
-     * Company branding to remain consistent.
+     * Company branding to remain consistent. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof StyleguideUpdateParameters
      */
-    companyBranding?: string;
+    companyBranding?: string | null;
     /**
-     * Formatting requirements and character limitations.
+     * Formatting requirements and character limitations. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof StyleguideUpdateParameters
      */
-    formatting?: string;
+    formatting?: string | null;
     /**
-     * List of terms and/or phrases that need to be translated consistently.
+     * List of terms and/or phrases that need to be translated consistently. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof StyleguideUpdateParameters
      */
-    glossaryTerms?: string;
+    glossaryTerms?: string | null;
     /**
-     * Formal or informal pronouns, consistent conjugation, grammatical gender
+     * Formal or informal pronouns, consistent conjugation, grammatical gender. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof StyleguideUpdateParameters
      */
-    grammarConsistency?: string;
+    grammarConsistency?: string | null;
     /**
-     * Can be one of: Cultural/Conversational, Literal, Neutral.
+     * Can be one of: Cultural/Conversational, Literal, Neutral. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof StyleguideUpdateParameters
      */
-    literalTranslation?: string;
+    literalTranslation?: string | null;
     /**
-     * Tone requirement descriptions
+     * Tone requirement descriptions. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof StyleguideUpdateParameters
      */
-    overallTone?: string;
+    overallTone?: string | null;
     /**
-     * Provide links to sample product pages, FAQ pages, etc. to give the translator a point of reference. You can also provide past translations. Even snippets or short paragraphs are helpful for maintaining consistency.
+     * Provide links to sample product pages, FAQ pages, etc. to give the translator a point of reference. You can also provide past translations. Even snippets or short paragraphs are helpful for maintaining consistency. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof StyleguideUpdateParameters
      */
-    samples?: string;
+    samples?: string | null;
 }
 
 export function StyleguideUpdateParametersFromJSON(json: any): StyleguideUpdateParameters {

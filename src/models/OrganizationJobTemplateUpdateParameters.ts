@@ -25,11 +25,11 @@ export interface OrganizationJobTemplateUpdateParameters {
      */
     name: string;
     /**
-     * Briefing for the translators
+     * Briefing for the translators. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof OrganizationJobTemplateUpdateParameters
      */
-    briefing?: string;
+    briefing?: string | null;
     /**
      * Automatically translate the job using machine translation.
      * @type {boolean}

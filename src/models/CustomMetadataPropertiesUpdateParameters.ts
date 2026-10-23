@@ -31,11 +31,11 @@ export interface CustomMetadataPropertiesUpdateParameters {
      */
     projectIds?: Array<string>;
     /**
-     * description of property
+     * description of property. Send an empty string or `null` to clear the value; omit the field to leave it unchanged. The Phrase CLI drops `null` values before sending, so use an empty string there.
      * @type {string}
      * @memberof CustomMetadataPropertiesUpdateParameters
      */
-    description?: string;
+    description?: string | null;
     /**
      * value options of property (only applies to single or multi select properties)
      * @type {Array<string>}
