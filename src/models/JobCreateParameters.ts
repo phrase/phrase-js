@@ -79,7 +79,7 @@ export interface JobCreateParameters {
      */
     targetLocaleIds?: Array<string>;
     /**
-     * id of a job template you would like to model the created job after. Any manually added parameters will take preference over template attributes. Mutually exclusive with `target_locale_ids`.
+     * id of a job template you would like to model the created job after. Any manually added parameters will take preference over template attributes. Mutually exclusive with `target_locale_ids`. The calling user must have read access to the template; if the template exists but is not accessible, the request returns 404. 
      * @type {string}
      * @memberof JobCreateParameters
      */
