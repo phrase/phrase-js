@@ -43,6 +43,12 @@ export interface JobTemplateCreateParameters {
      */
     autotranslate?: boolean;
     /**
+     * Exclude linked child keys from jobs created from this template. Defaults to `false`.
+     * @type {boolean}
+     * @memberof JobTemplateCreateParameters
+     */
+    excludeLinkedChildKeys?: boolean;
+    /**
      * The API id of the source language. This locale will be set as source locale for the job template. If not provided, the project default locale will be used.
      * @type {string}
      * @memberof JobTemplateCreateParameters
@@ -70,6 +76,7 @@ export function JobTemplateCreateParametersFromJSONTyped(json: any, ignoreDiscri
         'name': json['name'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
+        'excludeLinkedChildKeys': !exists(json, 'exclude_linked_child_keys') ? undefined : json['exclude_linked_child_keys'],
         'sourceLocaleId': !exists(json, 'source_locale_id') ? undefined : json['source_locale_id'],
         'ownerId': !exists(json, 'owner_id') ? undefined : json['owner_id'],
     };
@@ -88,6 +95,7 @@ export function JobTemplateCreateParametersToJSON(value?: JobTemplateCreateParam
         'name': value.name,
         'briefing': value.briefing,
         'autotranslate': value.autotranslate,
+        'exclude_linked_child_keys': value.excludeLinkedChildKeys,
         'source_locale_id': value.sourceLocaleId,
         'owner_id': value.ownerId,
     };

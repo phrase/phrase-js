@@ -60,6 +60,12 @@ export interface JobUpdateParameters {
      * @memberof JobUpdateParameters
      */
     autotranslate?: boolean;
+    /**
+     * Exclude linked child keys from the job. When set to `true`, linked child keys already in the job are removed and none can be added while the option is enabled.
+     * @type {boolean}
+     * @memberof JobUpdateParameters
+     */
+    excludeLinkedChildKeys?: boolean;
 }
 
 export function JobUpdateParametersFromJSON(json: any): JobUpdateParameters {
@@ -79,6 +85,7 @@ export function JobUpdateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'ticketUrl': !exists(json, 'ticket_url') ? undefined : json['ticket_url'],
         'targetLocaleIds': !exists(json, 'target_locale_ids') ? undefined : json['target_locale_ids'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
+        'excludeLinkedChildKeys': !exists(json, 'exclude_linked_child_keys') ? undefined : json['exclude_linked_child_keys'],
     };
 }
 
@@ -98,6 +105,7 @@ export function JobUpdateParametersToJSON(value?: JobUpdateParameters | null): a
         'ticket_url': value.ticketUrl,
         'target_locale_ids': value.targetLocaleIds,
         'autotranslate': value.autotranslate,
+        'exclude_linked_child_keys': value.excludeLinkedChildKeys,
     };
 }
 

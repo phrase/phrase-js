@@ -103,6 +103,12 @@ export interface JobTemplateDetails {
      * @memberof JobTemplateDetails
      */
     locales?: Array<LocalePreview>;
+    /**
+     * `true` if jobs created from this template exclude linked child keys. 
+     * @type {boolean}
+     * @memberof JobTemplateDetails
+     */
+    excludeLinkedChildKeys?: boolean;
 }
 
 export function JobTemplateDetailsFromJSON(json: any): JobTemplateDetails {
@@ -126,6 +132,7 @@ export function JobTemplateDetailsFromJSONTyped(json: any, ignoreDiscriminator: 
         'owner': !exists(json, 'owner') ? undefined : UserPreviewFromJSON(json['owner']),
         'creator': !exists(json, 'creator') ? undefined : UserPreviewFromJSON(json['creator']),
         'locales': !exists(json, 'locales') ? undefined : ((json['locales'] as Array<any>).map(LocalePreviewFromJSON)),
+        'excludeLinkedChildKeys': !exists(json, 'exclude_linked_child_keys') ? undefined : json['exclude_linked_child_keys'],
     };
 }
 
@@ -149,6 +156,7 @@ export function JobTemplateDetailsToJSON(value?: JobTemplateDetails | null): any
         'owner': UserPreviewToJSON(value.owner),
         'creator': UserPreviewToJSON(value.creator),
         'locales': value.locales === undefined ? undefined : ((value.locales as Array<any>).map(LocalePreviewToJSON)),
+        'exclude_linked_child_keys': value.excludeLinkedChildKeys,
     };
 }
 

@@ -90,6 +90,12 @@ export interface JobCreateParameters {
      * @memberof JobCreateParameters
      */
     autotranslate?: boolean;
+    /**
+     * Exclude linked child keys from the job. While enabled, linked child keys cannot be added to the job. Defaults to `false`.
+     * @type {boolean}
+     * @memberof JobCreateParameters
+     */
+    excludeLinkedChildKeys?: boolean;
 }
 
 export function JobCreateParametersFromJSON(json: any): JobCreateParameters {
@@ -114,6 +120,7 @@ export function JobCreateParametersFromJSONTyped(json: any, ignoreDiscriminator:
         'targetLocaleIds': !exists(json, 'target_locale_ids') ? undefined : json['target_locale_ids'],
         'jobTemplateId': !exists(json, 'job_template_id') ? undefined : json['job_template_id'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
+        'excludeLinkedChildKeys': !exists(json, 'exclude_linked_child_keys') ? undefined : json['exclude_linked_child_keys'],
     };
 }
 
@@ -138,6 +145,7 @@ export function JobCreateParametersToJSON(value?: JobCreateParameters | null): a
         'target_locale_ids': value.targetLocaleIds,
         'job_template_id': value.jobTemplateId,
         'autotranslate': value.autotranslate,
+        'exclude_linked_child_keys': value.excludeLinkedChildKeys,
     };
 }
 

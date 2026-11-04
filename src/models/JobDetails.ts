@@ -171,6 +171,12 @@ export interface JobDetails {
      * @memberof JobDetails
      */
     locked?: boolean;
+    /**
+     * `true` if linked child keys are excluded from this job. While enabled, linked child keys cannot be added to the job. 
+     * @type {boolean}
+     * @memberof JobDetails
+     */
+    excludeLinkedChildKeys?: boolean;
 }
 
 export function JobDetailsFromJSON(json: any): JobDetails {
@@ -204,6 +210,7 @@ export function JobDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'keys': !exists(json, 'keys') ? undefined : ((json['keys'] as Array<any>).map(KeyPreviewFromJSON)),
         'annotations': !exists(json, 'annotations') ? undefined : ((json['annotations'] as Array<any>).map(JobAnnotationShortFromJSON)),
         'locked': !exists(json, 'locked') ? undefined : json['locked'],
+        'excludeLinkedChildKeys': !exists(json, 'exclude_linked_child_keys') ? undefined : json['exclude_linked_child_keys'],
     };
 }
 
@@ -237,6 +244,7 @@ export function JobDetailsToJSON(value?: JobDetails | null): any {
         'keys': value.keys === undefined ? undefined : ((value.keys as Array<any>).map(KeyPreviewToJSON)),
         'annotations': value.annotations === undefined ? undefined : ((value.annotations as Array<any>).map(JobAnnotationShortToJSON)),
         'locked': value.locked,
+        'exclude_linked_child_keys': value.excludeLinkedChildKeys,
     };
 }
 

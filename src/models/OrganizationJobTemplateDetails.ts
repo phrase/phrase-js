@@ -89,6 +89,12 @@ export interface OrganizationJobTemplateDetails {
      * @memberof OrganizationJobTemplateDetails
      */
     locales?: Array<LocalePreview>;
+    /**
+     * `true` if jobs created from this template exclude linked child keys. 
+     * @type {boolean}
+     * @memberof OrganizationJobTemplateDetails
+     */
+    excludeLinkedChildKeys?: boolean;
 }
 
 export function OrganizationJobTemplateDetailsFromJSON(json: any): OrganizationJobTemplateDetails {
@@ -111,6 +117,7 @@ export function OrganizationJobTemplateDetailsFromJSONTyped(json: any, ignoreDis
         'owner': !exists(json, 'owner') ? undefined : UserPreviewFromJSON(json['owner']),
         'creator': !exists(json, 'creator') ? undefined : UserPreviewFromJSON(json['creator']),
         'locales': !exists(json, 'locales') ? undefined : ((json['locales'] as Array<any>).map(LocalePreviewFromJSON)),
+        'excludeLinkedChildKeys': !exists(json, 'exclude_linked_child_keys') ? undefined : json['exclude_linked_child_keys'],
     };
 }
 
@@ -133,6 +140,7 @@ export function OrganizationJobTemplateDetailsToJSON(value?: OrganizationJobTemp
         'owner': UserPreviewToJSON(value.owner),
         'creator': UserPreviewToJSON(value.creator),
         'locales': value.locales === undefined ? undefined : ((value.locales as Array<any>).map(LocalePreviewToJSON)),
+        'exclude_linked_child_keys': value.excludeLinkedChildKeys,
     };
 }
 

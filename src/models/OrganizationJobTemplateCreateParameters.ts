@@ -37,6 +37,12 @@ export interface OrganizationJobTemplateCreateParameters {
      */
     autotranslate?: boolean;
     /**
+     * Exclude linked child keys from jobs created from this template. Defaults to `false`.
+     * @type {boolean}
+     * @memberof OrganizationJobTemplateCreateParameters
+     */
+    excludeLinkedChildKeys?: boolean;
+    /**
      * Code of the account member to set as the job template owner. When omitted or blank, no owner is pre-set; the user who creates a job from this template is assigned as its owner at job-creation time. 
      * @type {string}
      * @memberof OrganizationJobTemplateCreateParameters
@@ -57,6 +63,7 @@ export function OrganizationJobTemplateCreateParametersFromJSONTyped(json: any, 
         'name': json['name'],
         'briefing': !exists(json, 'briefing') ? undefined : json['briefing'],
         'autotranslate': !exists(json, 'autotranslate') ? undefined : json['autotranslate'],
+        'excludeLinkedChildKeys': !exists(json, 'exclude_linked_child_keys') ? undefined : json['exclude_linked_child_keys'],
         'ownerId': !exists(json, 'owner_id') ? undefined : json['owner_id'],
     };
 }
@@ -73,6 +80,7 @@ export function OrganizationJobTemplateCreateParametersToJSON(value?: Organizati
         'name': value.name,
         'briefing': value.briefing,
         'autotranslate': value.autotranslate,
+        'exclude_linked_child_keys': value.excludeLinkedChildKeys,
         'owner_id': value.ownerId,
     };
 }
