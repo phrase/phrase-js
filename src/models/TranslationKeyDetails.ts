@@ -13,6 +13,10 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    TranslationKeyLinkedKey,
+    TranslationKeyLinkedKeyFromJSON,
+    TranslationKeyLinkedKeyFromJSONTyped,
+    TranslationKeyLinkedKeyToJSON,
     UserPreview,
     UserPreviewFromJSON,
     UserPreviewFromJSONTyped,
@@ -85,6 +89,12 @@ export interface TranslationKeyDetails {
      * @memberof TranslationKeyDetails
      */
     updatedAt?: Date;
+    /**
+     * 
+     * @type {TranslationKeyLinkedKey}
+     * @memberof TranslationKeyDetails
+     */
+    linkedKey?: TranslationKeyLinkedKey | null;
     /**
      * 
      * @type {string}
@@ -167,6 +177,7 @@ export function TranslationKeyDetailsFromJSONTyped(json: any, ignoreDiscriminato
         'dataType': !exists(json, 'data_type') ? undefined : json['data_type'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'updatedAt': !exists(json, 'updated_at') ? undefined : (new Date(json['updated_at'])),
+        'linkedKey': !exists(json, 'linked_key') ? undefined : TranslationKeyLinkedKeyFromJSON(json['linked_key']),
         'namePlural': !exists(json, 'name_plural') ? undefined : json['name_plural'],
         'commentsCount': !exists(json, 'comments_count') ? undefined : json['comments_count'],
         'maxCharactersAllowed': !exists(json, 'max_characters_allowed') ? undefined : json['max_characters_allowed'],
@@ -199,6 +210,7 @@ export function TranslationKeyDetailsToJSON(value?: TranslationKeyDetails | null
         'data_type': value.dataType,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'updated_at': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
+        'linked_key': TranslationKeyLinkedKeyToJSON(value.linkedKey),
         'name_plural': value.namePlural,
         'comments_count': value.commentsCount,
         'max_characters_allowed': value.maxCharactersAllowed,

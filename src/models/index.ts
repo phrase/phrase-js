@@ -212,6 +212,8 @@ export * from './TranslationExcludeParameters';
 export * from './TranslationIncludeParameters';
 export * from './TranslationKey';
 export * from './TranslationKeyDetails';
+export * from './TranslationKeyLinkedKey';
+export * from './TranslationKeyLinkedKeyParent';
 export * from './TranslationOrder';
 export * from './TranslationParent';
 export * from './TranslationReviewParameters';

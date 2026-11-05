@@ -106,6 +106,7 @@ export interface KeysListRequest {
     order?: string;
     q?: string;
     localeId?: string;
+    includeLinkedKeys?: boolean;
 }
 
 export interface KeysSearchRequest {
@@ -114,6 +115,7 @@ export interface KeysSearchRequest {
     xPhraseAppOTP?: string;
     page?: number;
     perPage?: number;
+    includeLinkedKeys?: boolean;
 }
 
 export interface KeysTagRequest {
@@ -533,6 +535,10 @@ export class KeysApi extends runtime.BaseAPI {
             queryParameters['locale_id'] = requestParameters.localeId;
         }
 
+        if (requestParameters.includeLinkedKeys !== undefined) {
+            queryParameters['include_linked_keys'] = requestParameters.includeLinkedKeys;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
@@ -586,6 +592,10 @@ export class KeysApi extends runtime.BaseAPI {
 
         if (requestParameters.perPage !== undefined) {
             queryParameters['per_page'] = requestParameters.perPage;
+        }
+
+        if (requestParameters.includeLinkedKeys !== undefined) {
+            queryParameters['include_linked_keys'] = requestParameters.includeLinkedKeys;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

@@ -282,6 +282,8 @@ src/models/TranslationExcludeParameters.ts
 src/models/TranslationIncludeParameters.ts
 src/models/TranslationKey.ts
 src/models/TranslationKeyDetails.ts
+src/models/TranslationKeyLinkedKey.ts
+src/models/TranslationKeyLinkedKeyParent.ts
 src/models/TranslationOrder.ts
 src/models/TranslationParent.ts
 src/models/TranslationReviewParameters.ts
