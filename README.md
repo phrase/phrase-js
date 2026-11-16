@@ -417,6 +417,7 @@ Class | Method | HTTP request | Description
 *RepoSyncsApi* | **repoSyncImport** | **POST** /accounts/{account_id}/repo_syncs/{id}/import | Import from code repository
 *RepoSyncsApi* | **repoSyncList** | **GET** /accounts/{account_id}/repo_syncs | Get Repo Syncs
 *RepoSyncsApi* | **repoSyncShow** | **GET** /accounts/{account_id}/repo_syncs/{id} | Get a single Repo Sync
+*RepoSyncsApi* | **repoSyncUpdate** | **PATCH** /accounts/{account_id}/repo_syncs/{id} | Update a repo sync
 *ReportsApi* | **reportLocalesList** | **GET** /projects/{project_id}/report/locales | List Locale Reports (word count, character count, translation statistics)
 *ReportsApi* | **reportShow** | **GET** /projects/{project_id}/report | Get Project Report
 *ScreenshotMarkersApi* | **screenshotMarkerCreate** | **POST** /projects/{project_id}/screenshots/{screenshot_id}/markers | Create a screenshot marker

@@ -17,6 +17,14 @@ import {
     ProjectShortFromJSON,
     ProjectShortFromJSONTyped,
     ProjectShortToJSON,
+    RepoSyncExportSchedule,
+    RepoSyncExportScheduleFromJSON,
+    RepoSyncExportScheduleFromJSONTyped,
+    RepoSyncExportScheduleToJSON,
+    UserShort,
+    UserShortFromJSON,
+    UserShortFromJSONTyped,
+    UserShortToJSON,
 } from './';
 
 /**
@@ -91,6 +99,24 @@ export interface RepoSync {
      * @memberof RepoSync
      */
     lastExportAt?: Date | null;
+    /**
+     * 
+     * @type {UserShort}
+     * @memberof RepoSync
+     */
+    owner?: UserShort;
+    /**
+     * Events that trigger an automatic export. Only present when the automatic export feature is enabled for the account. Possible values: `schedule` (runs on the configured schedule), `branch_merged` (runs when a branch is merged in the connected repository), `job_completed` (runs when a translation job completes in the project). 
+     * @type {Array<string>}
+     * @memberof RepoSync
+     */
+    exportTriggers?: Array<RepoSyncExportTriggersEnum>;
+    /**
+     * 
+     * @type {RepoSyncExportSchedule}
+     * @memberof RepoSync
+     */
+    exportSchedule?: RepoSyncExportSchedule | null;
 }
 
 export function RepoSyncFromJSON(json: any): RepoSync {
@@ -114,6 +140,9 @@ export function RepoSyncFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'lastImportAt': !exists(json, 'last_import_at') ? undefined : (json['last_import_at'] === null ? null : new Date(json['last_import_at'])),
         'lastExportAt': !exists(json, 'last_export_at') ? undefined : (json['last_export_at'] === null ? null : new Date(json['last_export_at'])),
+        'owner': !exists(json, 'owner') ? undefined : UserShortFromJSON(json['owner']),
+        'exportTriggers': !exists(json, 'export_triggers') ? undefined : json['export_triggers'],
+        'exportSchedule': !exists(json, 'export_schedule') ? undefined : RepoSyncExportScheduleFromJSON(json['export_schedule']),
     };
 }
 
@@ -137,7 +166,20 @@ export function RepoSyncToJSON(value?: RepoSync | null): any {
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'last_import_at': value.lastImportAt === undefined ? undefined : (value.lastImportAt === null ? null : value.lastImportAt.toISOString()),
         'last_export_at': value.lastExportAt === undefined ? undefined : (value.lastExportAt === null ? null : value.lastExportAt.toISOString()),
+        'owner': UserShortToJSON(value.owner),
+        'export_triggers': value.exportTriggers,
+        'export_schedule': RepoSyncExportScheduleToJSON(value.exportSchedule),
     };
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum RepoSyncExportTriggersEnum {
+    Schedule = 'schedule',
+    BranchMerged = 'branch_merged',
+    JobCompleted = 'job_completed'
 }
 
 

@@ -32,6 +32,9 @@ import {
     RepoSyncImportParameters,
     RepoSyncImportParametersFromJSON,
     RepoSyncImportParametersToJSON,
+    RepoSyncUpdateParameters,
+    RepoSyncUpdateParametersFromJSON,
+    RepoSyncUpdateParametersToJSON,
 } from '../models';
 
 export interface RepoSyncActivateRequest {
@@ -76,6 +79,13 @@ export interface RepoSyncListRequest {
 export interface RepoSyncShowRequest {
     accountId: string;
     id: string;
+    xPhraseAppOTP?: string;
+}
+
+export interface RepoSyncUpdateRequest {
+    accountId: string;
+    id: string;
+    repoSyncUpdateParameters: RepoSyncUpdateParameters;
     xPhraseAppOTP?: string;
 }
 
@@ -423,6 +433,60 @@ export class RepoSyncsApi extends runtime.BaseAPI {
      */
     async repoSyncShow(requestParameters: RepoSyncShowRequest): Promise<RepoSync> {
         const response = await this.repoSyncShowRaw(requestParameters);
+        return await response.value();
+    }
+
+    /**
+     * Update settings for an existing Repo Sync. Sending `owner_id`, `export_triggers`, or `export_schedule` requires the caller to have `manage_github_sync?` permission on the project (returns `403` otherwise). Sending `export_triggers` or `export_schedule` when the automatic export feature is not enabled for the account returns `422`. 
+     * Update a repo sync
+     */
+    async repoSyncUpdateRaw(requestParameters: RepoSyncUpdateRequest): Promise<runtime.ApiResponse<RepoSync>> {
+        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
+            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling repoSyncUpdate.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling repoSyncUpdate.');
+        }
+
+        if (requestParameters.repoSyncUpdateParameters === null || requestParameters.repoSyncUpdateParameters === undefined) {
+            throw new runtime.RequiredError('repoSyncUpdateParameters','Required parameter requestParameters.repoSyncUpdateParameters was null or undefined when calling repoSyncUpdate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters.xPhraseAppOTP !== undefined && requestParameters.xPhraseAppOTP !== null) {
+            headerParameters['X-PhraseApp-OTP'] = String(requestParameters.xPhraseAppOTP);
+        }
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // Token authentication
+        }
+
+        const response = await this.request({
+            path: `/accounts/{account_id}/repo_syncs/{id}`.replace(`{${"account_id"}}`, encodeURIComponent(String(requestParameters.accountId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: RepoSyncUpdateParametersToJSON(requestParameters.repoSyncUpdateParameters),
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => RepoSyncFromJSON(jsonValue));
+    }
+
+    /**
+     * Update settings for an existing Repo Sync. Sending `owner_id`, `export_triggers`, or `export_schedule` requires the caller to have `manage_github_sync?` permission on the project (returns `403` otherwise). Sending `export_triggers` or `export_schedule` when the automatic export feature is not enabled for the account returns `422`. 
+     * Update a repo sync
+     */
+    async repoSyncUpdate(requestParameters: RepoSyncUpdateRequest): Promise<RepoSync> {
+        const response = await this.repoSyncUpdateRaw(requestParameters);
         return await response.value();
     }
 

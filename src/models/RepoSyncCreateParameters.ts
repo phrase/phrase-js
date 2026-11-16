@@ -12,6 +12,13 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    RepoSyncCreateParametersExportSchedule,
+    RepoSyncCreateParametersExportScheduleFromJSON,
+    RepoSyncCreateParametersExportScheduleFromJSONTyped,
+    RepoSyncCreateParametersExportScheduleToJSON,
+} from './';
+
 /**
  * 
  * @export
@@ -78,6 +85,24 @@ export interface RepoSyncCreateParameters {
      * @memberof RepoSyncCreateParameters
      */
     customApiEndpoint?: string;
+    /**
+     * Code of the user who will own this repo sync. Automated actions run as this user. Defaults to the account owner when not set. 
+     * @type {string}
+     * @memberof RepoSyncCreateParameters
+     */
+    ownerId?: string;
+    /**
+     * Events that should trigger an automatic export. Requires the automatic export feature to be enabled for the account; returns `422` otherwise. Accepted values: `schedule`, `branch_merged`, `job_completed`. 
+     * @type {Array<string>}
+     * @memberof RepoSyncCreateParameters
+     */
+    exportTriggers?: Array<RepoSyncCreateParametersExportTriggersEnum>;
+    /**
+     * 
+     * @type {RepoSyncCreateParametersExportSchedule}
+     * @memberof RepoSyncCreateParameters
+     */
+    exportSchedule?: RepoSyncCreateParametersExportSchedule;
 }
 
 export function RepoSyncCreateParametersFromJSON(json: any): RepoSyncCreateParameters {
@@ -100,6 +125,9 @@ export function RepoSyncCreateParametersFromJSONTyped(json: any, ignoreDiscrimin
         'autoImport': !exists(json, 'auto_import') ? undefined : json['auto_import'],
         'accessToken': !exists(json, 'access_token') ? undefined : json['access_token'],
         'customApiEndpoint': !exists(json, 'custom_api_endpoint') ? undefined : json['custom_api_endpoint'],
+        'ownerId': !exists(json, 'owner_id') ? undefined : json['owner_id'],
+        'exportTriggers': !exists(json, 'export_triggers') ? undefined : json['export_triggers'],
+        'exportSchedule': !exists(json, 'export_schedule') ? undefined : RepoSyncCreateParametersExportScheduleFromJSON(json['export_schedule']),
     };
 }
 
@@ -122,6 +150,9 @@ export function RepoSyncCreateParametersToJSON(value?: RepoSyncCreateParameters 
         'auto_import': value.autoImport,
         'access_token': value.accessToken,
         'custom_api_endpoint': value.customApiEndpoint,
+        'owner_id': value.ownerId,
+        'export_triggers': value.exportTriggers,
+        'export_schedule': RepoSyncCreateParametersExportScheduleToJSON(value.exportSchedule),
     };
 }
 
@@ -142,6 +173,15 @@ export enum RepoSyncCreateParametersConnectionTypeEnum {
     Token = 'token',
     GithubApp = 'github_app',
     SelfHosted = 'self_hosted'
+}
+/**
+* @export
+* @enum {string}
+*/
+export enum RepoSyncCreateParametersExportTriggersEnum {
+    Schedule = 'schedule',
+    BranchMerged = 'branch_merged',
+    JobCompleted = 'job_completed'
 }
 
 
