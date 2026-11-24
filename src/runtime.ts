@@ -161,7 +161,7 @@ export class Configuration {
           configuration.headers = {}
         }
 
-        configuration.headers["User-Agent"] = "OpenAPI-Generator/3.35.0/js"
+        configuration.headers["User-Agent"] = "OpenAPI-Generator/3.36.0/js"
     }
 
     get basePath(): string {
