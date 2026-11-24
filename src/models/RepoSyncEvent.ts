@@ -50,13 +50,19 @@ export interface RepoSyncEvent {
      */
     status?: RepoSyncEventStatusEnum;
     /**
+     * When `true`, the sync was triggered automatically (for example by a Zero Touch Localization rule or an automation). When `false`, it was triggered manually. 
+     * @type {boolean}
+     * @memberof RepoSyncEvent
+     */
+    automatic?: boolean;
+    /**
      * URL of the pull request created on export
      * @type {string}
      * @memberof RepoSyncEvent
      */
     pullRequestUrl?: string;
     /**
-     * Whether the import was triggered by the repo push event
+     * **Deprecated.** Use `automatic` instead. Only present on import events. Indicates whether the import was triggered automatically. 
      * @type {boolean}
      * @memberof RepoSyncEvent
      */
@@ -89,6 +95,7 @@ export function RepoSyncEventFromJSONTyped(json: any, ignoreDiscriminator: boole
         'type': !exists(json, 'type') ? undefined : json['type'],
         'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'status': !exists(json, 'status') ? undefined : json['status'],
+        'automatic': !exists(json, 'automatic') ? undefined : json['automatic'],
         'pullRequestUrl': !exists(json, 'pull_request_url') ? undefined : json['pull_request_url'],
         'autoImport': !exists(json, 'auto_import') ? undefined : json['auto_import'],
         'errors': !exists(json, 'errors') ? undefined : json['errors'],
@@ -109,6 +116,7 @@ export function RepoSyncEventToJSON(value?: RepoSyncEvent | null): any {
         'type': value.type,
         'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'status': value.status,
+        'automatic': value.automatic,
         'pull_request_url': value.pullRequestUrl,
         'auto_import': value.autoImport,
         'errors': value.errors,
