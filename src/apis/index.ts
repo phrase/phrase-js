@@ -38,6 +38,7 @@ export * from './OrdersApi';
 export * from './OrganizationJobTemplateLocalesApi';
 export * from './OrganizationJobTemplatesApi';
 export * from './PreTranslationsApi';
+export * from './ProjectNotesApi';
 export * from './ProjectsApi';
 export * from './QualityPerformanceScoreApi';
 export * from './ReleaseTriggersApi';

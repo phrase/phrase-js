@@ -43,6 +43,7 @@ src/apis/OrdersApi.ts
 src/apis/OrganizationJobTemplateLocalesApi.ts
 src/apis/OrganizationJobTemplatesApi.ts
 src/apis/PreTranslationsApi.ts
+src/apis/ProjectNotesApi.ts
 src/apis/ProjectsApi.ts
 src/apis/QualityPerformanceScoreApi.ts
 src/apis/ReleaseTriggersApi.ts
@@ -204,6 +205,7 @@ src/models/MemberSpacesInner.ts
 src/models/MemberUpdateParameters.ts
 src/models/MemberUpdateSettingsParameters.ts
 src/models/ModelError.ts
+src/models/Note.ts
 src/models/Notification.ts
 src/models/NotificationGroup.ts
 src/models/NotificationGroupDetail.ts
@@ -222,6 +224,7 @@ src/models/ProjectCreateParameters.ts
 src/models/ProjectDetails.ts
 src/models/ProjectLocales.ts
 src/models/ProjectMember.ts
+src/models/ProjectNoteUpdateParameters.ts
 src/models/ProjectReport.ts
 src/models/ProjectShort.ts
 src/models/ProjectUpdateParameters.ts

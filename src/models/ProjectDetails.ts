@@ -21,6 +21,10 @@ import {
     BranchFromJSON,
     BranchFromJSONTyped,
     BranchToJSON,
+    Note,
+    NoteFromJSON,
+    NoteFromJSONTyped,
+    NoteToJSON,
     Space1,
     Space1FromJSON,
     Space1FromJSONTyped,
@@ -241,6 +245,12 @@ export interface ProjectDetails {
      * @memberof ProjectDetails
      */
     branch?: Branch;
+    /**
+     * 
+     * @type {Note}
+     * @memberof ProjectDetails
+     */
+    note?: Note;
 }
 
 export function ProjectDetailsFromJSON(json: any): ProjectDetails {
@@ -287,6 +297,7 @@ export function ProjectDetailsFromJSONTyped(json: any, ignoreDiscriminator: bool
         'jobLockingEnabled': !exists(json, 'job_locking_enabled') ? undefined : json['job_locking_enabled'],
         'placeholderStyles': !exists(json, 'placeholder_styles') ? undefined : json['placeholder_styles'],
         'branch': !exists(json, 'branch') ? undefined : BranchFromJSON(json['branch']),
+        'note': !exists(json, 'note') ? undefined : NoteFromJSON(json['note']),
     };
 }
 
@@ -333,6 +344,7 @@ export function ProjectDetailsToJSON(value?: ProjectDetails | null): any {
         'job_locking_enabled': value.jobLockingEnabled,
         'placeholder_styles': value.placeholderStyles,
         'branch': BranchToJSON(value.branch),
+        'note': NoteToJSON(value.note),
     };
 }
 

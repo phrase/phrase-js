@@ -391,6 +391,9 @@ Class | Method | HTTP request | Description
 *PreTranslationsApi* | **preTranslationCreate** | **POST** /projects/{project_id}/pre_translations | Create a pre-translation job
 *PreTranslationsApi* | **preTranslationShow** | **GET** /projects/{project_id}/pre_translations/{id} | Get a single pre-translation job
 *PreTranslationsApi* | **preTranslationsList** | **GET** /projects/{project_id}/pre_translations | List pre-translation jobs
+*ProjectNotesApi* | **projectNoteDestroy** | **DELETE** /projects/{project_id}/note | Delete a project note
+*ProjectNotesApi* | **projectNoteShow** | **GET** /projects/{project_id}/note | Get a project note
+*ProjectNotesApi* | **projectNoteUpdate** | **PATCH** /projects/{project_id}/note | Create or update a project note
 *ProjectsApi* | **projectCreate** | **POST** /projects | Create a project
 *ProjectsApi* | **projectDelete** | **DELETE** /projects/{id} | Delete a project
 *ProjectsApi* | **projectShow** | **GET** /projects/{id} | Get a single project
